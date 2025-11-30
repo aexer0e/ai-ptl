@@ -1,7 +1,7 @@
 {
     "type": "minecraftBedrock",
     "name": "bedrock-addon",
-    "namespace": "ns_tpl",
+    "namespace": "ns_ptl",
     "authors": [ "Ninja Squirrel Gaming" ],
     "targetVersion": "1.21.80",
     "description": "",
@@ -23,7 +23,7 @@
             "customBlockComponents",
             "customCommands",
             "generatorScripts",
-            [ "simpleRewrite", { "packName": "ns_tpl", "rewriteToComMojang": true }]
+            [ "simpleRewrite", { "packName": "ns_ptl", "rewriteToComMojang": true }]
         ]
     }
 }

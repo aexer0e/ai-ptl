@@ -3,7 +3,7 @@ import { Command } from "../CustomCommands";
 
 export default class Reset implements Command {
     getDescription = (): string => "Reset game states";
-    getPrefix = (): string => "ns_tpl:debug";
+    getPrefix = (): string => "ns_ptl:debug";
     getNames = (): string[] => ["reset"];
     getUsage() {
         const resetData = Object.keys(this.resetData).map((reset) => `reset ${reset}`);

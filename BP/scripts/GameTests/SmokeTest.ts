@@ -8,10 +8,10 @@ import { Test, register } from "@minecraft/server-gametest";
 /**
  * Test that verifies world is accessible.
  */
-register("ns_tpl", "world_access", (test: Test) => {
+register("ns_ptl", "world_access", (test: Test) => {
     const overworld = world.getDimension("overworld");
     test.assert(overworld !== undefined, "Overworld should be accessible");
     test.succeed();
 })
-    .structureName("ns_tpl:platform_5x5")
+    .structureName("ns_ptl:platform_5x5")
     .maxTicks(20);

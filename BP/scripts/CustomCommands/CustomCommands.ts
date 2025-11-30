@@ -17,11 +17,11 @@ export default class CustomCommands {
 
     static onScriptEventReceive(event: ScriptEventCommandMessageAfterEvent): void {
         const id = event.id;
-        if (id !== "ns_tpl:debug") return;
+        if (id !== "ns_ptl:debug") return;
 
         const message = event.message;
         const player = (event.sourceEntity || event.initiator) as Player;
-        if (!message) return BroadcastUtil.say("§cMissing command use /scriptevent ns_tpl:debug help");
+        if (!message) return BroadcastUtil.say("§cMissing command use /scriptevent ns_ptl:debug help");
         const args = message.split(" ");
 
         const commandName = args[0];

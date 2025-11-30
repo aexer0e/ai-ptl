@@ -2,7 +2,7 @@ import { Command } from "../CustomCommands";
 
 class BuildInfo implements Command {
     getDescription = (): string => "Provide build info for this build";
-    getPrefix = (): string => "ns_tpl:debug";
+    getPrefix = (): string => "ns_ptl:debug";
     getNames = (): string[] => ["buildinfo", "version"];
     getUsage = (): string[] => ["buildinfo"];
 

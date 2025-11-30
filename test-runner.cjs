@@ -6,7 +6,7 @@ const path = require('path');
 // CONFIGURATION
 const CONTAINER_NAME = 'mc-gametest-runner';
 const IDLE_TIMEOUT_MS = 10000; // Wait 10s for logs to settle
-const BUILD_OUTPUT = './builds/dist/ns_tpl BP';
+const BUILD_OUTPUT = './builds/dist/ns_ptl BP';
 
 // Beta API dependencies required for GameTest
 const BETA_DEPENDENCIES = [
@@ -149,7 +149,7 @@ function runTestsAndWatch() {
         }
     }, 30000);
 
-    sendCommand('gametest runset ns_tpl');
+    sendCommand('gametest runset ns_ptl');
 }
 
 function sendCommand(cmd) {

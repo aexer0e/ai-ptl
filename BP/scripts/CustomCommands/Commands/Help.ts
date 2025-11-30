@@ -3,7 +3,7 @@ import CommandList from "./index";
 
 class Help implements Command {
     getDescription = (): string => "Shows a list of available commands.";
-    getPrefix = (): string => "ns_tpl:debug";
+    getPrefix = (): string => "ns_ptl:debug";
     getNames = (): string[] => ["help", "h"];
     getUsage = (): string[] => ["!help", "!help <command>"];
 

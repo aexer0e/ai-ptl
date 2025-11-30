@@ -3,7 +3,7 @@
     "minecraft:geometry": [
         {
             "description": {
-                "identifier": "geometry.ns_tpl_placeholder_1x2",
+                "identifier": "geometry.ns_ptl_placeholder_1x2",
                 "texture_width": 64,
                 "texture_height": 64,
                 "visible_bounds_width": 2,

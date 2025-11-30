@@ -3,7 +3,7 @@ import { Command } from "../CustomCommands";
 
 export default class To implements Command {
     getDescription = (): string => "TP tp an objective";
-    getPrefix = (): string => "ns_tpl:debug";
+    getPrefix = (): string => "ns_ptl:debug";
     getNames = (): string[] => ["to"];
     getUsage = (): string[] => {
         return Object.entries(GameData.ToLocations).map((objective, index) => `to <${index}|${objective[0]}>`);

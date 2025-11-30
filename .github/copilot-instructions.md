@@ -49,7 +49,7 @@ Extensions to Minecraft's `Entity` class:
 - Define schemas in `BP/scripts/Store/Entity/Properties.ts`
 
 ### Custom Commands
-- Triggered via `/scriptevent ns_tpl:debug <command> <args>`
+- Triggered via `/scriptevent ns_ptl:debug <command> <args>`
 - Define in `BP/scripts/CustomCommands/Commands/` implementing `Command` interface
 - Register in `Commands/index.ts`
 
@@ -96,7 +96,7 @@ npm run lint # TypeScript check + ESLint + Prettier
 1. **No imports for globals**: Utilities like `EntityUtil`, `BroadcastUtil` are accessed globally
 2. **Manager pattern**: Systems have `static init()` called from `Main.ts` in specific order
 3. **Component registration**: MobComponents specify `static EntityTypes: string[]` to auto-attach
-4. **Namespace prefix**: `ns_tpl` for this project (items, events, etc. use `ns_tpl:` prefix)
+4. **Namespace prefix**: `ns_ptl` for this project (items, events, etc. use `ns_ptl:` prefix)
 5. **TypeScript target**: ES2023 (QuickJS runtime in Minecraft)
 6. **baseUrl**: `./BP/scripts` - import paths relative to scripts folder
 
@@ -112,5 +112,9 @@ The **Bedrock-OSS Wiki Docs** folder contains comprehensive Minecraft Bedrock ad
 - **particles/** - Particle effects
 - **json-ui/** - UI customization
 - **world-generation/** - Custom world generation
+
+The **Particles Guide/** folder contains a detailed guide on creating custom particles in Minecraft Bedrock:
+- `Intruduction To Particles.md` - Comprehensive particle system tutorial
+- `particles_example/` - Example particle files for reference
 
 When implementing Bedrock-specific features, search this documentation for patterns and examples.

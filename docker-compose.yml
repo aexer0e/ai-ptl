@@ -18,8 +18,8 @@ services:
       - ./server-data:/data
       
       # 2. Mount compiled addons from builds/dist
-      - "./builds/dist/ns_tpl BP:/data/behavior_packs/ns_tpl_bp"
-      - "./builds/dist/ns_tpl RP:/data/resource_packs/ns_tpl_rp"
+      - "./builds/dist/ns_ptl BP:/data/behavior_packs/ns_ptl_bp"
+      - "./builds/dist/ns_ptl RP:/data/resource_packs/ns_ptl_rp"
       
       # 3. Ensure permissions allow scripting
       - ./permissions.json:/data/permissions.json
