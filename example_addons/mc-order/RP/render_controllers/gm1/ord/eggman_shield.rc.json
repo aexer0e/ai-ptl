@@ -1,0 +1,13 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.energy_shield": {
+            "geometry": "Geometry.energy_shield",
+            "materials": [{ "*": "Material.additive" }],
+            "textures": [ "Texture.energy_shield" ],
+            "ignore_lighting": true,
+            "overlay_color": { "a": "query.camera_distance_range_lerp(16,64)", "b": 0, "g": 0, "r": 0 },
+            "is_hurt_color": { "a": "1", "b": 1, "g": 0.75, "r": 1 }
+        }
+    }
+}

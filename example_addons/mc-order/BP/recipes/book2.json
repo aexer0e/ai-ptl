@@ -1,0 +1,11 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "gm1_ord:book2" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "ingredients": [{ "item": "gm1_ord:ring_spawn_egg" }],
+        "result": { "item": "gm1_ord:intro_book" },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

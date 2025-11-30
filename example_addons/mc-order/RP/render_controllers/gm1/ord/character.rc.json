@@ -1,0 +1,211 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.character": {
+            "geometry": "Geometry.character",
+            "materials": [{ "*": "v.invulnerable_frequency > 0 ? Material.transparent : Material.character" }],
+            "textures": [ "v.invulnerable_frequency > 0 ? Texture.invulnerable : Texture.character" ],
+            "light_color_multiplier": 15,
+            "overlay_color": { "a": 1, "r": 1, "g": 0, "b": 1 },
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.character_fp": {
+            "geometry": "Geometry.character",
+            "materials": [{ "*": "Material.character" }],
+            "textures": [ "Texture.character" ],
+            "light_color_multiplier": 15,
+            "overlay_color": { "a": 1, "r": 1, "g": 0, "b": 1 },
+            "ignore_lighting": true,
+            "part_visibility": [
+                { "*": false },
+                { "arm_left*": true },
+                { "arm_right*": true },
+                { "forearm_left*": true },
+                { "forearm_right*": true },
+                { "hand_left*": true },
+                { "hand_right*": true },
+                { "weapon*": true },
+                { "tail*": true },
+                { "thumb*": true }
+            ]
+        },
+        "controller.render.gm1_ord.character_fp_token": {
+            "geometry": "Geometry.token",
+            "materials": [{ "*": "Material.character" }],
+            "textures": [ "Texture.token" ],
+            "light_color_multiplier": 15,
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.character_transforming": {
+            "geometry": "Geometry.character",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "textures": [ "Texture.character" ],
+            "part_visibility": [
+                { "*": true },
+                { "skull*": "!v.is_first_person" },
+                { "eye*": "!v.is_first_person" },
+                { "ear*": "!v.is_first_person" },
+                { "hair*": "!v.is_first_person" }
+            ]
+        },
+        "controller.render.gm1_ord.character_charging": {
+            "geometry": "Geometry.character_shell",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.charge_01",
+                        "texture.charge_02",
+                        "texture.charge_03",
+                        "texture.charge_04",
+                        "texture.charge_05"
+                    ]
+                }
+            },
+            "textures": [ "array.textures[v.charge_texture_index]" ],
+            "part_visibility": [
+                { "*": true },
+                { "skull*": "!v.is_first_person" },
+                { "eye*": "!v.is_first_person" },
+                { "ear*": "!v.is_first_person" },
+                { "hair*": "!v.is_first_person" }
+            ],
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.going_super": {
+            "geometry": "Geometry.going_super",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.charge_01",
+                        "texture.charge_02",
+                        "texture.charge_03",
+                        "texture.charge_04",
+                        "texture.charge_05"
+                    ]
+                }
+            },
+            "textures": [ "array.textures[v.super_texture_index]" ],
+            "part_visibility": [
+                { "*": true },
+                { "skull*": "!v.is_first_person" },
+                { "eye*": "!v.is_first_person" },
+                { "ear*": "!v.is_first_person" },
+                { "hair*": "!v.is_first_person" }
+            ]
+        },
+        "controller.render.gm1_ord.shadow_home": {
+            "geometry": "Geometry.character_shell",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "textures": [ "Texture.shadow_home" ],
+            "part_visibility": [
+                { "*": true },
+                { "skull*": "!v.is_first_person" },
+                { "eye*": "!v.is_first_person" },
+                { "ear*": "!v.is_first_person" },
+                { "hair*": "!v.is_first_person" }
+            ],
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.speed_effect": {
+            "geometry": "Geometry.speed_scale",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "Array.character": [
+                        "texture.sonic_speed_effect",
+                        "texture.tails_speed_effect",
+                        "texture.knuckles_speed_effect",
+                        "texture.amy_speed_effect",
+                        "texture.shadow_speed_effect"
+                    ]
+                }
+            },
+            "textures": [ "Array.character[v.character]" ],
+            "ignore_lighting": true,
+            "uv_anim": { "offset": [ 0, "math.round(q.anim_time*30)*(1/16)" ], "scale": [ 1, "1/16" ]}
+        },
+        "controller.render.gm1_ord.super_sonic.charged": {
+            "geometry": "Geometry.charged_ss",
+            "materials": [{ "*": "Material.charged" }],
+            "textures": [ "Texture.charged_ss" ],
+            "uv_anim": {
+                "offset": [ "-(Math.floor(query.life_time * 120))*0.01", "-(Math.floor(query.life_time * 120))*0.01" ],
+                "scale": [ 1, 1 ]
+            },
+            "light_color_multiplier": "Math.abs(query.camera_distance_range_lerp(15, 20)-1)"
+        },
+        "controller.render.gm1_ord.water_running": {
+            "geometry": "Geometry.water_running",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.water_running" ]
+        },
+        "controller.render.gm1_ord.ball_mode": {
+            "geometry": "Geometry.ballmode",
+            "materials": [{ "*": "Material.character" }],
+            "textures": [ "Texture.ballmode" ],
+            "part_visibility": [{ "*": true }]
+        },
+        "controller.render.gm1_ord.super_shell": {
+            "geometry": "Geometry.super_shell",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.charge_01",
+                        "texture.charge_02",
+                        "texture.charge_03",
+                        "texture.charge_04",
+                        "texture.charge_05"
+                    ]
+                }
+            },
+            "textures": [ "array.textures[v.super_texture_index]" ]
+        },
+        "controller.render.gm1_ord.ball_mode_shell": {
+            "geometry": "Geometry.ballmode_shell",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.charge_01",
+                        "texture.charge_02",
+                        "texture.charge_03",
+                        "texture.charge_04",
+                        "texture.charge_05"
+                    ]
+                }
+            },
+            "textures": [ "array.textures[v.super_texture_index]" ]
+        },
+        "controller.render.gm1_ord.super_aura": {
+            "geometry": "Geometry.super_aura",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.super_aura_1",
+                        "texture.super_aura_2",
+                        "texture.super_aura_3",
+                        "texture.super_aura_4",
+                        "texture.super_aura_5",
+                        "texture.super_aura_6",
+                        "texture.super_aura_7",
+                        "texture.super_aura_8",
+                        "texture.super_aura_9",
+                        "texture.super_aura_10",
+                        "texture.super_aura_11",
+                        "texture.super_aura_12",
+                        "texture.super_aura_13",
+                        "texture.super_aura_14",
+                        "texture.super_aura_15",
+                        "texture.super_aura_16"
+                    ]
+                }
+            },
+            "textures": [ "array.textures[math.round(v.super_aura)]" ],
+            "ignore_lighting": true
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.shield.rotate_to_player": {
+			"loop": true,
+			"bones": {
+				"energy_shield": {
+					"rotation": ["query.rotation_to_camera(0)", "query.rotation_to_camera(1)-query.body_y_rotation", 0]
+				}
+			}
+		}
+	}
+}

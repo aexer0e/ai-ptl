@@ -1,0 +1,31 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_zen.deadly_helmet",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "helmet",
+					"pivot": [0, 24, 0],
+					"binding": "'head'",
+					"cubes": [
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "inflate": 1, "uv": [0, 0]},
+						{"origin": [0, 31, -7], "size": [0, 6, 3], "uv": [0, 13]},
+						{"origin": [-1, 33, -3], "size": [1, 6, 4], "uv": [0, 22]},
+						{"origin": [2, 33, 0], "size": [1, 6, 4], "pivot": [3, 33, 2], "rotation": [0, 0, 5], "uv": [0, 22]},
+						{"origin": [4, 32, -1], "size": [1, 5, 4], "pivot": [5, 32, 1], "rotation": [0, 0, 45], "uv": [10, 22]},
+						{"origin": [-5, 32, -1], "size": [1, 5, 4], "pivot": [-5, 32, 1], "rotation": [0, 0, -45], "uv": [10, 22], "mirror": true},
+						{"origin": [-3, 33, 0], "size": [1, 6, 4], "pivot": [-3, 33, 2], "rotation": [0, 0, -5], "uv": [0, 22], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

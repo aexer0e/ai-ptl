@@ -1,0 +1,17 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.gm1_ord.player.flycam": {
+            "loop": true,
+            "bones": {
+                "root": { "rotation": [ 0, "-v.body_y_rotation", 0 ], "position": [ 0, 0, 0 ]}
+            }
+        },
+        "animation.gm1_ord.player.body_direction": {
+            "loop": true,
+            "bones": {
+                "root": { "rotation": [ 0, "variable.rotation_delta", 0 ], "position": [ 0, 0, 0 ]}
+            }
+        }
+    }
+}

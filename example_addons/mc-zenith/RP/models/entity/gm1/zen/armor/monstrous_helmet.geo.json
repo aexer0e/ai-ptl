@@ -1,0 +1,75 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_zen.monstrous_helmet",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "helmet",
+					"pivot": [0, 24, 0],
+					"binding": "'head'",
+					"cubes": [
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "inflate": 1, "uv": [0, 0]},
+						{"origin": [-4, 33, -1], "size": [8, 2, 5], "uv": [16, 48]},
+						{"origin": [0.5, 36, -1], "size": [3, 3, 3], "pivot": [3.5, 38, 0.5], "rotation": [0, 0, -10], "uv": [16, 55]},
+						{"origin": [2, 35, 0], "size": [1, 1, 1], "inflate": 0.25, "uv": [25, 55]},
+						{"origin": [-3, 35, 0], "size": [1, 1, 1], "inflate": 0.25, "uv": [25, 55], "mirror": true},
+						{"origin": [-3.5, 36, -1], "size": [3, 3, 3], "pivot": [-3.5, 38, 0.5], "rotation": [0, 0, 10], "uv": [16, 55], "mirror": true},
+						{"origin": [-4, 26, -9], "size": [8, 6, 3], "inflate": 1, "uv": [38, 24]},
+						{"origin": [-3.5, 26.5, -9], "size": [7, 5, 4], "inflate": 0.5, "uv": [53, 15]},
+						{"origin": [-3, 33, -10], "size": [6, 2, 1], "uv": [0, 20]}
+					]
+				},
+				{
+					"name": "horns_left",
+					"parent": "helmet",
+					"pivot": [4.5, 29, 3],
+					"cubes": [
+						{"origin": [3.5, 30, 3], "size": [11, 3, 0], "pivot": [4.5, 32, 3], "rotation": [0, 0, -22.5], "uv": [0, 23]},
+						{"origin": [3.5, 26, 3], "size": [8, 3, 0], "pivot": [4.5, 28, 3], "rotation": [0, 0, -17.5], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "horns_right",
+					"parent": "helmet",
+					"pivot": [-4.5, 29, 3],
+					"cubes": [
+						{"origin": [-14.5, 30, 3], "size": [11, 3, 0], "pivot": [-4.5, 32, 3], "rotation": [0, 0, 22.5], "uv": [0, 23], "mirror": true},
+						{"origin": [-11.5, 26, 3], "size": [8, 3, 0], "pivot": [-4.5, 28, 3], "rotation": [0, 0, 17.5], "uv": [0, 26], "mirror": true}
+					]
+				},
+				{
+					"name": "upper_horn_left",
+					"parent": "helmet",
+					"pivot": [5, 34, 3],
+					"cubes": [
+						{"origin": [4, 33, 2], "size": [2, 7, 2], "uv": [28, 39]},
+						{"origin": [4, 33, 2], "size": [2, 7, 2], "inflate": 0.2, "uv": [28, 55]},
+						{"origin": [7, 38, 3], "size": [1, 9, 1], "uv": [24, 38]},
+						{"origin": [7, 38, 3], "size": [1, 9, 1], "inflate": 0.2, "uv": [36, 38]},
+						{"origin": [6, 38, 3], "size": [1, 2, 1], "uv": [12, 48]}
+					]
+				},
+				{
+					"name": "upper_horn_right",
+					"parent": "helmet",
+					"pivot": [-5, 34, 3],
+					"cubes": [
+						{"origin": [-6, 33, 2], "size": [2, 7, 2], "uv": [28, 39], "mirror": true},
+						{"origin": [-6, 33, 2], "size": [2, 7, 2], "inflate": 0.2, "uv": [28, 55], "mirror": true},
+						{"origin": [-8, 38, 3], "size": [1, 9, 1], "inflate": 0.2, "uv": [36, 38], "mirror": true},
+						{"origin": [-8, 38, 3], "size": [1, 9, 1], "uv": [24, 38], "mirror": true},
+						{"origin": [-7, 38, 3], "size": [1, 2, 1], "uv": [12, 48], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

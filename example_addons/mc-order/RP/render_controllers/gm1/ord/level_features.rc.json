@@ -1,0 +1,11 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.dash_panel.animated": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.default" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 20),10) / 10" ], "scale": [ 1, "1/10" ]}
+        }
+    }
+}

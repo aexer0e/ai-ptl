@@ -1,0 +1,56 @@
+{
+    "format_version": "1.20.50",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:mega_ring_platform",
+            "states": {
+                "gm1_ord:init": [ false, true ]
+            },
+            "menu_category": { "category": "construction" }
+        },
+        "components": {
+            "minecraft:collision_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 8, 16 ]},
+            "minecraft:selection_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 8, 16 ]},
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')" },
+                        "destroy_speed": 2.25
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')" },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')" },
+                        "destroy_speed": 0.75
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')" },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')" },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')" },
+                        "destroy_speed": 0.4
+                    }
+                ]
+            },
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:light_emission": 15,
+            "minecraft:geometry": "geometry.gm1_ord.warp_ring_platform",
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_warp_ring_platform_side", "render_method": "opaque" },
+                "up": { "texture": "gm1_ord_warp_ring_platform_top", "render_method": "opaque" },
+                "down": { "texture": "gm1_ord_warp_ring_platform_bottom", "render_method": "opaque" }
+            },
+            "minecraft:map_color": "#e3ca3d",
+            "minecraft:custom_components": [ "gm1_ord:mega_ring_platform" ],
+            "minecraft:tick": { "interval_range": [ 0, 0 ], "looping": true }
+        }
+    }
+}

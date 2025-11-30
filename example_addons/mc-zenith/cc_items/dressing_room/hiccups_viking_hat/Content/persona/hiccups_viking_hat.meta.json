@@ -1,0 +1,31 @@
+{
+	"piece_id": "2a8afa5a-39cf-d065-05f5-b82751464c15",
+	"piece_name": "hiccups_viking_hat",
+	"piece_type": "persona_head",
+	"geometry_sources": [
+		{
+			"body_size": "medium",
+			"geometry": "geometry.hiccups_viking_hat.medium.over_hair",
+			"zone": ["over_hair"],
+			"texture": "hiccups_viking_hat.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.hiccups_viking_hat.tall.over_hair",
+			"zone": ["over_hair"],
+			"texture": "hiccups_viking_hat.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.hiccups_viking_hat.small.over_hair",
+			"zone": ["over_hair"],
+			"texture": "hiccups_viking_hat.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.hiccups_viking_hat.smaller.over_hair",
+			"zone": ["over_hair"],
+			"texture": "hiccups_viking_hat.png"
+		}
+	]
+}

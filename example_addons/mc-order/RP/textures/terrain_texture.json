@@ -1,0 +1,54 @@
+{
+    "resource_pack_name": "name",
+    "texture_name": "atlas.terrain",
+    "padding": 8,
+    "num_mip_levels": 4,
+    "texture_data": {
+        "gm1_ord_shrine_stone_bricks": {
+            "textures": {
+                "variations": [
+                    { "path": "textures/gm1/ord/blocks/shrine_stone_bricks", "weight": 3 },
+                    { "path": "textures/gm1/ord/blocks/shrine_stone_bricks_1", "weight": 2 },
+                    { "path": "textures/gm1/ord/blocks/shrine_stone_bricks_2", "weight": 2 }
+                ]
+            }
+        },
+        "gm1_ord_shrine_stone_bricks_top": { "textures": "textures/gm1/ord/blocks/shrine_stone_bricks_top" },
+        "gm1_ord_shrine_stone": { "textures": "textures/gm1/ord/blocks/shrine_stone" },
+        "gm1_ord_shrine_stone_top": { "textures": "textures/gm1/ord/blocks/shrine_stone_top" },
+        "gm1_ord_shrine_stone_chiseled": { "textures": "textures/gm1/ord/blocks/shrine_stone_chiseled" },
+        "gm1_ord_shrine_stone_chiseled_top": { "textures": "textures/gm1/ord/blocks/shrine_stone_chiseled_top" },
+        "gm1_ord_shrine_stone_mossy": { "textures": "textures/gm1/ord/blocks/shrine_stone_mossy" },
+        "gm1_ord_shrine_stone_mossy_top": { "textures": "textures/gm1/ord/blocks/shrine_stone_mossy_top" },
+        "gm1_ord_ce_shrine_plinth": { "textures": "textures/gm1/ord/blocks/shrine_plinth" },
+        "gm1_ord_ce_shrine_plinth_top": { "textures": "textures/gm1/ord/blocks/shrine_plinth_top" },
+        "gm1_ord_blank": { "textures": "textures/gm1/ord/blocks/blank" },
+        "gm1_ord_ring_pile_top": { "textures": "textures/gm1/ord/blocks/ring_pile_top" },
+        "gm1_ord_ring_pile_side": { "textures": "textures/gm1/ord/blocks/ring_pile_side" },
+        "gm1_ord_ring_pile_bottom": { "textures": "textures/gm1/ord/blocks/ring_pile_bottom" },
+        "gm1_ord_tails_tinker_table_top": { "textures": "textures/gm1/ord/blocks/tails_tinker_table_top" },
+        "gm1_ord_tails_tinker_table_side": { "textures": "textures/gm1/ord/blocks/tails_tinker_table_side" },
+        "gm1_ord_tails_tinker_table_front": { "textures": "textures/gm1/ord/blocks/tails_tinker_table_front" },
+        "gm1_ord_tails_tinker_table_bottom": { "textures": "textures/gm1/ord/blocks/tails_tinker_table_bottom" },
+        "gm1_ord_char_select_tv_top": { "textures": "textures/gm1/ord/blocks/char_select_tv_top" },
+        "gm1_ord_char_select_tv_side": { "textures": "textures/gm1/ord/blocks/char_select_tv_side" },
+        "gm1_ord_char_select_tv_front": { "textures": "textures/gm1/ord/blocks/char_select_tv_front" },
+        "gm1_ord_char_select_tv_back": { "textures": "textures/gm1/ord/blocks/char_select_tv_back" },
+        "gm1_ord_char_select_tv_bottom": { "textures": "textures/gm1/ord/blocks/char_select_tv_top" },
+        "gm1_ord_lf_dash_panel": { "textures": "textures/gm1/ord/blocks/lf_dash_panel" },
+        "gm1_ord_lf_jump_panel": { "textures": "textures/gm1/ord/blocks/lf_jump_panel" },
+        "gm1_ord_lf_spikes_top": { "textures": "textures/gm1/ord/blocks/lf_spikes_top" },
+        "gm1_ord_lf_spikes_side": { "textures": "textures/gm1/ord/blocks/lf_spikes_side" },
+        "gm1_ord_lf_spikes_bottom": { "textures": "textures/gm1/ord/blocks/lf_spikes_bottom" },
+        "gm1_ord_lf_spike_side": { "textures": "textures/gm1/ord/blocks/lf_spike_side" },
+        "gm1_ord_lf_spring_yellow": { "textures": "textures/gm1/ord/blocks/lf_spring_yellow" },
+        "gm1_ord_lf_spring_red": { "textures": "textures/gm1/ord/blocks/lf_spring_red" },
+        "gm1_ord_ring": { "textures": "textures/gm1/ord/blocks/gm1_ring" },
+        "gm1_ord_warp_ring_platform_side": { "textures": "textures/gm1/ord/blocks/warp_ring_platform_side" },
+        "gm1_ord_warp_ring_platform_top": { "textures": "textures/gm1/ord/blocks/warp_ring_platform_top" },
+        "gm1_ord_warp_ring_platform_bottom": { "textures": "textures/gm1/ord/blocks/warp_ring_platform_bottom" },
+        "gm1_ord_chaos_machine_bottom": { "textures": "textures/gm1/ord/blocks/chaos_machine_bottom" },
+        "gm1_ord_chaos_machine_top": { "textures": "textures/gm1/ord/blocks/chaos_machine_top" },
+        "gm1_ord_chaos_machine_side": { "textures": "textures/gm1/ord/blocks/chaos_machine_side" }
+    }
+}

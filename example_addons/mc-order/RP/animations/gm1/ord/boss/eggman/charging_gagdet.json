@@ -1,0 +1,14 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.eggmobile.charging_gadget": {
+            "loop": true,
+            "bones": {
+                "root": {
+                    "rotation": [ "math.cos(query.anim_time*2880)*3", 0, "math.sin(query.anim_time*2880)*3" ],
+                    "scale": "1+math.sin(query.anim_time*1440)*0.1"
+                }
+            }
+        }
+    }
+}

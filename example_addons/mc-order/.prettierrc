@@ -1,0 +1,19 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 140,
+    "endOfLine": "auto",
+    "overrides": [
+        {
+            "files": ".github/workflows/*.yml",
+            "options": {
+                "printWidth": 80,
+                "tabWidth": 2
+            }
+        }
+    ]
+}

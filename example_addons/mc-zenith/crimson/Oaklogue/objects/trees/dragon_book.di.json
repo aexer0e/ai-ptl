@@ -1,0 +1,277 @@
+{
+    "$identifier": "gm1_zen_dragon",
+    "$method": "oaklogue.tree",
+    "name": "^o.dragon_book.name.home",
+    "scenes": {
+        "1-home": {
+            "name": "^o.dragon_book.name.home",
+            "text": "The Dragon Manual.\n\nDragons are §4EXTREMELY DANGEROUS§r.\n\n\n\n§lDragon Classifications:§r",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "Boulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Stoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Mystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Strike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.home" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        },
+        "page_1_1": {
+            "name": "^o.dragon_book.name.page_1_1",
+            "text": "§l§oGronckle§r\n\nWhat §nGronckles§r lack in speed, agility, stamina, and energy, they make up for in defense and cuteness! These stubborn stubby dragons are the boulders of the sky!\n\n§lLocation§r: Mountains, Rocky and Warmer areas\n§lDiet§r: Gronkles love to eat rocks, with §1Cobblestone§r being their favourite.\n§lAttack§r: Lava Blast",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "§lBoulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Stoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Mystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Strike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.page_1_1" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        },
+        "page_2_1": {
+            "name": "^o.dragon_book.name.page_2_1",
+            "text": "§l§oMonstrous Nightmare§r\n\nNo dragon is more ferocious, or feared than the §cMonstrous Nightmare§r. These dragons will incinerate first and think second.\nThey're powerful all-around dragon but not the hardiest.\n\n§lLocation§r: Forests\n§lDiet§r: Meat and Fish, there have been reports of these dragons eagerly eating §1Rotten Flesh§r!\n§lAttack§r: Fire Blast",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "Boulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lStoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Mystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Strike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.page_2_1" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        },
+        "page_3_1": {
+            "name": "^o.dragon_book.name.page_3_1",
+            "text": "§l§oDeadly Nadder§r\n\n§3Deadly Nadders§r are one of the most beautiful dragons, and they know it. They constantly groom to maintain the luster of their scales.\nNadders are fierce, loyal, but skittish creatures.\n\n§lLocation§r: Plains and Colder areas\n§lDiet§r: Meat and Fish, but they love to eat §1Chicken§r!\n§lAttack§r: Thorn Shot",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "Boulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Stoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lTracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Mystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Strike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.page_3_1" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        },
+        "page_4_1": {
+            "name": "^o.dragon_book.name.page_4_1",
+            "text": "§l§oHideous Zippleback§r\n\n§2The Zippleback§r is one of the largest dragons that you may ever encounter. The Zippleback heads are distinct, with separate thoughts and different personalities.\nTwo heads are better than one, more heads means more pets.\n\n§lLocation§r: Swamps and Watery areas\n§lDiet§r: Meat and Fish, though §1Cod§r is their favourite.\n§lAttack§r: Gas + Spark = BOOM!",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "Boulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Stoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lMystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Strike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.page_4_1" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        },
+        "page_5_1": {
+            "name": "^o.dragon_book.name.page_5_1",
+            "text": "§l§oNight Fury§r\n\nMysterious (and famously adorable). §uToothless§r is an extremely swift flier, no other dragons can match his raw power in the sky. Toothless keeps himself closely guarded until he warms up to others.\n\n§lLocation§r: ???\n§lDiet§r: Meat and Fish, partial to eating §1Tropical Fish§r!\n§lAttack§r: Plasma Blast",
+            "langspace": "dragon-book",
+            "options": [
+                {
+                    "text": "Boulder Class",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Stoker Class",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tracker Class",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Mystery Class",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lStrike Class",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Front Page",
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.dragon_book.try.open", "^o.dragon_book.visual.page_5_1" ],
+            "on_close": [ "^o.dragon_book.try.close" ]
+        }
+    }
+}

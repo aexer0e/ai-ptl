@@ -1,0 +1,63 @@
+{
+    "$identifier": "roots.build_entity.generic",
+    "$inputs": {
+        "common": { "$nested": true, "identifier": null, "display_name": null, "description": "$default" },
+        "client": {
+            "$nested": true,
+            "geometry": null,
+            "texture_path": "$default",
+            "render_controller": "$default",
+            "material": "$default",
+            "content": "$default"
+        },
+        "server": {
+            "$nested": true,
+            "collision_box": { "$nested": true, "width": 1, "height": 1 },
+            "health": "$default",
+            "speed": "$default",
+            "is_spawnable": "$default",
+            "is_summonable": "$default",
+            "content": "$default"
+        }
+    },
+    "$calls": [
+        {
+            "$call": "method",
+            "$method": "roots.build_entity.base",
+            "$context": "base",
+            "common": "^common",
+            "client": "^client",
+            "server": "^server"
+        },
+        {
+            "$call": "action",
+            "$path": "^base['path.server']",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.BP.entity.generic",
+                        "collision_box": "^server.collision_box",
+                        "health": "^server.health",
+                        "speed": "^server.speed"
+                    }
+                ]
+            }
+        },
+        {
+            "$call": "action",
+            "$path": "^base['path.client']",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.RP.client_entity.generic",
+                        "render_controller": "^client.render_controller",
+                        "material": "^client.material",
+                        "geometry": "^client.geometry",
+                        "texture_path": "^client.texture_path"
+                    }
+                ]
+            }
+        }
+    ],
+    "$outputs": { "path.server": "^base['path.server']", "path.client": "^base['path.client']" }
+}

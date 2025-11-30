@@ -1,0 +1,11 @@
+{
+    "$templates": [{ "$template": "ord:chaos_emerald.e", "color": "green" }],
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_ord:chaos_emerald_green" },
+        "components": {
+            "minecraft:variant": { "value": 0 },
+            "minecraft:loot": { "table": "loot_tables/gm1/ord/entities/chaos_emerald_green.json" },
+            "minecraft:rideable": { "seat_count": 1, "family_types": [ "miner" ], "seats": { "position": [ 0, 0, 0 ]}}
+        }
+    }
+}

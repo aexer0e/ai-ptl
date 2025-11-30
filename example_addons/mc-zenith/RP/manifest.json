@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "metadata": {
+        "authors": [ "Gamemode One" ],
+        "generated_with": { "bridge": [ "2.7.33" ], "dash": [ "0.11.7" ], "blockbench_block_wizard": [ "1.2.1" ]},
+        "product_type": "addon"
+    },
+    "header": {
+        "name": "pack.name",
+        "description": "pack.description",
+        "min_engine_version": [ 1, 21, 80 ],
+        "uuid": "8cf8b3b3-6cfe-464d-888f-159056966d1e",
+        "version": [ 1, 0, 0 ],
+        "pack_scope": "world"
+    },
+    "modules": [{ "type": "resources", "uuid": "a9b0e59c-93b1-42c2-b506-8a48489503f2", "version": [ 1, 0, 0 ]}],
+    "dependencies": [
+        { "version": [ 1, 0, 0 ], "uuid": "0623dc9a-811f-47ca-a451-d95c276da9c2" }
+    ]
+}

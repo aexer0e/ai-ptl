@@ -1,0 +1,59 @@
+name: Lint & Format Check
+on:
+  pull_request:
+    branches:
+     - main
+     - Release
+     - Rel/**/*
+jobs:
+  get_changes:
+    runs-on: ubuntu-latest
+    name: Get Changed files
+    outputs:
+      ts: ${{ steps.filter.outputs.ts }}
+      json: ${{ steps.filter.outputs.json }}
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Get Changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            ts:
+              - 'BP/**/*.ts'
+              - 'BP/**/*.js'
+            json:
+              - "**/*.json"
+
+  ts-lint:
+    name: TS Lint & Format Check
+    runs-on: ubuntu-latest
+    needs: get_changes
+    if: ${{ needs.get_changes.outputs.ts == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Lint
+        run: npm run lint
+
+  json_check:
+    name: JSON Lint
+    runs-on: ubuntu-latest
+    needs: get_changes
+    if: ${{ needs.get_changes.outputs.json == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check JSON Changes
+        uses: gamemode-one/tl-json-check-action@main
+        with:
+          dirs-to-check: |
+            BP
+            RP

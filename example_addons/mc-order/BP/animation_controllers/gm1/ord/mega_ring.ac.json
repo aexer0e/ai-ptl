@@ -1,0 +1,27 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.mega_ring": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "tp": "q.skin_id==1"
+                        }
+                    ]
+                },
+                "tp": {
+                    "transitions": [
+                        {
+                            "default": "q.skin_id==0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/execute as @p[r=^{o.mega_ring.teleport_range[0]*2}^] run scriptevent gm1_ord:tp_to_spawn"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.homing_indicator.homing_locked": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.3333,
+			"bones": {
+				"root": {
+					"scale": 1
+				},
+				"fg_homing_left_top": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.0833": [1.5, 1.5, 1],
+						"0.1667": [1, 1, 1],
+						"0.25": [1.5, 1.5, 1],
+						"0.3333": [1, 1, 1]
+					}
+				},
+				"fg_homing_left_bottom": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.0833": [1.5, 1.5, 1],
+						"0.1667": [1, 1, 1],
+						"0.25": [1.5, 1.5, 1],
+						"0.3333": [1, 1, 1]
+					}
+				},
+				"fg_homing_right_top": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.0833": [1.5, 1.5, 1],
+						"0.1667": [1, 1, 1],
+						"0.25": [1.5, 1.5, 1],
+						"0.3333": [1, 1, 1]
+					}
+				},
+				"fg_homing_right_bottom": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.0833": [1.5, 1.5, 1],
+						"0.1667": [1, 1, 1],
+						"0.25": [1.5, 1.5, 1],
+						"0.3333": [1, 1, 1]
+					}
+				}
+			}
+		},
+		"animation.gm1_ord.homing_indicator.homing_ready": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"root": {
+					"position": [0, 0, 0]
+				},
+				"fg_homing_left_top": {
+					"position": [-8, 8, 0]
+				},
+				"fg_homing_left_bottom": {
+					"position": [-8, -8, 0]
+				},
+				"fg_homing_right_top": {
+					"position": [8, 8, 0]
+				},
+				"fg_homing_right_bottom": {
+					"position": [8, -8, 0]
+				}
+			}
+		},
+		"animation.gm1_ord.homing_indicator.rotate_to_camera": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": ["query.rotation_to_camera(0)-query.body_x_rotation", "query.rotation_to_camera(1)-query.body_y_rotation", 0]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.gadget_launchers": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [ "all_launchers_hidden", "alarm_hidden" ],
+                    "transitions": [{ "bits_retracting": "v.active_gadget == 2" }],
+                    "blend_via_shortest_path": true
+                },
+                "bits_retracting": {
+                    "animations": [ "all_launchers_hidden", "coils_retract", "headlight_red_retract" ],
+                    "transitions": [{ "launchers_extending": "query.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "launchers_extending": {
+                    "animations": [
+                        "launcher_bsr_extend",
+                        "launcher_br_extend",
+                        "launcher_bsl_extend",
+                        "launcher_bl_extend",
+                        "alarm_extend",
+                        "coils_hidden",
+                        "headlight_red_hidden",
+                        "gadget_sfx"
+                    ],
+                    "transitions": [{ "idling": "query.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "idling": {
+                    "animations": [ "launchers_idle", "alarm_idle", "coils_hidden", "headlight_red_hidden" ],
+                    "transitions": [
+                        { "charging": "v.is_charging_gadget" },
+                        { "launchers_retracting": "v.active_gadget != 2" },
+                        { "swoop_charging": "v.is_charging_swoop" }
+                    ],
+                    "blend_via_shortest_path": true
+                },
+                "charging": {
+                    "animations": [
+                        "launchers_charge",
+                        "launchers_charge_sfx",
+                        "alarm_active",
+                        "coils_hidden",
+                        "headlight_red_hidden"
+                    ],
+                    "transitions": [{ "attacking": "v.is_using_gadget" }]
+                },
+                "attacking": {
+                    "animations": [
+                        "launchers_shoot",
+                        "launchers_shoot_sfx",
+                        "alarm_idle",
+                        "evil_laugh",
+                        "coils_hidden",
+                        "headlight_red_hidden"
+                    ],
+                    "transitions": [{ "idling": "q.all_animations_finished" }]
+                },
+                "launchers_retracting": {
+                    "animations": [
+                        "launcher_bsr_retract",
+                        "launcher_br_retract",
+                        "launcher_bsl_retract",
+                        "launcher_bl_retract",
+                        "alarm_retract",
+                        "coils_hidden",
+                        "headlight_red_hidden",
+                        "gadget_sfx"
+                    ],
+                    "transitions": [{ "bits_extending": "q.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "bits_extending": {
+                    "animations": [ "all_launchers_hidden", "coils_extend", "headlight_red_extend" ],
+                    "transitions": [{ "default": "query.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "swoop_charging": {
+                    "animations": [
+                        "launcher_bsr_retract",
+                        "launcher_br_retract",
+                        "launcher_bsl_retract",
+                        "launcher_bl_retract",
+                        "alarm_retract"
+                    ],
+                    "transitions": [{ "swoop_attacking": "v.is_using_swoop" }]
+                },
+                "swoop_attacking": {
+                    "animations": [ "all_launchers_hidden", "alarm_hidden" ],
+                    "transitions": [{ "launchers_extending": "!v.is_using_swoop" }]
+                }
+            }
+        }
+    }
+}

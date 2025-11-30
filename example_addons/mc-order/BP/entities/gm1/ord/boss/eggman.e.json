@@ -1,0 +1,117 @@
+{
+    "format_version": "1.18.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:eggman",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "gm1_ord:laser_offset_z": {
+                    "type": "float",
+                    "range": [ -100.1, 100.1 ],
+                    "default": 0.00125,
+                    "client_sync": true
+                },
+                "gm1_ord:laser_offset_y": {
+                    "type": "float",
+                    "range": [ -100.1, 100.1 ],
+                    "default": -1.25,
+                    "client_sync": true
+                },
+                "gm1_ord:laser_rot_x": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true },
+                "gm1_ord:laser_rot_y": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true },
+                "gm1_ord:laser_length": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true },
+                "gm1_ord:is_charging_laser": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_shooting_laser": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_dropping_eggrobo": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_charging_eggrobo": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_charging_swoop_attack": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_swoop_attacking": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_shooting_drills": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:active_gadget": { "type": "int", "range": [ 0, 3 ], "default": 0, "client_sync": true },
+                "gm1_ord:is_orbiting": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_going_to_shrine": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_stunned": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_staionary": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_chasing": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_perching": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_line": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_charging_gadget": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_using_gadget": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:at_shrine": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:doing_intro": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_dying": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:taken_critical_hit": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:about_to_be_stunned": { "type": "bool", "default": false, "client_sync": true }
+            }
+        },
+        "components": {
+            "minecraft:rideable": {
+                "seat_count": 1,
+                "family_types": [ "eggman_rider" ],
+                "seats": { "position": [ 0, -0.1, 0 ]}
+            },
+            "minecraft:breathable": { "breathes_air": true, "breathes_solids": true },
+            "minecraft:tick_world": { "radius": 2 },
+            "minecraft:boss": { "hud_range": 75, "name": "eggman.bossbar", "should_darken_sky": false },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:scale": { "value": 1 },
+            "minecraft:collision_box": { "width": 6, "height": 2.5 },
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:nameable": {},
+            "minecraft:physics": { "has_collision": true },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:health": { "value": 750, "max": 750, "min": 1 }
+        },
+        "component_groups": {
+            "gm1_ord:invincible": {
+                "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": false }},
+                "minecraft:type_family": { "family": [ "invincible" ]}
+            },
+            "gm1_ord:rideable_swoop": {
+                "minecraft:rideable": {
+                    "seat_count": 1,
+                    "family_types": [ "eggman_rider" ],
+                    "seats": { "position": [ 0, -0.7, 0 ]}
+                }
+            },
+            "gm1_ord:rideable_normal": {
+                "minecraft:rideable": {
+                    "seat_count": 1,
+                    "family_types": [ "eggman_rider" ],
+                    "seats": { "position": [ 0, 0.5, 0 ]}
+                }
+            },
+            "gm1_ord:normal_immunities": {
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        { "cause": "projectile", "deals_damage": false },
+                        { "cause": "fall", "damage_multiplier": 0, "deals_damage": false }
+                    ]
+                },
+                "minecraft:type_family": { "family": [ "eggman" ]}
+            },
+            "gm1_ord:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "events": {
+            "gm1_ord:rideable_swoop": {
+                "remove": { "component_groups": [ "gm1_ord:rideable_normal" ]},
+                "add": { "component_groups": [ "gm1_ord:rideable_swoop" ]}
+            },
+            "gm1_ord:rideable_normal": {
+                "remove": { "component_groups": [ "gm1_ord:rideable_swoop" ]},
+                "add": { "component_groups": [ "gm1_ord:rideable_normal" ]}
+            },
+            "gm1_ord:invincible_on": {
+                "add": { "component_groups": [ "gm1_ord:invincible" ]},
+                "remove": { "component_groups": [ "gm1_ord:normal_immunities" ]}
+            },
+            "gm1_ord:invincible_off": {
+                "add": { "component_groups": [ "gm1_ord:normal_immunities" ]},
+                "remove": { "component_groups": [ "gm1_ord:invincible" ]}
+            },
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}}
+        }
+    }
+}

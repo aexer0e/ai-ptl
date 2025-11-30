@@ -1,0 +1,37 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.fight": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "intro": "v.is_intro" }, { "death": "v.is_dying" }]},
+                "intro": {
+                    "animations": [ "intro", "theme_intro_sfx" ],
+                    "transitions": [{ "fight": "!v.is_intro && q.all_animations_finished" }, { "death": "v.is_dying" }]
+                },
+                "fight": {
+                    "animations": [ "theme_loop_sfx" ],
+                    "transitions": [{ "intro": "v.is_intro" }, { "death": "v.is_dying" }]
+                },
+                "death": {
+                    "animations": [ "outro", "theme_outro_sfx" ],
+                    "transitions": [{ "default": "q.all_animations_finished" }]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.eggman.death_vfx": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "death_explosions": "v.is_dying" }]},
+                "death_explosions": {
+                    "transitions": [{ "death": "query.state_time >= 3.5" }],
+                    "animations": [ "outro_vfx" ]
+                },
+                "death": {
+                    "on_entry": [ "v.is_burnt = 1;" ],
+                    "particle_effects": [{ "effect": "eggmobile_explosion_large", "locator": "burnt_locator" }]
+                }
+            }
+        }
+    }
+}

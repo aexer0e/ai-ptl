@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:small_projectile",
+            "materials": { "default": "villager", "charged": "charged_creeper" },
+            "textures": {
+                "default": "textures/gm1/ord/entity/projectile/badnik_projectile_dormant",
+                "charged": "textures/gm1/ord/entity/projectile/badnik_projectile_shine",
+                "dormant": "textures/gm1/ord/entity/projectile/badnik_projectile_dormant"
+            },
+            "geometry": { "default": "geometry.badnik_projectile", "charged": "geometry.badnik_inflate_projectile" },
+            "render_controllers": [
+                { "controller.render.projectile_dormant": "!query.is_ignited" },
+                { "controller.render.projectile_danger": "query.is_ignited" },
+                { "controller.render.projectile": "query.is_ignited" }
+            ]
+        }
+    }
+}

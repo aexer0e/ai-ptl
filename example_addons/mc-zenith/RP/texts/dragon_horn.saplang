@@ -1,0 +1,21 @@
+: {MaxLength="32"}
+gm1_zen.horn.title1=Dragon Horn
+: This is displayed when the player tries to use the Dragon Horn but doesn't have any tamed dragons to list
+gm1_zen.horn.no_tamed_dragon=You have no tamed dragons!
+: This is a button confirmation
+gm1_zen.horn.no_tamed_dragon_OK=OK
+: {MaxLength="32"}
+gm1_zen.horn.title2=Dragon Horn
+gm1_zen.horn.button.summon_dragon_forbid=✘ Summon Dragon
+gm1_zen.horn.button.summon_dragon=Summon Dragon
+gm1_zen.horn.button.release_dragon1=Release Dragon
+: If you try to summon a dragon that has just died, you will get this message as there is a cooldown before the player can respawn that dragon first before they can summon it again.
+gm1_zen.horn.dragon_in_cooldown_time=Your dragon is still recovering
+: {MaxLength="32"}
+gm1_zen.horn.title3=Dragon Horn
+: This message is emphasizing the warning to the player that they are deleting this dragon permanently.
+gm1_zen.horn.release_warning=Are you sure you want to release your dragon? This will remove the dragon from your world and you will not be able to summon it again.
+: This is a button confirmation that the player wants to delete / destroy the dragon chosen
+gm1_zen.horn.button.release_dragon2=Release Dragon
+: This is a button to cancel deletion of the dragon
+gm1_zen.horn.button.release_cancle=Cancel

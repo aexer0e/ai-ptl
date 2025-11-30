@@ -1,0 +1,70 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_book": {
+            "initial_state": "home",
+            "states": {
+                "home": {
+                    "animations": [ "home" ],
+                    "transitions": [
+                        { "page_1_1": "v.status == 'page_1_1'" },
+                        { "page_2_1": "v.status == 'page_2_1'" },
+                        { "page_3_1": "v.status == 'page_3_1'" },
+                        { "page_4_1": "v.status == 'page_4_1'" },
+                        { "page_5_1": "v.status == 'page_5_1'" }
+                    ]
+                },
+                "page_1_1": {
+                    "animations": [ "page_1_1" ],
+                    "transitions": [
+                        { "home": "v.status == 'home'" },
+                        { "page_2_1": "v.status == 'page_2_1'" },
+                        { "page_3_1": "v.status == 'page_3_1'" },
+                        { "page_4_1": "v.status == 'page_4_1'" },
+                        { "page_5_1": "v.status == 'page_5_1'" }
+                    ]
+                },
+                "page_2_1": {
+                    "animations": [ "page_2_1" ],
+                    "transitions": [
+                        { "home": "v.status == 'home'" },
+                        { "page_1_1": "v.status == 'page_1_1'" },
+                        { "page_3_1": "v.status == 'page_3_1'" },
+                        { "page_4_1": "v.status == 'page_4_1'" },
+                        { "page_5_1": "v.status == 'page_5_1'" }
+                    ]
+                },
+                "page_3_1": {
+                    "animations": [ "page_3_1" ],
+                    "transitions": [
+                        { "home": "v.status == 'home'" },
+                        { "page_1_1": "v.status == 'page_1_1'" },
+                        { "page_2_1": "v.status == 'page_2_1'" },
+                        { "page_4_1": "v.status == 'page_4_1'" },
+                        { "page_5_1": "v.status == 'page_5_1'" }
+                    ]
+                },
+                "page_4_1": {
+                    "animations": [ "page_4_1" ],
+                    "transitions": [
+                        { "home": "v.status == 'home'" },
+                        { "page_1_1": "v.status == 'page_1_1'" },
+                        { "page_2_1": "v.status == 'page_2_1'" },
+                        { "page_3_1": "v.status == 'page_3_1'" },
+                        { "page_5_1": "v.status == 'page_5_1'" }
+                    ]
+                },
+                "page_5_1": {
+                    "animations": [ "page_5_1" ],
+                    "transitions": [
+                        { "home": "v.status == 'home'" },
+                        { "page_1_1": "v.status == 'page_1_1'" },
+                        { "page_2_1": "v.status == 'page_2_1'" },
+                        { "page_3_1": "v.status == 'page_3_1'" },
+                        { "page_4_1": "v.status == 'page_4_1'" }
+                    ]
+                }
+            }
+        }
+    }
+}

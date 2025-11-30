@@ -1,0 +1,16 @@
+{
+    "$identifier": "gm1_zen:dragon_food_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "food_want": "animation.gm1_zen.dragon_food.want",
+                "food_eat": "animation.gm1_zen.dragon_food.eat",
+                "food_chomp": "animation.gm1_zen.dragon_food.eat_chomp",
+                "food_controller": "controller.animation.gm1_zen.dragon_lively.food",
+                "fed_fx": "animation.gm1_zen.dragon_global.fed_fx"
+            },
+            "scripts": { "animate": [ "food_controller", { "fed_fx": "query.variant == 1" }]}
+        }
+    }
+}

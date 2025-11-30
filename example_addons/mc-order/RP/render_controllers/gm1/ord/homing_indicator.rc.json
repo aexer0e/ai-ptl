@@ -1,0 +1,13 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.homing_indicator": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "array.textures[v.in_queue]" ],
+            "arrays": { "textures": { "array.textures": [ "texture.default", "texture.greyed" ]}},
+            "overlay_color": { "a": "v.is_homing ? v.flasher: 0", "r": 1, "g": 0.9, "b": 0.9 },
+            "ignore_lighting": true
+        }
+    }
+}

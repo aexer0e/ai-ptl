@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:lf_dash_panel_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "R", "#", "R" ],
+        "key": { "#": { "item": "minecraft:golden_rail" }, "R": { "item": "gm1_ord:ring_spawn_egg" }},
+        "result": { "item": "gm1_ord:lf_dash_panel", "data": 1 },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

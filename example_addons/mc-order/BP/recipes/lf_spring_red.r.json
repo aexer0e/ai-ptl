@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:lf_spring_red_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "D", "P", "R" ],
+        "key": {
+            "D": { "item": "minecraft:red_dye" },
+            "P": { "item": "minecraft:piston" },
+            "R": { "item": "gm1_ord:ring_spawn_egg" }
+        },
+        "result": { "item": "gm1_ord:lf_spring_red" },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

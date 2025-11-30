@@ -1,0 +1,429 @@
+// @prettier-ignore
+{
+    "$method": "dragon",
+    "$identifier": "nightfury",
+    "tempt_food": [
+        "minecraft:rotten_flesh",
+        "minecraft:porkchop",
+        "minecraft:mutton",
+        "minecraft:rabbit",
+        "minecraft:chicken",
+        "minecraft:beef",
+        "minecraft:cooked_rabbit",
+        "minecraft:cooked_porkchop",
+        "minecraft:cooked_mutton",
+        "minecraft:cooked_chicken",
+        "minecraft:cooked_beef",
+        "minecraft:tropical_fish",
+        "minecraft:salmon",
+        "minecraft:pufferfish",
+        "minecraft:cod",
+        "minecraft:cooked_salmon",
+        "minecraft:cooked_cod"
+    ],
+    "grounded_seat_location": [0, 1.25, 0],
+    "flying_seat_location": [0, 1.75, 0],
+    "nameable": false,
+    "milestones": {
+        "0": {
+            "health": 8,
+            "attack_damage": 4,
+            "attackable_targets": [
+                {//player
+                    "filters": {
+                        "all_of": [{ "subject": "other", "test": "is_family", "value": "player" }],
+                        "any_of": [
+                            { "subject": "other", "test": "has_tag", "value": "gm1_zen:is_holding_weapon" }
+                        ]
+                    },
+                    "max_dist": 6,
+                    "priority": 1
+                },
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 2
+                },
+                {//passive mobs
+                    "filters": {
+                        "all_of": [
+                            { "subject": "self", "test": "has_tag", "operator": "not", "value": "gm1_zen:on_hunting_cooldown" }
+                        ],
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "sheep" }
+                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 3
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "test": "is_family", "subject": "other", "value": "creeper" },
+                            { "test": "is_family", "subject": "other", "value": "villager" },
+                            {
+                                "all_of": [
+                                    { "test": "is_family", "subject": "other", "value": "player" },
+                                    { "test": "is_sneaking", "subject": "other", "operator": "!=", "value": true }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "1": {
+            "health": 8,
+            "attack_damage": 4,
+            "attackable_targets": [
+                {//player
+                    "filters": {
+                        "all_of": [{ "subject": "other", "test": "is_family", "value": "player" }],
+                        "any_of": [{ "subject": "other", "test": "has_tag", "value": "gm1_zen:is_holding_weapon" }]
+                    },
+                    "max_dist": 6,
+                    "priority": 1
+                },
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 2
+                },
+                {//passive mobs
+                    "filters": {
+                        "all_of": [
+                            { "subject": "self", "test": "has_tag", "operator": "not", "value": "gm1_zen:on_hunting_cooldown" }
+                        ],
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "sheep" }
+                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 3
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "test": "is_family", "subject": "other", "value": "creeper" },
+                            { "test": "is_family", "subject": "other", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "2": {
+            "health": 8,
+            "attack_damage": 4,
+            "attackable_targets": [
+                {//player
+                    "filters": {
+                        "all_of": [{ "subject": "other", "test": "is_family", "value": "player" }],
+                        "any_of": [{ "subject": "other", "test": "has_tag", "value": "gm1_zen:is_holding_weapon" }]
+                    },
+                    "max_dist": 6,
+                    "priority": 1
+                },
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 2
+                },
+                {//passive mobs
+                    "filters": {
+                        "all_of": [
+                            { "subject": "self", "test": "has_tag", "operator": "not", "value": "gm1_zen:on_hunting_cooldown" }
+                        ],
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "sheep" }
+                        ]
+                    },
+                    "max_dist": 64,
+                    "priority": 3
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "test": "is_family", "subject": "other", "value": "creeper" },
+                            { "test": "is_family", "subject": "other", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "3": {
+            "health": 12,
+            "attack_damage": 8,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "4": {
+            "health": 16,
+            "attack_damage": 10,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "5": {
+            "health": 20,
+            "attack_damage": 12,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "6": {
+            "health": 22,
+            "attack_damage": 12,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "7": {
+            "health": 24,
+            "attack_damage": 14,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "8": {
+            "health": 26,
+            "attack_damage": 14,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "9": {
+            "health": 28,
+            "attack_damage": 16,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "10": {
+            "health": 30,
+            "attack_damage": 16,
+            "attackable_targets": [
+                {//hostile mobs
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "spider" },
+                            {
+                                "all_of": [
+                                    { "subject": "other", "test": "is_family", "value": "zombie" },
+                                    { "subject": "other", "test": "is_family", "operator": "!=", "value": "drowned" }
+                                ]
+                            }                        ]
+                    },
+                    "max_dist": 25,
+                    "priority": 1
+                }
+            ],
+            "avoid_filters": [
+                {
+                    "filters": {
+                        "any_of": [
+                            { "subject": "other", "test": "is_family", "value": "creeper" },
+                            { "subject": "other", "test": "is_family", "value": "villager" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "speedMultiplier": 2,
+    "loot_table": "loot_tables/gm1/zen/entities/dragon_nightfury_lt.json"
+}

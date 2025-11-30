@@ -1,0 +1,68 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 4, "character_string": "amy" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:transform_helmet_amy",
+            "animations": {
+                "hammer": "animation.gm1_ord.amy_pg.hammer",
+                "double_jump": "animation.gm1_ord.amy_pg.double_jump",
+                "double_jump_particles": "animation.gm1_ord.amy.double_jump_particles",
+                "charging.hammer1": "animation.gm1_ord.amy.hammer1_sound",
+                "charging.hammer2": "animation.gm1_ord.amy.hammer2_sound",
+                "charging.hammer3": "animation.gm1_ord.amy.hammer3_sound",
+                "charging.hammer4": "animation.gm1_ord.amy.hammer4_sound",
+                "charging.hammer5": "animation.gm1_ord.amy.hammer5_sound",
+                "spindash_release": "animation.gm1_ord.dash_sound",
+                "twirl": "animation.gm1_ord.transform_twirl.amy",
+                "hammer_swipe": "animation.gm1_ord.amy.hammer_swipe",
+                "hammer_smash": "animation.gm1_ord.amy.hammer_smash",
+                "run_water": "animation.gm1_ord.amy.run_sound_water",
+                "run_snow": "animation.gm1_ord.amy.run_sound_snow",
+                "run_lava": "animation.gm1_ord.amy.run_sound_lava",
+                "jog_water": "animation.gm1_ord.amy.jog_sound_water"
+            },
+            "sound_effects": {
+                "hammer1": "amy_charge1",
+                "hammer2": "amy_charge2",
+                "hammer3": "amy_charge3",
+                "hammer4": "amy_charge4",
+                "hammer5": "amy_charge5",
+                "spindash_release": "spindash_release",
+                "double_jump": "double_jump",
+                "hammer_swipe": "hammer_swipe",
+                "hammer_smash": "hammer_smash"
+            },
+            "scripts": {
+                "animate": [
+                    { "movement_controller": "!v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "!v.is_first_person" },
+                    { "detransform_controller": "!v.is_first_person" },
+                    { "ability_charge_controller": "!v.is_first_person" },
+                    { "blink_controller": "!v.is_first_person" },
+                    { "target_eyes": "!v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "top_speed.sfx": "!v.is_first_person" },
+                    { "trail_scale": "!v.is_first_person" },
+                    { "liquid_running_offset_controller": "!v.is_first_person" },
+                    { "liquid_running_controller": "!v.is_first_person" },
+                    { "jump_effects_controller": "!v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "particle_effects": { "double_jump": "gm1_ord:amy_double_jump", "hammer_smash": "gm1_ord:amy_hammer_smash" },
+            "render_controllers": [
+                {
+                    "controller.render.gm1_ord.character": "v.character <= 1 ? !v.is_first_person && v.is_transformed && !v.detransforming && !v.ballmode : !v.is_first_person && v.is_transformed && !v.detransforming"
+                },
+                {
+                    "controller.render.gm1_ord.character_charging": "!v.is_first_person && v.is_transformed && (v.ability_state > 0 && v.ability_state <= 5) && v.character != 3"
+                },
+                {
+                    "controller.render.gm1_ord.character_transforming": "v.transforming || v.detransforming || v.is_losing_life"
+                },
+                { "controller.render.gm1_ord.trail_flipbook": "!v.is_first_person" }
+            ]
+        }
+    }
+}

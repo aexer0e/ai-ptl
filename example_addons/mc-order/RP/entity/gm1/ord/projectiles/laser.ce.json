@@ -1,0 +1,14 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:laser",
+            "materials": { "default": "entity_emissive" },
+            "textures": { "default": "textures/gm1/ord/entity/badnik/eggrobo" },
+            "geometry": { "default": "geometry.gm1_ord.laser" },
+            "animations": { "scale": "animation.gm1_ord.laser", "focus": "animation.gm1_ord.laser.focus" },
+            "scripts": { "animate": [ "scale" ]},
+            "render_controllers": [ "controller.render.default" ]
+        }
+    }
+}

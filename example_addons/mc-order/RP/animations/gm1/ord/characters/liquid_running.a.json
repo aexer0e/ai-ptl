@@ -1,0 +1,158 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.character_liquid_running.ease_in": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 0.1,
+            "bones": {
+                "water_right": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1": [ 0, -15, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1": [ -2, 0, 0 ]},
+                    "scale": { "0.0": [ 0, 0, 0 ], "0.1": [ 1, 1, 1 ]}
+                },
+                "water_left": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1": [ 0, 15, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1": [ 2, 0, 0 ]},
+                    "scale": { "0.0": [ 0, 0, 0 ], "0.1": [ 1, 1, 1 ]}
+                }
+            }
+        },
+        "animation.gm1_ord.character_liquid_running.fx": {
+            "loop": true,
+            "animation_length": 1,
+            "bones": {
+                "water_right": {
+                    "rotation": [ "10-math.sin(query.anim_time*720)*5", 0, "-35+math.sin(query.anim_time*720)*15" ],
+                    "position": [ "-math.sin(query.anim_time*720)*2", 0, 0 ],
+                    "scale": [ 1, "1+math.sin(query.anim_time*1440)*0.5", "1-math.sin(query.anim_time*1440)*0.25" ]
+                },
+                "water_left": {
+                    "rotation": [ "10-math.sin(query.anim_time*720)*5", 0, "35-math.sin(query.anim_time*720)*15" ],
+                    "position": [ "math.sin(query.anim_time*720)*2", 0, 0 ],
+                    "scale": [ 1, "1+math.sin(query.anim_time*1440)*0.5", "1-math.sin(query.anim_time*1440)*0.25" ]
+                },
+                "liquid_running": {
+                    "rotation": [ "query.is_baby && query.is_in_water && v.time_out_of_water < 1 ? 30 : 0", 0, 0 ],
+                    "position": [ 0, -10, 0 ]
+                }
+            },
+            "particle_effects": {
+                "0.0": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.05": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.1": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.15": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.2": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.25": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.3": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.35": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.4": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.45": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.5": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.55": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.6": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.65": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.7": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.75": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.8": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.85": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.9": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ],
+                "0.95": [
+                    { "effect": "water_running_left", "locator": "water_left_locator" },
+                    { "effect": "water_running_right", "locator": "water_right_locator" },
+                    { "effect": "water_running_wake", "locator": "water_wake_locator" }
+                ]
+            }
+        },
+        "animation.gm1_ord.water_running_particle": {
+            "loop": true,
+            "animation_length": 0.2,
+            "particle_effects": { "0.1": { "effect": "water_running" }}
+        },
+        "animation.gm1_ord.lava_running_particle": {
+            "loop": true,
+            "animation_length": 0.2,
+            "particle_effects": { "0.1": { "effect": "lava_running" }}
+        },
+        "animation.gm1_ord.snow_running_particle": {
+            "loop": true,
+            "animation_length": 0.2,
+            "particle_effects": { "0.1": { "effect": "snow_running" }}
+        }
+    }
+}

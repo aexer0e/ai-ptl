@@ -1,0 +1,10 @@
+{
+    "$identifier": "gm1_zen:dragon_hold_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": { "holding": "animation.gm1_zen.dragon_global.holding" },
+            "scripts": { "initialize": [ "v.is_holding = 0;" ], "animate": [ "holding" ]}
+        }
+    }
+}

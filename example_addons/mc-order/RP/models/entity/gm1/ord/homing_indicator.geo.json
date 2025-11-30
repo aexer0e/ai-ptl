@@ -1,0 +1,95 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_ord.homing_indicator",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 0, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [1, 0, -1]
+				},
+				{
+					"name": "bg",
+					"parent": "root",
+					"pivot": [1, 0, -1]
+				},
+				{
+					"name": "bg_homing_left_top",
+					"parent": "bg",
+					"pivot": [1, 0, -1],
+					"cubes": [
+						{"origin": [-15, 0, -1], "size": [16, 16, 0], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "bg_homing_left_bottom",
+					"parent": "bg",
+					"pivot": [1, 0, -1],
+					"cubes": [
+						{"origin": [-15, 0, -1], "size": [16, 16, 0], "pivot": [1, 0, -1], "rotation": [0, 0, -90], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "bg_homing_right_top",
+					"parent": "bg",
+					"pivot": [1, 0, -1],
+					"cubes": [
+						{"origin": [1, 0, -1], "size": [16, 16, 0], "uv": [0, 48], "mirror": true}
+					]
+				},
+				{
+					"name": "bg_homing_right_bottom",
+					"parent": "bg",
+					"pivot": [1, 0, -1],
+					"cubes": [
+						{"origin": [-15, 0, -1], "size": [16, 16, 0], "pivot": [1, 0, -1], "rotation": [0, 0, -180], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "fg",
+					"parent": "root",
+					"pivot": [1, 0, -0.5]
+				},
+				{
+					"name": "fg_homing_left_top",
+					"parent": "fg",
+					"pivot": [1, 0, -0.5],
+					"cubes": [
+						{"origin": [-15, 0, -0.5], "size": [16, 16, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "fg_homing_left_bottom",
+					"parent": "fg",
+					"pivot": [1, 0, -0.5],
+					"cubes": [
+						{"origin": [-15, 0, -0.5], "size": [16, 16, 0], "pivot": [1, 0, -0.5], "rotation": [0, 0, -90], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "fg_homing_right_top",
+					"parent": "fg",
+					"pivot": [1, 0, -0.5],
+					"cubes": [
+						{"origin": [1, 0, -0.5], "size": [16, 16, 0], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "fg_homing_right_bottom",
+					"parent": "fg",
+					"pivot": [1, 0, -0.5],
+					"cubes": [
+						{"origin": [-15, 0, -0.5], "size": [16, 16, 0], "pivot": [1, 0, -0.5], "rotation": [0, 0, -180], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,47 @@
+name: Lint prototype Branch
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 13 * * 1,2,3,4,5'
+
+env:
+  target_branch: prototype
+  CHECKED_OUT_SHA: ''
+
+jobs:
+  Lint:
+    name: Lint prototype Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: { node-version: 20.x }
+      - name: Checkout prototype
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.target_branch }}
+      - name: Get Commit SHA
+        run: echo "CHECKED_OUT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: Install Dependencies
+        run: npm ci
+      - name: TS Lint
+        run: npm run lint
+      - name: JSON Lint
+        uses: gamemode-one/tl-json-check-action@main
+        with:
+          dirs-to-check: |
+            BP
+            RP
+      - name: Send Slack Message on Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "run_branch": "${{ env.target_branch }}",
+              "run_link" : "${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}",
+              "channel_id": "${{ vars.LINT_FAILURE_CHANNEL_ID }}",
+              "run_branch_sha": "${{ env.CHECKED_OUT_SHA }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_LINTING_WEBHOOK_URL }}

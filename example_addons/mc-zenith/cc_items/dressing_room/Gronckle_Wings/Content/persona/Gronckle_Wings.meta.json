@@ -1,0 +1,55 @@
+{
+	"piece_id": "70c2cd73-a446-9eae-f6e4-626fe4833dc6",
+	"piece_name": "Gronckle_Wings",
+	"piece_type": "persona_back",
+	"geometry_sources": [
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Gronckle_Wings.tall.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Gronckle_Wings.tall.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Gronckle_Wings.medium.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Gronckle_Wings.medium.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Gronckle_Wings.small.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Gronckle_Wings.small.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Gronckle_Wings.smaller.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "meatlug_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Gronckle_Wings.smaller.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "meatlug_wings.png"
+		}
+	]
+}

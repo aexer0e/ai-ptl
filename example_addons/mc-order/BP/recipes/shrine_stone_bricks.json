@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:shrine_stone_bricks" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "SS", "SS" ],
+        "key": { "S": { "item": "gm1_ord:shrine_stone" }},
+        "result": { "item": "gm1_ord:shrine_stone_bricks", "count": 4 },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

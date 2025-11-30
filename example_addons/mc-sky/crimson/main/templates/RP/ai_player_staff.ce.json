@@ -1,0 +1,40 @@
+{
+    "format_version": "1.10.0",
+    "$identifier": "gm1_sky:ai_player_staff",
+    "minecraft:client_entity": {
+        "description": {
+            "textures": {
+                "staff0": "textures/gm1/sky/entity/staff/Aerios",
+                "staff1": "textures/gm1/sky/entity/staff/Aerios5078",
+                "staff2": "textures/gm1/sky/entity/staff/aexer0e",
+                "staff3": "textures/gm1/sky/entity/staff/aheeha16",
+                "staff4": "textures/gm1/sky/entity/staff/Anotherpandora",
+                "staff5": "textures/gm1/sky/entity/staff/Blairgendary",
+                "staff6": "textures/gm1/sky/entity/staff/ChinChinaroo943",
+                "staff7": "textures/gm1/sky/entity/staff/CrimzonKrow",
+                "staff8": "textures/gm1/sky/entity/staff/CubicComplex",
+                "staff9": "textures/gm1/sky/entity/staff/CubicOmega",
+                "staff10": "textures/gm1/sky/entity/staff/Edacth",
+                "staff11": "textures/gm1/sky/entity/staff/Ezekiel1917",
+                "staff12": "textures/gm1/sky/entity/staff/GM1QA",
+                "staff13": "textures/gm1/sky/entity/staff/Hyd",
+                "staff14": "textures/gm1/sky/entity/staff/Hydraxus",
+                "staff15": "textures/gm1/sky/entity/staff/Imadbush1",
+                "staff16": "textures/gm1/sky/entity/staff/InertJoanneL",
+                "staff17": "textures/gm1/sky/entity/staff/iWackyQuacky",
+                "staff18": "textures/gm1/sky/entity/staff/Jarebear4707",
+                "staff19": "textures/gm1/sky/entity/staff/Jossie7035",
+                "staff20": "textures/gm1/sky/entity/staff/Jossieboy",
+                "staff21": "textures/gm1/sky/entity/staff/localtonk",
+                "staff22": "textures/gm1/sky/entity/staff/NMSTian",
+                "staff23": "textures/gm1/sky/entity/staff/ninjamastersensi",
+                "staff24": "textures/gm1/sky/entity/staff/Pinkevy",
+                "staff25": "textures/gm1/sky/entity/staff/squawkk",
+                "staff26": "textures/gm1/sky/entity/staff/SPDarklord",
+                "staff27": "textures/gm1/sky/entity/staff/Wacky8574",
+                "staff28": "textures/gm1/sky/entity/staff/wiiv",
+                "staff29": "textures/gm1/sky/entity/staff/wiiv2619"
+            }
+        }
+    }
+}

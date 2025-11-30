@@ -1,0 +1,27 @@
+name: Notify Expedited PR
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [labeled]
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pass job ID
+        run: echo "Pass :D"
+        shell: bash
+      - name: Send Slack Notification
+        if: github.event.label.name == 'Expedite'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+            payload: |
+                {
+                    "pr_name": "${{ github.event.pull_request.title }}",
+                    "channel_id": "C06G5MQ4EBU",
+                    "pr_target_group": "S06G98T3F5Z",
+                    "pr_link": "${{ github.event.pull_request.html_url }}"
+                }
+        env:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_PR_EXPEDITE }}

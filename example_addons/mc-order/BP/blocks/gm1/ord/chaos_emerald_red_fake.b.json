@@ -1,0 +1,10 @@
+{
+    "$templates": [{ "$template": "ord:chaos_emerald_fake.b", "color": "red" }],
+    "minecraft:block": {
+        "description": { "identifier": "gm1_ord:chaos_emerald_red_fake" },
+        "components": {
+            "minecraft:display_name": "tile.gm1_ord:chaos_emerald_red_fake.name",
+            "minecraft:map_color": "#ff0000"
+        }
+    }
+}

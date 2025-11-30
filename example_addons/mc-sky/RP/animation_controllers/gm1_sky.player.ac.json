@@ -1,0 +1,105 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_sky.ai_player": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "ai_chop": "q.property('gm1_sky:is_using_item') == 'swinging'" },
+                        { "ai_eat": "q.is_eating" },
+                        { "ai_emote": "q.property('gm1_sky:is_emoting') > 0" },
+                        { "ai_sneak": "q.property('gm1_sky:is_sneaking')" }
+                    ]
+                },
+                "ai_chop": {
+                    "animations": [ "ai_chop" ],
+                    "transitions": [{ "default": "q.property('gm1_sky:is_using_item') == 'idle'" }],
+                    "blend_transition": 0.2
+                },
+                "ai_eat": {
+                    "animations": [ "ai_eat" ],
+                    "transitions": [{ "default": "!q.is_eating" }],
+                    "blend_transition": 0.2
+                },
+                "ai_emote": {
+                    "animations": [
+                        { "ai_wave_right": "q.property('gm1_sky:is_emoting') == 1" },
+                        { "ai_wave_left": "q.property('gm1_sky:is_emoting') == 2" },
+                        { "ai_wave_both": "q.property('gm1_sky:is_emoting') == 3" },
+                        { "ai_clap": "q.property('gm1_sky:is_emoting') == 11" },
+                        { "ai_dance_1": "q.property('gm1_sky:is_emoting') == 12" },
+                        { "ai_dance_2": "q.property('gm1_sky:is_emoting') == 13" },
+                        { "ai_dance_conga": "q.property('gm1_sky:is_emoting') == 14" }
+                    ],
+                    "transitions": [
+                        { "default": "!q.property('gm1_sky:is_emoting') > 0 || query.all_animations_finished" }
+                    ],
+                    "blend_transition": 0.2
+                },
+                "ai_sneak": {
+                    "animations": [ "ai_sneak" ],
+                    "transitions": [{ "default": "!q.property('gm1_sky:is_sneaking')" }]
+                }
+            }
+        },
+        "controller.animation.player_punching": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "ai_air_punch": "q.property('gm1_sky:air_punch') > 0 && q.property('gm1_sky:is_using_item') != 'swinging'"
+                        }
+                    ]
+                },
+                "ai_air_punch": {
+                    "animations": [
+                        { "ai_punch_long": "q.property('gm1_sky:air_punch') == 1" },
+                        { "ai_punch_medium": "q.property('gm1_sky:air_punch') == 2" },
+                        { "ai_punch_short": "q.property('gm1_sky:air_punch') == 3" }
+                    ],
+                    "transitions": [{ "default": "query.all_animations_finished" }]
+                }
+            }
+        },
+        "controller.animation.player_spawn_sequence": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "spawning": "q.property('gm1_sky:spawn_sequence') > 0" }]},
+                "spawning": {
+                    "animations": [
+                        { "ai_spawn_spin": "q.property('gm1_sky:spawn_sequence') == 1" },
+                        { "ai_spawn_assemble": "q.property('gm1_sky:spawn_sequence') == 2" },
+                        { "ai_spawn_dig": "q.property('gm1_sky:spawn_sequence') == 3" },
+                        { "ai_spawn_screw": "q.property('gm1_sky:spawn_sequence') == 4" },
+                        { "ai_spawn_fall": "q.property('gm1_sky:spawn_sequence') == 5" },
+                        { "ai_spawn_hero": "q.property('gm1_sky:spawn_sequence') == 6" }
+                    ],
+                    "transitions": [{ "default": "query.all_animations_finished" }]
+                }
+            }
+        },
+        "controller.animation.ai_bow": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "ai_holding_bow": "query.get_equipped_item_name == 'bow'" }]},
+                "ai_holding_bow": {
+                    "animations": [ "ai_bow" ],
+                    "transitions": [{ "default": "query.get_equipped_item_name != 'bow'" }]
+                }
+            }
+        },
+        "controller.animation.ai_cape": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "ai_cape_moving": "q.modified_move_speed > 0.1" }]},
+                "ai_cape_moving": {
+                    "animations": [ "ai_cape" ],
+                    "transitions": [{ "default": "q.modified_move_speed < 0.1" }],
+                    "blend_transition": 0.2
+                }
+            }
+        }
+    }
+}

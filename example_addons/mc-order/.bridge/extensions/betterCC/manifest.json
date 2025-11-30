@@ -1,0 +1,9 @@
+{
+    "author": "Gamemode One",
+    "name": "betterCC",
+    "version": "2.0.2",
+    "id": "8bcadba3-493b-42eb-bb16-ffd0896a2c99",
+    "description": "Assists in writing Custom Components",
+    "tags": [ "Compiler" ],
+    "compiler": { "plugins": { "betterCC": "compiler/main.js" }}
+}

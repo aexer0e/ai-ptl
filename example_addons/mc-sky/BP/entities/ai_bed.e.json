@@ -1,0 +1,39 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_sky:ai_bed",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "components": {
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:type_family": { "family": [ "ai_bed" ]},
+            "minecraft:collision_box": { "width": 0, "height": 0 },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    { "width": 1, "height": 1, "pivot": [ 1, 0.25, 1 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ 1, 0.25, -1 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ -1, 0.25, -1 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ -1, 0.25, 1 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ 1, 0.25, 0 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ -1, 0.25, 0 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ 0, 0.25, 1 ]},
+                    { "width": 1, "height": 0.5, "pivot": [ 0, 0.25, -1 ]}
+                ]
+            },
+            "minecraft:health": { "value": 20, "max": 20 },
+            "minecraft:nameable": { "always_show": true },
+            "minecraft:physics": { "has_collision": true, "has_gravity": false, "push_towards_closest_space": false},
+            "minecraft:interact": { "interactions": [{ "swing": true }]},
+            "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": false }},
+            "minecraft:rideable": {
+                "seat_count": 1,
+                "family_types": [ "player" ],
+                "interact_text": "action.interact.mount",
+                "seats": { "position": [ 0, 0, 0 ]}
+            }
+        }
+    }
+}

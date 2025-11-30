@@ -1,0 +1,9 @@
+{
+    "$templates": [{ "$template": "ord:chaos_emerald_fake.ce", "color": "green" }],
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:chaos_emerald_green_fake",
+            "spawn_egg": { "texture": "chaos_emeralds", "texture_index": 2 }
+        }
+    }
+}

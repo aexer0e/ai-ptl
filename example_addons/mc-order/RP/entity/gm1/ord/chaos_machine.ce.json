@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:chaos_machine",
+            "materials": { "default": "phantom", "additive": "entity_beam_additive" },
+            "textures": { "default": "textures/gm1/ord/entity/chaos_machine" },
+            "geometry": { "default": "geometry.gm1_ord.chaos_machine" },
+            "animations": {
+                "empty_1": "animation.gm1_ord.chaos_machine.empty_1",
+                "empty_2": "animation.gm1_ord.chaos_machine.empty_2",
+                "empty_3": "animation.gm1_ord.chaos_machine.empty_3",
+                "empty_4": "animation.gm1_ord.chaos_machine.empty_4",
+                "empty_5": "animation.gm1_ord.chaos_machine.empty_5",
+                "empty_6": "animation.gm1_ord.chaos_machine.empty_6",
+                "empty_7": "animation.gm1_ord.chaos_machine.empty_7",
+                "loop": "animation.gm1_ord.chaos_machine.loop",
+                "controller_1": "controller.animation.gm1_ord.chaos_machine.c_1",
+                "controller_2": "controller.animation.gm1_ord.chaos_machine.c_2",
+                "controller_3": "controller.animation.gm1_ord.chaos_machine.c_3",
+                "controller_4": "controller.animation.gm1_ord.chaos_machine.c_4",
+                "controller_5": "controller.animation.gm1_ord.chaos_machine.c_5",
+                "controller_6": "controller.animation.gm1_ord.chaos_machine.c_6",
+                "controller_7": "controller.animation.gm1_ord.chaos_machine.c_7",
+                "chaos_emerald_1": "animation.gm1_ord.chaos_machine.chaos_emerald_1",
+                "chaos_emerald_2": "animation.gm1_ord.chaos_machine.chaos_emerald_2",
+                "chaos_emerald_3": "animation.gm1_ord.chaos_machine.chaos_emerald_3",
+                "chaos_emerald_4": "animation.gm1_ord.chaos_machine.chaos_emerald_4",
+                "chaos_emerald_5": "animation.gm1_ord.chaos_machine.chaos_emerald_5",
+                "chaos_emerald_6": "animation.gm1_ord.chaos_machine.chaos_emerald_6",
+                "chaos_emerald_7": "animation.gm1_ord.chaos_machine.chaos_emerald_7",
+                "chaos_emerald_1_got": "animation.gm1_ord.chaos_machine.chaos_emerald_1_got",
+                "chaos_emerald_2_got": "animation.gm1_ord.chaos_machine.chaos_emerald_2_got",
+                "chaos_emerald_3_got": "animation.gm1_ord.chaos_machine.chaos_emerald_3_got",
+                "chaos_emerald_4_got": "animation.gm1_ord.chaos_machine.chaos_emerald_4_got",
+                "chaos_emerald_5_got": "animation.gm1_ord.chaos_machine.chaos_emerald_5_got",
+                "chaos_emerald_6_got": "animation.gm1_ord.chaos_machine.chaos_emerald_6_got",
+                "chaos_emerald_7_got": "animation.gm1_ord.chaos_machine.chaos_emerald_7_got",
+                "activation_controller": "controller.animation.gm1_ord.chaos_machine.activation",
+                "glow": "animation.gm1_ord.chaos_machine.glow",
+                "glow_hidden": "animation.gm1_ord.chaos_machine.glow_hidden",
+                "unlock_sfx": "animation.gm1_ord.chaos_emerald.unlock",
+                "unlock_sound": "animation.gm1_ord.emerald_plat.unlock",
+                "activated": "animation.gm1_ord.chaos_machine.activated",
+                "transform_control": "controller.animation.gm1_ord.machine_transform",
+                "chaos_machine_vfx": "animation.gm1_ord.chaos_machine_vfx"
+            },
+            "scripts": {
+                "initialize": [ "v.activating = 0;" ],
+                "pre_animation": [ "v.activating = q.property('gm1_ord:is_playing_activate_animation');" ],
+                "animate": [
+                    "controller_1",
+                    "controller_2",
+                    "controller_3",
+                    "controller_4",
+                    "controller_5",
+                    "controller_6",
+                    "controller_7",
+                    "transform_control"
+                ]
+            },
+            "particle_effects": { "activate": "gm1_ord:transform_light_blip", "charging": "gm1_ord:charge_chaos" },
+            "render_controllers": [ "controller.render.gm1_ord.chaos_machine" ],
+            "sound_effects": { "unlock": "chaos_emerald_unlock" }
+        }
+    }
+}

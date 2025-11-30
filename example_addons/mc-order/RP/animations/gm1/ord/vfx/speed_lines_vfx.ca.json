@@ -1,0 +1,10 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.gm1_ord.speed_lines": {
+            "loop": true,
+            "animation_length": 0.2,
+            "particle_effects": { "0.0": [{ "effect": "speed_lines_upper" }]}
+        }
+    }
+}

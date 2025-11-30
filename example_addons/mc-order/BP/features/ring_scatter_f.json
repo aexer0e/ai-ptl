@@ -1,0 +1,11 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:scatter_feature": {
+        "description": { "identifier": "gm1_ord:ring_scatter_f" },
+        "places_feature": "gm1_ord:ring_single_snap_f",
+        "iterations": 5,
+        "x": { "distribution": "uniform", "extent": [ 0, 15 ]},
+        "y": { "distribution": "uniform", "extent": [ -1, 1 ]},
+        "z": { "distribution": "uniform", "extent": [ 0, 15 ]}
+    }
+}

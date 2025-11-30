@@ -1,0 +1,20 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_zen.dragon_global": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*saddle": "q.property('gm1_zen:is_saddled')" },
+                {
+                    "*finger_open*": "!q.is_in_water && ((!q.is_on_ground && v.time_since_ground > 0.5) || (!q.is_on_ground && q.vertical_speed > 2) || (!q.is_on_ground && q.vertical_speed > 0)) && (!q.vertical_speed < -4 || q.is_jumping || q.is_on_ground || v.dive_time <= 0.4) && !(v.time_since_ground > 0.8 && q.vertical_speed < -4)"
+                },
+                {
+                    "*finger_closed*": "q.is_in_water || ((v.time_since_ground <= 0.5 && (q.is_on_ground || q.vertical_speed <= 2)) || (v.time_since_ground <= 0.5 && (q.is_on_ground || q.vertical_speed <= 0)) || (q.vertical_speed < -4 && !q.is_jumping && !q.is_on_ground && v.dive_time > 0.4) || (v.time_since_ground > 0.8 && q.vertical_speed < -4))"
+                },
+                { "*armor": "q.property('gm1_zen:has_armor')" }
+            ]
+        }
+    }
+}

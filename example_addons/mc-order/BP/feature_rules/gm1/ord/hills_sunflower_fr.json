@@ -1,0 +1,20 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:feature_rules": {
+        "description": { "identifier": "gm1_ord:hills_sunflower_fr", "places_feature": "gm1_ord:arrange_hills_f" },
+        "conditions": {
+            "placement_pass": "final_pass",
+            "minecraft:biome_filter": [
+                { "any_of": [{ "test": "has_biome_tag", "operator": "==", "value": "sunflower_plains" }]}
+            ]
+        },
+        "distribution": {
+            "iterations": 2,
+            "scatter_chance": 10,
+            "coordinate_eval_order": "zxy",
+            "x": 0,
+            "y": "query.heightmap(variable.worldx, variable.worldz)-3",
+            "z": 0
+        }
+    }
+}

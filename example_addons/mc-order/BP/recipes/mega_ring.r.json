@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:mega_ring_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "RRR", "R R", "RRR" ],
+        "key": { "R": { "item": "gm1_ord:ring_pile" }},
+        "result": { "item": "gm1_ord:mega_ring_platform" },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

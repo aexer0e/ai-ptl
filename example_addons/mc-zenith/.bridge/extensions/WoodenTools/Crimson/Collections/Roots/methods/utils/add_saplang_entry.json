@@ -1,0 +1,12 @@
+{
+    "$identifier": "roots.utils.add_saplang_entry",
+    "$inputs": { "category": "roots", "key": null, "value": null, "description": false },
+    "$calls": [
+        {
+            "$call": "action",
+            "$path": "RP/texts/^{category}^.saplang",
+            "$content": [ "^ description ? ':' + description : '' ", "^ key + '=' + value" ],
+            "$lines": true
+        }
+    ]
+}

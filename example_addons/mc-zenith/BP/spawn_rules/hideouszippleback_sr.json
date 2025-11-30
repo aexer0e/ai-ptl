@@ -1,0 +1,26 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:spawn_rules": {
+        "description": { "identifier": "gm1_zen:hideouszippleback", "population_control": "animal" },
+        "conditions": [
+            {
+                "minecraft:spawns_on_surface": {},
+                "minecraft:spawns_underground": {},
+                "minecraft:weight": { "default": 15 },
+                "minecraft:biome_filter": {
+                    "any_of": [
+                        { "test": "has_biome_tag", "operator": "==", "value": "swamp" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "magrove_swamp" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "shore" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "beach" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "river" }
+                    ]
+                },
+                "minecraft:permute_type": [{ "weight": 99 }, { "weight": 1, "entity_type": "gm1_zen:nightfury" }],
+                "minecraft:distance_filter": { "min": 40, "max": 128 },
+                "minecraft:brightness_filter": { "adjust_for_weather": false, "max": 15, "min": 0 },
+                "minecraft:density_limit": { "surface": 1, "underground": 1 }
+            }
+        ]
+    }
+}

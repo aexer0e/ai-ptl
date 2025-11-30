@@ -1,0 +1,11 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "gm1_zen:dragon_book_recipe" },
+        "tags": [ "gm1_zen:crafting" ],
+        "priority": 1,
+        "ingredients": [{ "item": "minecraft:paper", "data": 0, "count": 3 }],
+        "result": { "item": "gm1_zen:dragon_book" },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

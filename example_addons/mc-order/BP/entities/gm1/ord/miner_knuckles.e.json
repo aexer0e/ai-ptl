@@ -1,0 +1,98 @@
+{
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:miner_knuckles",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:instant_despawn": { "remove_child_entities": false }},
+            "gm1_ord:tier_0": {
+                "minecraft:collision_box": {
+                    "width": "^o.abilities.knuckles.block_break_size_width[0]",
+                    "height": "^o.abilities.knuckles.block_break_size_height[0]"
+                }
+            },
+            "gm1_ord:tier_1": {
+                "minecraft:collision_box": {
+                    "width": "^o.abilities.knuckles.block_break_size_width[1]",
+                    "height": "^o.abilities.knuckles.block_break_size_height[1]"
+                }
+            },
+            "gm1_ord:tier_2": {
+                "minecraft:collision_box": {
+                    "width": "^o.abilities.knuckles.block_break_size_width[2]",
+                    "height": "^o.abilities.knuckles.block_break_size_height[2]"
+                }
+            },
+            "gm1_ord:tier_3": {
+                "minecraft:collision_box": {
+                    "width": "^o.abilities.knuckles.block_break_size_width[3]",
+                    "height": "^o.abilities.knuckles.block_break_size_height[3]"
+                }
+            },
+            "gm1_ord:tier_4": {
+                "minecraft:collision_box": {
+                    "width": "^o.abilities.knuckles.block_break_size_width[4]",
+                    "height": "^o.abilities.knuckles.block_break_size_height[4]"
+                }
+            }
+        },
+        "components": {
+            "minecraft:break_blocks": { "breakable_blocks": "^o.abilities.breakable_blocks" },
+            "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": "no" }]},
+            "minecraft:physics": { "has_collision": false, "has_gravity": false },
+            "minecraft:fire_immune": {},
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}},
+            "gm1_ord:tier_0": { "add": { "component_groups": [ "gm1_ord:tier_0" ]}},
+            "gm1_ord:tier_1": { "add": { "component_groups": [ "gm1_ord:tier_1" ]}},
+            "gm1_ord:tier_2": { "add": { "component_groups": [ "gm1_ord:tier_2" ]}},
+            "gm1_ord:tier_3": { "add": { "component_groups": [ "gm1_ord:tier_3" ]}},
+            "gm1_ord:tier_4": { "add": { "component_groups": [ "gm1_ord:tier_4" ]}}
+        }
+    },
+    "format_version": "1.11.0"
+}

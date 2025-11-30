@@ -1,0 +1,197 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.sonic_charge": {
+            "states": {
+                "none": { "transitions": [{ "ball1": "v.ability_state > 0" }]},
+                "ball1": {
+                    "animations": [ "charging.ball1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball2": "v.ability_state > 1" }]
+                },
+                "ball2": {
+                    "animations": [ "charging.ball2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball3": "v.ability_state > 2" }]
+                },
+                "ball3": {
+                    "animations": [ "charging.ball3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball4": "v.ability_state > 3" }]
+                },
+                "ball4": {
+                    "animations": [ "charging.ball4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball5": "v.ability_state > 4" }]
+                },
+                "ball5": {
+                    "animations": [ "charging.ball5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": { "animations": [ "spindash_release" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        },
+        "controller.animation.gm1_ord.knuckles_charge": {
+            "states": {
+                "none": { "transitions": [{ "punch1": "v.ability_state > 0" }]},
+                "punch1": {
+                    "animations": [ "charging.punch1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "punch2": "v.ability_state > 1" }]
+                },
+                "punch2": {
+                    "animations": [ "charging.punch2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "punch3": "v.ability_state > 2" }]
+                },
+                "punch3": {
+                    "animations": [ "charging.punch3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "punch4": "v.ability_state > 3" }]
+                },
+                "punch4": {
+                    "animations": [ "charging.punch4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "punch5": "v.ability_state > 4" }]
+                },
+                "punch5": {
+                    "animations": [ "charging.punch5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": {
+                    "animations": [ "spindash_release" ],
+                    "transitions": [{ "punch_explode": "v.ability_state == 0" }]
+                },
+                "punch_explode": { "animations": [ "punch_explosion" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        },
+        "controller.animation.gm1_ord.tails_charge": {
+            "states": {
+                "none": { "transitions": [{ "ball1": "v.ability_state > 0" }]},
+                "ball1": {
+                    "animations": [ "charging.ball1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball2": "v.ability_state > 1" }]
+                },
+                "ball2": {
+                    "animations": [ "charging.ball2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball3": "v.ability_state > 2" }]
+                },
+                "ball3": {
+                    "animations": [ "charging.ball3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball4": "v.ability_state > 3" }]
+                },
+                "ball4": {
+                    "animations": [ "charging.ball4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball5": "v.ability_state > 4" }]
+                },
+                "ball5": {
+                    "animations": [ "charging.ball5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": { "animations": [ "spindash_release" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        },
+        "controller.animation.gm1_ord.amy_charge": {
+            "states": {
+                "none": { "transitions": [{ "hammer1": "v.ability_state > 0" }]},
+                "hammer1": {
+                    "animations": [ "charging.hammer1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "hammer2": "v.ability_state > 1" }]
+                },
+                "hammer2": {
+                    "animations": [ "charging.hammer2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "hammer3": "v.ability_state > 2" }]
+                },
+                "hammer3": {
+                    "animations": [ "charging.hammer3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "hammer4": "v.ability_state > 3" }]
+                },
+                "hammer4": {
+                    "animations": [ "charging.hammer4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "hammer5": "v.ability_state > 4" }]
+                },
+                "hammer5": {
+                    "animations": [ "charging.hammer5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": {
+                    "animations": [ "spindash_release", "hammer_swipe" ],
+                    "transitions": [{ "smash": "v.ability_state > 6" }]
+                },
+                "smash": { "animations": [ "hammer_smash" ], "transitions": [{ "none": "v.ability_state < 1" }]}
+            }
+        },
+        "controller.animation.gm1_ord.shadow_charge": {
+            "states": {
+                "none": { "transitions": [{ "chaos1": "v.ability_state > 0" }]},
+                "chaos1": {
+                    "animations": [ "charging.chaos1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos2": "v.ability_state > 1" }]
+                },
+                "chaos2": {
+                    "animations": [ "charging.chaos2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos3": "v.ability_state > 2" }]
+                },
+                "chaos3": {
+                    "animations": [ "charging.chaos3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos4": "v.ability_state > 3" }]
+                },
+                "chaos4": {
+                    "animations": [ "charging.chaos4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos5": "v.ability_state > 4" }]
+                },
+                "chaos5": {
+                    "animations": [ "charging.chaos5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": { "animations": [ "spindash_release" ], "transitions": [{ "pop": "v.ability_state == 0" }]},
+                "pop": { "animations": [ "shadow.blink_in" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        },
+        "controller.animation.gm1_ord.super_sonic_charge": {
+            "states": {
+                "none": { "transitions": [{ "ball1": "v.ability_state > 0" }]},
+                "ball1": {
+                    "animations": [ "charging.ball1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball2": "v.ability_state > 1" }]
+                },
+                "ball2": {
+                    "animations": [ "charging.ball2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball3": "v.ability_state > 2" }]
+                },
+                "ball3": {
+                    "animations": [ "charging.ball3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball4": "v.ability_state > 3" }]
+                },
+                "ball4": {
+                    "animations": [ "charging.ball4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "ball5": "v.ability_state > 4" }]
+                },
+                "ball5": {
+                    "animations": [ "charging.ball5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": { "animations": [ "super_sonic_boost_sfx" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        },
+        "controller.animation.gm1_ord.super_shadow_charge": {
+            "states": {
+                "none": { "transitions": [{ "chaos1": "v.ability_state > 0" }]},
+                "chaos1": {
+                    "animations": [ "charging.chaos1" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos2": "v.ability_state > 1" }]
+                },
+                "chaos2": {
+                    "animations": [ "charging.chaos2" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos3": "v.ability_state > 2" }]
+                },
+                "chaos3": {
+                    "animations": [ "charging.chaos3" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos4": "v.ability_state > 3" }]
+                },
+                "chaos4": {
+                    "animations": [ "charging.chaos4" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "chaos5": "v.ability_state > 4" }]
+                },
+                "chaos5": {
+                    "animations": [ "charging.chaos5", "charge_lightning" ],
+                    "transitions": [{ "none": "v.ability_state == 0" }, { "release": "v.ability_state > 5" }]
+                },
+                "release": { "animations": [ "super_shadow_boost_sfx" ], "transitions": [{ "pop": "v.ability_state == 0" }]},
+                "pop": { "animations": [ "shadow.blink_in" ], "transitions": [{ "none": "v.ability_state == 0" }]}
+            }
+        }
+    }
+}

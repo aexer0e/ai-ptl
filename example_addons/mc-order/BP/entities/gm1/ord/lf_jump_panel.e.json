@@ -1,0 +1,99 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:lf_jump_panel",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:instant_despawn": {}},
+            "gm1_ord:waiting": {
+                "minecraft:entity_sensor": {
+                    "subsensors": [
+                        {
+                            "cooldown": 0,
+                            "range": [ "^o.level_features.jump_panel_range", "^o.level_features.jump_panel_range" ],
+                            "event_filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "mob" },
+                                    { "test": "is_family", "subject": "other", "value": "monster" },
+                                    { "all_of": [{ "test": "is_family", "subject": "other", "value": "player" }]}
+                                ]
+                            },
+                            "event": "gm1_ord:activated"
+                        }
+                    ]
+                }
+            },
+            "gm1_ord:activated": {
+                "minecraft:timer": {
+                    "time": "^o.level_features.jump_panel_cooldown",
+                    "time_down_event": { "event": "gm1_ord:waiting" }
+                },
+                "minecraft:is_sheared": {}
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": { "triggers": { "deals_damage": "no" }},
+            "minecraft:type_family": { "family": [ "jump_panel" ]},
+            "minecraft:health": { "value": 2 },
+            "minecraft:physics": { "has_collision": false, "has_gravity": false, "push_towards_closest_space": false },
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { "add": { "component_groups": [ "gm1_ord:waiting" ]}},
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}},
+            "gm1_ord:activated": {
+                "add": { "component_groups": [ "gm1_ord:activated" ]},
+                "remove": { "component_groups": [ "gm1_ord:waiting" ]}
+            },
+            "gm1_ord:waiting": {
+                "add": { "component_groups": [ "gm1_ord:waiting" ]},
+                "remove": { "component_groups": [ "gm1_ord:activated" ]}
+            }
+        }
+    }
+}

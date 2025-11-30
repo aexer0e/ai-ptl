@@ -1,0 +1,14 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:structure_set": {
+        "description": { "identifier": "gm1_ord:chaos_shrines" },
+        "placement": {
+            "type": "minecraft:random_spread",
+            "salt": 83469867,
+            "separation": 15,
+            "spacing": 32,
+            "spread_type": "linear"
+        },
+        "structures": [{ "structure": "gm1_ord:chaos_shrine", "weight": 1 }]
+    }
+}

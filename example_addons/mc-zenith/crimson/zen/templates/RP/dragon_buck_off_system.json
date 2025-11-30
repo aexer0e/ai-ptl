@@ -1,0 +1,13 @@
+{
+    "$identifier": "gm1_zen:dragon_buck_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "buck_off_controller": "controller.animation.gm1_zen.dragon_global.buck_off",
+                "buck_vfx": "animation.gm1_zen.dragon_global.buck_vfx"
+            },
+            "scripts": { "animate": [ "buck_off_controller" ]}
+        }
+    }
+}

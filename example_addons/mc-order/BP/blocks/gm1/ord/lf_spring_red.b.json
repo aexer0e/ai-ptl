@@ -1,0 +1,39 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:lf_spring_red",
+            "states": {
+                "gm1_ord:spring_entity": [ false, true ]
+            },
+            "menu_category": { "category": "construction", "is_hidden_in_commands": false }
+        },
+        "components": {
+            "minecraft:display_name": "tile.gm1_ord:lf_spring_red.name",
+            "minecraft:destructible_by_mining": true,
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:friction": 0.4,
+            "minecraft:map_color": "#dc3241",
+            "minecraft:material_instances": { "*": { "texture": "gm1_ord_lf_spring_red", "render_method": "opaque" }},
+            "minecraft:geometry": "geometry.gm1_ord.lf_spring",
+            "minecraft:selection_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 12, 16 ]},
+            "minecraft:collision_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 0, 16 ]},
+            "minecraft:custom_components": [ "gm1_ord:springable_block_entity" ],
+            "minecraft:tick": { "interval_range": [ 0, 0 ], "looping": true }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('gm1_ord:spring_entity') == true",
+                "components": {
+                    "minecraft:geometry": {
+                        "identifier": "geometry.gm1_ord.lf_spring",
+                        "bone_visibility": { "root": false, "spring": false, "spring_platform": false }
+                    },
+                    "minecraft:material_instances": {
+                        "*": { "texture": "gm1_ord_lf_spring_red", "render_method": "alpha_test" }
+                    }
+                }
+            }
+        ]
+    }
+}

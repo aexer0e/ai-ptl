@@ -1,0 +1,16 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.egg.hatch": {
+            "states": {
+                "default": { "transitions": [{ "jump": "v.shake>0" }], "blend_transition": 0.1 },
+                "jump": {
+                    "animations": [ "jump" ],
+                    "transitions": [{ "shake": "query.any_animation_finished" }],
+                    "blend_transition": 0
+                },
+                "shake": { "animations": [ "shake" ]}
+            }
+        }
+    }
+}

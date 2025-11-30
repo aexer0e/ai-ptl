@@ -1,0 +1,37 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_movement_system",
+    "$inputs": { "dragon_species": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                //Dragon Species Specific Movement Animations
+                "stand": "animation.gm1_zen.^{dragon_species}^.stand",
+                "walk": "animation.gm1_zen.^{dragon_species}^.walk",
+                "swim": "animation.gm1_zen.^{dragon_species}^.swim",
+                "sit": "animation.gm1_zen.^{dragon_species}^.sit",
+                "scratch": "animation.gm1_zen.^{dragon_species}^.scratch",
+                "sleep": "animation.gm1_zen.^{dragon_species}^.sleep",
+                "general_fix": "animation.gm1_zen.^{dragon_species}^.general_fix",
+                "general_fix_saddle": "animation.gm1_zen.^{dragon_species}^.general_fix_saddle",
+
+                //Dragon Species Global Movement Animations
+                "idle": "animation.gm1_zen.dragon_global.idle",
+                "idle_head": "animation.gm1_zen.dragon_global.idle_head",
+                "idle_head_left": "animation.gm1_zen.dragon_global.idle_head_left",
+                "idle_head_right": "animation.gm1_zen.dragon_global.idle_head_right",
+
+                //global SFX
+                "scratch_sfx": "animation.gm1_zen.dragon_global.scratch_sfx",
+
+                "movement_controller": "controller.animation.gm1_zen.dragon_global.movement"
+            },
+            "scripts": {
+                "animate": [
+                        "movement_controller"
+                    ]
+                }
+        }
+    }
+}

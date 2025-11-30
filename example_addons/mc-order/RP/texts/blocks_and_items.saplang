@@ -1,0 +1,54 @@
+# Items
+## Lives
+item.gm1_ord:sonic_life.name=§bSonic Life§r
+item.gm1_ord:super_sonic_life.name=§eSuper Sonic Life§r
+item.gm1_ord:shadow_life.name=§8Shadow Life§r
+item.gm1_ord:super_shadow_life.name=§eSuper Shadow Life§r
+item.gm1_ord:tails_life.name=§6Tails Life
+item.gm1_ord:knuckles_life.name=§cKnuckles Life§r
+item.gm1_ord:amy_life.name=§dAmy Life§r
+
+## Chaos Emeralds
+item.gm1_ord:chaos_emerald_red_fake.name=§cRed Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_yellow_fake.name=§eYellow Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_green_fake.name=§aGreen Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_cyan_fake.name=§bCyan Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_blue_fake.name=§9Blue Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_purple_fake.name=§dPurple Chaos Emerald Replica§r
+item.gm1_ord:chaos_emerald_white_fake.name=§iWhite Chaos Emerald Replica§r
+
+## Misc Items
+item.gm1_ord:intro_book.name=§bSonic Guidebook
+item.spawn_egg.entity.gm1_ord:ring.name=§pRing
+item.spawn_egg.entity.gm1_ord:mega_ring.name=§pWarp Ring
+item.gm1_ord:chaos_drive.name=§bChaos Drive
+
+## Armor
+item.gm1_ord:transform_helmet.name=§iHelmet Slot
+item.gm1_ord:transform_chestplate.name=§iChestplate Slot
+item.gm1_ord:transform_leggings.name=§iLeggings Slot
+item.gm1_ord:transform_boots.name=§iBoots Slot
+
+## Eggman and Badnik Spawnegg
+item.spawn_egg.entity.gm1_ord:badnik_eggrobo.name=§cSpawn Eggrobo
+item.spawn_egg.entity.gm1_ord:eggman.name=§cSpawn Eggman
+
+# Blocks
+tile.gm1_ord:char_select_tv.name=§bSelect Screen
+tile.gm1_ord:tails_tinker_table.name=§bTails' Tinker Table
+gm1_ord.tails_tinker_table=Tinker Table
+tile.gm1_ord:lf_spike.name=§bSpike Block
+tile.gm1_ord:lf_spikes.name=§bSpike Panel
+tile.gm1_ord:lf_spring_yellow.name=§bYellow Spring
+tile.gm1_ord:lf_spring_red.name=§bRed Spring
+tile.gm1_ord:lf_jump_panel.name=§bJump Panel
+tile.gm1_ord:lf_dash_panel.name=§bDash Panel
+tile.gm1_ord:ring_pile.name=§bRing Block
+tile.gm1_ord:mega_ring_platform.name=§bWarp Ring Base
+tile.gm1_ord:chaos_machine.name=§eChaos Machine
+
+tile.gm1_ord:shrine_stone.name=§bShrine Stone
+tile.gm1_ord:shrine_stone_mossy.name=§bMossy Shrine Stone
+tile.gm1_ord:shrine_stone_chiseled.name=§bChiseled Shrine Stone
+tile.gm1_ord:shrine_stone_bricks.name=§bShrine Stone Bricks
+tile.gm1_ord:shrine_stone_plinth.name=§bShrine Stone Plinth

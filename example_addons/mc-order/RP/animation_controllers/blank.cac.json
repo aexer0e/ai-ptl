@@ -1,0 +1,4 @@
+{
+    "format_version": "1.20.80",
+    "animation_controllers": { "controller.animation.gm1_ord.blank": { "states": { "default": {}}}}
+}

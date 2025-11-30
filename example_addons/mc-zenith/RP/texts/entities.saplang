@@ -1,0 +1,14 @@
+## Dragons
+entity.gm1_zen:nightfury.name=§uToothless§r
+entity.gm1_zen:deadlynadder.name=§3Deadly Nadder§r
+entity.gm1_zen:gronckle.name=§nGronckle§r
+entity.gm1_zen:hideouszippleback.name=§2Hideous Zippleback§r
+entity.gm1_zen:monstrousnightmare.name=§cMonstrous Nightmare§r
+
+## Spawn Eggs
+item.spawn_egg.entity.gm1_zen:dragon_egg.name=§dDragon Egg Spawn Egg§r
+item.spawn_egg.entity.gm1_zen:nightfury.name=§uToothless Egg§r
+item.spawn_egg.entity.gm1_zen:deadlynadder.name=§3Deadly Nadder Egg§r
+item.spawn_egg.entity.gm1_zen:gronckle.name=§nGronckle Egg§r
+item.spawn_egg.entity.gm1_zen:hideouszippleback.name=§2Hideous Zippleback Egg§r
+item.spawn_egg.entity.gm1_zen:monstrousnightmare.name=§cMonstrous Nightmare Egg§r

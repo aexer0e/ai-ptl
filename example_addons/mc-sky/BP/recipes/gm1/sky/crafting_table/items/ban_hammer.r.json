@@ -1,0 +1,15 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_sky:ban_hammer.r" },
+        "tags": [ "crafting_table" ],
+        "pattern": [ "IBI", " S ", " S " ],
+        "key": {
+            "I": { "item": "minecraft:gold_ingot" },
+            "B": { "item": "minecraft:gold_block" },
+            "S": { "item": "minecraft:blaze_rod" }
+        },
+        "result": { "item": "gm1_sky:ban_hammer", "data": 0 },
+        "unlock": [{ "item": "minecraft:gold_ingot" }]
+    }
+}

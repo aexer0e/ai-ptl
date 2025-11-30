@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.transformation": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "transforming": "v.transforming" }]},
+                "transforming": {
+                    "animations": [{ "transformation": "!v.is_first_person" }, "transformation_particle" ],
+                    "transitions": [{ "twirl": "query.all_animations_finished || v.is_transformed" }],
+                    "blend_transition": 0.3
+                },
+                "twirl": {
+                    "animations": [{ "twirl": "!v.is_first_person" }],
+                    "transitions": [{ "default": "q.all_animations_finished" }],
+                    "blend_transition": 0.3
+                }
+            }
+        },
+        "controller.animation.gm1_ord.detransformation": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "transforming": "v.detransforming || v.is_losing_life" }]},
+                "transforming": {
+                    "animations": [ "transformation", "transformation_particle" ],
+                    "transitions": [{ "default": "query.all_animations_finished || !v.has_transform_helmet" }],
+                    "blend_transition": 0.3
+                }
+            }
+        },
+        "controller.animation.gm1_ord.super_transform": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "transforming": "v.time_as_character <= 1.0" }]},
+                "transforming": {
+                    "animations": [ "twirl", "transformation_particle" ],
+                    "transitions": [{ "default": "query.all_animations_finished || !v.has_transform_helmet" }]
+                }
+            }
+        }
+    }
+}

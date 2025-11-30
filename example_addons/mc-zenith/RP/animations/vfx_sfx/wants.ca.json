@@ -1,0 +1,21 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.dragon_wants.want_success_vfx": {
+            "loop": true,
+            "particle_effects": { "0.0": { "locator": "want_locator", "effect": "want_success" }}
+        },
+        "animation.gm1_zen.dragon_wants.want_success_right_vfx": {
+            "loop": true,
+            "particle_effects": { "0.0": { "locator": "want_locator_right", "effect": "want_success" }}
+        },
+        "animation.gm1_zen.dragon_wants.want_success_left_vfx": {
+            "loop": true,
+            "particle_effects": { "0.0": { "locator": "want_locator_left", "effect": "want_success" }}
+        },
+        "animation.gm1_zen.dragon_wants.want_success_sfx": {
+            "loop": true,
+            "sound_effects": { "0.0": { "effect": "want_success_sfx" }}
+        }
+    }
+}

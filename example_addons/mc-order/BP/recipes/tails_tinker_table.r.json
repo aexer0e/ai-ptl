@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:tails_tinker_table_recipe" },
+        "tags": [ "crafting_table" ],
+        "priority": 1,
+        "pattern": [ "RR", "WW", "WW" ],
+        "key": { "W": { "tag": "minecraft:planks" }, "R": { "item": "gm1_ord:ring_spawn_egg" }},
+        "result": { "item": "gm1_ord:tails_tinker_table", "data": 1 },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

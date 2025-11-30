@@ -1,0 +1,5 @@
+{
+    "$identifier": "ring",
+    "pickup_range": { "default": [ 1.5, 1.5 ], "character": [ 2.2, 2.2 ]},
+    "despawn_time": { "anim_len": 6.6, "actual": "6.5" }
+}

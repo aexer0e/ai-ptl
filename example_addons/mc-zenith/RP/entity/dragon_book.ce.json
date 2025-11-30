@@ -1,0 +1,35 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:dragon_book",
+            "materials": { "default": "entity_alphatest" },
+            "render_controllers": [ "controller.render.gm1_zen.onboarding_book" ],
+            "textures": { "default": "textures/gm1/zen/entity/dragon_book" },
+            "geometry": { "default": "geometry.gm1_zen.dragon_book" },
+            "scripts": {
+                "initialize": [ "v.status_int = 'main_page';", "v.status = 'main_page';" ],
+                "pre_animation": [
+                    "v.status_int = q.property('gm1_zen:page_number');",
+                    "v.status = (v.status_int == 0) ? 'home' : 'none';",
+                    "v.status = (v.status_int == 1) ? 'page_1_1' : v.status;",
+                    "v.status = (v.status_int == 2) ? 'page_2_1' : v.status;",
+                    "v.status = (v.status_int == 3) ? 'page_3_1' : v.status;",
+                    "v.status = (v.status_int == 4) ? 'page_4_1' : v.status;",
+                    "v.status = (v.status_int == 5) ? 'page_5_1' : v.status;"
+                ],
+                "animate": [ "dragon_book" ]
+            },
+            "animations": {
+                "dragon_book": "controller.animation.gm1_zen.dragon_book",
+                "home": "animation.gm1_zen.dragon_book.home",
+                "page_1_1": "animation.gm1_zen.dragon_book.page_1_1",
+                "page_2_1": "animation.gm1_zen.dragon_book.page_2_1",
+                "page_3_1": "animation.gm1_zen.dragon_book.page_3_1",
+                "page_4_1": "animation.gm1_zen.dragon_book.page_4_1",
+                "page_5_1": "animation.gm1_zen.dragon_book.page_5_1"
+            },
+            "spawn_egg": { "base_color": "#22629c", "overlay_color": "#bf39eb" }
+        }
+    }
+}

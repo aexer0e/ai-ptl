@@ -1,0 +1,61 @@
+name: Upload Build Artifacts
+description: Uploads the build artifacts to the summary
+inputs:
+  sha:
+    description: "The commit SHA"
+    required: true
+  packaged_version:
+    description: "The packaged version"
+    required: true
+  create_template:
+    description: "Create an mctemplate as well as mcworld?"
+    required: false
+  submission_package:
+    description: "Package the submission for the marketplace?"
+    required: false
+
+outputs:
+  mcworld_url:
+    description: "Random number"
+    value: ${{ steps.upload-mcworld.outputs.artifact-url }}
+runs:
+  using: "composite"
+  steps:
+    - name: Upload .mcworld files
+      id: upload-mcworld
+      uses: actions/upload-artifact@v4
+      with:
+        name: mcworld-${{ inputs.packaged_version }}
+        path: |
+          build/output/*.mcworld
+        if-no-files-found: ignore
+
+    - name: Upload .mcaddon files
+      uses: actions/upload-artifact@v4
+      with:
+        name: mcaddon-${{ inputs.packaged_version }}
+        path: |
+          build/output/*.mcaddon
+
+    - name: Upload .mctemplate files
+      if: inputs.create_template == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: mctemplate-${{ inputs.packaged_version }}
+        path: |
+          build/output/*.mctemplate
+        if-no-files-found: ignore
+
+    - name: Upload submission package files
+      if: ${{ inputs.submission_package }} == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: submission-${{ inputs.packaged_version }}
+        path: |
+          build/output/*.zip
+        if-no-files-found: ignore
+
+    - name: Set mcworld URL output
+      if: steps.upload-mcworld.outputs.artifact-url != ''
+      run: echo "mcworld_url=${{ steps.upload-mcworld.outputs.artifact-url }}" >> $GITHUB_OUTPUT
+      shell: bash

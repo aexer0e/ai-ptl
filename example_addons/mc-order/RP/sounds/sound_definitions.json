@@ -1,0 +1,465 @@
+{
+    "format_version": "1.20.80",
+    "sound_definitions": {
+        "gm1_ord:ring_collect": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/ring/Ring-Collect", "volume": 0.5 }]
+        },
+        "gm1_ord:ring_spread": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/ring/Ring_spread", "volume": 1 }]
+        },
+        "gm1_ord:character_damage": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/Player-Death", "volume": 1 }]
+        },
+        "insufficient_rings": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/purchasing/insufficient_rings", "volume": 1 }]
+        },
+        "purchase_success": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/purchasing/Register", "volume": 1 }]
+        },
+        "tv_death": { "category": "neutral", "sounds": [{ "name": "sounds/gm1/ord/entities/enemy_death", "volume": 1 }]},
+        "temp_sound": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/temp/teleport_throw", "volume": 0.5 }]
+        },
+        "transform_jingle": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/transform_end_startcut", "volume": 0.75 }]
+        },
+        "homing_attack": { "category": "player", "sounds": [{ "name": "sounds/gm1/ord/characters/homing", "volume": 1 }]},
+        "homing_no_target": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/homing_no_target", "volume": 0.7 }]
+        },
+        "transform_charge": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/transform_charge", "volume": 0.75 }]
+        },
+        "detransform": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/teleport_confirm", "volume": 0.75 }]
+        },
+        "tails_hover": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/tails/tails_fly_short", "volume": 0.4 }]
+        },
+        "single_hover": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/tails/Tails-hover-1", "volume": 0.2 }]
+        },
+        "sonic_spindash1": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash1", "volume": 0.02, "pitch": 0.6 }]
+        },
+        "sonic_spindash2": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash1", "volume": 0.02, "pitch": 0.8 }]
+        },
+        "sonic_spindash3": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash1", "volume": 0.02, "pitch": 0.9 }]
+        },
+        "sonic_spindash4": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash1", "volume": 0.02, "pitch": 1 }]
+        },
+        "sonic_spindash5": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash1", "volume": 0.02, "pitch": 1.2 }]
+        },
+        "spindash_release": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash2", "volume": 0.7 }]
+        },
+        "dash_pad": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash2", "volume": 0.7 }]
+        },
+        "punch_explosion": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_explosion", "volume": 0.6 }]
+        },
+        "knuckles_charge1": {
+            "category": "player",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_charge",
+                    "volume": 0.11,
+                    "pitch": 0.6,
+                    "is3D": false
+                }
+            ]
+        },
+        "knuckles_charge2": {
+            "category": "player",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_charge",
+                    "volume": 0.11,
+                    "pitch": 0.8,
+                    "is3D": false
+                }
+            ]
+        },
+        "knuckles_charge3": {
+            "category": "player",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_charge",
+                    "volume": 0.11,
+                    "pitch": 1,
+                    "is3D": false
+                }
+            ]
+        },
+        "knuckles_charge4": {
+            "category": "player",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_charge",
+                    "volume": 0.11,
+                    "pitch": 1.2,
+                    "is3D": false
+                }
+            ]
+        },
+        "knuckles_charge5": {
+            "category": "player",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/ord/characters/knuckles/knuckles_punch_charge",
+                    "volume": 0.11,
+                    "pitch": 1.4,
+                    "is3D": false
+                }
+            ]
+        },
+        "amy_charge1": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/amy_hammer_charge", "volume": 0.11, "pitch": 0.6 }]
+        },
+        "amy_charge2": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/amy_hammer_charge", "volume": 0.11, "pitch": 0.8 }]
+        },
+        "amy_charge3": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/amy_hammer_charge", "volume": 0.11, "pitch": 1 }]
+        },
+        "amy_charge4": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/amy_hammer_charge", "volume": 0.11, "pitch": 1.2 }]
+        },
+        "amy_charge5": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/amy_hammer_charge", "volume": 0.11, "pitch": 1.4 }]
+        },
+        "hammer_smash": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/Amy-Hammer-1", "volume": 0.11, "pitch": 1.4 }]
+        },
+        "hammer_swipe": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/amy/Amy-Hammer-2", "volume": 0.11, "pitch": 1.4 }]
+        },
+        "shadow_charge1": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_charge", "volume": 0.05, "pitch": 0.6 }]
+        },
+        "shadow_charge2": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_charge", "volume": 0.05, "pitch": 0.8 }]
+        },
+        "shadow_charge3": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_charge", "volume": 0.05, "pitch": 1 }]
+        },
+        "shadow_charge4": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_charge", "volume": 0.05, "pitch": 1.2 }]
+        },
+        "shadow_charge5": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_charge", "volume": 0.05, "pitch": 1.4 }]
+        },
+        "shadow_blink_out": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_blink_out", "volume": 0.2 }]
+        },
+        "shadow_blink_in": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/shadow/shadow_blink_in", "volume": 0.2 }]
+        },
+        "character_jump": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/jump", "volume": 0.08 }]
+        },
+        "double_jump": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/jump", "volume": 0.08, "pitch": 1.2 }]
+        },
+        "charge_lightning": {
+            "category": "player",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/charge_lightning1", "volume": 0.21 },
+                { "name": "sounds/gm1/ord/characters/charge_lightning2", "volume": 0.21 },
+                { "name": "sounds/gm1/ord/characters/charge_lightning3", "volume": 0.21 },
+                { "name": "sounds/gm1/ord/characters/charge_lightning4", "volume": 0.21 }
+            ]
+        },
+        "shadow_step": {
+            "category": "player",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/shadow/shadow_step1", "volume": 0.1 },
+                { "name": "sounds/gm1/ord/characters/shadow/shadow_step2", "volume": 0.1 },
+                { "name": "sounds/gm1/ord/characters/shadow/shadow_step3", "volume": 0.1 },
+                { "name": "sounds/gm1/ord/characters/shadow/shadow_step4", "volume": 0.1 }
+            ]
+        },
+        "player_step": {
+            "category": "player",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/footstep-sound-2", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/footstep-sound-3", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/footstep-sound-1", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/footstep-sound-4", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/footstep-sound-5", "volume": 0.2 }
+            ]
+        },
+        "water_step": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/water_step1", "volume": 0.65 },
+                { "name": "sounds/gm1/ord/characters/water_step2", "volume": 0.65 },
+                { "name": "sounds/gm1/ord/characters/water_step3", "volume": 0.65 },
+                { "name": "sounds/gm1/ord/characters/water_step4", "volume": 0.65 },
+                { "name": "sounds/gm1/ord/characters/water_step5", "volume": 0.65 }
+            ]
+        },
+        "lava_step": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/water_step1", "volume": 0.65, "pitch": 0.75 },
+                { "name": "sounds/gm1/ord/characters/water_step2", "volume": 0.65, "pitch": 0.75 },
+                { "name": "sounds/gm1/ord/characters/water_step3", "volume": 0.65, "pitch": 0.75 },
+                { "name": "sounds/gm1/ord/characters/water_step4", "volume": 0.65, "pitch": 0.75 },
+                { "name": "sounds/gm1/ord/characters/water_step5", "volume": 0.65, "pitch": 0.75 }
+            ]
+        },
+        "snow_step": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/snow_step1", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/snow_step2", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/snow_step3", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/snow_step4", "volume": 0.2 },
+                { "name": "sounds/gm1/ord/characters/snow_step5", "volume": 0.2 }
+            ]
+        },
+        "top_speed": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/top_speed", "volume": 0.75 }]
+        },
+        "spring": { "category": "player", "sounds": [{ "name": "sounds/gm1/ord/entities/Spring", "volume": 1 }]},
+        "guidebook_open": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/guidebook/guidebook_open", "volume": 1 }]
+        },
+        "guidebook_close": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/guidebook/guidebook_close", "volume": 1 }]
+        },
+        "next_page": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/guidebook/next_page", "volume": 1 }]
+        },
+        "prev_page": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/guidebook/prev_page", "volume": 1 }]
+        },
+        "feature_mega_ring": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/warp_ring/warp_ring_teleport", "volume": 1 }]
+        },
+        "feature_dash_panel": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/sonic/SpinDash2", "volume": 1 }]
+        },
+        "badnik_eggrobo_shoot": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggrobo/shoot", "volume": 1 }]
+        },
+        "badnik_eggrobo_projectile_trail": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggrobo/trail", "volume": 0.5, "pitch": 1.5 }]
+        },
+        "badnik_eggrobo_projectile_hit": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggrobo/hit", "volume": 1 }]
+        },
+        "eggmobile_launchers_charge": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/eggmobile/missile/charge", "volume": 0.25, "pitch": 1, "is3D": false }
+            ]
+        },
+        "eggmobile_launchers_shoot": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/eggmobile/missile/shoot_1", "volume": 2, "pitch": 1 },
+                { "name": "sounds/gm1/ord/entities/eggmobile/missile/shoot_2", "volume": 2, "pitch": 1 },
+                { "name": "sounds/gm1/ord/entities/eggmobile/missile/shoot_3", "volume": 2, "pitch": 1 }
+            ]
+        },
+        "eggmobile_missile_trail": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/missile/trail", "volume": 1, "pitch": 1 }]
+        },
+        "eggmobile_missile_marker": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/missile/marker", "volume": 1, "pitch": 1 }]
+        },
+        "eggmobile_missile_explode": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggrobo/shoot", "volume": 1, "pitch": 0.75 }]
+        },
+        "eggmobile_laser_track": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/laser/track", "volume": 1.5, "pitch": 1 }]
+        },
+        "eggmobile_laser_charge": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/laser/charge", "volume": 1.75, "pitch": 1 }]
+        },
+        "eggmobile_laser_shoot": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/laser/shoot", "volume": 2, "pitch": 1 }]
+        },
+        "eggmobile_stun": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/stun", "volume": 2, "pitch": 1 }]
+        },
+        "eggmobile_stun_loop": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/stun_loop", "volume": 1, "pitch": 1 }]
+        },
+        "eggmobile_prestun": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/prestun", "volume": 2, "pitch": 1.5 }]
+        },
+        "eggmobile_damage": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/damage", "volume": 1, "pitch": 1 }]
+        },
+        "eggmobile_engine": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/engine", "volume": 0.5, "pitch": 1 }]
+        },
+        "eggmobile_gadget": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/gadget", "volume": 0.5, "pitch": 0.5 }]
+        },
+        "eggmobile_recharge": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/recharge", "volume": 0.5, "pitch": 1 }]
+        },
+        "eggmobile_ring_drop": {
+            "category": "music",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/ring_drop", "volume": 0.5, "pitch": 1 }]
+        },
+        "eggrobo_deploy": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/eggrobo/deploy", "volume": 4, "pitch": 0.75 }]
+        },
+        "eggrobo_charge": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/eggrobo/charge", "volume": 4 }]
+        },
+        "eggmobile_swoop_charge": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/swoop/charge", "volume": 2, "pitch": 1 }]
+        },
+        "eggmobile_swoop_attack": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/swoop/attack", "volume": 2, "pitch": 1 }]
+        },
+        "eggmobile_spikes_extend": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/spikes/extend", "volume": 1, "pitch": 1.5 }]
+        },
+        "eggmobile_spikes_retract": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/eggmobile/spikes/retract", "volume": 0.75, "pitch": 1 }]
+        },
+        "eggman_theme_intro": {
+            "category": "music",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/eggmobile/theme/intro", "volume": 0.125, "pitch": 1, "is3D": false }
+            ]
+        },
+        "eggman_theme_loop": {
+            "category": "music",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/eggmobile/theme/loop", "volume": 0.125, "pitch": 1, "is3D": false }
+            ]
+        },
+        "eggman_theme_outro": {
+            "category": "music",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/eggmobile/theme/outro", "volume": 0.125, "pitch": 1, "is3D": false }
+            ]
+        },
+        "chaos_emerald_unlock": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/chaos_emerald/unlock", "volume": 2 }]
+        },
+        "chaos_emerald_collect": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/chaos_emerald/collect", "volume": 1, "pitch": 1 }]
+        },
+        "chaos_emerald_idle": {
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/chaos_emerald/idle", "volume": 0.125, "pitch": 1 }]
+        },
+        "chaos_emerald_theme_intro": {
+            "category": "music",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/chaos_emerald/intro", "volume": 0.5, "pitch": 1, "is3D": false }
+            ]
+        },
+        "chaos_emerald_theme_song": {
+            "category": "music",
+            "sounds": [{ "name": "sounds/gm1/ord/entities/chaos_emerald/song", "volume": 0.5, "pitch": 1, "is3D": false }]
+        },
+        "chaos_emerald_time_out": {
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/ord/entities/chaos_emerald/time_out", "volume": 0.5, "pitch": 1, "is3D": false }
+            ]
+        },
+        "super_sonic_boost": {
+            "category": "player",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/super/boost_sonic", "volume": 0.125, "pitch": 0.75, "is3D": false }
+            ]
+        },
+        "super_shadow_boost": {
+            "category": "player",
+            "sounds": [
+                { "name": "sounds/gm1/ord/characters/super/boost_shadow", "volume": 0.125, "pitch": 0.75, "is3D": false }
+            ]
+        },
+        "super_loop": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/super/loop", "volume": 0.0125, "is3D": false }]
+        },
+        "super_transform_jingle": {
+            "category": "player",
+            "sounds": [{ "name": "sounds/gm1/ord/characters/super/transform", "volume": 0.75 }]
+        }
+    }
+}

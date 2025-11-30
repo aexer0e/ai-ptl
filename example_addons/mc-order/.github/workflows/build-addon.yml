@@ -1,0 +1,66 @@
+name: Build Add-on
+on:
+  workflow_dispatch:
+    inputs:
+      build_train:
+        description: 'Select the build train'
+        required: true
+        default: 'internal'
+        type: choice
+        options:
+          - Internal
+          #- Release Candidate
+          - Content Complete
+          #- Alpha
+          #- First Playable
+          #- First Explorable
+      skip_upload:
+        description: 'Skip uploading the artifact files'
+        required: false
+        default: false
+        type: boolean
+      create_template:
+        description: 'Create an mctemplate as well as mcworld?'
+        required: false
+        default: false
+        type: boolean
+      submission_package:
+        description: 'Create a submission package'
+        required: false
+        default: false
+        type: boolean
+      version_tag:
+        description: 'Tag for the build - Release Only'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  trigger-build-internal:
+    if: ${{ github.event.inputs.build_train == 'Internal' }}
+    uses: ./.github/workflows/build-internal.yml
+    secrets: inherit
+    with:
+      build_train: ${{ github.event.inputs.build_train }}
+      world: ''
+      sha: ${{ github.sha }}
+      run_id: ${{ github.run_id }}
+      run_number: ${{ github.run_number }}
+      skip_upload: ${{ github.event.inputs.skip_upload == 'true' }}
+      create_template: ${{ github.event.inputs.create_template == 'true' }}
+      product_type: "addon"
+  trigger-build-content-complete:
+    if: ${{ github.event.inputs.build_train == 'Content Complete' }}
+    uses: ./.github/workflows/build-cc.yml
+    secrets: inherit
+    with:
+      build_train: ${{ github.event.inputs.build_train }}
+      world: ''
+      sha: ${{ github.sha }}
+      run_id: ${{ github.run_id }}
+      run_number: ${{ github.run_number }}
+      skip_upload: ${{ github.event.inputs.skip_upload == 'true' }}
+      version_tag: ${{ github.event.inputs.version_tag }}
+      submission_package: ${{ github.event.inputs.submission_package == 'true' }}
+      create_template: ${{ github.event.inputs.create_template == 'true' }}
+      product_type: "addon"

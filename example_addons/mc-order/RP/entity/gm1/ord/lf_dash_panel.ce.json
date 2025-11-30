@@ -1,0 +1,13 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:lf_dash_panel",
+            "materials": { "animated": "player_animated" },
+            "textures": { "default": "textures/gm1/ord/blocks/lf_dash_panel" },
+            "geometry": { "default": "geometry.gm1_ord.lf_dash_panel" },
+            "render_controllers": [ "controller.render.gm1_ord.dash_panel.animated" ],
+            "spawn_egg": { "texture": "lf", "texture_index": 5 }
+        }
+    }
+}

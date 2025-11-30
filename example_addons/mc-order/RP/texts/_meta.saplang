@@ -1,0 +1,8 @@
+#### Build info
+build.title=Order Build Info
+build.versionTitle=Version
+build.version=Development
+build.idTitle=Build
+build.id=Last known build; 0
+build.commitSHATitle=Commit
+build.commitSHA=Development

@@ -1,0 +1,12 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:item": {
+        "description": { "identifier": "gm1_zen:dragon_scale_nightfury" },
+        "components": {
+            "minecraft:max_stack_size": { "value": 64 },
+            "minecraft:icon": "gm1_zen_dragon_scale_nightfury",
+            "minecraft:display_name": { "value": "item.gm1_zen:dragon_scale_nightfury.name" },
+            "minecraft:tags": { "tags": [ "gm1_zen:dragon_scale" ]}
+        }
+    }
+}

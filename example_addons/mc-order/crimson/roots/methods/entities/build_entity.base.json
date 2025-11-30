@@ -1,0 +1,53 @@
+{
+    "$identifier": "roots.build_entity.base",
+    "$inputs": {
+        "common": { "$nested": true, "identifier": null, "display_name": null, "description": "$default" },
+        "server": { "$nested": true, "is_spawnable": "$default", "is_summonable": "$default", "content": {}},
+        "client": { "$nested": true, "content": {}}
+    },
+    "$locals": [
+        { "identifier.sanitized": "^common.identifier.replace(/[^a-z0-9_.]/g, '_')" },
+        {
+            "path.server": "BP/entities/^{subpath}^/^{identifier.sanitized}^.e.json",
+            "path.client": "RP/entity/^{subpath}^/^{identifier.sanitized}^.ce.json"
+        }
+    ],
+    "$calls": [
+        {
+            "$call": "action",
+            "$path": "^path.server",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.BP.entity.base",
+                        "identifier": "^common.identifier",
+                        "is_spawnable": "^server.is_spawnable",
+                        "is_summonable": "^server.is_summonable"
+                    }
+                ]
+            }
+        },
+        { "$call": "action", "$path": "^path.server", "$content": "^server.content" },
+        {
+            "$call": "action",
+            "$path": "^path.client",
+            "$content": {
+                "$templates": [{ "$template": "roots.RP.client_entity.base", "identifier": "^common.identifier" }]
+            }
+        },
+        { "$call": "action", "$path": "^path.client", "$content": "^client.content" },
+        {
+            "$call": "method",
+            "$method": "roots.utils.add_saplang_entry",
+            "category": "roots.entity",
+            "description": "^common.description",
+            "key": "entity.^{common.identifier}^.name",
+            "value": "^common.display_name"
+        }
+    ],
+    "$outputs": {
+        "path.server": "^path.server",
+        "path.client": "^path.client",
+        "identifier.sanitized": "^identifier.sanitized"
+    }
+}

@@ -1,0 +1,95 @@
+{
+    "$identifier": "ord:chaos_emerald.ce",
+    "$inputs": { "color": "red", "colour_value": 0, "colour_r": 255, "colour_g": 255, "colour_b": 255 },
+    "format_version": "1.21.40",
+    "minecraft:client_entity": {
+        "description": {
+            "materials": {
+                "default": "phantom",
+                "additive": "gm1_ord_animated_additive",
+                "no_depth": "gm1_ord_depth_function"
+            },
+            "textures": {
+                "default": "textures/gm1/ord/entity/chaos_emerald/^{color}^",
+                "emerald_icon": "textures/gm1/ord/entity/chaos_emerald/i/^{color}^",
+                "emerald_beam": "textures/gm1/ord/entity/emerald_beam",
+                "emerald_jail": "textures/gm1/ord/entity/emerald_jail"
+            },
+            "geometry": {
+                "default": "geometry.gm1_ord.chaos_emerald",
+                "emerald_beam": "geometry.gm1_ord.emerald_beam",
+                "emerald_jail": "geometry.gm1_ord.emerald_jail",
+                "emerald_icon": "geometry.gm1_ord.emerald_icon"
+            },
+            "animations": {
+                "idle": "animation.gm1_ord.chaos_emerald.idle",
+                "float": "animation.gm1_ord.chaos_emerald.float",
+                "tilt": "animation.gm1_ord.chaos_emerald.movement_tilt",
+                "direction_changed": "animation.gm1_ord.chaos_emerald.direction_change",
+                "movement_flavour": "animation.gm1_ord.chaos_emerald.movement_flavour",
+                "trail_controller": "controller.animation.gm1_ord.chaos_emerald_trail",
+                "direction_controller": "controller.animation.gm1_ord.chaos_emerald_change_direction",
+                "rotate_icon_to_camera": "animation.gm1_ord.emerald_icon.rotation_to_camera",
+                "collect_sfx": "animation.gm1_ord.chaos_emerald.collect_sfx",
+                "collect_controller": "controller.animation.gm1_ord.chaos_emerald_collect",
+                "idle_sfx": "animation.gm1_ord.chaos_emerald.idle_sfx"
+            },
+            "sound_effects": { "collect_sfx": "chaos_emerald_collect", "idle_sfx": "chaos_emerald_idle" },
+            "scripts": {
+                "should_update_bones_and_effects_offscreen": true,
+                "initialize": [
+                    "v.direction_x = 0.0;",
+                    "v.direction_z = 0.0;",
+                    "v.direction_changed = 0;",
+                    "v.movement_speed = 0;",
+                    "v.direction_y = 0.0;",
+                    "v.tilt = 0.0;",
+                    "v.rotation = 0.0;",
+                    "v.is_locked = 0.0;",
+                    "v.is_unlocked = 0.0;",
+                    "v.is_eggman = 0.0;",
+                    "v.colour.r = ^{colour_r}^/255;",
+                    "v.colour.g = ^{colour_g}^/255;",
+                    "v.colour.b = ^{colour_b}^/255;",
+                    "v.is_collected = 0;",
+                    "v.starting_up = 0;"
+                ],
+                "pre_animation": [
+                    "v.direction_x = query.property('gm1_ord:move_dir_x');",
+                    "v.direction_z = query.property('gm1_ord:move_dir_z');",
+                    "v.direction_y = math.atan2(v.direction_z, v.direction_x);",
+                    "v.direction_changed = query.property('gm1_ord:direction_changed');",
+                    "v.movement_speed = query.property('gm1_ord:average_speed');",
+                    "v.tilt = math.lerp(v.tilt,v.movement_speed,0.1);",
+                    "v.rotation = v.rotation + (v.movement_speed*4);",
+                    "v.is_locked = query.property('gm1_ord:type') == 'locked' ? 1 : 0;",
+                    "v.is_unlocked = query.property('gm1_ord:type') == 'unlocked' ? 1 : 0;",
+                    "v.is_eggman = query.property('gm1_ord:is_eggman');",
+                    "v.is_collected = query.property('gm1_ord:collected');",
+                    "v.starting_up = query.property('gm1_ord:starting_up');"
+                ],
+                "animate": [
+                    { "tilt": "!v.is_unlocked" },
+                    "trail_controller",
+                    "direction_controller",
+                    "rotate_icon_to_camera",
+                    "collect_controller",
+                    { "idle_sfx": "!v.is_collected" }
+                ]
+            },
+            "render_controllers": [
+                { "controller.render.gm1_ord.chaos_emerald": "!v.is_collected" },
+                {
+                    "controller.render.gm1_ord.chaos_emerald_icon": "query.distance_from_camera >= 20 && query.property('gm1_ord:type') == 'moving'"
+                },
+                { "controller.render.gm1_ord.chaos_emerald_beam": "v.is_locked" },
+                { "controller.render.gm1_ord.emerald_jail": "v.is_locked && v.is_eggman" }
+            ],
+            "particle_effects": {
+                "emerald_trail": "gm1_ord:emerald_trail",
+                "direction_change": "gm1_ord:emerald_direction_change",
+                "collect_emerald": "gm1_ord:emerald_collect"
+            }
+        }
+    }
+}

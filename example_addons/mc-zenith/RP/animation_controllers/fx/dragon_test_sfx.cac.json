@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.sheep_grab": {
+            "states": {
+                "default": { "transitions": [{ "grabbed": "q.is_riding" }]},
+                "grabbed": { "transitions": [{ "released": "!q.is_riding" }], "animations": [ "sheep_grabbed" ]},
+                "released": { "transitions": [{ "default": "q.all_animations_finished" }], "animations": [ "sheep_release" ]}
+            }
+        },
+        "controller.animation.gm1_zen.baby_hatch": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "hatching": "q.variant == 2" }]},
+                "hatching": { "transitions": [{ "hatch": "q.variant == 3" }], "animations": [ "hatching", "egg" ]},
+                "hatch": { "transitions": [{ "default": "q.all_animations_finished" }], "animations": [ "hatch" ]}
+            }
+        }
+    }
+}

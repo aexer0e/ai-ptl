@@ -1,0 +1,11 @@
+{
+    "resource_pack_name": "SKY_RP",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "gm1_common.configurables": { "textures": { "path": "textures/gm1/common/items/configurables" }},
+        "gm1_common.clipboard": { "textures": { "path": "textures/gm1/common/items/clipboard" }},
+        "gm1_sky.server_menu": { "textures": { "path": "textures/gm1/sky/items/server_menu" }},
+        "gm1_sky.land_deed": { "textures": { "path": "textures/gm1/sky/items/land_deed" }},
+        "gm1_sky.ban_hammer": { "textures": { "path": "textures/gm1/sky/items/ban_hammer" }}
+    }
+}

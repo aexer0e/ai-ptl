@@ -1,0 +1,12 @@
+{
+    "author": "GamemodeOne",
+    "icon": "mdi-greater-than",
+    "name": "axiom",
+    "version": "0.0.1",
+    "id": "b65402c3-a84e-4bb3-84dc-c1317d977697",
+    "description": "Removes the axiom object from BP blocks on compile",
+    "api_version": 2,
+    "target": "v2",
+    "tags": [ "Compiler" ],
+    "compiler": { "plugins": { "axiom": "compiler/main.js" }}
+}

@@ -1,0 +1,94 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_wants_system",
+    "$inputs": { "dragon_diet": null, "dragon_species": null, "head_count": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "materials": { "animated": "gm1_zen_animated" },
+            "textures": {
+                "want_bubble": "textures/gm1/zen/entity/dragon/want/bubble",
+                "want_^{dragon_diet}^": "textures/gm1/zen/entity/dragon/want/hungry_^{dragon_diet}^",
+                "want_playful": "textures/gm1/zen/entity/dragon/want/playful",
+                "want_saddle": "textures/gm1/zen/entity/dragon/want/saddle"
+            },
+            "geometry": {
+                "want_bubble": "geometry.gm1_zen.dragon_want_bubble_^{dragon_species}^",
+                "want_icon": "geometry.gm1_zen.dragon_want_icon_^{dragon_species}^"
+            },
+            "animations": {
+                //wants
+                "want_playful": "animation.gm1_zen.dragon_wants.playful",
+                "want_playful_left": "animation.gm1_zen.dragon_wants.playful_left",
+                "want_playful_right": "animation.gm1_zen.dragon_wants.playful_right",
+                "want_playful_success": "animation.gm1_zen.dragon_wants.playful_success",
+                "want_playful_success_left": "animation.gm1_zen.dragon_wants.playful_success_left",
+                "want_playful_success_right": "animation.gm1_zen.dragon_wants.playful_success_right",
+                "want_hungry": "animation.gm1_zen.dragon_wants.hungry",
+                "want_hungry_left": "animation.gm1_zen.dragon_wants.hungry_left",
+                "want_hungry_right": "animation.gm1_zen.dragon_wants.hungry_right",
+                "want_hungry_success": "animation.gm1_zen.dragon_wants.hungry_success",
+                "want_hungry_success_left": "animation.gm1_zen.dragon_wants.hungry_success_left",
+                "want_hungry_success_right": "animation.gm1_zen.dragon_wants.hungry_success_right",
+                "want_hungry_favorite_success": "animation.gm1_zen.dragon_wants.hungry_favorite_success",
+                "want_saddle": "animation.gm1_zen.^{dragon_species}^_wants.saddle",
+                "want_hungry_favorite_success_left": "animation.gm1_zen.dragon_wants.hungry_favorite_success_left",
+                "want_hungry_favorite_success_right": "animation.gm1_zen.dragon_wants.hungry_favorite_success_right",
+
+                "want_saddle_success": "animation.gm1_zen.dragon_wants.saddle_success",
+                "want_success_vfx": "animation.gm1_zen.dragon_wants.want_success_vfx",
+                "want_success_left_vfx": "animation.gm1_zen.dragon_wants.want_success_left_vfx",
+                "want_success_right_vfx": "animation.gm1_zen.dragon_wants.want_success_right_vfx",
+                "want_success_sfx": "animation.gm1_zen.dragon_wants.want_success_sfx",
+                "want_^{head_count}^_controller": "controller.animation.gm1_zen.dragon_wants.want_^{head_count}^",
+
+                //bubble
+                "bubble_face_scale": "animation.gm1_zen.dragon_wants.bubble_face_scale",
+                "bubble_activate": "animation.gm1_zen.dragon_wants.bubble_activate",
+                "bubble_activate_right": "animation.gm1_zen.dragon_wants.bubble_activate_right",
+                "bubble_activate_left": "animation.gm1_zen.dragon_wants.bubble_activate_left",
+                "bubble_activated": "animation.gm1_zen.dragon_wants.bubble_activated",
+                "bubble_activated_left": "animation.gm1_zen.dragon_wants.bubble_activated_left",
+                "bubble_activated_right": "animation.gm1_zen.dragon_wants.bubble_activated_right",
+                "bubble_deactivate": "animation.gm1_zen.dragon_wants.bubble_deactivate",
+                "bubble_deactivate_left": "animation.gm1_zen.dragon_wants.bubble_deactivate_left",
+                "bubble_deactivate_right": "animation.gm1_zen.dragon_wants.bubble_deactivate_right",
+                "bubble_deactivated": "animation.gm1_zen.dragon_wants.bubble_deactivated",
+                "bubble_deactivated_left": "animation.gm1_zen.dragon_wants.bubble_deactivated_left",
+                "bubble_deactivated_right": "animation.gm1_zen.dragon_wants.bubble_deactivated_right",
+                "bubble_^{head_count}^_controller": "controller.animation.gm1_zen.dragon_wants.bubble_^{head_count}^"
+            },
+            "particle_effects": {
+                "want_success": "gm1_zen:want_success"
+            },
+            "sound_effects": {
+                "milestone_small_sfx": "milestone_small",
+                "milestone_medium_sfx": "milestone_medium",
+                "milestone_large_sfx": "milestone_large",
+                "want_success_sfx": "want_success"
+            },
+            "scripts": {
+                "initialize": [
+                    "v.head_choice = 0;"
+                ],
+                "pre_animation": [
+                    "v.head_choice = math.ceil(math.random_integer(1,2));"
+                ],
+                "animate": [
+                    "milestone_tracker",
+                    "want_^{head_count}^_controller",
+                    "bubble_^{head_count}^_controller",
+                    "bubble_face_scale"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.gm1_zen.want_bubble",
+                { "controller.render.gm1_zen.want_^{dragon_diet}^": "q.property('gm1_zen:want') == 'hungry'" },
+                { "controller.render.gm1_zen.want_playful": "q.property('gm1_zen:want') == 'playful'" },
+                {
+                    "controller.render.gm1_zen.want_saddle": "q.property('gm1_zen:want') == 'saddle'"
+                }
+            ]
+        }
+    }
+}

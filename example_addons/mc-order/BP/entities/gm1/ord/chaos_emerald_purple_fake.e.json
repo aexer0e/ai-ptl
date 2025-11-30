@@ -1,0 +1,6 @@
+{
+    "$templates": [{ "$template": "ord:chaos_emerald.e", "color": "purple" }],
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_ord:chaos_emerald_purple_fake" }
+    }
+}

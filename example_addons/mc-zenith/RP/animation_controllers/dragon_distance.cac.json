@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.distance": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "in": "query.lod_index(0, 55, 90)<2 && !query.has_player_rider" },
+                        { "out_stay": "query.lod_index(0, 55, 90)>1 && !query.has_player_rider" }
+                    ]
+                },
+                "in": { "animations": [ "in" ], "transitions": [{ "out": "query.lod_index(0, 55, 90)>1" }]},
+                "out": { "animations": [ "out" ], "transitions": [{ "out_stay": "query.all_animations_finished" }]},
+                "out_stay": { "animations": [ "out_stay" ], "transitions": [{ "in": "query.lod_index(0, 55, 90)<2" }]}
+            }
+        }
+    }
+}

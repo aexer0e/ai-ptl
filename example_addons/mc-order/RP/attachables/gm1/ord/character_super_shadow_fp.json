@@ -1,0 +1,66 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 3, "character_string": "super_shadow" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:super_shadow_life",
+            "animations": {
+                "snap_disappear": "animation.gm1_ord.character_shadow.snap_disappear",
+                "snap_reappear": "animation.gm1_ord.character_shadow.snap_reappear",
+                "dash_disappear": "animation.gm1_ord.character_shadow.dash_disappear",
+                "dash_reappear": "animation.gm1_ord.character_shadow.dash_stop",
+                "dash_reappear2": "animation.gm1_ord.character_shadow.dash_stop2",
+                "dash_reappear3": "animation.gm1_ord.character_shadow.dash_stop3",
+                "charging.chaos1": "animation.gm1_ord.shadow.chaos1_sound",
+                "charging.chaos2": "animation.gm1_ord.shadow.chaos2_sound",
+                "charging.chaos3": "animation.gm1_ord.shadow.chaos3_sound",
+                "charging.chaos4": "animation.gm1_ord.shadow.chaos4_sound",
+                "charging.chaos5": "animation.gm1_ord.shadow.chaos5_sound",
+                "super_shadow_boost_sfx": "animation.gm1_ord.super_shadow.boost_sfx",
+                "shadow.blink_in": "animation.gm1_ord.shadow.blink_in",
+                "twirl": "animation.gm1_ord.transform_twirl.shadow",
+                "token_adjust": "animation.gm1_ord.token_adjust",
+                "super_loop_sfx": "animation.gm1_ord.super_form.loop_sfx"
+            },
+            "sound_effects": {
+                "chaos1": "shadow_charge1",
+                "chaos2": "shadow_charge2",
+                "chaos3": "shadow_charge3",
+                "chaos4": "shadow_charge4",
+                "chaos5": "shadow_charge5",
+                "super_shadow_boost_sfx": "super_shadow_boost",
+                "super_loop_sfx": "super_loop",
+                "shadow_blink_in": "shadow_blink_in",
+                "shadow_step": "shadow_step"
+            },
+            "scripts": {
+                "animate": [
+                    { "fp_body": "v.is_first_person" },
+                    { "fp_arms": "v.is_first_person" },
+                    { "movement_controller": "v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "v.is_first_person" },
+                    { "detransform_controller": "v.is_first_person" },
+                    { "ability_charge_controller": "v.is_first_person" },
+                    { "blink_controller": "v.is_first_person" },
+                    { "target_eyes": "v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "top_speed.sfx": "v.is_first_person" },
+                    { "trail_scale": "v.is_first_person" },
+                    { "liquid_running_offset_controller": "v.is_first_person" },
+                    { "liquid_running_controller": "v.is_first_person" },
+                    { "token_adjust": "!v.is_transformed" },
+                    { "jump_effects_controller": "v.is_first_person && v.has_transform_helmet" },
+                    { "super_loop_sfx": "v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "render_controllers": [
+                { "controller.render.gm1_ord.character_fp": "v.is_first_person && v.is_transformed" },
+                {
+                    "controller.render.gm1_ord.character_charging": "v.is_first_person && v.is_transformed && (v.ability_state > 0 && v.ability_state <= 5)"
+                },
+                { "controller.render.gm1_ord.character_fp_token": "!v.is_transformed" }
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "$identifier": "invisible_slab",
+    "$method": "roots.build_block.generic",
+    "common": { "$nested": true, "identifier": "gm1_ord:invisible_slab", "display_name": "Invisible Slab", "description": "$default" },
+    "server": {
+        "$nested": true,
+        "menu_category": {
+            "$nested": true,
+            "category": "none",
+            "group": "$default",
+            "is_hidden_in_commands": "$default"
+        },
+        "collision_box": { "$nested": true, "width": 1, "height": 1 },
+        "selection_box": { "$nested": true, "width": 1, "height": 1 },
+        "content": {
+            "minecraft:block" : {
+                "components": {
+                    "minecraft:collision_box": {
+                        "origin": [-7.0, 0.0, -7.0],
+                        "size": [14.0, 8.0, 14.0]
+                    },
+                   "minecraft:loot": "loot_tables/gm1/ord/blocks/empty.json",
+                   "minecraft:destructible_by_explosion": true,
+                   "minecraft:destructible_by_mining": false,
+                   "minecraft:selection_box": false
+                }
+            }
+        }
+    },
+    "client": {
+        "$nested": true,
+        "texture_path": "textures/gm1/ord/blocks/blank",
+        "geometry": "geometry.gm1_ord.gbx_slab",
+        "render_method": "alpha_test"
+    }
+}

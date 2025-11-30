@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "max_variant": {"type": "integer", "description": "The maximum number the variant property can have, starting from 0", "title": "Max Variant"},
+        "snap_rotation": {"type": "boolean", "description": "If true, the plant will have grid directions", "title": "Grid Directions"}
+    }
+}

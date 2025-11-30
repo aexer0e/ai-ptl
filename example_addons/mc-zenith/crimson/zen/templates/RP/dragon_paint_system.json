@@ -1,0 +1,29 @@
+{
+    "$identifier": "gm1_zen:dragon_paint_system",
+    "$inputs": { "dragon_species": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "textures": {
+                "empty": "textures/gm1/zen/entity/blank",
+                "white": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_white",
+                "orange": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_orange",
+                "magenta": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_magenta",
+                "light_blue": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_light_blue",
+                "yellow": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_yellow",
+                "lime": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_lime",
+                "pink": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_pink",
+                "gray": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_gray",
+                "light_gray": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_light_gray",
+                "cyan": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_cyan",
+                "purple": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_purple",
+                "blue": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_blue",
+                "brown": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_brown",
+                "green": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_green",
+                "red": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_red",
+                "black": "textures/gm1/zen/entity/dragon/paint/^{dragon_species}^_black"
+            },
+            "render_controllers": [ "controller.render.gm1_zen.dragon_paint" ]
+        }
+    }
+}

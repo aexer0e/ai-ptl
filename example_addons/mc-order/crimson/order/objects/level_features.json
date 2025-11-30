@@ -1,0 +1,9 @@
+{
+    "$identifier": "level_features",
+    "spring_cooldown": 0.9,
+    "spring_range": 0.5,
+    "jump_panel_cooldown": 0.9,
+    "jump_panel_range": 0.45,
+    "dash_panel_cooldown": 0.9,
+    "dash_panel_range": 0.45
+}

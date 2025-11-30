@@ -1,0 +1,28 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "gm1_ord:ring_arrangement_ground_fr",
+            "places_feature": "gm1_ord:arrange_rings_ground_f"
+        },
+        "conditions": {
+            "placement_pass": "before_surface_pass",
+            "minecraft:biome_filter": [
+                {
+                    "all_of": [
+                        { "test": "has_biome_tag", "operator": "!=", "value": "ocean" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "river" }
+                    ]
+                }
+            ]
+        },
+        "distribution": {
+            "iterations": 1,
+            "scatter_chance": 0.06,
+            "coordinate_eval_order": "zxy",
+            "x": { "extent": [ 7, 10 ], "distribution": "uniform" },
+            "y": "query.heightmap(variable.worldx, variable.worldz)",
+            "z": { "extent": [ 7, 10 ], "distribution": "uniform" }
+        }
+    }
+}

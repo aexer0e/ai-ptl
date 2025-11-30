@@ -1,0 +1,751 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.onboarding_book": {
+            "initial_state": "main_page",
+            "states": {
+                "main_page": {
+                    "animations": [ "main_page" ],
+                    "transitions": [
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "settings_page": {
+                    "animations": [ "settings_page" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "credits_page": {
+                    "animations": [ "credits_page" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "changelog_page": {
+                    "animations": [ "changelog_page" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page1": {
+                    "animations": [ "crafting_page1" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page2": {
+                    "animations": [ "crafting_page2" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page3": {
+                    "animations": [ "crafting_page3" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page4": {
+                    "animations": [ "crafting_page4" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page5": {
+                    "animations": [ "crafting_page5" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page6": {
+                    "animations": [ "crafting_page6" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page7": {
+                    "animations": [ "crafting_page7" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page8": {
+                    "animations": [ "crafting_page8" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page9": {
+                    "animations": [ "crafting_page9" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page10": {
+                    "animations": [ "crafting_page10" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page11": {
+                    "animations": [ "crafting_page11" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page12": {
+                    "animations": [ "crafting_page12" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page13": "v.status == 'crafting_page13'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "crafting_page13": {
+                    "animations": [ "crafting_page13" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "crafting_page2": "v.status == 'crafting_page2'" },
+                        { "crafting_page3": "v.status == 'crafting_page3'" },
+                        { "crafting_page4": "v.status == 'crafting_page4'" },
+                        { "crafting_page5": "v.status == 'crafting_page5'" },
+                        { "crafting_page6": "v.status == 'crafting_page6'" },
+                        { "crafting_page7": "v.status == 'crafting_page7'" },
+                        { "crafting_page8": "v.status == 'crafting_page8'" },
+                        { "crafting_page9": "v.status == 'crafting_page9'" },
+                        { "crafting_page10": "v.status == 'crafting_page10'" },
+                        { "crafting_page11": "v.status == 'crafting_page11'" },
+                        { "crafting_page12": "v.status == 'crafting_page12'" },
+                        { "intro_page0": "v.status == 'intro_page0'" }
+                    ]
+                },
+                "intro_page0": {
+                    "animations": [ "intro_page0" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "intro_page1": {
+                    "animations": [ "intro_page1" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "intro_page2": {
+                    "animations": [ "intro_page2" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "intro_page3": {
+                    "animations": [ "intro_page3" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "intro_page4": {
+                    "animations": [ "intro_page4" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "character_sonic": {
+                    "animations": [ "character_sonic" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "character_tails": {
+                    "animations": [ "character_tails" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "character_knuckles": {
+                    "animations": [ "character_knuckles" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_amy": "v.status == 'character_amy'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "character_amy": {
+                    "animations": [ "character_amy" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_shadow": "v.status == 'character_shadow'" }
+                    ]
+                },
+                "character_shadow": {
+                    "animations": [ "character_shadow" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "settings_page": "v.status == 'settings_page'" },
+                        { "credits_page": "v.status == 'credits_page'" },
+                        { "changelog_page": "v.status == 'changelog_page'" },
+                        { "crafting_page1": "v.status == 'crafting_page1'" },
+                        { "intro_page0": "v.status == 'intro_page0'" },
+                        { "intro_page1": "v.status == 'intro_page1'" },
+                        { "intro_page2": "v.status == 'intro_page2'" },
+                        { "intro_page3": "v.status == 'intro_page3'" },
+                        { "intro_page4": "v.status == 'intro_page4'" },
+                        { "character_sonic": "v.status == 'character_sonic'" },
+                        { "character_tails": "v.status == 'character_tails'" },
+                        { "character_knuckles": "v.status == 'character_knuckles'" },
+                        { "character_amy": "v.status == 'character_amy'" }
+                    ]
+                },
+                "quest_super_shadow": {
+                    "animations": [ "quest_super_shadow" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_super_sonic": {
+                    "animations": [ "quest_super_sonic" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_eggman": {
+                    "animations": [ "quest_eggman" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_chaos_machine": {
+                    "animations": [ "quest_chaos_machine" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald0": {
+                    "animations": [ "quest_emerald0" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald1": {
+                    "animations": [ "quest_emerald1" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald2": {
+                    "animations": [ "quest_emerald2" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald3": {
+                    "animations": [ "quest_emerald3" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald4": {
+                    "animations": [ "quest_emerald4" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald5": {
+                    "animations": [ "quest_emerald5" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald6": {
+                    "animations": [ "quest_emerald6" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald7": "v.status == 'quest_emerald7'" }
+                    ]
+                },
+                "quest_emerald7": {
+                    "animations": [ "quest_emerald7" ],
+                    "transitions": [
+                        { "main_page": "v.status == 'main_page'" },
+                        { "quest_super_shadow": "v.status == 'quest_super_shadow'" },
+                        { "quest_super_sonic": "v.status == 'quest_super_sonic'" },
+                        { "quest_eggman": "v.status == 'quest_eggman'" },
+                        { "quest_chaos_machine": "v.status == 'quest_chaos_machine'" },
+                        { "quest_emerald0": "v.status == 'quest_emerald0'" },
+                        { "quest_emerald1": "v.status == 'quest_emerald1'" },
+                        { "quest_emerald2": "v.status == 'quest_emerald2'" },
+                        { "quest_emerald3": "v.status == 'quest_emerald3'" },
+                        { "quest_emerald4": "v.status == 'quest_emerald4'" },
+                        { "quest_emerald5": "v.status == 'quest_emerald5'" },
+                        { "quest_emerald6": "v.status == 'quest_emerald6'" }
+                    ]
+                }
+            }
+        }
+    }
+}

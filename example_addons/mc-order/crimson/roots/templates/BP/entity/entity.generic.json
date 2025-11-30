@@ -1,0 +1,12 @@
+{
+    "$identifier": "roots.BP.entity.generic",
+    "$inputs": { "collision_box": { "width": 1, "height": 1 }, "health": 1, "speed": 0.15 },
+    "minecraft:entity": {
+        "components": {
+            "minecraft:physics": {},
+            "minecraft:collision_box": "^collision_box",
+            "minecraft:health": { "value": "^health" },
+            "minecraft:movement": { "value": "^speed" }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "gm1_ord:ring_arrangement_end_fr",
+            "places_feature": "gm1_ord:arrange_rings_air_f"
+        },
+        "conditions": {
+            "placement_pass": "before_surface_pass",
+            "minecraft:biome_filter": [{ "all_of": [{ "test": "has_biome_tag", "operator": "==", "value": "the_end" }]}]
+        },
+        "distribution": {
+            "iterations": 1,
+            "scatter_chance": 0.7,
+            "coordinate_eval_order": "zxy",
+            "x": { "extent": [ 7, 10 ], "distribution": "uniform" },
+            "y": { "extent": [ 64, 96 ], "distribution": "gaussian" },
+            "z": { "extent": [ 7, 10 ], "distribution": "uniform" }
+        }
+    }
+}

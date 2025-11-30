@@ -1,0 +1,6 @@
+{
+    "$identifier": "oaklogue.dragon_book",
+    "$method": "oaklogue.npc",
+    "entity": "dragon_book.e",
+    "scene": "gm1_zen_dragon:1-home"
+}

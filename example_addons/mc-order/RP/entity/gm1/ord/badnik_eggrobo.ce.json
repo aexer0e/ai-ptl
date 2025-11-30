@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:badnik_eggrobo",
+            "materials": { "default": "entity_emissive" },
+            "textures": { "default": "textures/gm1/ord/entity/badnik/eggrobo" },
+            "geometry": { "default": "geometry.gm1_ord.badnik_eggrobo" },
+            "render_controllers": [ "controller.render.default" ],
+            "spawn_egg": { "texture": "gm1_ord.badniks", "texture_index": 0 },
+            "animations": {
+                "look_at_target": "animation.gm1_ord.badnik_eggrobo.look_at_target",
+                "shoot": "animation.gm1_ord.badnik_eggrobo.shoot",
+                "shoot_sfx": "animation.gm1_ord.badnik_eggrobo.shoot_sfx",
+                "attack_controller": "controller.animation.gm1_ord.badnik_eggrobo_attack",
+                "move": "animation.gm1_ord.badnik_eggrobo.move",
+                "deploy": "animation.gm1_ord.badnik_eggrobo.deploy",
+                "movement_controller": "controller.animation.gm1_ord.badnik_eggrobo_movement"
+            },
+            "scripts": {
+                "initialize": [ "v.is_shooting = 0;" ],
+                "pre_animation": [ "v.is_shooting = q.property('gm1_ord:is_shooting');" ],
+                "animate": [ "look_at_target", "movement_controller", "attack_controller" ]
+            },
+            "sound_effects": { "shoot_sfx": "badnik_eggrobo_shoot" }
+        }
+    }
+}

@@ -1,0 +1,117 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_ord.missile_marker",
+				"texture_width": 48,
+				"texture_height": 48,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "ground_marker",
+					"parent": "root",
+					"pivot": [0, 0.25, 0],
+					"cubes": [
+						{
+							"origin": [-24, 0.25, 20],
+							"size": [44, 0, 4],
+							"uv": {
+								"up": {"uv": [1, 4], "uv_size": [43, -4]}
+							}
+						},
+						{
+							"origin": [20, 0.25, -20],
+							"size": [4, 0, 44],
+							"uv": {
+								"up": {"uv": [44, 44], "uv_size": [4, -44]}
+							}
+						},
+						{
+							"origin": [-24, 0.25, -24],
+							"size": [4, 0, 44],
+							"uv": {
+								"up": {"uv": [44, 45], "uv_size": [4, -44]}
+							}
+						},
+						{
+							"origin": [-20, 0.25, -24],
+							"size": [44, 0, 4],
+							"uv": {
+								"up": {"uv": [1, 4], "uv_size": [43, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "ground_marker_beam",
+					"parent": "ground_marker",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-8, 0, -8],
+							"size": [16, 0, 16],
+							"uv": {
+								"up": {"uv": [32, 48], "uv_size": [-16, -16]}
+							}
+						},
+						{
+							"origin": [-8, 0, -8],
+							"size": [0, 24, 16],
+							"uv": {
+								"east": {"uv": [0, 24], "uv_size": [16, 24]},
+								"west": {"uv": [0, 24], "uv_size": [16, 24]}
+							}
+						},
+						{
+							"origin": [8, 0, -8],
+							"size": [0, 24, 16],
+							"uv": {
+								"east": {"uv": [0, 24], "uv_size": [16, 24]},
+								"west": {"uv": [0, 24], "uv_size": [16, 24]}
+							}
+						},
+						{
+							"origin": [-8, 0, -8],
+							"size": [16, 24, 0],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [16, 24]},
+								"south": {"uv": [0, 24], "uv_size": [16, 24]}
+							}
+						},
+						{
+							"origin": [-8, 0, 8],
+							"size": [16, 24, 0],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [16, 24]},
+								"south": {"uv": [0, 24], "uv_size": [16, 24]}
+							}
+						}
+					]
+				},
+				{
+					"name": "vertical_marker",
+					"parent": "root",
+					"pivot": [0, 16, 0],
+					"cubes": [
+						{
+							"origin": [-8, 8, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [16, 16], "uv_size": [16, 16]},
+								"south": {"uv": [16, 16], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

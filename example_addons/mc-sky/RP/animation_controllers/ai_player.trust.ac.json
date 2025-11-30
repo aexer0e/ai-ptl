@@ -1,0 +1,25 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.trust_vfx": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "trust_up": "query.property('gm1_sky:is_using_item') == 'trust_up' " },
+                        { "trust_down": "query.property('gm1_sky:is_using_item') == 'trust_down' " }
+                    ]
+                },
+                "trust_up": {
+                    "animations": [ "trust_up" ],
+                    "transitions": [
+                        { "default": "query.property('gm1_sky:is_using_item') != 'trust_up' " }
+                    ]
+                },
+                "trust_down": {
+                    "animations": [ "trust_down" ],
+                    "transitions": [{ "default": "query.property('gm1_sky:is_using_item') != 'trust_down' " }]
+                }
+            }
+        }
+    }
+}

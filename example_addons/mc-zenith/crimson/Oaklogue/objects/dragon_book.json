@@ -1,0 +1,25 @@
+{
+    "$identifier": "dragon_book",
+    "name": {
+        "home": { "rawtext": [{ "translate": "dialogue.dragon_book.name.home" }]},
+        "page_1_1": { "rawtext": [{ "translate": "dialogue.dragon_book.name.page_1_1" }]},
+        "page_2_1": { "rawtext": [{ "translate": "dialogue.dragon_book.name.page_2_1" }]},
+        "page_3_1": { "rawtext": [{ "translate": "dialogue.dragon_book.name.page_3_1" }]},
+        "page_4_1": { "rawtext": [{ "translate": "dialogue.dragon_book.name.page_4_1" }]},
+        "page_5_1": { "rawtext": [{ "translate": "dialogue.dragon_book.name.page_5_1" }]}
+    },
+    "display_name": "Book of Dragons",
+    "selector": "@s",
+    "try": {
+        "open": "/execute as @initiator run scriptevent gm1_zen:dragon_book_try_open",
+        "close": "/execute as @initiator run scriptevent gm1_zen:dragon_book_try_close"
+    },
+    "visual": {
+        "home": "/execute as @s run scriptevent gm1_zen:set_dragon_book home",
+        "page_1_1": "/execute as @s run scriptevent gm1_zen:set_dragon_book page_1_1",
+        "page_2_1": "/execute as @s run scriptevent gm1_zen:set_dragon_book page_2_1",
+        "page_3_1": "/execute as @s run scriptevent gm1_zen:set_dragon_book page_3_1",
+        "page_4_1": "/execute as @s run scriptevent gm1_zen:set_dragon_book page_4_1",
+        "page_5_1": "/execute as @s run scriptevent gm1_zen:set_dragon_book page_5_1"
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_zen:ignite_gas",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "gm1_zen:is_ignited": { "type": "bool", "default": false, "client_sync": true }
+            }
+        },
+        "components": {
+            "minecraft:type_family": { "family": [ "static" ]},
+            "minecraft:collision_box": { "height": 0, "width": 0 },
+            "minecraft:health": { "value": 1, "max": 1 },
+            "minecraft:push_through": { "value": 1 },
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            },
+            "minecraft:damage_sensor": { "triggers": [{ "deals_damage": "no" }]}
+        }
+    }
+}

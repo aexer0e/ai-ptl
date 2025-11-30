@@ -1,0 +1,108 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.dragon_global.look": {
+            "loop": true,
+            "bones": {
+                "neck": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? query.target_x_rotation+(100/(query.distance_from_camera+1)) : Math.clamp(query.target_x_rotation, -22.5, 22.5)/4*3",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -45, 45) : Math.clamp(query.target_y_rotation, -45, 45)/4",
+                        0
+                    ]
+                },
+                "neck_left_1": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -45, 45) : Math.clamp(query.target_y_rotation, -45, 45)/4",
+                        0
+                    ]
+                },
+                "neck_right_1": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -45, 45) : Math.clamp(query.target_y_rotation, -45, 45)/4",
+                        0
+                    ]
+                },
+                "neck_left_2": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "neck_right_2": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "neck_left_3": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "neck_right_3": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "skull_left": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? -Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "skull_right": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? -Math.clamp(query.target_x_rotation+(100/(query.distance_from_camera+1)), 0, 45) : 0",
+                        0,
+                        0
+                    ]
+                },
+                "skull": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? query.target_x_rotation+(100/(query.distance_from_camera+1)) : Math.clamp(query.target_x_rotation, -20, 20)/4*3",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -45, 45) : Math.clamp(query.target_y_rotation, -60, 60)/4*3",
+                        0
+                    ]
+                }
+            }
+        },
+        "animation.gm1_zen.dragon_global.look_menacing": {
+            "loop": true,
+            "bones": {
+                "neck_1": { "rotation": [ "Math.clamp(v.look_x, -15, 15)", "Math.clamp(v.look_y, -15, 15)", 0 ]},
+                "neck_2": { "rotation": [ "Math.clamp(v.look_x, -15, 15)", "Math.clamp(v.look_y, -15, 15)", 0 ]},
+                "neck": { "rotation": [ "Math.clamp(v.look_x, -30, 30)", "Math.clamp(v.look_y, -30, 30)", 0 ]},
+                "skull": { "rotation": [ "Math.clamp(v.look_x, -30, 30)", "Math.clamp(v.look_y, -30, 30)", 0 ]}
+            }
+        },
+        "animation.gm1_zen.dragon_gronkle.look": {
+            "loop": true,
+            "bones": {
+                "neck": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? query.target_x_rotation+(100/(query.distance_from_camera+1)) : Math.clamp(query.target_x_rotation, -20, 20)/4*3",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -45, 45) : Math.clamp(query.target_y_rotation, -60, 60)/4",
+                        0
+                    ]
+                },
+                "skull": {
+                    "rotation": [
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? 20+query.target_x_rotation+(100/(query.distance_from_camera+1)) : Math.clamp(query.target_x_rotation, -20, 20)/4*3",
+                        "q.property('gm1_zen:rest_state') == 'sitting' ? Math.clamp(query.target_y_rotation, -30, 30) : Math.clamp(query.target_y_rotation, -60, 60)/4*3",
+                        0
+                    ]
+                }
+            }
+        }
+    }
+}

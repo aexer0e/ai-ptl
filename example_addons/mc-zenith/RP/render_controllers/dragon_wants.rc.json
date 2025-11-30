@@ -1,0 +1,40 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_zen.want_bubble": {
+            "geometry": "Geometry.want_bubble",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.want_bubble" ]
+        },
+        "controller.render.gm1_zen.want_playful": {
+            "geometry": "Geometry.want_icon",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.want_playful" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 4), 4) / 4" ], "scale": [ 1, "1 / 4" ]}
+        },
+        "controller.render.gm1_zen.want_fish": {
+            "geometry": "Geometry.want_icon",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.want_fish" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 4), 4) / 4" ], "scale": [ 1, "1 / 4" ]}
+        },
+        "controller.render.gm1_zen.want_meat": {
+            "geometry": "Geometry.want_icon",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.want_meat" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 4), 4) / 4" ], "scale": [ 1, "1 / 4" ]}
+        },
+        "controller.render.gm1_zen.want_mineral": {
+            "geometry": "Geometry.want_icon",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.want_mineral" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 4), 4) / 4" ], "scale": [ 1, "1 / 4" ]}
+        },
+        "controller.render.gm1_zen.want_saddle": {
+            "geometry": "Geometry.want_icon",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.want_saddle" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 4), 4) / 4" ], "scale": [ 1, "1 / 4" ]}
+        }
+    }
+}

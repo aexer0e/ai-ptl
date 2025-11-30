@@ -1,0 +1,14 @@
+{
+    "$identifier": "gm1_zen:dragon_look_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "look": "animation.gm1_zen.dragon_global.look",
+                "look_menacing": "animation.gm1_zen.dragon_global.look_menacing",
+                "look_controller": "controller.animation.gm1_zen.dragon_global.look"
+            },
+            "scripts": { "initialize": [ "v.look_x = 0;", "v.look_y = 0;" ], "animate": [ "look_controller" ]}
+        }
+    }
+}

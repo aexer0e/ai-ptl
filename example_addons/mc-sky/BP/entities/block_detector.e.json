@@ -1,0 +1,156 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_sky:block_detector", "is_spawnable": false, "is_summonable": true },
+        "component_groups": {
+            "gm1_sky:log": {
+                "minecraft:behavior.move_to_block": {
+                    "search_height": 8,
+                    "search_range": 16,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_log" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:acacia_log",
+                        "minecraft:birch_log",
+                        "minecraft:cherry_log",
+                        "minecraft:dark_oak_log",
+                        "minecraft:jungle_log",
+                        "minecraft:mangrove_log",
+                        "minecraft:oak_log",
+                        "minecraft:spruce_log"
+                    ]
+                }
+            },
+            "gm1_sky:crafting_table": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 5,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_crafting_table" },
+                    "goal_radius": 2,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:crafting_table" ]
+                }
+            },
+            "gm1_sky:ore": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 8,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_ore" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:redstone_ore",
+                        "minecraft:copper_ore",
+                        "minecraft:diamond_ore",
+                        "minecraft:gold_ore",
+                        "minecraft:emerald_ore",
+                        "minecraft:iron_ore",
+                        "minecraft:lapis_ore",
+                        "minecraft:coal_ore",
+                        "minecraft:deepslate_redstone_ore",
+                        "minecraft:deepslate_copper_ore",
+                        "minecraft:deepslate_diamond_ore",
+                        "minecraft:deepslate_emerald_ore",
+                        "minecraft:deepslate_gold_ore",
+                        "minecraft:deepslate_iron_ore",
+                        "minecraft:deepslate_lapis_ore",
+                        "minecraft:deepslate_coal_ore",
+                        "minecraft:nether_gold_ore",
+                        "minecraft:quartz_ore"
+                    ]
+                }
+            },
+            "gm1_sky:ai_bed": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 5,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_ai_bed" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [ "gm1_sky:ai_bed" ]
+                }
+            },
+            "gm1_sky:furnace": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 5,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_furnace" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:furnace" ]
+                }
+            },
+            "gm1_sky:chest": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 5,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:found_chest" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:chest" ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    { "event": "gm1_sky:target", "target": "self", "filters": { "test": "has_target", "value": true }}
+                ]
+            },
+            "minecraft:can_climb": {},
+            "minecraft:type_family": { "family": [ "block_detector", "static" ]},
+            "minecraft:jump.static": { "jump_power": 0.42 },
+            "minecraft:movement.amphibious": { "max_turn": 30 },
+            "minecraft:navigation.generic": {
+                "is_amphibious": false,
+                "can_path_over_water": true,
+                "can_swim": true,
+                "can_walk": true,
+                "can_open_doors": true,
+                "can_pass_doors": true,
+                "can_sink": false,
+                "avoid_damage_blocks": true
+            },
+            "minecraft:collision_box": { "height": 0, "width": 0 },
+            "minecraft:movement": { "value": 0.3 },
+            "minecraft:physics": { "push_towards_closest_space": true },
+            "minecraft:push_through": { "value": 1 },
+            "minecraft:floats_in_liquid": {},
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:block_climber": {}
+        },
+        "events": {
+            "gm1_sky:target": {},
+            "gm1_sky:log": { "add": { "component_groups": [ "gm1_sky:log" ]}},
+            "gm1_sky:crafting_table": { "add": { "component_groups": [ "gm1_sky:crafting_table" ]}},
+            "gm1_sky:ore": { "add": { "component_groups": [ "gm1_sky:ore" ]}},
+            "gm1_sky:ai_bed": { "add": { "component_groups": [ "gm1_sky:ai_bed" ]}},
+            "gm1_sky:furnace": { "add": { "component_groups": [ "gm1_sky:furnace" ]}},
+            "gm1_sky:chest": { "add": { "component_groups": [ "gm1_sky:chest" ]}},
+            "gm1_sky:found_log": {},
+            "gm1_sky:found_crafting_table": {},
+            "gm1_sky:found_ore": {},
+            "gm1_sky:found_ai_bed": {},
+            "gm1_sky:found_furnace": {},
+            "gm1_sky:found_chest": {}
+        }
+    }
+}

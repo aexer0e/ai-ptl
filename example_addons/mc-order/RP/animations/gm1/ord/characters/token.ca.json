@@ -1,0 +1,15 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.token_adjust": {
+            "loop": true,
+            "bones": {
+                "item": {
+                    "rotation": [ "v.is_first_person ? 180 : 90", 0, 22.5 ],
+                    "position": [ "v.is_first_person ? -8 : 0", "v.is_first_person ? 2 : -2", -4 ],
+                    "scale": "v.is_first_person ? 1 : 0.5"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.milestone_tracker": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "milestone_1": "v.time_since_milestone_change < 2 && v.milestone==1" },
+                        { "milestone_2": "v.time_since_milestone_change < 2 && v.milestone==2" },
+                        { "milestone_3": "v.time_since_milestone_change < 2 && v.milestone==3" },
+                        { "milestone_4": "v.time_since_milestone_change < 2 && v.milestone==4" },
+                        { "milestone_5": "v.time_since_milestone_change < 2 && v.milestone==5" },
+                        { "milestone_6": "v.time_since_milestone_change < 2 && v.milestone==6" },
+                        { "milestone_7": "v.time_since_milestone_change < 2 && v.milestone==7" },
+                        { "milestone_8": "v.time_since_milestone_change < 2 && v.milestone==8" },
+                        { "milestone_9": "v.time_since_milestone_change < 2 && v.milestone==9" },
+                        { "milestone_10": "v.time_since_milestone_change < 2 && v.milestone==10" }
+                    ]
+                },
+                "milestone_1": {
+                    "sound_effects": [{ "effect": "milestone_small_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_2": {
+                    "sound_effects": [{ "effect": "milestone_small_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_3": {
+                    "sound_effects": [{ "effect": "milestone_medium_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_medium", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_4": {
+                    "sound_effects": [{ "effect": "milestone_small_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_5": {
+                    "sound_effects": [{ "effect": "milestone_small_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_6": {
+                    "sound_effects": [{ "effect": "milestone_medium_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_medium", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_7": {
+                    "sound_effects": [{ "effect": "milestone_small_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_8": {
+                    "sound_effects": [{ "effect": "milestone_medium_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_medium", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_9": {
+                    "particle_effects": [{ "effect": "milestone_small", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 2" }]
+                },
+                "milestone_10": {
+                    "sound_effects": [{ "effect": "milestone_large_sfx" }],
+                    "particle_effects": [{ "effect": "milestone_large", "locator": "milestone_locator" }],
+                    "transitions": [{ "default": "v.time_since_milestone_change > 20" }]
+                }
+            }
+        }
+    }
+}

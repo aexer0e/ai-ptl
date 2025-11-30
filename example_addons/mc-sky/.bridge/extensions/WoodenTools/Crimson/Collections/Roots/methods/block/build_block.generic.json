@@ -1,0 +1,58 @@
+{
+    "$identifier": "roots.build_block.generic",
+    "$inputs": {
+        "common": {
+            "$nested": true,
+            "identifier": null,
+            "display_name": null,
+            "description": "$default",
+            "addon": "$default"
+        },
+        "server": {
+            "$nested": true,
+            "menu_category": {
+                "$nested": true,
+                "category": "$default",
+                "group": "$default",
+                "is_hidden_in_commands": "$default"
+            },
+            "collision_box": { "$nested": true, "width": 1, "height": 1 },
+            "selection_box": { "$nested": true, "width": 1, "height": 1 },
+            "content": {}
+        },
+        "client": { "$nested": true, "texture_path": null, "geometry": "$default", "render_method": "$default" }
+    },
+    "$locals": { "path.textures": "RP/textures/terrain_texture.json" },
+    "$calls": [
+        {
+            "$call": "method",
+            "$method": "roots.build_block.base",
+            "$context": "base",
+            "common": "^common",
+            "server": "^server",
+            "client": "^client"
+        },
+        {
+            "$call": "action",
+            "$path": "^path.textures",
+            "$content": { "texture_data": { "^base['identifier.sanitized']": { "textures": "^client.texture_path" }}}
+        },
+        {
+            "$call": "action",
+            "$path": "^base['path.server']",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.BP.block.generic",
+                        "texture": "^base['identifier.sanitized']",
+                        "geometry": "^client.geometry",
+                        "render_method": "^client.render_method",
+                        "collision_box": "^server.collision_box",
+                        "selection_box": "^server.selection_box"
+                    }
+                ]
+            }
+        }
+    ],
+    "$outputs": { "path.server": "^base['path.server']" }
+}

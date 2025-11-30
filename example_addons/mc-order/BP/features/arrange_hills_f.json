@@ -1,0 +1,15 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:weighted_random_feature": {
+        "description": { "identifier": "gm1_ord:arrange_hills_f" },
+        "features": [
+            [ "gm1_ord:structure_hill1_f", 4 ],
+            [ "gm1_ord:structure_hill2_f", 4 ],
+            [ "gm1_ord:structure_hill3_f", 4 ],
+            [ "gm1_ord:structure_hill4_f", 2 ],
+            [ "gm1_ord:structure_hill5_f", 2 ],
+            [ "gm1_ord:structure_hill6_f", 1 ],
+            [ "gm1_ord:structure_trap1_f", 3 ]
+        ]
+    }
+}

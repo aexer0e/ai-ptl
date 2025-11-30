@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:ignite_gas",
+            "materials": { "default": "entity_emissive" },
+            "textures": { "default": "textures/gm1/zen/entity/blank" },
+            "geometry": { "default": "geometry.gm1_zen.gas" },
+            "render_controllers": [ "controller.render.default" ],
+            "animations": {
+                "on_hit": "animation.gm1_zen.projectile.on_hit",
+                "scale_up": "animation.gm1_zen.projectile.scale_up"
+            },
+            "particle_effects": { "on_hit": "gm1_zen:gas_ignite" },
+            "sound_effects": { "hit": "hideouszippleback_shot_impact" },
+            "scripts": { "animate": [{ "on_hit": "q.property('gm1_zen:is_ignited')" }, "scale_up" ]},
+            "spawn_egg": { "base_color": "#083864", "overlay_color": "#267ECE" }
+        }
+    }
+}

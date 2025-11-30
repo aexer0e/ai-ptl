@@ -1,0 +1,31 @@
+{
+	"piece_id": "6a87acec-6197-4bbf-148d-fb61cd4e4508",
+	"piece_name": "Zippleback_Twin_Head",
+	"piece_type": "persona_head",
+	"geometry_sources": [
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Zippleback_Twin_Head.medium.over_hair",
+			"zone": ["over_hair"],
+			"texture": "barf_belch_hat.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Zippleback_Twin_Head.tall.over_hair",
+			"zone": ["over_hair"],
+			"texture": "barf_belch_hat.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Zippleback_Twin_Head.small.over_hair",
+			"zone": ["over_hair"],
+			"texture": "barf_belch_hat.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Zippleback_Twin_Head.smaller.over_hair",
+			"zone": ["over_hair"],
+			"texture": "barf_belch_hat.png"
+		}
+	]
+}

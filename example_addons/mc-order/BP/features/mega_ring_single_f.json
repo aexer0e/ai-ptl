@@ -1,0 +1,33 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:single_block_feature": {
+        "description": { "identifier": "gm1_ord:mega_ring_single_f" },
+        "places_block": "gm1_ord:mega_ring_platform",
+        "enforce_placement_rules": true,
+        "enforce_survivability_rules": true,
+        "may_replace": [ "minecraft:air", "minecraft:snow_layer" ],
+        "may_attach_to": {
+            "auto_rotate": false,
+            "min_sides_must_attach": 1,
+            "bottom": [
+                "minecraft:grass_block",
+                "minecraft:dirt",
+                "minecraft:stone",
+                "minecraft:gravel",
+                "minecraft:ice",
+                "minecraft:snow",
+                "minecraft:podzol",
+                "minecraft:mycelium",
+                "minecraft:coarse_dirt",
+                "minecraft:sand",
+                "minecraft:mud",
+                "minecraft:deepslate",
+                "minecraft:clay",
+                "minecraft:tuff",
+                "minecraft:packed_ice",
+                "minecraft:ice"
+            ],
+            "sides": [ "minecraft:air", "minecraft:snow_layer", "minecraft:short_grass", "minecraft:tall_grass" ]
+        }
+    }
+}

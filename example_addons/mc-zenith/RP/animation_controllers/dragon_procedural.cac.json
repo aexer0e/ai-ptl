@@ -1,0 +1,48 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.rotate": {
+            "states": {
+                "default": {
+                    "transitions": [{ "rotate": "Math.abs(v.yaw_rotation_speed) > 0.5" }],
+                    "blend_transition": 0.2
+                },
+                "rotate": {
+                    "animations": [ "rotate" ],
+                    "transitions": [{ "default": "Math.abs(v.yaw_rotation_speed) < 0.5" }],
+                    "blend_transition": 0.2
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_global.tilt": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        {
+                            "tilt": "((v.time_since_ground>3 || (!q.is_tamed && q.has_rider)) && Math.abs(q.vertical_speed) > 4) && !q.is_in_water"
+                        },
+                        { "tilt_swim": "q.is_in_water" }
+                    ],
+                    "blend_transition": 0.75
+                },
+                "tilt": {
+                    "animations": [{ "tilt": "!q.has_player_rider" }, { "tilt_rider": "q.has_player_rider" }],
+                    "transitions": [{ "none": "q.is_on_ground" }, { "tilt_swim": "q.is_in_water" }],
+                    "blend_transition": 0.25
+                },
+                "tilt_swim": {
+                    "animations": [
+                        { "tilt": "0.25 && !q.has_player_rider" },
+                        { "tilt_rider": "0.5 && q.has_player_rider" }
+                    ],
+                    "transitions": [
+                        { "none": "!q.is_in_water" },
+                        { "tilt": "(v.time_since_ground>3 && Math.abs(q.vertical_speed) > 4) && !q.is_in_water" }
+                    ],
+                    "blend_transition": 0.25
+                }
+            }
+        }
+    }
+}

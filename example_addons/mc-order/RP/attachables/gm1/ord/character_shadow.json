@@ -1,0 +1,70 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 3, "character_string": "shadow" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:transform_helmet_shadow",
+            "geometry": { "going_super": "geometry.gm1_ord.character_shadow_charge_shell" },
+            "animations": {
+                "snap_disappear": "animation.gm1_ord.character_shadow.snap_disappear",
+                "snap_reappear": "animation.gm1_ord.character_shadow.snap_reappear",
+                "dash_disappear": "animation.gm1_ord.character_shadow.dash_disappear",
+                "dash_reappear": "animation.gm1_ord.character_shadow.dash_stop",
+                "dash_reappear2": "animation.gm1_ord.character_shadow.dash_stop2",
+                "dash_reappear3": "animation.gm1_ord.character_shadow.dash_stop3",
+                "charging.chaos1": "animation.gm1_ord.shadow.chaos1_sound",
+                "charging.chaos2": "animation.gm1_ord.shadow.chaos2_sound",
+                "charging.chaos3": "animation.gm1_ord.shadow.chaos3_sound",
+                "charging.chaos4": "animation.gm1_ord.shadow.chaos4_sound",
+                "charging.chaos5": "animation.gm1_ord.shadow.chaos5_sound",
+                "spindash_release": "animation.gm1_ord.dash_sound",
+                "shadow.blink_in": "animation.gm1_ord.shadow.blink_in",
+                "twirl": "animation.gm1_ord.transform_twirl.shadow",
+                "machine_step": "animation.gm1_ord.transform_twirl.machine_step"
+            },
+            "sound_effects": {
+                "chaos1": "shadow_charge1",
+                "chaos2": "shadow_charge2",
+                "chaos3": "shadow_charge3",
+                "chaos4": "shadow_charge4",
+                "chaos5": "shadow_charge5",
+                "spindash_release": "shadow_blink_out",
+                "shadow_blink_in": "shadow_blink_in",
+                "shadow_step": "shadow_step"
+            },
+            "scripts": {
+                "animate": [
+                    { "movement_controller": "!v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "!v.is_first_person" },
+                    { "detransform_controller": "!v.is_first_person" },
+                    { "ability_charge_controller": "!v.is_first_person" },
+                    { "blink_controller": "!v.is_first_person" },
+                    { "target_eyes": "!v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "top_speed.sfx": "!v.is_first_person" },
+                    { "trail_scale": "!v.is_first_person" },
+                    { "liquid_running_offset_controller": "!v.is_first_person" },
+                    { "liquid_running_controller": "!v.is_first_person" },
+                    { "jump_effects_controller": "!v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "render_controllers": [
+                {
+                    "controller.render.gm1_ord.character": "v.character <= 1 ? !v.is_first_person && v.is_transformed && !v.detransforming && !v.ballmode : !v.is_first_person && v.is_transformed && !v.detransforming"
+                },
+                {
+                    "controller.render.gm1_ord.character_charging": "!v.is_first_person && v.is_transformed && (v.ability_state > 0 && v.ability_state <= 5)"
+                },
+                {
+                    "controller.render.gm1_ord.character_transforming": "v.transforming || v.detransforming || v.is_losing_life"
+                },
+                { "controller.render.gm1_ord.trail_flipbook": "!v.is_first_person" },
+                { "controller.render.gm1_ord.shadow_home": "!v.is_first_person && v.secondary_state == 1" },
+                {
+                    "controller.render.gm1_ord.going_super": "!v.is_first_person && v.is_transformed && v.helmet_slot == 5"
+                }
+            ]
+        }
+    }
+}

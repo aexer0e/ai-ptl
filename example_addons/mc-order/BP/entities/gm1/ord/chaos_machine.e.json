@@ -1,0 +1,72 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:chaos_machine",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "gm1_ord:has_emerald_blue": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_cyan": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_green": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_purple": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_red": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_white": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:has_emerald_yellow": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_playing_activate_animation": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:is_playing_transform_animation": { "type": "bool", "default": false, "client_sync": true }
+            }
+        },
+        "component_groups": {
+            "gm1_ord:waiting": {
+                "minecraft:entity_sensor": {
+                    "subsensors": [
+                        {
+                            "cooldown": 0,
+                            "range": [ "^o.chaos_machine.initialization_range", "^o.chaos_machine.initialization_range" ],
+                            "event_filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "mob" },
+                                    { "test": "is_family", "subject": "other", "value": "monster" },
+                                    { "all_of": [{ "test": "is_family", "subject": "other", "value": "player" }]}
+                                ]
+                            },
+                            "event": "gm1_ord:chaos_machine_initialize"
+                        }
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:type_family": { "family": [ "chaos_machine" ]},
+            "minecraft:collision_box": { "width": 0, "height": 0 },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    { "width": 1.66667, "height": 0.5, "pivot": [ 1.66667, 0.25, 1.66667 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ 1.66667, 0.25, -1.66667 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ -1.66667, 0.25, -1.66667 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ -1.66667, 0.25, 1.66667 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ 1.66667, 0.25, 0 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ -1.66667, 0.25, 0 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ 0, 0.25, 1.66667 ]},
+                    { "width": 1.66667, "height": 0.5, "pivot": [ 0, 0.25, -1.66667 ]}
+                ]
+            },
+            "minecraft:health": { "value": 20, "max": 20 },
+            "minecraft:nameable": {},
+            "minecraft:physics": { "has_collision": true, "has_gravity": false, "push_towards_closest_space": false },
+            "minecraft:interact": { "interactions": [{ "swing": true }]},
+            "minecraft:fire_immune": {},
+            "minecraft:damage_sensor": {
+                "triggers": [{ "deals_damage": false, "on_damage": { "event": "gm1_ord:on_damage" }}]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { "add": { "component_groups": [ "gm1_ord:waiting" ]}},
+            "gm1_ord:chaos_machine_initialize": { "remove": { "component_groups": [ "gm1_ord:waiting" ]}},
+            "gm1_ord:chaos_machine_reset": { "add": { "component_groups": [ "gm1_ord:waiting" ]}}
+        }
+    }
+}

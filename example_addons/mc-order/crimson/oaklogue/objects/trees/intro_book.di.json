@@ -1,0 +1,1045 @@
+{
+    "$identifier": "gm1_ord",
+    "$method": "oaklogue.tree",
+    "name": "^o.book.name.home",
+    "scenes": {
+        "1-home": {
+            "name": "^o.book.name.home",
+            "text": "Welcome to the §1Sonic Add-On§r! For help, check out §qGet Started§r!\n\nJoin the §mGamemode One§r community!\nDiscord: §8discord.gg/gamemode§r\nBluesky: §8@gamemodeone.com§r\nTikTok: §8tiktok.com/@gmode_one§r\nInstagram: §8instagram.com/gamemodeone§r\nX: §8x.com/gmodeone§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§qGet Started",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Characters",
+                    "scene": "3-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§1Become Super",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Recipes",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Technical",
+                    "scene": "9-settings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Credits",
+                    "scene": "11-credits",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.main" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "2-get-started": {
+            "name": "^o.book.name.introduction",
+            "text": "In this add-on, you can collect rings and transform into Sonic characters! First, gather rings that you find around your world. Then, craft a Select Screen. You can use it to transform into characters and make use of their §5special abilities§r!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lIntroduction",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Collect Rings",
+                    "scene": "2-collect-rings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Select Screen",
+                    "scene": "2-use-a-tv",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Controls",
+                    "scene": "2-controls",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Abilities",
+                    "scene": "2-abilities",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.intro_page0" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "2-collect-rings": {
+            "name": "^o.book.name.collect_rings",
+            "text": "The first step to get started is to collect rings! You'll find rings all over your world. Rings do not respawn, so you'll have to keep exploring to find more!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lCollect Rings",
+                    "scene": "2-collect-rings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Select Screen",
+                    "scene": "2-use-a-tv",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Controls",
+                    "scene": "2-controls",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Abilities",
+                    "scene": "2-abilities",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.intro_page1" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "2-use-a-tv": {
+            "name": "^o.book.name.use_a_tv",
+            "text": "You will need 8 iron ingots surrounding a ring to craft a Select Screen.\n\nWith enough rings, you can purchase a Life from the Select Screen. These allow you to you transform!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Collect Rings",
+                    "scene": "2-collect-rings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lSelect Screen",
+                    "scene": "2-use-a-tv",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Controls",
+                    "scene": "2-controls",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Abilities",
+                    "scene": "2-abilities",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.intro_page2" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "2-controls": {
+            "name": "^o.book.name.controls",
+            "text": "Hold §tINTERACT§r with your character life to transform!\n\nYour character can run faster, jump higher, and travel smoothly over land and water alike.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Collect Rings",
+                    "scene": "2-collect-rings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Select Screen",
+                    "scene": "2-use-a-tv",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lControls",
+                    "scene": "2-controls",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Abilities",
+                    "scene": "2-abilities",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.intro_page3" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "2-abilities": {
+            "name": "^o.book.name.abilities",
+            "text": "Each character has their own abilities, check out their character page for more information.\n\n§5Special Ability§r: Hold §tSNEAK§r for a few seconds to charge the ability!\n§3Boost Ability§r: Press §tJUMP§r while you're in the air.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "2-get-started",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Collect Rings",
+                    "scene": "2-collect-rings",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Select Screen",
+                    "scene": "2-use-a-tv",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Controls",
+                    "scene": "2-controls",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lAbilities",
+                    "scene": "2-abilities",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.intro_page4" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "3-sonic": {
+            "name": "^o.book.name.sonic",
+            "text": "The Blue Blur! Gotta go fast!\n\n§5Spin Dash§r: Hold §tSNEAK§r to charge your Spin Dash. Gain a boost of speed. §mBreaks blocks at max charge!§r\n\n§3Homing Attack§r: Press §tJUMP§r while in air to zip towards a nearby enemy!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lSonic",
+                    "scene": "3-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "Tails", "scene": "3-tails", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Knuckles",
+                    "scene": "3-knuckles",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "Amy", "scene": "3-amy", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Shadow",
+                    "scene": "3-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.character_sonic" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "3-tails": {
+            "name": "^o.book.name.tails",
+            "text": "Tails is great for beginners!\n\n§5Spin Dash§r: Hold §tSNEAK§r to charge your Spin Dash. Gain a boost of speed. §mBreaks blocks at max charge!§r\n\n§3Hover§r: Hold §tJUMP§r to hover.",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "Sonic", "scene": "3-sonic", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "§lTails",
+                    "scene": "3-tails",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Knuckles",
+                    "scene": "3-knuckles",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "Amy", "scene": "3-amy", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Shadow",
+                    "scene": "3-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.character_tails" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "3-knuckles": {
+            "name": "^o.book.name.knuckles",
+            "text": "Knuckles is a heavy hitter!\n\n§5Dash Punch§r: Hold §tSNEAK§r to charge a powerful punch, destroying anything in your path. §mAlways breaks blocks!§r\n\n§3Glide§r: Hold §tJUMP§r while in the air to glide!",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "Sonic", "scene": "3-sonic", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                { "text": "Tails", "scene": "3-tails", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "§lKnuckles",
+                    "scene": "3-knuckles",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "Amy", "scene": "3-amy", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Shadow",
+                    "scene": "3-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.character_knuckles" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "3-amy": {
+            "name": "^o.book.name.amy",
+            "text": "Amy fights with her mighty hammer!\n\n§5Hammer Smash§r: Use §tSNEAK§r to charge your mighty Piko Piko Hammer! It works best while falling!\n\n§3Double Jump§r: §tJUMP§r while in the air to jump again!",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "Sonic", "scene": "3-sonic", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                { "text": "Tails", "scene": "3-tails", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Knuckles",
+                    "scene": "3-knuckles",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§lAmy", "scene": "3-amy", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Shadow",
+                    "scene": "3-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.character_amy" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "3-shadow": {
+            "name": "^o.book.name.shadow",
+            "text": "Shadow is fast and chaotic!\n\n§5Chaos Dash§r: Hold §tSNEAK§r to charge, then release teleport forward to obliterate enemies! §mBreaks blocks at max charge!§r\n\n§3Chaos Snap§r: Press §tJUMP§r while in air to fling towards a nearby enemy!",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "Sonic", "scene": "3-sonic", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                { "text": "Tails", "scene": "3-tails", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "Knuckles",
+                    "scene": "3-knuckles",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "Amy", "scene": "3-amy", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "§lShadow",
+                    "scene": "3-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.character_shadow" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "4-recipes": {
+            "name": "^o.book.name.recipes",
+            "text": "Create new blocks and items to enhance your world. You can craft a special crafting table, §1Tails' Tinker Table§r, which is required to craft these gadgets.\n\n§tIf you lose this book, craft a new book using 1 ring!§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "General",
+                    "scene": "5-sonic-TV-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Movement",
+                    "scene": "6-yellow-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Hazards",
+                    "scene": "7-spike-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Building",
+                    "scene": "13-ring-block-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Special",
+                    "scene": "8-chaos-machine-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page1" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "5-sonic-TV-recipe": {
+            "name": "^o.book.name.sonic_tv",
+            "text": "§1Select Screen§r: Used to purchase Character Lives! They let you transform into Sonic characters!\n\n§tCrafted using 8 Iron Ingots, and 1 ring that you found out in the world.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lSelect Screen",
+                    "scene": "5-sonic-TV-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Tinker Table",
+                    "scene": "5-tinker-table-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page2" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "5-tinker-table-recipe": {
+            "name": "^o.book.name.tinker_table",
+            "text": "§1Tails' Tinker Table§r: Used to create nifty Sonic items!\n\n§tCrafted using any 4 planks and 2 rings.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Select Screen",
+                    "scene": "5-sonic-TV-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lTinker Table",
+                    "scene": "5-tinker-table-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page3" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "6-yellow-spring-recipe": {
+            "name": "^o.book.name.yellow_spring",
+            "text": "§1Yellow Spring§r: Bouncy!\n\n§tCrafted using 1 yellow dye, 1 piston, and a ring.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lYellow Spring",
+                    "scene": "6-yellow-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Red Spring",
+                    "scene": "6-red-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dash Panel",
+                    "scene": "6-dash-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Jump Panel",
+                    "scene": "6-jump-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page4" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "6-red-spring-recipe": {
+            "name": "^o.book.name.red_spring",
+            "text": "§1Red Spring§r: Super bouncy!\n\n§tCrafted using 1 red dye, 1 piston, and a ring.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Yellow Spring",
+                    "scene": "6-yellow-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lRed Spring",
+                    "scene": "6-red-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dash Panel",
+                    "scene": "6-dash-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Jump Panel",
+                    "scene": "6-jump-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page10" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "6-dash-panel-recipe": {
+            "name": "^o.book.name.dash_panel",
+            "text": "§1Dash Panel§r: Gotta go fast! The dash panel will zip you forward, which is great for building speed!\n\n§tCrafted using 1 powered rail and 2 rings.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Yellow Spring",
+                    "scene": "6-yellow-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Red Spring",
+                    "scene": "6-red-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDash Panel",
+                    "scene": "6-dash-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Jump Panel",
+                    "scene": "6-jump-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page7" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "6-jump-panel-recipe": {
+            "name": "^o.book.name.jump_panel",
+            "text": "§1Jump Panel§r: Look out! The jump panel will fling you forward.\n\n§tCrafted using 1 red spring and 1 dash panel.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Yellow Spring",
+                    "scene": "6-yellow-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Red Spring",
+                    "scene": "6-red-spring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dash Panel",
+                    "scene": "6-dash-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lJump Panel",
+                    "scene": "6-jump-panel-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page5" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "7-spike-recipe": {
+            "name": "^o.book.name.spike",
+            "text": "§1Spike Block§r: Ouch! Spikes hurt anything that steps on them. Look out, Sonic!\n\n§tCrafted using 3 iron nuggets, 1 iron ingot, and 3 rings.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lSpike Block",
+                    "scene": "7-spike-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Spike Panel",
+                    "scene": "7-spikes-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page6" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "7-spikes-recipe": {
+            "name": "^o.book.name.spikes",
+            "text": "§1Spike Panel§r: Mash spikes together into a panel! These smaller spikes are less painful to step on.\n\n§tCrafted using 5 spikes.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Spike Block",
+                    "scene": "7-spike-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lSpike Panel",
+                    "scene": "7-spikes-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page11" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "8-chaos-machine-recipe": {
+            "name": "^o.book.name.chaos_machine",
+            "text": "§1Chaos Machine§r: Harness the power of the 7 Chaos Emeralds to transform into Super Sonic and Super Shadow!\n\n§tCrafted from 1 warp ring, 2 iron blocks, 3 glass blocks, and 3 Chaos Drives.§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lChaos Machine",
+                    "scene": "8-chaos-machine-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Warp Ring",
+                    "scene": "8-warp-ring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page13" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "8-warp-ring-recipe": {
+            "name": "^o.book.name.warp_ring",
+            "text": "§1Warp Ring§r: The almighty warp ring will return you to your spawn point when you enter it!\n\n§tCrafted using 8 ring blocks.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Chaos Machine",
+                    "scene": "8-chaos-machine-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lWarp Ring",
+                    "scene": "8-warp-ring-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page9" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "13-ring-block-recipe": {
+            "name": "^o.book.name.ring_block",
+            "text": "§1Ring Block§r: A stack of rings.\n\n§tCrafted using 9 rings.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lRing Block",
+                    "scene": "13-ring-block-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Shrine Stone",
+                    "scene": "13-shrine-stone-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page8" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "13-shrine-stone-recipe": {
+            "name": "^o.book.name.shrine_stone",
+            "text": "§1Shrine Stone§r: An ancient but durable stone.\n\n§tCrafted using 2 rings and 2 dripstone blocks.\nAdd vines to shrine stone to make it mossy.\n4 shrine stone makes shrine stone bricks.\n4 shrine stone bricks makes chiseled shrine stone.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Ring Block",
+                    "scene": "13-ring-block-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lShrine Stone",
+                    "scene": "13-shrine-stone-recipe",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§4Back",
+                    "scene": "4-recipes",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.crafting_page12" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "9-settings": {
+            "name": "^o.book.name.settings",
+            "text": "You can change the camera perspective in your video settings. Try playing in third person mode!\n\nFor a smoother experience at high speeds, try turning §tView Bobbing§r off in your video settings.\n\nIn order to mine blocks with your abilities, play with §tMob Griefing§r turned on in your world settings.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Changelog",
+                    "scene": "10-changelog",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Settings",
+                    "scene": "",
+                    "speaker": "@s",
+                    "commands": [ 
+                        "playsound ui.button.click @initiator",
+                        "scriptevent gm1_ord:open_configurable_menu"
+                    ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.settings" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "10-changelog": {
+            "name": "^o.book.name.changelog",
+            "text": "§qv1.0.1§r§l:§r Bug Fix 1\n\nFull changelog at gm1.ca/support \n\n§1Change§r:\n\n - Characters can break more blocks. \n - Rings now stay on the ground longer after dropping them. \n\n§1Fix§r: \n - Characters can now home to the ender dragon. \n - Players should no longer get stuck half transformed. \n - Warp Rings no longer randomly teleport players. \n - Warp Rings no longer teleport players into the sky. \n - Various animation fixes.",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "§4Back", "scene": "9-settings", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.changelog" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "11-credits": {
+            "name": "^o.book.name.credits",
+            "text": "Created by §mGamemode One§r\n\n§1Directed By§r - Sean Davidson\n§1Executive Producer§r - Tian Figg\n§1Associate Producer§r - Brandon Walsh\n\n§lDESIGN§r\n§1Game Designer§r - Jack Woodward\nKit Houle\n\n§lART§r\n§1Art Director§r - Wilson Viegas \nLenni Määttänen \nOscar San Miguel\n\n§lENGINEERING§r\nAlexander Thomas\nCade Anderson\nJames Deogrades\nIbrahim Shaban\nAdam Brady\nHong Huang\n\n§lFX§r\n§1Sr. Technical Artist§r - Matthew Blair\n§1Animator§r - Alyssa Nicholas\n§1Audio Designer§r - Scott Kerslake\n§1Audio Designer§r - Joshua Richardson\n\n§lQUALITY ASSURANCE§r\n§1Release Manager§r - Thomas Orsbourne\n\n§lMARKETING§r\n§1Marketing Artist§r - Jos Vieveen\n§1Graphic Artist§r - Joanne Leung\n§1Community Manager§r - Jade Yhap\nAnton Charpentier\n\n§lBUSINESS§r\n§1General Manager§r - Chinara Adhofer\n§1HR Coordinator§r - Sarah Creelman\n\n§lTOOLS§r\nbridge.\nBlockbench\n\n§lSPECIAL THANKS TO§r\nMojang Studios\nSega\nMatteo Simonetti\nJohn Newell\nJonathon Zhang\nCarter Patterson\nJared Gyorffy\nAngela De Wet\nTrent Baker",
+            "langspace": "credits",
+            "options": [
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.credits" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        
+        "12-chaos-emeralds": {
+            "name": "^o.book.name.chaos_emeralds",
+            "text": "Gather all 7 of the legendary §1Chaos Emeralds§r to transform into §1Super Forms§1! You can find them upon §1Shrines§r around your world. Look for them in flat areas, like plains and deserts!\n\nOnce you've found one, you'll have to catch it! I just hope nobody tries to get in your way...",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lChaos Emeralds",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dr Eggman",
+                    "scene": "12-eggman",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Transform",
+                    "scene": "12-super",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Sonic",
+                    "scene": "12-super-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Shadow",
+                    "scene": "12-super-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.chaos_emerald.none","^o.book.visual.chaos_emerald.one","^o.book.visual.chaos_emerald.two","^o.book.visual.chaos_emerald.three","^o.book.visual.chaos_emerald.four","^o.book.visual.chaos_emerald.five","^o.book.visual.chaos_emerald.six","^o.book.visual.chaos_emerald.all" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "12-eggman": {
+            "name": "^o.book.name.eggman",
+            "text": "Have you heard? §1Dr Eggman§r has invaded your world! He's trying to gather all of the §1Chaos Emeralds§r... you might run into him during your adventure! If you see any suspicious robots, get ready for the fight of your life! By defeating him, you'll earn a §1Chaos Drive§r.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Chaos Emeralds",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDr Eggman",
+                    "scene": "12-eggman",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Transform",
+                    "scene": "12-super",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Sonic",
+                    "scene": "12-super-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Shadow",
+                    "scene": "12-super-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.quest_eggman" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "12-super": {
+            "name": "^o.book.name.super",
+            "text": "Sonic and Shadow can both transform into §1Super Forms§r! You'll need to gather all seven §1Chaos Emeralds§r and build a §1Chaos Machine§r.\n\nStep onto the §1Chaos Machine§r as Sonic or Shadow to Transform! You need §1rings§r to stay in §1Super Form§r!\n\n§tThe Chaos Machine is crafted from 1 warp ring, 2 iron blocks, 3 glass blocks, and 3 Chaos Drives.§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Chaos Emeralds",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dr Eggman",
+                    "scene": "12-eggman",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lTransform",
+                    "scene": "12-super",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Sonic",
+                    "scene": "12-super-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Shadow",
+                    "scene": "12-super-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.quest_chaos_machine" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "12-super-sonic": {
+            "name": "^o.book.name.super_sonic",
+            "text": "Become UNSTOPPABLE!\n\n§5Super Boost§r: Hold §tSNEAK§r to charge your Super Boost. You can fly and §merase blocks in your path§r! §tSNEAK§r again to cancel.\n\n§3Super Homing§r: While using §5Super Boost§r, look at enemies to mark them, and then use §tJUMP§r to attack them all rapidly!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Chaos Emeralds",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dr Eggman",
+                    "scene": "12-eggman",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Transform",
+                    "scene": "12-super",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lSuper Sonic",
+                    "scene": "12-super-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Shadow",
+                    "scene": "12-super-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.quest_super_sonic" ],
+            "on_close": [ "^o.book.try.close" ]
+        },
+        "12-super-shadow": {
+            "name": "^o.book.name.super_shadow",
+            "text": "The ULTIMATE life form!\n\n§5Super Boost§r: Hold §tSNEAK§r to charge your Super Boost. You can fly and §merase blocks in your path§r! §tSNEAK§r again to cancel.\n\n§3Super Snap§r: While using §5Super Boost§r, look at enemies to mark them, and then use §tJUMP§r to attack them all rapidly!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Chaos Emeralds",
+                    "scene": "12-chaos-emeralds",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dr Eggman",
+                    "scene": "12-eggman",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Transform",
+                    "scene": "12-super",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Super Sonic",
+                    "scene": "12-super-sonic",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lSuper Shadow",
+                    "scene": "12-super-shadow",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                { "text": "§4Back", "scene": "1-home", "speaker": "@s", "commands": [ "playsound prev_page @initiator" ]}
+            ],
+            "on_open": [ "^o.book.try.open", "^o.book.visual.quest_super_shadow" ],
+            "on_close": [ "^o.book.try.close" ]
+        }
+    }
+}

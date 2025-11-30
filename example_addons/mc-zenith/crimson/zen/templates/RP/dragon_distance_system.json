@@ -1,0 +1,15 @@
+{
+    "$identifier": "gm1_zen:dragon_distance_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "in": "animation.gm1_zen.distance.in",
+                "out": "animation.gm1_zen.distance.out",
+                "out_stay": "animation.gm1_zen.distance.out_stay",
+                "distance_controller": "controller.animation.gm1_zen.distance"
+            },
+            "scripts": { "animate": [ "distance_controller" ]}
+        }
+    }
+}

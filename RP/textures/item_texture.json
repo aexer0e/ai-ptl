@@ -1,0 +1,8 @@
+{
+    "resource_pack_name": "sprite",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "ns_tpl.configurables": { "textures": { "path": "textures/items/dev/configurables" }},
+        "ns_tpl.cycle": { "textures": { "path": "textures/items/dev/cycle" }}
+    }
+}

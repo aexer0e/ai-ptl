@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.look": {
+            "states": {
+                "calm": {
+                    "animations": [ "look" ],
+                    "transitions": [{ "focused": "query.has_target" }],
+                    "blend_transition": 0.2
+                },
+                "focused": {
+                    "animations": [ "look_menacing" ],
+                    "transitions": [{ "calm": "!query.has_target" }],
+                    "blend_transition": 0.2
+                }
+            }
+        }
+    }
+}

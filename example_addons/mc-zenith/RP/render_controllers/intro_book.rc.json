@@ -1,0 +1,21 @@
+{
+    "format_version": "1.20.70",
+    "render_controllers": {
+        "controller.render.gm1_zen.onboarding_book": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ]
+        },
+        "controller.render.gm1_zen.intro_book_recipe": {
+            "geometry": "Geometry.recipe",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.intro_book_recipe" ]
+        },
+        "controller.render.gm1_zen.intro_book_logo": {
+            "geometry": "Geometry.logo",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.intro_book_logo" ],
+            "uv_anim": { "offset": [ 0, "math.min(math.floor(query.life_time * 16), 24) / 25" ], "scale": [ 1, "1 / 25" ]}
+        }
+    }
+}

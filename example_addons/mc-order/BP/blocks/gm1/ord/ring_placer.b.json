@@ -1,0 +1,14 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:block": {
+        "description": { "identifier": "gm1_ord:ring_placer" },
+        "components": {
+            "minecraft:custom_components": [ "gm1_ord:ring_placer" ],
+            "minecraft:tick": { "interval_range": [ 0, 0 ], "looping": true },
+            "minecraft:geometry": "geometry.gm1_ord.ring",
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_ring", "render_method": "alpha_test", "face_dimming": false }
+            }
+        }
+    }
+}

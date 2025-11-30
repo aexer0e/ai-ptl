@@ -1,0 +1,11 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.block_breaker": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "uv_anim": { "offset": [ 0, "math.round(query.life_time*4)/10" ], "scale": [ 1, "1/10" ]},
+            "textures": [ "Texture.default" ]
+        }
+    }
+}

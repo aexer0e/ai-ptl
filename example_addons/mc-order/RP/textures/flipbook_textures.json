@@ -1,0 +1,26 @@
+[
+    {
+        "flipbook_texture": "textures/gm1/ord/blocks/char_select_tv_front",
+        "atlas_tile_variant": 0,
+        "atlas_tile": "gm1_ord_char_select_tv_front",
+        "ticks_per_frame": 20,
+        "blend_frames": true,
+        "replicate": 1
+    },
+    {
+        "flipbook_texture": "textures/gm1/ord/blocks/lf_dash_panel",
+        "atlas_tile_variant": 0,
+        "atlas_tile": "gm1_ord_lf_dash_panel",
+        "ticks_per_frame": 1,
+        "blend_frames": false,
+        "replicate": 1
+    },
+    {
+        "flipbook_texture": "textures/gm1/ord/entity/onboarding_book_logo",
+        "atlas_tile_variant": 0,
+        "atlas_tile": "onboarding_book_logo",
+        "ticks_per_frame": 1,
+        "blend_frames": false,
+        "replicate": 1
+    }
+]

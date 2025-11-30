@@ -1,0 +1,13 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_ord:eggman_rider", "is_spawnable": false, "is_summonable": true },
+        "components": {
+            "minecraft:collision_box": { "height": 5, "width": 6 },
+            "minecraft:type_family": { "family": [ "eggman_rider" ]},
+            "minecraft:break_blocks": { "breakable_blocks": "^o.eggman.breakable_blocks" },
+            "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": "no" }]},
+            "minecraft:fire_immune": {}
+        }
+    }
+}

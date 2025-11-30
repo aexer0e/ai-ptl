@@ -1,0 +1,61 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.projectile.shot_sfx": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "shot_sfx" }]}
+        },
+        "animation.gm1_zen.projectile.on_hit": {
+            "loop": true,
+            "sound_effects": { "0.0": { "effect": "hit" }},
+            "particle_effects": { "0.0": { "effect": "on_hit", "locator": "effect_locator" }}
+        },
+        "animation.gm1_zen.projectile.on_hit_2": {
+            "animation_length": 1,
+            "loop": false,
+            "particle_effects": { "0.0": [{ "effect": "on_hit" }, { "effect": "on_hit_2" }]},
+            "sound_effects": { "0.0": [{ "effect": "hit" }]}
+        },
+        "animation.gm1_zen.projectile.on_hit_3": {
+            "animation_length": 1,
+            "loop": false,
+            "particle_effects": { "0.0": [{ "effect": "on_hit" }, { "effect": "on_hit_2" }, { "effect": "on_hit_3" }]},
+            "sound_effects": { "0.0": [{ "effect": "hit" }]}
+        },
+        "animation.gm1_zen.projectile.trail": {
+            "animation_length": 0.5,
+            "loop": true,
+            "particle_effects": { "0.0": [{ "effect": "trail", "locator": "effect_locator" }]}
+        },
+        "animation.gm1_zen.projectile.spin_xz": {
+            "loop": true,
+            "bones": {
+                "root": { "rotation": [ "query.life_time*720", "query.life_time*360", 0 ]}
+            }
+        },
+        "animation.gm1_zen.projectile.spin_z": {
+            "loop": true,
+            "bones": {
+                "root": { "rotation": [ 0, "query.body_y_rotation", "query.life_time*360" ], "scale": 1 }
+            }
+        },
+        "animation.gm1_zen.projectile.gas": {
+            "animation_length": 1,
+            "loop": true,
+            "particle_effects": { "0.0": [{ "effect": "gas", "locator": "effect_locator" }]}
+        },
+        "animation.gm1_zen.projectile.move": {
+            "loop": true,
+            "bones": {
+                "effect_locator": { "rotation": [ 0, "query.body_y_rotation", 0 ]}
+            }
+        },
+        "animation.gm1_zen.projectile.scale_up": {
+            "animation_length": 5,
+            "bones": {
+                "root": { "scale": { "0.0": [ 0, 0, 0 ], "0.25": [ 1, 1, 1 ]}}
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:structure_template_feature": {
+        "description": { "identifier": "gm1_ord:ring_circle_hor_f" },
+        "structure_name": "gm1_ord:ring_circle_hor",
+        "adjustment_radius": 0,
+        "facing_direction": "random",
+        "constraints": {
+            "unburied": {},
+            "block_intersection": { "block_allowlist": [ "minecraft:air", "minecraft:water", "minecraft:snow_layer" ]}
+        }
+    }
+}

@@ -1,0 +1,60 @@
+// @prettier-ignore
+{
+    "format_version": "1.10.0",
+    "$identifier": "gm1:vars_player",
+    "minecraft:client_entity": {
+        "description": {
+            "scripts": {
+                "initialize": [
+                    "v.is_phyiscal_player = !v.is_paperdoll && !q.is_in_ui;",
+                    "v.modified_move_speed = 0;",
+                    "v.vertical_speed = 0;",
+
+                    "v.camera_rotation.x = q.camera_rotation(0);",
+                    "v.camera_rotation.y = q.camera_rotation(1);",
+                    "v.rotation_to_camera.x = q.rotation_to_camera(0);",
+                    "v.rotation_to_camera.y = q.rotation_to_camera(1);",
+                    "v.distance_from_camera = q.distance_from_camera;",
+
+                    "v.head_rotation.x = q.head_x_rotation(0);",
+                    "v.head_rotation.y = q.head_y_rotation(0);",
+                    "v.body_rotation.x = q.body_x_rotation;",
+                    "v.body_rotation.y = q.body_y_rotation;",
+
+                    "v.ride_body_rotation.x = q.ride_body_x_rotation;",
+                    "v.ride_body_rotation.y = q.ride_body_y_rotation;",
+                    "v.ride_head_rotation.x = q.ride_head_x_rotation;",
+                    "v.ride_head_rotation.y = q.ride_head_y_rotation;"
+                ],
+                "pre_animation": [
+                    "v.on_ground_time = q.is_on_ground ? v.on_ground_time + q.delta_time : 0;",
+                    "v.air_time = !q.is_on_ground ? v.air_time + q.delta_time : 0;",
+                    "v.modified_move_speed = q.modified_move_speed;",
+                    "v.vertical_speed = q.vertical_speed;",
+
+                    "v.ride_body_rotation.x = q.ride_body_x_rotation;",
+                    "v.ride_body_rotation.y = q.ride_body_y_rotation;",
+                    "v.ride_head_rotation.x = q.ride_head_x_rotation;",
+                    "v.ride_head_rotation.y = q.ride_head_y_rotation;",
+
+                    "v.head_rotation.x = q.head_x_rotation(0);",
+                    "v.head_rotation.y = q.head_y_rotation(0);",
+                    "v.body_rotation.x = q.body_x_rotation;",
+                    "v.body_rotation.y = q.body_y_rotation;",
+
+
+                    "v.distance_from_camera = q.distance_from_camera;",
+                    "v.camera_rotation.x = q.camera_rotation(0);",
+                    "v.camera_rotation.y = q.camera_rotation(1);",
+                    "v.rotation_to_camera.x = q.rotation_to_camera(0);",
+                    "v.rotation_to_camera.y = q.rotation_to_camera(1);",
+
+                    // Variables to determine how long an item has been in use
+                    "v.item_use_max = q.item_max_use_duration;",
+                    "v.item_use_duration = q.item_in_use_duration == v.item_use_max ? 0 : q.item_in_use_duration;",
+                    "v.item_use_in_seconds = v.item_use_duration/400;"
+                ]
+            }
+        }
+    }
+}

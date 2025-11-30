@@ -1,0 +1,55 @@
+{
+	"piece_id": "2b0666dd-a54e-4dc5-7872-c668fcdac8cc",
+	"piece_name": "Nightmare_Wings",
+	"piece_type": "persona_back",
+	"geometry_sources": [
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Nightmare_Wings.tall.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Nightmare_Wings.tall.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Nightmare_Wings.medium.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Nightmare_Wings.medium.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Nightmare_Wings.small.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Nightmare_Wings.small.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Nightmare_Wings.smaller.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "hookfang_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Nightmare_Wings.smaller.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "hookfang_wings.png"
+		}
+	]
+}

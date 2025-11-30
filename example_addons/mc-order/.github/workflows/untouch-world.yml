@@ -1,0 +1,32 @@
+name: Untouch Modified Worlds
+
+on:
+  push:
+    paths:
+      - "worlds/**"
+
+jobs:
+  Untouch-Modified-Worlds:
+    runs-on: ubuntu-latest
+    name: Untouch Modified Worlds
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get Modified Files
+        id: get_modified_files
+        uses: tj-actions/changed-files@v46
+        with:
+          json: true
+          escape_json: false
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      - name: Untouch Modified Worlds
+        uses: gamemode-one/tl-untouch-world-action@main
+        with:
+          modified-files: ${{ steps.get_modified_files.outputs.all_changed_files }}
+          project-name: "mc-sprite"
+          branch-name: ${{ steps.extract_branch.outputs.branch }}

@@ -1,0 +1,15 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:weighted_random_feature": {
+        "description": { "identifier": "gm1_ord:arrange_rings_ground_f" },
+        "features": [
+            [ "gm1_ord:ring_column_f", 5 ],
+            [ "gm1_ord:ring_l_f", 4 ],
+            [ "gm1_ord:ring_pile_f", 10 ],
+            [ "gm1_ord:mega_ring_single_f", 2 ],
+            [ "gm1_ord:ring_cube_f", 4 ],
+            [ "gm1_ord:ring_cross_f", 4 ],
+            [ "gm1_ord:ring_diamond_f", 4 ]
+        ]
+    }
+}

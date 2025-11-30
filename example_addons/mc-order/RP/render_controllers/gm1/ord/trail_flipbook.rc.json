@@ -1,0 +1,43 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.trail_flipbook": {
+            "arrays": {
+                "textures": {
+                    "array.textures": [
+                        "texture.trail_01",
+                        "texture.trail_02",
+                        "texture.trail_03",
+                        "texture.trail_04",
+                        "texture.trail_05",
+                        "texture.trail_06",
+                        "texture.trail_07",
+                        "texture.trail_08",
+                        "texture.trail_09",
+                        "texture.trail_10",
+                        "texture.trail_11",
+                        "texture.trail_12",
+                        "texture.trail_13",
+                        "texture.trail_14",
+                        "texture.trail_15",
+                        "texture.trail_16"
+                    ]
+                }
+            },
+            "geometry": "Geometry.trail",
+            "materials": [{ "*": "Material.animated_additive" }],
+            "textures": [ "array.textures[v.texture_index]" ],
+            "part_visibility": [
+                {
+                    "trail_skull": "v.character <= 1 ? (!v.ballmode && !v.jumped_recently && v.ability_state <= 0 && v.secondary_state != 3) || (v.is_super && v.ability_state == 8) : (!v.ballmode && v.ability_state < 6 && !v.jumped_recently) || (v.is_super && v.ability_state == 8)"
+                },
+                {
+                    "trail_chest": "v.character <= 1 ? (!v.ballmode && !v.jumped_recently && v.ability_state <= 0 && v.secondary_state != 3) : (!v.ballmode && v.ability_state < 6 && !v.jumped_recently)"
+                },
+                {
+                    "trail_ball": "v.character <= 1 ? (v.ballmode || v.jumped_recently || v.ability_state > 0 && (!v.is_super && !v.ability_state >= 8) || v.secondary_state == 3) : (v.ballmode || v.jumped_recently )"
+                }
+            ]
+        }
+    }
+}

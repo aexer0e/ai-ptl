@@ -1,0 +1,140 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.eggmobile.spikes_extend_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": {
+                "0.0": [{ "effect": "spikes_extend_sfx" }],
+                "0.25": [{ "effect": "spikes_extend_sfx" }],
+                "0.5": [{ "effect": "spikes_extend_sfx" }],
+                "0.75": [{ "effect": "spikes_extend_sfx" }]
+            }
+        },
+        "animation.gm1_ord.eggmobile.spikes_retract_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "spikes_retract_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_swoop.charge_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "swoop_charge_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_swoop.attack_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "swoop_attack_sfx" }], "0.25": [{ "effect": "swoop_attack_voice_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_launchers.shoot_sfx": {
+            "loop": true,
+            "animation_length": 2,
+            "sound_effects": {
+                "0.25": { "effect": "launchers_shoot_sfx" },
+                "0.75": { "effect": "launchers_shoot_sfx" },
+                "1.25": { "effect": "launchers_shoot_sfx" },
+                "1.75": { "effect": "launchers_shoot_sfx" }
+            }
+        },
+        "animation.gm1_ord.eggmobile_launchers.charge_sfx": {
+            "loop": true,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "launchers_charge_sfx" }}
+        },
+        "animation.gm1_ord.eggmobile_missile.explode_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "explode_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_missile.trail_sfx": {
+            "animation_length": 2,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "trail_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_missile.marker_sfx": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "marker_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_laser.track_sfx": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "laser_track_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_laser.track_lock_sfx": {
+            "animation_length": 0.25,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "laser_track_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_laser.charge_sfx": {
+            "animation_length": 2,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "laser_charge_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile_laser.shoot_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "laser_shoot_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.eggrobo_deploy_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "eggrobo_charge_sfx" }], "0.375": [{ "effect": "eggrobo_deploy_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.prestun_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "prestun_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.stun_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "stun_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.stun_loop_sfx": {
+            "animation_length": 2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "stun_loop_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.engine_sfx": {
+            "animation_length": 1,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "engine_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.damage_sfx": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "damage_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.gadget_sfx": {
+            "animation_length": 2,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "gadget_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.theme_intro_sfx": {
+            "animation_length": 18,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "theme_intro_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.theme_outro_sfx": {
+            "animation_length": 20,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "theme_outro_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.theme_loop_sfx": {
+            "animation_length": 15,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "theme_loop_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.recharge_sfx": {
+            "animation_length": 2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "recharge_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.ring_drop_sfx": {
+            "animation_length": 3,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "ring_drop_sfx" }]}
+        }
+    }
+}

@@ -1,0 +1,16 @@
+// @prettier-ignore
+{
+    "compilerOptions": {
+        "checkJs": false,
+        "allowJs": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "module": "commonjs",
+        "baseUrl": "./BP/scripts",
+        "target": "ES2023",
+        "outDir": "./build",
+        "skipLibCheck": true,
+        "lib": [ "ES2023" ], // QuickJS supports up to ES2023
+    },
+    "exclude": [ "node_modules", "build", "dist", "example_addons", "**/*.js", "**/*.jsx", "tools/autoPR/*" ]
+}

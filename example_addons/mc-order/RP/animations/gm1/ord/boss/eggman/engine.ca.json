@@ -1,0 +1,49 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.eggmobile.thrusters": {
+			"loop": true,
+			"bones": {
+				"plasma_right": {
+					"rotation": ["query.anim_time*360", 0, 0],
+					"scale": ["1+math.sin(query.anim_time*1440+45)*0.25", "1-math.sin(query.anim_time*1440+45)*0.25", "1-math.sin(query.anim_time*1440+45)*0.25"]
+				},
+				"plasma_left": {
+					"rotation": ["-query.anim_time*360", 0, 0],
+					"scale": ["1+math.sin(query.anim_time*1440)*0.25", "1-math.sin(query.anim_time*1440)*0.25", "1-math.sin(query.anim_time*1440)*0.25"]
+				},
+				"plasma_center": {
+					"rotation": ["-query.anim_time*720", 0, 0],
+					"position": ["math.sin(query.anim_time*1440+90)*1", 0, "math.sin(query.anim_time*1440+90)*3"],
+					"scale": ["1+math.sin(query.anim_time*1440+90)*0.25", "1-math.sin(query.anim_time*1440+90)*0.25", "1-math.sin(query.anim_time*1440+90)*0.25"]
+				}
+			}
+		},
+		"animation.gm1_ord.eggmobile.engine": {
+			"loop": true,
+			"animation_length": 6.0833,
+			"bones": {
+				"exaust_right": {
+					"rotation": [0, 0, "-(math.random(-2,2))"],
+					"position": [0, "math.random(-0.5,0.5)", 0],
+					"scale": {
+						"5.7917": [1, 1, 1],
+						"5.875": [1, 1.65, 1.37],
+						"5.9583": [1.54, 1.14, 0.84],
+						"6.0833": [1, 1, 1]
+					}
+				},
+				"exaust_left": {
+					"rotation": [0, 0, "math.random(-2,2)"],
+					"position": [0, "math.random(-0.5,0.5)", 0],
+					"scale": {
+						"5.7917": [1, 1, 1],
+						"5.875": [1, 1.65, 1.37],
+						"5.9583": [1.54, 1.14, 0.84],
+						"6.0833": [1, 1, 1]
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.80",
+    "animations": {
+        "animation.gm1_sky.blank": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank0": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank1": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank2": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank3": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank4": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank5": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank6": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank7": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank8": { "loop": false, "animation_length": 1 },
+        "animation.gm1_sky.blank9": { "loop": false, "animation_length": 1 }
+    }
+}

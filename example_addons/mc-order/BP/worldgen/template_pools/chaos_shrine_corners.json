@@ -1,0 +1,24 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:template_pool": {
+        "description": { "identifier": "gm1_ord:chaos_shrine_corners" },
+        "elements": [
+            {
+                "element": {
+                    "element_type": "minecraft:single_pool_element",
+                    "location": "gm1_ord/chaos_shrine/corners/corner1",
+                    "processors": "gm1_ord:copper_to_sandstone"
+                },
+                "weight": 1
+            },
+            {
+                "element": {
+                    "element_type": "minecraft:single_pool_element",
+                    "location": "gm1_ord/chaos_shrine/corners/corner2",
+                    "processors": "gm1_ord:copper_to_sandstone"
+                },
+                "weight": 2
+            }
+        ]
+    }
+}

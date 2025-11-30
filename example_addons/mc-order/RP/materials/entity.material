@@ -1,0 +1,14 @@
+{
+    "materials": {
+        "version": "1.0.0",
+        "gm1_ord_animated_additive:entity_beam_additive": {
+            "+samplerStates": [{ "textureWrap": "Repeat", "samplerIndex": 0 }],
+            "+defines": [ "USE_UV_ANIM", "USE_OVERLAY" ]
+        },
+        "gm1_ord_depth_function:entity_alphatest": {
+            "+samplerStates": [{ "textureWrap": "Repeat", "samplerIndex": 0 }],
+            "+defines": [ "USE_UV_ANIM", "USE_OVERLAY" ],
+            "depthFunc": "Always"
+        }
+    }
+}

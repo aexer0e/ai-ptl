@@ -1,0 +1,10 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_zen.dragon_saddle": {
+            "geometry": "Geometry.saddle",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.saddle" ]
+        }
+    }
+}

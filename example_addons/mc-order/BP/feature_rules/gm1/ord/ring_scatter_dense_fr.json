@@ -1,0 +1,18 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:feature_rules": {
+        "description": { "identifier": "gm1_ord:ring_scatter_dense_fr", "places_feature": "gm1_ord:ring_scatter_f" },
+        "conditions": {
+            "placement_pass": "final_pass",
+            "minecraft:biome_filter": [{ "any_of": [{ "test": "has_biome_tag", "operator": "==", "value": "forest" }]}]
+        },
+        "distribution": {
+            "iterations": 2,
+            "scatter_chance": 5,
+            "coordinate_eval_order": "zxy",
+            "x": 0,
+            "y": "query.heightmap(variable.worldx, variable.worldz)",
+            "z": 0
+        }
+    }
+}

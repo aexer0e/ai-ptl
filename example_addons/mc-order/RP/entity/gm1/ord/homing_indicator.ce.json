@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:homing_indicator",
+            "materials": { "default": "gm1_ord_depth_function" },
+            "textures": {
+                "default": "textures/gm1/ord/entity/homing_indicator",
+                "greyed": "textures/gm1/ord/entity/homing_indicator_grey"
+            },
+            "animations": {
+                "locked": "animation.gm1_ord.homing_indicator.homing_locked",
+                "ready": "animation.gm1_ord.homing_indicator.homing_ready",
+                "rotate_to_camera": "animation.gm1_ord.homing_indicator.rotate_to_camera",
+                "controller": "controller.animation.gm1_ord.homing_indicator"
+            },
+            "scripts": {
+                "scale": "query.property('gm1_ord:large_indicator') ? 2 : 1",
+                "initialize": [ "v.is_homing = 0;", "v.homing_timer = 0;", "v.flasher = 0;" ],
+                "pre_animation": [
+                    "v.is_homing = q.has_property('gm1_ord:is_homing') ? q.property('gm1_ord:is_homing') : 0;",
+                    "v.in_queue = q.has_property('gm1_ord:in_queue') ? q.property('gm1_ord:in_queue') : 0;",
+                    "v.homing_timer = v.is_homing ? v.homing_timer + 1 * q.delta_time : 0;",
+                    "v.flasher = math.abs(math.sin(v.homing_timer*360)*0.5);"
+                ],
+                "animate": [ "controller", "rotate_to_camera" ]
+            },
+            "geometry": { "default": "geometry.gm1_ord.homing_indicator" },
+            "render_controllers": [ "controller.render.gm1_ord.homing_indicator" ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.github
+.bridge/*
+node_modules/*
+node_modules
+
+builds/*
+dist
+build
+
+BP/components/*
+NodeData.js

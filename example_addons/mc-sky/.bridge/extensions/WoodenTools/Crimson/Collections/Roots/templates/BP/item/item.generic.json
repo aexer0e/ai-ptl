@@ -1,0 +1,11 @@
+{
+    "$identifier": "roots.BP.item.generic",
+    "$inputs": { "max_stack_size": 64, "allow_off_hand": false, "can_destroy_in_creative": true },
+    "minecraft:item": {
+        "components": {
+            "minecraft:max_stack_size": { "value": "^max_stack_size" },
+            "minecraft:allow_off_hand": { "value": "^allow_off_hand" },
+            "minecraft:can_destroy_in_creative": { "value": "^can_destroy_in_creative" }
+        }
+    }
+}

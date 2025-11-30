@@ -1,0 +1,27 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.ring": {
+            "states": {
+                "default": { "transitions": [{ "spawn": "!v.is_dropped_ring" }, { "dropped": "v.is_dropped_ring" }]},
+                "spawn": {
+                    "animations": [ "spawn" ],
+                    "transitions": [{ "idle": "query.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "idle": { "animations": [{ "rotate": "!v.is_collected" }], "blend_transition": 0.25 },
+                "dropped": {
+                    "animations": [ "fast_rotate" ],
+                    "blend_transition": 0.25,
+                    "transitions": [{ "idle": "query.is_on_ground" }]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.ring_collect": {
+            "states": {
+                "default": { "transitions": [{ "collect": "v.is_collected" }]},
+                "collect": { "animations": [ "collect" ]}
+            }
+        }
+    }
+}

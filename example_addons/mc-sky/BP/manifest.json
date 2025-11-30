@@ -1,0 +1,31 @@
+{
+    "format_version": 2,
+    "metadata": {
+        "authors": [ "Gamemode One" ],
+        "generated_with": { "bridge": [ "2.6.0" ], "dash": [ "0.10.8" ], "blockbench_block_wizard": [ "1.2.1" ]},
+        "product_type": "addon"
+    },
+    "header": {
+        "name": "pack.name",
+        "description": "pack.description",
+        "min_engine_version": [ 1, 21, 60 ],
+        "uuid": "e57f1753-41e8-4497-880f-4a6469b78abb",
+        "version": [ 0, 2, 1 ],
+        "pack_scope": "world"
+    },
+    "modules": [
+        { "type": "data", "uuid": "76f35ead-56d7-4ed6-a9a7-491850ba6f81", "version": [ 0, 2, 1 ]},
+        {
+            "type": "script",
+            "language": "javascript",
+            "uuid": "879c66b2-99c2-4016-a109-330fdb812169",
+            "entry": "scripts/Main.js",
+            "version": [ 0, 2, 1 ]
+        }
+    ],
+    "dependencies": [
+        { "module_name": "@minecraft/server", "version": "1.16.0" },
+        { "module_name": "@minecraft/server-ui", "version": "1.3.0" },
+        { "uuid": "e1eb6fd4-d61d-484d-8e44-6768d5e1f3aa", "version": [ 0, 2, 1 ]}
+    ]
+}

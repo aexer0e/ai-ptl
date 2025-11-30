@@ -1,0 +1,82 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.laser": {
+			"loop": true,
+			"bones": {
+				"laser_root": {
+					"rotation": [0, "-q.body_y_rotation + v.laser_rot_y/100", 0]
+				},
+				"laser_root2": {
+					"rotation": [0, 0, "v.laser_rot_x/100"]
+				},
+				"laser_blast": {
+					"scale": ["v.laser_length/100", 1, 1]
+				},
+				"laser_tracking": {
+					"scale": ["v.laser_length/100", 1, 1]
+				},
+				"laser_charge": {
+					"scale": ["v.laser_length/100", 1, 1]
+				}
+			}
+		},
+		"animation.gm1_ord.laser.focus": {
+			"loop": true,
+			"bones": {
+				"laser_root2": {
+					"rotation": ["query.anim_time*360", 0, 0]
+				}
+			}
+		},
+		"animation.gm1_ord.laser.shoot": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"laser_blast": {
+					"scale": ["v.laser_shoot_length", 1, 1]
+				}
+			}
+		},
+		"animation.gm1_ord.laser.default_pose": {
+			"loop": true,
+			"bones": {
+				"laser_root": {
+					"rotation": [0, -90, 0]
+				},
+				"laser_root2": {
+					"rotation": [0, 0, -15]
+				}
+			}
+		},
+		"animation.gm1_ord.laser.offset": {
+			"loop": true,
+			"bones": {
+				"laser_root": {
+					"position": [0, "v.laser_offset_y*16", "-v.laser_offset_z*16"]
+				}
+			}
+		},
+		"animation.gm1_ord.laser.ball_charge": {
+			"loop": true,
+			"bones": {
+				"laser_balls": {
+					"position": [0, 0, "-4+20*1/math.exp(q.anim_time*2)"],
+					"scale": "4+4/-math.exp(q.anim_time*4/2)"
+				},
+				"laser_ball_1": {
+					"rotation": [0, "q.anim_time*360", "q.anim_time*360"]
+				},
+				"laser_ball_2": {
+					"rotation": ["q.anim_time*360", 0, "q.anim_time*360"]
+				},
+				"laser_ball_3": {
+					"rotation": ["q.anim_time*360", "q.anim_time*360", 0]
+				},
+				"laser_tracking": {
+					"rotation": ["query.anim_time*360", 0, 0],
+					"scale": [1, "1.5+math.sin(query.anim_time*720)", "1.5-math.sin(query.anim_time*720)"]
+				}
+			}
+		}
+	}
+}

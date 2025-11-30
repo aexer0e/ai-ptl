@@ -1,0 +1,678 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "saddle": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/jingles/saddle", "volume": 0.5, "load_on_low_memory": true }]
+        },
+        "small_flap": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/snol_flap1", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/snol_flap2", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/snol_flap3", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/snol_flap4", "volume": 0.2, "load_on_low_memory": true }
+            ]
+        },
+        "med_flap": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/flap1", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/flap2", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/flap3", "volume": 0.2, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/flap4", "volume": 0.2, "load_on_low_memory": true }
+            ]
+        },
+        "big_flap": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap1", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap2", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap3", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap4", "volume": 0.1, "load_on_low_memory": true }
+            ]
+        },
+        "big_flap_ride": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap1", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap2", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap3", "volume": 0.1, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/big_flap4", "volume": 0.1, "load_on_low_memory": true }
+            ]
+        },
+        "ascend_flap": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/ascend_flap1", "volume": 0.01, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ascend_flap2", "volume": 0.01, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ascend_flap3", "volume": 0.01, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ascend_flap4", "volume": 0.01, "load_on_low_memory": true }
+            ]
+        },
+        "glide": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/glide/glide_higher", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/glide/higher_glide2", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/fly/glide/higher_glide3", "volume": 0.5 }
+            ]
+        },
+        "gronckle_glide": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/gronckle_glide_loop", "volume": 0.75, "load_on_low_memory": true }
+            ]
+        },
+        "gronckle_glide_empty": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/gronckle_glide_loop", "volume": 0, "load_on_low_memory": true }
+            ]
+        },
+        "gronckle_flap": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/gronckle_frantic_loop", "volume": 0.4, "load_on_low_memory": true }
+            ]
+        },
+        "gronckle_flap_up": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/gronckle_glide_loop_up", "volume": 0.4, "load_on_low_memory": true }
+            ]
+        },
+        "dive": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/fly/dive/dive", "volume": 0.5, "load_on_low_memory": true }]
+        },
+        "ride_dive": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [{ "name": "sounds/gm1/zen/fly/dive/dive", "volume": 0.5, "load_on_low_memory": true }]
+        },
+        "grab": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/grab/grab_1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/grab/grab_2", "volume": 0.5 }
+            ]
+        },
+        "release": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/release/release_1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/release/release_2", "volume": 0.5 }
+            ]
+        },
+        "step_med": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/walk_stomps/med_step1", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/med_step2", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/med_step3", "volume": 0.75 },
+                { "name": "sounds/gm1/zen/walk_stomps/med_step4", "volume": 0.75 }
+            ]
+        },
+        "step_deep": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/walk_stomps/deep_step1", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/deep_step2", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/deep_step3", "volume": 0.75 },
+                { "name": "sounds/gm1/zen/walk_stomps/deep_step4", "volume": 0.75 }
+            ]
+        },
+        "step_big": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/walk_stomps/big_step1", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/big_step2", "volume": 0.75, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/big_step3", "volume": 0.75 },
+                { "name": "sounds/gm1/zen/walk_stomps/big_step4", "volume": 0.75 }
+            ]
+        },
+        "step_big_new": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/walk_stomps/new_big1", "volume": 0.6, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big2", "volume": 0.6, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big3", "volume": 0.6 },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big4", "volume": 0.6 }
+            ]
+        },
+        "step_big_new_grass": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/walk_stomps/new_big_grass1", "volume": 0.6, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big_grass2", "volume": 0.6, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big_grass3", "volume": 0.6 },
+                { "name": "sounds/gm1/zen/walk_stomps/new_big_grass4", "volume": 0.6 }
+            ]
+        },
+        "glide_boost": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/glide/glide_boos3", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/glide/glide_boos4", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/glide/glide_boos5", "volume": 0.5 }
+            ]
+        },
+        "med_flap_ride": {
+            "__use_legacy_max_distance": "true",
+            "category": "ui",
+            "sounds": [
+                { "name": "sounds/gm1/zen/fly/flaps/ride_med_flap1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ride_med_flap2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ride_med_flap3", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/fly/flaps/ride_med_flap4", "volume": 0.5, "load_on_low_memory": true }
+            ]
+        },
+        "milestone_small": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "sounds": [{ "name": "sounds/gm1/zen/jingles/milestone_small", "volume": 0.2, "load_on_low_memory": true }]
+        },
+        "milestone_medium": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "sounds": [{ "name": "sounds/gm1/zen/jingles/milestone_medium", "volume": 0.2, "load_on_low_memory": true }]
+        },
+        "milestone_large": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "sounds": [{ "name": "sounds/gm1/zen/jingles/milestone_large", "volume": 0.1, "load_on_low_memory": true }]
+        },
+        "want_success": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "sounds": [
+                { "name": "sounds/gm1/zen/jingles/want_success_1", "volume": 0.25, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/jingles/want_success_2", "volume": 0.25, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/jingles/want_success_3", "volume": 0.25, "load_on_low_memory": true }
+            ]
+        },
+        "toothless_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/toothless/shot", "volume": 0.2, "load_on_low_memory": true }]
+        },
+        "toothless_shot_impact": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/toothless/impact", "volume": 0.2, "load_on_low_memory": true }]
+        },
+        "toothless_scratch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/toothless/scratch", "volume": 0.5, "load_on_low_memory": true }]
+        },
+        "toothless_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/toothless/ambient1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/ambient2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/ambient3", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/ambient4", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/toothless/ambient5", "volume": 0.5 }
+            ]
+        },
+        "toothless_hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/toothless/hurt1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/hurt2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/hurt3", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/hurt4", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/toothless/hurt5", "volume": 0.5 }
+            ]
+        },
+        "toothless_death": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/toothless/death1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/death2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/toothless/death3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/toothless/death4", "volume": 0.5 }
+            ]
+        },
+        "gronckle_eat": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/gronckle/eat1", "volume": 0.4, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/eat2", "volume": 0.4 }
+            ]
+        },
+        "gronckle_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/gronckle/shot", "volume": 0.35, "load_on_low_memory": true }]
+        },
+        "gronckle_shot_impact": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/gronckle/impact", "volume": 0.35, "load_on_low_memory": true }]
+        },
+        "gronckle_scratch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/gronckle/scratch", "volume": 0.5, "load_on_low_memory": true }]
+        },
+        "gronckle_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/gronckle/ambient1", "volume": 0.3, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/ambient2", "volume": 0.3, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/ambient3", "volume": 0.3 },
+                { "name": "sounds/gm1/zen/dragons/gronckle/ambient4", "volume": 0.3 }
+            ]
+        },
+        "gronckle_wild_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/gronckle/wild_ambient1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/wild_ambient2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/wild_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/gronckle/wild_ambient4", "volume": 0.5 }
+            ]
+        },
+        "gronckle_trust_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/gronckle/trusting_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/gronckle/trusting_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/gronckle/trusting_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/gronckle/trusting_ambient4", "volume": 0.5 }
+            ]
+        },
+        "gronckle_hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/gronckle/hurt1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/hurt2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/hurt3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/gronckle/hurt4", "volume": 0.5 }
+            ]
+        },
+        "gronckle_death": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/gronckle/death1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/death2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/gronckle/death3", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_eat": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/nightmare_eat1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/nightmare_eat2", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/shot", "volume": 0.3, "load_on_low_memory": true }
+            ]
+        },
+        "monstrousnightmare_shot_impact": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/nightmare_impact",
+                    "volume": 0.3,
+                    "load_on_low_memory": true
+                }
+            ]
+        },
+        "monstrousnightmare_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/ambient4", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_wild_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient4", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_trust_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/wild_ambient4", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/hurt1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/hurt2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/hurt3", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/hurt4", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_death": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/death1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/death2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/death3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/death4", "volume": 0.5 }
+            ]
+        },
+        "monstrousnightmare_scratch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/monstrousnightmare/scratch", "volume": 0.5, "load_on_low_memory": true }
+            ]
+        },
+        "deadlynadder_eat": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/eat1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/eat2", "volume": 0.5 }
+            ]
+        },
+        "deadlynadder_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [{ "name": "sounds/gm1/zen/dragons/deadlynadder/shot", "volume": 0.3, "load_on_low_memory": true }]
+        },
+        "deadlynadder_scratch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/deadlynadder/dragon_scratches_nadder",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                }
+            ]
+        },
+        "deadlynadder_shot_impact": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/impact", "volume": 0.3, "load_on_low_memory": true }
+            ]
+        },
+        "deadlynadder_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/ambient1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/ambient2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/ambient4", "volume": 0.5 }
+            ]
+        },
+        "deadlynadder_wild_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/deadlynadder/wild_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/deadlynadder/wild_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/wild_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/wild_ambient4", "volume": 0.5 }
+            ]
+        },
+        "deadlynadder_trust_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/deadlynadder/trusting_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/deadlynadder/trusting_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/trusting_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/trusting_ambient4", "volume": 0.5 }
+            ]
+        },
+        "deadlynadder_hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/hurt1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/hurt2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/hurt3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/hurt4", "volume": 0.5 }
+            ]
+        },
+        "deadlynadder_death": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/death1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/death2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/deadlynadder/death3", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_eat": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/eat1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/eat2", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/shot", "volume": 0.25, "load_on_low_memory": true }
+            ]
+        },
+        "hideouszippleback_shot_impact": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/impact", "volume": 0.3, "load_on_low_memory": true }
+            ]
+        },
+        "hideouszippleback_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/ambient4", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_wild_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/wild_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/wild_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/wild_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/wild_ambient4", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_trust_ambient": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/trusting_ambient1",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                {
+                    "name": "sounds/gm1/zen/dragons/hideouszippleback/trusting_ambient2",
+                    "volume": 0.5,
+                    "load_on_low_memory": true
+                },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/trusting_ambient3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/trusting_ambient4", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/hurt1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/hurt2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/hurt3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/hurt4", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_death": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/death1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/death2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/death3", "volume": 0.5 },
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/death4", "volume": 0.5 }
+            ]
+        },
+        "hideouszippleback_scratch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/dragons/hideouszippleback/scratch", "volume": 0.5, "load_on_low_memory": true }
+            ]
+        },
+        "egg_plop": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/breed/egg_plop/plop_1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/breed/egg_plop/plop_2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/breed/egg_plop/plop_3", "volume": 0.5 }
+            ]
+        },
+        "egg_crack": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/breed/egg_crack/crack_1", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/breed/egg_crack/crack_2", "volume": 0.5, "load_on_low_memory": true },
+                { "name": "sounds/gm1/zen/breed/egg_crack/crack_3", "volume": 0.5 }
+            ]
+        },
+        "egg_hatch": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "sounds": [
+                { "name": "sounds/gm1/zen/jingles/breed/egg_hatch_poof", "volume": 0.5, "load_on_low_memory": true }
+            ]
+        }
+    }
+}

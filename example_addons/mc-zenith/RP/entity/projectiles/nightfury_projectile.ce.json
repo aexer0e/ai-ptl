@@ -1,0 +1,22 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:nightfury_projectile",
+            "materials": { "default": "entity_beam_additive" },
+            "textures": { "default": "textures/gm1/zen/entity/dragon/attack/plasma" },
+            "geometry": { "default": "geometry.gm1_zen.plasma" },
+            "render_controllers": [ "controller.render.default" ],
+            "animations": {
+                "on_hit": "animation.gm1_zen.projectile.on_hit",
+                "trail": "animation.gm1_zen.projectile.trail",
+                "in_air": "animation.gm1_zen.projectile.spin_z",
+                "scale_up": "animation.gm1_zen.projectile.scale_up"
+            },
+            "particle_effects": { "on_hit": "gm1_zen:plasma_blast", "trail": "gm1_zen:plasma_trail" },
+            "sound_effects": { "hit": "toothless_shot_impact" },
+            "scripts": { "animate": [{ "on_hit": "q.property('gm1_zen:has_hit')" }, "trail", "in_air", "scale_up" ]},
+            "spawn_egg": { "base_color": "#083864", "overlay_color": "#267ECE" }
+        }
+    }
+}

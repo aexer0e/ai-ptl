@@ -1,0 +1,23 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.character.trail_scale": {
+            "loop": true,
+            "bones": {
+                "trail_chest": {
+                    "position": [ 0, "v.ballmode ? -10 : 0", 0 ],
+                    "rotation": [ -15, 0, 0 ],
+                    "scale": [ "v.momentum > 0 ? 1 : 0", 1, "v.momentum_lerped > 3 ? (v.momentum_lerped - 3)*1 : 0" ]
+                },
+                "trail_skull": {
+                    "position": [ 0, "v.ballmode ? -10 : 0", 0 ],
+                    "scale": [ "v.momentum > 0 ? 1 : 0", 1, "v.momentum_lerped > 3 ? (v.momentum_lerped - 3)*1 : 0" ]
+                },
+                "trail_ball": {
+                    "position": [ 0, 0, "v.ballmode ? -8 : 0" ],
+                    "scale": [ "v.momentum > 0 ? 1 : 0", 1, "v.momentum_lerped > 3 ? (v.momentum_lerped - 3)*1 : 0" ]
+                }
+            }
+        }
+    }
+}

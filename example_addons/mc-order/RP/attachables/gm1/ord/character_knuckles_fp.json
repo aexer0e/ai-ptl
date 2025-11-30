@@ -1,0 +1,66 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 2, "character_string": "knuckles" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:knuckles_life",
+            "animations": {
+                "punch_right": "animation.gm1_ord.blank",
+                "charge_right": "animation.gm1_ord.blank",
+                "punch_left": "animation.gm1_ord.blank",
+                "charge_left": "animation.gm1_ord.blank",
+                "run_water": "animation.gm1_ord.blank",
+                "run_lava": "animation.gm1_ord.blank",
+                "run_snow": "animation.gm1_ord.blank",
+                "punch": "animation.gm1_ord.knuckles_pg.punch",
+                "charging.punch1": "animation.gm1_ord.knuckles.punch1_sound",
+                "charging.punch2": "animation.gm1_ord.knuckles.punch2_sound",
+                "charging.punch3": "animation.gm1_ord.knuckles.punch3_sound",
+                "charging.punch4": "animation.gm1_ord.knuckles.punch4_sound",
+                "charging.punch5": "animation.gm1_ord.knuckles.punch5_sound",
+                "spindash_release": "animation.gm1_ord.dash_sound",
+                "twirl": "animation.gm1_ord.transform_twirl.knuckles",
+                "glide": "animation.gm1_ord.knuckles_pg.glide",
+                "glide_land": "animation.gm1_ord.knuckles_pg.glide_land",
+                "punch_explosion": "animation.gm1_ord.knuckles.punch_explode",
+                "token_adjust": "animation.gm1_ord.token_adjust"
+            },
+            "sound_effects": {
+                "punch1": "knuckles_charge1",
+                "punch2": "knuckles_charge2",
+                "punch3": "knuckles_charge3",
+                "punch4": "knuckles_charge4",
+                "punch5": "knuckles_charge5",
+                "spindash_release": "spindash_release",
+                "punch_explosion": "punch_explosion"
+            },
+            "scripts": {
+                "animate": [
+                    { "fp_body": "v.is_first_person" },
+                    { "fp_arms": "v.is_first_person" },
+                    { "movement_controller": "v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "v.is_first_person" },
+                    { "detransform_controller": "v.is_first_person" },
+                    { "ability_charge_controller": "v.is_first_person" },
+                    { "blink_controller": "v.is_first_person" },
+                    { "target_eyes": "v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "top_speed.sfx": "v.is_first_person" },
+                    { "trail_scale": "v.is_first_person" },
+                    { "liquid_running_offset_controller": "v.is_first_person" },
+                    { "liquid_running_controller": "v.is_first_person" },
+                    { "token_adjust": "!v.is_transformed" },
+                    { "jump_effects_controller": "v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "render_controllers": [
+                { "controller.render.gm1_ord.character_fp": "v.is_first_person && v.is_transformed" },
+                {
+                    "controller.render.gm1_ord.character_charging": "v.is_first_person && v.is_transformed && (v.ability_state > 0 && v.ability_state <= 5)"
+                },
+                { "controller.render.gm1_ord.character_fp_token": "!v.is_transformed" }
+            ]
+        }
+    }
+}

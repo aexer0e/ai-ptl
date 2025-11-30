@@ -1,0 +1,54 @@
+{
+    "type": "minecraftBedrock",
+    "name": "mc-zenith",
+    "namespace": "gm1_zen",
+    "authors": [ "Gamemode One" ],
+    "targetVersion": "1.21.60",
+    "description": "",
+    "experimentalGameplay": {
+        "holidayCreatorFeatures": false,
+        "creationOfCustomBiomes": false,
+        "upcomingCreatorFeatures": false,
+        "enableGameTestFramework": true,
+        "experimentalMolangFeatures": false,
+        "educationEdition": false
+    },
+    "packs": { "behaviorPack": "./BP", "resourcePack": "./RP" },
+    "gm1Dash": {
+        "watch": {
+            "rebuildIfIncludes": [ "\\.bridge/extensions", "config\\.json", "crimson" ],
+            "ignoreIfExcludes": [ "\\.", "(/(BP|RP)/)" ],
+            "ignoreIfIncludes": [ "\\.(crswap|tmp|~tmp|temp|TMP|pdnSave)$", "/\\." ]
+        },
+        "world": { "gitTrackWorlds": true },
+        "logpiler": {
+            "pointers": [
+                {
+                    "regex": "(?<=clipboard-start)(.+?)(?=clipboard-end)",
+                    "file": "tools/clipboard/clipboard.txt",
+                    "actions": [{ "type": "console", "command": "node ./tools/clipboard/clipboard.js" }]
+                }
+            ],
+            "readMaxBytes": 5000000
+        },
+        "mcTargetBuild": {
+            "version": "1.21.8301.0",
+            "downloadURL": "storageexplorer://?v=2&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&type=fileSystemPath&path=durable%2F1.21.83.01_RC0%2FBedrock_UWP_x64_Win10%2FMinecraft-release_Bedrock_UWP_x64_Win10_33704154.zip&container=mcbuilds&serviceEndpoint=https%3A%2F%2Fdtsminecraft.blob.core.windows.net"
+        }
+    },
+    "compiler": {
+        "plugins": [
+            "entityIdentifierAlias",
+            [ "typeScript", { "inlineSourceMap": true }],
+            "customEntityComponents",
+            "customItemComponents",
+            "customBlockComponents",
+            "customCommands",
+            "generatorScripts",
+            "woodenTools.Crimson",
+            "woodenTools.Saplang",
+            "woodenTools.Senvanna",
+            [ "simpleRewrite", { "packName": "gm1_zen", "rewriteToComMojang": true }]
+        ]
+    }
+}

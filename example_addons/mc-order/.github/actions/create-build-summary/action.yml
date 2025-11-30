@@ -1,0 +1,36 @@
+name: 'Create Build Summary'
+description: 'Creates a summary of the build'
+inputs:
+  code_name:
+    description: 'The project code name'
+    required: true
+  packaged_version:
+    description: 'The packaged version'
+    required: true
+  built_for_mc:
+    description: 'Built for MC'
+    required: true
+  min_engine_version:
+    description: 'Minimum engine version'
+    required: true
+  build_train:
+    description: 'The build train'
+    required: true
+  world:
+    description: 'The world'
+    required: false
+  commit_sha:
+    description: 'The commit SHA'
+    required: true
+  build_number_internal:
+    description: 'The internal build number'
+    required: true
+  build_id:
+    description: 'The build ID'
+    required: true
+  mcworld_url:
+    description: 'The mcworld artifact URL'
+    required: true
+runs:
+  using: 'node20'
+  main: 'index.js'

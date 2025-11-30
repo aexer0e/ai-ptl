@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:missile_marker",
+            "materials": { "default": "gm1_ord_animated_additive" },
+            "textures": { "default": "textures/gm1/ord/entity/missile_marker" },
+            "geometry": { "default": "geometry.gm1_ord.missile_marker" },
+            "sound_effects": { "marker_sfx": "eggmobile_missile_marker" },
+            "animations": {
+                "idle": "animation.gm1_ord.missile_marker.idle",
+                "face_player": "animation.gm1_ord.missile_marker.face_player",
+                "marker_sfx": "animation.gm1_ord.eggmobile_missile.marker_sfx"
+            },
+            "scripts": { "animate": [ "idle", "face_player", "marker_sfx" ]},
+            "render_controllers": [ "controller.render.missile_marker" ]
+        }
+    }
+}

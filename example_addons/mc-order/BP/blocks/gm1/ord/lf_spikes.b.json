@@ -1,0 +1,24 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:lf_spikes",
+            "menu_category": { "category": "construction", "is_hidden_in_commands": false }
+        },
+        "components": {
+            "minecraft:display_name": "tile.gm1_ord:lf_spikes.name",
+            "minecraft:destructible_by_mining": true,
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:friction": 0.4,
+            "minecraft:map_color": "#87898a",
+            "minecraft:geometry": "geometry.gm1_ord.lf_spikes",
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_lf_spikes_side", "render_method": "alpha_test" },
+                "up": { "texture": "gm1_ord_lf_spikes_top", "render_method": "alpha_test" },
+                "down": { "texture": "gm1_ord_lf_spikes_bottom", "render_method": "alpha_test" }
+            },
+            "minecraft:custom_components": [ "gm1_ord:lf_spikes" ],
+            "minecraft:entity_fall_on": { "min_fall_distance": 1 }
+        }
+    }
+}

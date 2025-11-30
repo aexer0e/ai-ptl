@@ -1,0 +1,204 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.chaos_machine.c_1": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_red')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_red')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_1" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_red')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_1_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_red')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_1", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_2": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_yellow')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_yellow')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_2" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_yellow')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_2_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_yellow')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_2", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_3": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_green')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_green')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_3" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_green')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_3_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_green')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_3", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_4": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_cyan')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_cyan')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_4" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_cyan')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_4_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_cyan')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_4", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_5": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_blue')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_blue')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_5" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_blue')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_5_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_blue')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_5", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_6": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_purple')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_purple')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_6" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_purple')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_6_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_purple')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_6", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_machine.c_7": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "activated": "query.property('gm1_ord:has_emerald_white')" },
+                        { "empty": "!query.property('gm1_ord:has_emerald_white')" }
+                    ]
+                },
+                "empty": {
+                    "animations": [ "empty_7" ],
+                    "transitions": [{ "activate": "query.property('gm1_ord:has_emerald_white')" }],
+                    "blend_transition": 1
+                },
+                "activated": {
+                    "animations": [ "chaos_emerald_7_got" ],
+                    "transitions": [{ "none": "!query.property('gm1_ord:has_emerald_white')" }],
+                    "blend_transition": 1
+                },
+                "activate": {
+                    "animations": [ "chaos_emerald_7", "unlock_sfx" ],
+                    "transitions": [{ "activated": "query.all_animations_finished" }],
+                    "blend_transition": 1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.machine_transform": {
+            "initial_state": "idling",
+            "states": {
+                "idling": {
+                    "animations": [ "loop", "glow_hidden" ],
+                    "transitions": [{ "activating": "v.activating" }],
+                    "blend_transition": 1,
+                    "blend_via_shortest_path": true
+                },
+                "activating": {
+                    "animations": [ "activated", "loop", "glow", "chaos_machine_vfx" ],
+                    "transitions": [{ "idling": "query.all_animations_finished || !v.activating" }],
+                    "blend_transition": 1,
+                    "blend_via_shortest_path": true
+                }
+            }
+        }
+    }
+}

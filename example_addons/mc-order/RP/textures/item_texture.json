@@ -1,0 +1,31 @@
+{
+    "resource_pack_name": "name",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "gm1_ord.invisible": { "textures": { "path": "textures/gm1/ord/items/gm1_invisible" }},
+        "gm1_ord.slot_lock": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock" }},
+        "gm1_ord.slot_lock_sonic": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock_sonic" }},
+        "gm1_ord.slot_lock_tails": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock_tails" }},
+        "gm1_ord.slot_lock_knuckles": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock_knuckles" }},
+        "gm1_ord.slot_lock_amy": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock_amy" }},
+        "gm1_ord.slot_lock_shadow": { "textures": { "path": "textures/gm1/ord/items/gm1_slot_lock_shadow" }},
+        "gm1_ord.amy_token": { "textures": { "path": "textures/gm1/ord/items/gm1_amy_token" }},
+        "gm1_ord.knuckles_token": { "textures": { "path": "textures/gm1/ord/items/gm1_knuckles_token" }},
+        "gm1_ord.shadow_token": { "textures": { "path": "textures/gm1/ord/items/gm1_shadow_token" }},
+        "gm1_ord.super_shadow_token": { "textures": { "path": "textures/gm1/ord/items/gm1_super_shadow_token" }},
+        "gm1_ord.sonic_token": { "textures": { "path": "textures/gm1/ord/items/gm1_sonic_token" }},
+        "gm1_ord.super_sonic_token": { "textures": { "path": "textures/gm1/ord/items/gm1_super_sonic_token" }},
+        "gm1_ord.tails_token": { "textures": { "path": "textures/gm1/ord/items/gm1_tails_token" }},
+        "gm1_ord.rings": { "textures": [ "textures/gm1/ord/items/gm1_ring", "textures/gm1/ord/items/gm1_warp_ring" ]},
+        "gm1_ord.intro_book": { "textures": { "path": "textures/gm1/ord/items/gm1_intro_book" }},
+        "gm1_ord.badniks": { "textures": [ "textures/gm1/ord/items/badnik/eggrobo" ]},
+        "gm1_ord.chaos_drive": { "textures": [ "textures/gm1/ord/items/chaos_drive" ]},
+        "gm1_ord.chaos_emerald_red": { "textures": [ "textures/gm1/ord/items/chaos_emerald/red" ]},
+        "gm1_ord.chaos_emerald_yellow": { "textures": [ "textures/gm1/ord/items/chaos_emerald/yellow" ]},
+        "gm1_ord.chaos_emerald_green": { "textures": [ "textures/gm1/ord/items/chaos_emerald/green" ]},
+        "gm1_ord.chaos_emerald_cyan": { "textures": [ "textures/gm1/ord/items/chaos_emerald/cyan" ]},
+        "gm1_ord.chaos_emerald_blue": { "textures": [ "textures/gm1/ord/items/chaos_emerald/blue" ]},
+        "gm1_ord.chaos_emerald_purple": { "textures": [ "textures/gm1/ord/items/chaos_emerald/purple" ]},
+        "gm1_ord.chaos_emerald_white": { "textures": [ "textures/gm1/ord/items/chaos_emerald/white" ]}
+    }
+}

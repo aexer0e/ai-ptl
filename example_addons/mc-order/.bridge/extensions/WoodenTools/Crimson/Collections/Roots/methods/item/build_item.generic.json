@@ -1,0 +1,52 @@
+{
+    "$identifier": "roots.build_item.generic",
+    "$inputs": {
+        "common": {
+            "$nested": true,
+            "identifier": null,
+            "display_name": null,
+            "description": "$default",
+            "path": "$default",
+            "addon": "$default"
+        },
+        "server": {
+            "$nested": true,
+            "menu_category": {
+                "$nested": true,
+                "category": "$default",
+                "group": "$default",
+                "is_hidden_in_commands": "$default"
+            },
+            "max_stack_size": "$default",
+            "allow_off_hand": "$default",
+            "can_destroy_in_creative": "$default",
+            "content": {}
+        },
+        "client": { "$nested": true, "texture_path": null }
+    },
+    "$calls": [
+        {
+            "$call": "method",
+            "$method": "roots.build_item.base",
+            "$context": "base",
+            "common": "^common",
+            "client": "^client",
+            "server": "^server"
+        },
+        {
+            "$call": "action",
+            "$path": "^base['path.server']",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.BP.item.generic",
+                        "max_stack_size": "^server.max_stack_size",
+                        "allow_off_hand": "^server.allow_off_hand",
+                        "can_destroy_in_creative": "^server.can_destroy_in_creative"
+                    }
+                ]
+            }
+        }
+    ],
+    "$outputs": { "path.server": "^base['path.server']" }
+}

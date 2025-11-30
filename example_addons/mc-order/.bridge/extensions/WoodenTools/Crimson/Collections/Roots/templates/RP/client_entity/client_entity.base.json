@@ -1,0 +1,6 @@
+{
+    "$identifier": "roots.RP.client_entity.base",
+    "$inputs": { "identifier": null, "format_version": "1.21.40" },
+    "format_version": "^format_version",
+    "minecraft:client_entity": { "description": { "identifier": "^identifier" }}
+}

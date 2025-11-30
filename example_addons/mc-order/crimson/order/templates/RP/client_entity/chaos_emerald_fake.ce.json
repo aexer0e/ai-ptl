@@ -1,0 +1,15 @@
+{
+    "$identifier": "ord:chaos_emerald_fake.ce",
+    "$inputs": { "color": "red" },
+    "format_version": "1.21.40",
+    "minecraft:client_entity": {
+        "description": {
+            "materials": { "default": "phantom" },
+            "textures": { "default": "textures/gm1/ord/entity/chaos_emerald/^{color}^" },
+            "geometry": { "default": "geometry.gm1_ord.chaos_emerald" },
+            "animations": { "idle": "animation.gm1_ord.chaos_emerald.idle" },
+            "scripts": { "should_update_bones_and_effects_offscreen": true, "animate": [ "idle" ]},
+            "render_controllers": [ "controller.render.gm1_ord.chaos_emerald" ]
+        }
+    }
+}

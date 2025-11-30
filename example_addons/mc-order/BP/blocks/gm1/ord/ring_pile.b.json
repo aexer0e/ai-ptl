@@ -1,0 +1,95 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:ring_pile",
+            "menu_category": { "category": "construction" },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [ "minecraft:facing_direction" ],
+                    "y_rotation_offset": 180
+                }
+            }
+        },
+        "components": {
+            "minecraft:loot": "loot_tables/gm1/ord/blocks/ring_pile.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 2.5,
+                "item_specific_speeds": [
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')" },
+                        "destroy_speed": 0.75
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')" },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')" },
+                        "destroy_speed": 0.25
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')" },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')" },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')" },
+                        "destroy_speed": 0.15
+                    }
+                ]
+            },
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_ring_pile_side", "render_method": "opaque" },
+                "up": { "texture": "gm1_ord_ring_pile_top", "render_method": "opaque" },
+                "down": { "texture": "gm1_ord_ring_pile_bottom", "render_method": "opaque" }
+            },
+            "minecraft:light_emission": 7,
+            "minecraft:light_dampening": 1,
+            "minecraft:geometry": "geometry.gm1_ord.ring_pile",
+            "minecraft:map_color": "#e3ca3d"
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ -90, 0, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ -90, 90, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ -90, 180, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ -90, -90, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'up'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 0, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'down'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 180, 0, 0 ]}
+                }
+            }
+        ]
+    }
+}

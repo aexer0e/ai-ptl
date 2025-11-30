@@ -1,0 +1,21 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:shrine_marker",
+            "states": {
+                "gm1_ord:shrine_marker_entity": [ false, true ]
+            }
+        },
+        "components": {
+            "minecraft:custom_components": [ "gm1_ord:shrine_marker_block_entity" ],
+            "minecraft:geometry": "geometry.gm1_ord.shrine_marker",
+            "minecraft:selection_box": { "origin": [ -4, 4, -4 ], "size": [ 8, 8, 8 ]},
+            "minecraft:collision_box": false,
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_blank", "render_method": "alpha_test", "face_dimming": false }
+            },
+            "minecraft:tick": { "interval_range": [ 10, 10 ], "looping": true }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.ring.normal": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ],
+            "light_color_multiplier": "1.5"
+        },
+        "controller.render.gm1_ord.ring.charged": {
+            "geometry": "Geometry.charged",
+            "materials": [{ "*": "Material.charged" }],
+            "textures": [ "Texture.charged" ],
+            "uv_anim": {
+                "offset": [ "-(Math.floor(query.life_time * 50))*0.01", "-(Math.floor(query.life_time * 50))*0.01" ],
+                "scale": [ 1, 1 ]
+            },
+            "light_color_multiplier": "Math.abs(query.camera_distance_range_lerp(15, 20)-1)"
+        }
+    }
+}

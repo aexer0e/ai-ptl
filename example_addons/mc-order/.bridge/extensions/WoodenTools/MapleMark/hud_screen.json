@@ -1,0 +1,109 @@
+{
+    "hud_content": {
+        "modifications": [
+            {
+                "array_name": "controls",
+                "operation": "insert_back",
+                "value": {
+                    "gm1_maple__main@gm1_maple__main": {}
+                }
+            }
+        ]
+    },
+    "gm1_maple__main": {
+        "type": "panel",
+        "size": ["100%", "100%"],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "controls": [
+            {
+                "gm1_maple__grid@gm1_maple__grid": {}
+            },
+            {
+                "gm1_maple__label@gm1_maple__label": {
+                    "anchor_from": "top_middle",
+                    "anchor_to": "top_middle",
+                    "alpha": 0.35,
+                    "offset": [0, 8]
+                }
+            }
+        ]
+    },
+    "gm1_maple__grid": {
+        "type": "stack_panel",
+        "size": ["100%", "100%"],
+        "offset": [0, 0],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "orientation": "horizontal",
+        "propagate_alpha": true,
+        "controls": [
+            {
+                "gm1_maple__column@gm1_maple__column": {}
+            },
+            {
+                "gm1_maple__column@gm1_maple__column": {}
+            },
+            {
+                "gm1_maple__column@gm1_maple__column": {}
+            },
+            {
+                "gm1_maple__column@gm1_maple__column": {}
+            },
+            {
+                "gm1_maple__column@gm1_maple__column": {}
+            }
+        ]
+    },
+    "gm1_maple__column": {
+        "type": "stack_panel",
+        "size": ["20%", "100%"],
+        "orientation": "vertical",
+        "controls": [
+            {
+                "gm1_maple__element@gm1_maple__element": {}
+            },
+            {
+                "gm1_maple__element@gm1_maple__element": {}
+            },
+            {
+                "gm1_maple__element@gm1_maple__element": {}
+            },
+            {
+                "gm1_maple__element@gm1_maple__element": {}
+            },
+            {
+                "gm1_maple__element@gm1_maple__element": {}
+            }
+        ]
+    },
+    "gm1_maple__element": {
+        "type": "panel",
+        "size": ["100%", "20%"],
+        "controls": [
+            {
+                "gm1_maple__label@gm1_maple__label": {
+                    "offset": [0, -4],
+                    "alpha": 0.004
+                }
+            },
+            {
+                "gm1_maple__label@gm1_maple__label": {
+                    "offset": [0, 4],
+                    "alpha": 0.005,
+                    "color": [0, 0, 0]
+                }
+            }
+        ]
+    },
+    "gm1_maple__label": {
+        "type": "label",
+        "text": "",
+        "font_size": "normal",
+        "font_type": "MinecraftTen",
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "text_alignment": "center",
+        "layer": 999999
+    }
+}

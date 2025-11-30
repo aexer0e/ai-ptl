@@ -1,0 +1,48 @@
+{
+    "format_version": "1.10.0",
+    "particle_effect": {
+        "description": {
+            "identifier": "gm1_ord:breakthrough",
+            "basic_render_parameters": {
+                "material": "particles_blend",
+                "texture": "textures/gm1/ord/particle/breakthrough"
+            }
+        },
+        "curves": {
+            "variable.alpha": {
+                "type": "bezier",
+                "input": "v.particle_age",
+                "horizontal_range": "v.particle_lifetime",
+                "nodes": [ 0, 0, 0, 1 ]
+            }
+        },
+        "components": {
+            "minecraft:emitter_local_space": { "position": true, "rotation": true },
+            "minecraft:emitter_rate_instant": { "num_particles": 2 },
+            "minecraft:emitter_lifetime_once": { "active_time": 1 },
+            "minecraft:emitter_shape_point": { "offset": [ 0, -0.1, -1 ], "direction": [ 0, 0, 1 ]},
+            "minecraft:particle_lifetime_expression": { "max_lifetime": 0.33 },
+            "minecraft:particle_initial_speed": 0,
+            "minecraft:particle_motion_dynamic": { "linear_acceleration": [ 0, 0, 18 ]},
+            "minecraft:particle_appearance_billboard": {
+                "size": [ "1+variable.particle_age", "1+variable.particle_age" ],
+                "facing_camera_mode": "rotate_xyz",
+                "uv": {
+                    "texture_width": 2048,
+                    "texture_height": 640,
+                    "flipbook": {
+                        "base_UV": [ 0, "variable.character_p*128" ],
+                        "size_UV": [ 128, 128 ],
+                        "step_UV": [ 128, 0 ],
+                        "frames_per_second": 60,
+                        "max_frame": 16,
+                        "stretch_to_lifetime": true
+                    }
+                }
+            },
+            "minecraft:particle_appearance_tinting": {
+                "color": { "interpolant": "variable.alpha", "gradient": { "0.0": "#00FFFFFF", "1.0": "#FFFFFFFF" }}
+            }
+        }
+    }
+}

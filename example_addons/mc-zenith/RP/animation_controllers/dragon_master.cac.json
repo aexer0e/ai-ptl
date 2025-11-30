@@ -1,0 +1,70 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.master": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [
+                        {
+                            "movement_controller": "!q.property('gm1_zen:rest_state') == 'sitting' && query.is_alive && (query.is_tamed || !query.has_player_rider)"
+                        },
+                        {
+                            "fly_controller": "!q.property('gm1_zen:rest_state') == 'sitting' && query.is_alive && (query.is_tamed || !query.has_player_rider)"
+                        },
+                        { "sit_controller": "q.property('gm1_zen:rest_state') == 'sitting' && query.is_alive" },
+                        { "fly": "!query.is_tamed && query.has_player_rider" },
+                        {
+                            "flap_ride_sfx": "!query.is_tamed && query.has_player_rider && query.distance_from_camera <= 7"
+                        },
+                        { "flap_sfx": "!query.is_tamed && query.has_player_rider && query.distance_from_camera > 7" },
+                        { "fly_pose": "!query.is_tamed && query.has_player_rider" },
+                        { "anti_death": "!query.is_alive" },
+                        "weakened_controller",
+                        "eyes_controller",
+                        "food_controller",
+                        { "mouth_controller": "query.is_alive && (!query.has_target || query.mark_variant != 20)" },
+                        { "detail_air_controller": "query.is_alive" },
+                        "tilt_controller",
+                        "rotate",
+                        { "look_controller": "query.is_alive" },
+                        "breath",
+                        "general_fix",
+                        { "attack_controller": "query.is_alive && !query.is_ignited" }
+                    ]
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_global.det_air": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "tail_controller", "head_controller", { "body_controller": 0.8 }],
+                    "transitions": [
+                        { "flying": "v.time_since_ground>10" },
+                        { "sleep": "query.is_sleeping" },
+                        { "attack": "query.has_target" }
+                    ],
+                    "blend_transition": 0.2
+                },
+                "flying": {
+                    "transitions": [{ "none": "v.time_since_ground==0" }, { "sleep": "query.is_sleeping" }],
+                    "blend_transition": 0.2
+                },
+                "sleep": {
+                    "animations": [ "tail_controller", { "body_controller": 0.8 }],
+                    "transitions": [
+                        { "none": "!query.is_sleeping" },
+                        { "flying": "!query.is_sleeping && v.time_since_ground>10" }
+                    ],
+                    "blend_transition": 0.2
+                },
+                "attack": {
+                    "animations": [ "tail_controller", { "body_controller": 0.8 }],
+                    "transitions": [{ "none": "!query.has_target" }],
+                    "blend_transition": 0.2
+                }
+            }
+        }
+    }
+}

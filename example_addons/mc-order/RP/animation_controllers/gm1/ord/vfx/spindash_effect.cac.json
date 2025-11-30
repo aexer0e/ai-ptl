@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.spindash_effect": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "spindash": "(v.ability_state > 0 && v.ability_state <= 5) && v.secondary_state != 3" }
+                    ]
+                },
+                "spindash": {
+                    "animations": [ "spindash_particle" ],
+                    "transitions": [{ "none": "(v.ability_state <= 0 || v.ability_state > 5) || v.secondary_state == 3" }]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.liquid_running": {
+            "initial_state": "none",
+            "states": {
+                "none": { "transitions": [{ "liquid_running": "v.liquid_running" }]},
+                "liquid_running": {
+                    "animations": [
+                        { "water_running": "v.water_running && !v.jumped_recently" },
+                        { "snow_running": "v.snow_running && !v.jumped_recently" }
+                    ],
+                    "transitions": [{ "none": "!v.liquid_running" }]
+                }
+            }
+        }
+    }
+}

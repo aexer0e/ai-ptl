@@ -1,0 +1,75 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_sky:block_breaker", "is_spawnable": false, "is_summonable": true },
+        "component_groups": {
+            "gm1_sky:logs": {
+                "minecraft:break_blocks": {
+                    "breakable_blocks": [
+                        "minecraft:acacia_log",
+                        "minecraft:birch_log",
+                        "minecraft:cherry_log",
+                        "minecraft:dark_oak_log",
+                        "minecraft:jungle_log",
+                        "minecraft:mangrove_log",
+                        "minecraft:oak_log",
+                        "minecraft:spruce_log"
+                    ]
+                }
+            },
+            "gm1_sky:stone": {
+                "minecraft:break_blocks": {
+                    "breakable_blocks": [
+                        "minecraft:deepslate",
+                        "minecraft:stone",
+                        "minecraft:diorite",
+                        "minecraft:granite",
+                        "minecraft:andesite"
+                    ]
+                }
+            },
+            "gm1_sky:furnace": { "minecraft:break_blocks": { "breakable_blocks": [ "minecraft:furnace" ]}},
+            "gm1_sky:crafting_table": { "minecraft:break_blocks": { "breakable_blocks": [ "minecraft:crafting_table" ]}},
+            "gm1_sky:ores": {
+                "minecraft:break_blocks": {
+                    "breakable_blocks": [
+                        "minecraft:redstone_ore",
+                        "minecraft:copper_ore",
+                        "minecraft:diamond_ore",
+                        "minecraft:emerald_ore",
+                        "minecraft:gold_ore",
+                        "minecraft:iron_ore",
+                        "minecraft:lapis_ore",
+                        "minecraft:coal_ore",
+                        "minecraft:deepslate_redstone_ore",
+                        "minecraft:deepslate_copper_ore",
+                        "minecraft:deepslate_diamond_ore",
+                        "minecraft:deepslate_emerald_ore",
+                        "minecraft:deepslate_gold_ore",
+                        "minecraft:deepslate_iron_ore",
+                        "minecraft:deepslate_lapis_ore",
+                        "minecraft:deepslate_coal_ore",
+                        "minecraft:nether_gold_ore",
+                        "minecraft:quartz_ore"
+                    ]
+                }
+            },
+            "gm1_sky:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "components": {
+            "minecraft:push_through": { "value": 1 },
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:damage_sensor": { "triggers": [{ "deals_damage": false }]},
+            "minecraft:collision_box": { "width": 0.01, "height": 0.01 }
+        },
+        "events": {
+            "gm1_sky:logs": { "add": { "component_groups": [ "gm1_sky:logs" ]}},
+            "gm1_sky:stone": { "add": { "component_groups": [ "gm1_sky:stone" ]}},
+            "gm1_sky:ores": { "add": { "component_groups": [ "gm1_sky:ores" ]}},
+            "gm1_sky:crafting_table": { "add": { "component_groups": [ "gm1_sky:crafting_table" ]}},
+            "gm1_sky:furnace": { "add": { "component_groups": [ "gm1_sky:furnace" ]}},
+            "gm1_sky:despawn": { "add": { "component_groups": [ "gm1_sky:despawn" ]}}
+        }
+    }
+}

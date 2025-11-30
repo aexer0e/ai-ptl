@@ -1,0 +1,10 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.gm1_sky.ai_bed": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default", "glow*": "Material.glow" }],
+            "textures": [ "Texture.default" ]
+        }
+    }
+}

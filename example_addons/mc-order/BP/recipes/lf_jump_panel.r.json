@@ -1,0 +1,11 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "gm1_ord:jump_panel_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "ingredients": [{ "item": "gm1_ord:lf_spring_red", "count": 1 }, { "item": "gm1_ord:lf_dash_panel", "count": 1 }],
+        "result": { "item": "gm1_ord:lf_jump_panel", "data": 1 },
+        "unlock": [{ "item": "gm1_ord:lf_spring_red" }]
+    }
+}

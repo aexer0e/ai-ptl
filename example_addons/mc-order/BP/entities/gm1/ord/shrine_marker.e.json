@@ -1,0 +1,130 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:shrine_marker",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "properties": {
+                "gm1_ord:player_range_state": { "type": "enum", "default": "none", "values": [ "none", "far", "close" ]}
+            }
+        },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "components": {
+            "minecraft:collision_box": { "height": 0, "width": 0 },
+            "minecraft:fire_immune": {},
+            "minecraft:type_family": { "family": [ "dev" ]},
+            "minecraft:damage_sensor": { "triggers": [{ "deals_damage": "no" }]},
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            },
+            "minecraft:entity_sensor": {
+                "subsensors": [
+                    {
+                        "cooldown": 0,
+                        "range": [ "^o.shrine_marker.activation_range", "^o.shrine_marker.activation_range" ],
+                        "event_filters": {
+                            "all_of": [
+                                { "test": "is_family", "subject": "other", "value": "player" },
+                                {
+                                    "test": "enum_property",
+                                    "subject": "self",
+                                    "domain": "gm1_ord:player_range_state",
+                                    "operator": "!=",
+                                    "value": "close"
+                                }
+                            ]
+                        },
+                        "event": "gm1_ord:on_player_close"
+                    },
+                    {
+                        "cooldown": 0,
+                        "range": [ "^o.shrine_marker.initialization_range", "^o.shrine_marker.initialization_range" ],
+                        "event_filters": {
+                            "all_of": [
+                                { "test": "is_family", "subject": "other", "value": "player" },
+                                {
+                                    "test": "distance_to_nearest_player",
+                                    "subject": "self",
+                                    "operator": ">",
+                                    "value": "^o.shrine_marker.activation_range"
+                                },
+                                {
+                                    "test": "enum_property",
+                                    "subject": "self",
+                                    "domain": "gm1_ord:player_range_state",
+                                    "operator": "!=",
+                                    "value": "far"
+                                }
+                            ]
+                        },
+                        "event": "gm1_ord:on_player_far"
+                    },
+                    {
+                        "cooldown": 0,
+                        "range": [ "^o.shrine_marker.initialization_range", "^o.shrine_marker.initialization_range" ],
+                        "require_all": true,
+                        "event_filters": {
+                            "all_of": [
+                                { "test": "is_family", "subject": "other", "value": "player", "operator": "!=" },
+                                {
+                                    "test": "enum_property",
+                                    "subject": "self",
+                                    "domain": "gm1_ord:player_range_state",
+                                    "operator": "!=",
+                                    "value": "none"
+                                }
+                            ]
+                        },
+                        "event": "gm1_ord:on_no_player_nearby"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}},
+            "gm1_ord:on_player_far": { "set_property": { "gm1_ord:player_range_state": "far" }},
+            "gm1_ord:on_player_close": { "set_property": { "gm1_ord:player_range_state": "close" }},
+            "gm1_ord:on_no_player_nearby": { "set_property": { "gm1_ord:player_range_state": "none" }}
+        }
+    }
+}

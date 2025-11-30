@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.chaos_emerald": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ]
+        },
+        "controller.render.gm1_ord.chaos_emerald_icon": {
+            "geometry": "Geometry.emerald_icon",
+            "materials": [{ "*": "Material.no_depth" }],
+            "textures": [ "Texture.emerald_icon" ],
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.chaos_emerald_beam": {
+            "geometry": "Geometry.emerald_beam",
+            "materials": [{ "*": "Material.additive" }],
+            "textures": [ "Texture.emerald_beam" ],
+            "overlay_color": { "r": "v.colour.r", "g": "v.colour.g", "b": "v.colour.b", "a": 1 },
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.emerald_jail": {
+            "geometry": "Geometry.emerald_jail",
+            "materials": [{ "*": "Material.default", "laser": "Material.additive", "*glow*": "Material.additive" }],
+            "textures": [ "Texture.emerald_jail" ]
+        }
+    }
+}

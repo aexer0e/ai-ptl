@@ -1,0 +1,71 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_fx",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "glint_animation": "animation.gm1_zen.glint",
+                "grab_sfx": "animation.gm1_zen.dragon_global.grab_sfx",
+                "panic_sfx": "animation.gm1_zen.dragon_global.panic_sfx",
+                "panic_vfx": "animation.gm1_zen.dragon_global.panic_vfx",
+                "rideable_fx": "animation.gm1_zen.dragon_global.rideable_fx"
+            },
+            "scripts": {
+                "animate": [
+                    { "panic_vfx": "query.variant == 1 && query.has_player_rider" },
+                    { "rideable_fx": "query.skin_id == 1" }
+                ],
+                "particle_effects": {
+                    "fed": "gm1_zen:dragon_fed",
+                    "panic": "gm1_zen:panic",
+                    "rideable": "gm1_zen:rideable",
+                    "buck": "gm1_zen:anger"
+                },
+                "sound_effects": {
+
+                    //global
+                    "grab_sfx": "grab",
+                    "milestone_sfx": "milestone",
+                    "milestone_medium_sfx": "milestone_medium",
+                    "milestone_large_sfx": "milestone_large_unlock",
+                    "want_success_sfx": "want_success",
+
+                    //toothless
+                    "toothless_hurt": "toothless_hurt",
+                    "toothless_step": "step_big_new_grass",
+                    "toothless_death": "toothless_death",
+                    "toothless_scratch": "toothless_scratch",
+
+                    //dn
+                    "deadlynadder_hurt":"deadlynadder_hurt",
+                    //"step":"step_big_new_grass",
+                    "deadlynadder_ambient":"deadlynadder_ambient",
+                    "deadlynadder_death":"deadlynadder_death",
+                    "deadlynadder_scratch_dn":"deadlynadder_scratch",
+
+                    //g
+                    "g_hurt":"gronkle_hurt",
+                    //"step":"step_big_new",
+                    "g_ambient":"gronkle_ambient",
+                    "g_death":"gronkle_death",
+                    "g_scratch":"gronkle_scratch",
+
+                    //mn
+                    "monstrousnightmare_hurt": "monstrousnightmare_hurt",
+                    "step_big": "step_big_new",
+                    "rideable_scream_mn": "monstrousnightmare_ambient",
+                    "weakened_scream_mn": "monstrousnightmare_death",
+                    "scratch_mn": "monstrousnightmare_scratch",
+
+                    //hz
+                    "hideouszippleback_hurt":"hideouszippleback_hurt",
+                    //"step_big": "step_big_new",
+                    "hideouszippleback_ambient":"hideouszippleback_ambient",
+                    "hideouszippleback_death":"hideouszippleback_death",
+                    "scratch_hz":"hideouszippleback_scratch"
+                }
+            }
+        }
+    }
+}

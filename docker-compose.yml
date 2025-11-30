@@ -1,0 +1,27 @@
+services:
+  mc:
+    image: itzg/minecraft-bedrock-server
+    container_name: mc-gametest-runner
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: creative
+      DIFFICULTY: peaceful
+      LEVEL_NAME: "BetaTestWorld"
+      ONLINE_MODE: "false"
+      # Prevent overwriting world settings
+      EXISTING_WORLD: "true"
+      VERSION: "PREVIEW"
+    ports:
+      - "19132:19132/udp"
+    volumes:
+      # 1. Persist the world data (Place your seeded world in ./server-data/worlds/BetaTestWorld)
+      - ./server-data:/data
+      
+      # 2. Mount compiled addons from builds/dist
+      - "./builds/dist/ns_tpl BP:/data/behavior_packs/ns_tpl_bp"
+      - "./builds/dist/ns_tpl RP:/data/resource_packs/ns_tpl_rp"
+      
+      # 3. Ensure permissions allow scripting
+      - ./permissions.json:/data/permissions.json
+    stdin_open: true
+    tty: true

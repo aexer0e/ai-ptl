@@ -1,0 +1,11 @@
+{
+    "files": [
+        "CustomComponent.js",
+        "Template.js",
+        "TemplateEntity.js",
+        "TemplateBlock.js",
+        "TemplateItem.js",
+        "ComploxBlock.js",
+        "ComploxBlockV2.js"
+    ]
+}

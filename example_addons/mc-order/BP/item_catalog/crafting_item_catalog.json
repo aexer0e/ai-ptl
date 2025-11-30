@@ -1,0 +1,85 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:crafting_items_catalog": {
+        "categories": [
+            {
+                "category_name": "construction",
+                "groups": [
+                    {
+                        "items": [
+                            "gm1_ord:tails_tinker_table",
+                            "gm1_ord:char_select_tv",
+                            "gm1_ord:chaos_machine",
+                            "gm1_ord:mega_ring_platform",
+                            "gm1_ord:ring_pile"
+                        ]
+                    },
+                    {
+                        "group_identifier": {
+                            "icon": "gm1_ord:shrine_stone",
+                            "name": "gm1_ord:item_group.name.shrine_stone"
+                        },
+                        "items": [
+                            "gm1_ord:shrine_stone",
+                            "gm1_ord:shrine_stone_mossy",
+                            "gm1_ord:shrine_stone_chiseled",
+                            "gm1_ord:shrine_stone_bricks",
+                            "gm1_ord:shrine_stone_plinth"
+                        ]
+                    },
+                    {
+                        "group_identifier": {
+                            "icon": "gm1_ord:lf_spring_yellow",
+                            "name": "gm1_ord:item_group.name.level_features"
+                        },
+                        "items": [
+                            "gm1_ord:lf_spring_yellow",
+                            "gm1_ord:lf_spring_red",
+                            "gm1_ord:lf_dash_panel",
+                            "gm1_ord:lf_jump_panel",
+                            "gm1_ord:lf_spikes",
+                            "gm1_ord:lf_spike"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "equipment",
+                "groups": [
+                    {
+                        "group_identifier": { "icon": "gm1_ord:sonic_life", "name": "gm1_ord:item_group.name.lives" },
+                        "items": [
+                            "gm1_ord:sonic_life",
+                            "gm1_ord:tails_life",
+                            "gm1_ord:knuckles_life",
+                            "gm1_ord:amy_life",
+                            "gm1_ord:shadow_life"
+                        ]
+                    },
+                    {
+                        "group_identifier": {
+                            "icon": "gm1_ord:super_sonic_life",
+                            "name": "gm1_ord:item_group.name.super_lives"
+                        },
+                        "items": [ "gm1_ord:super_sonic_life", "gm1_ord:super_shadow_life" ]
+                    },
+                    {
+                        "group_identifier": {
+                            "icon": "gm1_ord:chaos_emerald_green_fake",
+                            "name": "gm1_ord:item_group.name.fake_chaos_emeralds"
+                        },
+                        "items": [
+                            "gm1_ord:chaos_emerald_green_fake",
+                            "gm1_ord:chaos_emerald_blue_fake",
+                            "gm1_ord:chaos_emerald_red_fake",
+                            "gm1_ord:chaos_emerald_purple_fake",
+                            "gm1_ord:chaos_emerald_yellow_fake",
+                            "gm1_ord:chaos_emerald_white_fake",
+                            "gm1_ord:chaos_emerald_cyan_fake"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

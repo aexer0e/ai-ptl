@@ -1,0 +1,122 @@
+name: Build Project - Internal
+on:
+  workflow_call:
+    inputs:
+      build_train:
+        required: true
+        type: string
+      world:
+        required: true
+        type: string
+      sha:
+        required: true
+        type: string
+      run_id:
+        required: true
+        type: string
+      run_number:
+        required: true
+        type: string
+      skip_upload:
+        required: false
+        type: boolean
+      create_template:
+        required: false
+        type: boolean
+      product_type:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: windows-latest # We want to run on ubuntu-latest but Wooden Tools Crimson and Saplang don't work on Linux right now due to an upstream dash issue
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.18'
+          cache: 'npm'
+          cache-dependency-path: './package-lock.json'
+
+      - name: Setup Deno Environment
+        uses: ./.github/actions/setup
+        with:
+          deno-version: v1.x
+
+      - name: Install Dash Compiler
+        # if: steps.cache.outputs.cache-hit != 'true' Cache is disabled temp
+        run: |
+          deno cache --lock=deno.lock https://deno.land/x/dash_compiler@v0.4.8/mod.ts
+          deno install -A -n dash_compiler https://deno.land/x/dash_compiler@v0.4.8/mod.ts
+
+      - name: Populate Build meta into .env
+        run: |
+          New-Item -Path . -Name ".env" -ItemType "file" -Force
+          Add-Content -Path .env -Value "RUN_ID=${{ inputs.run_id }}"
+          Add-Content -Path .env -Value "RUN_NUMBER=${{ inputs.run_number }}"
+          Add-Content -Path .env -Value "COMMIT_SHA=${{ inputs.sha }}"
+
+      - name: Run dash_compiler
+        run:  dash_compiler build -m development -o -c .bridge/compiler/writeForPackaging.json
+        shell: bash
+
+      - name: Install npm modules
+        run: npm ci
+
+      - name: Run Gulp Build - World
+        if: ${{ inputs.product_type == 'world' }}
+        id: gulp-build-world
+        run: gulp build --world ${{ inputs.world }} --train '${{ inputs.build_train }}' --codename ${{ vars.PRODUCT_CODENAME }} --release-name ${{ vars.PRODUCT_RELEASE_NAME }} --internal-build-number ${{ vars.BUILD_NUMBER_INTERNAL }} --commit-sha ${{ inputs.sha }}
+
+      - name: Run Gulp Build - Add-On
+        if: ${{ inputs.product_type == 'addon' }}
+        id: gulp-build-addon
+        run: gulp build --train '${{ inputs.build_train }}' --codename ${{ vars.PRODUCT_CODENAME }} --release-name ${{ vars.PRODUCT_RELEASE_NAME }} --internal-build-number ${{ vars.BUILD_NUMBER_INTERNAL }} --commit-sha ${{ inputs.sha }}
+
+      - name: Upload Artifacts
+        id: upload-artifacts
+        if: ${{ inputs.skip_upload != 'true' }}
+        uses: ./.github/actions/upload-artifacts
+        with:
+          sha: ${{ inputs.sha }}
+          packaged_version: ${{ steps.gulp-build-addon.outputs.PACKAGED_VERSION }}
+          create_template: ${{ inputs.create_template }}
+
+      - name: Create Summary
+        uses: ./.github/actions/create-build-summary
+        with:
+          build_train: ${{ inputs.build_train }}
+          world: ${{ inputs.world }}
+          commit_sha: ${{ inputs.sha }}
+          build_number_internal: ${{ vars.BUILD_NUMBER_INTERNAL }}
+          packaged_version: ${{ steps.gulp-build-addon.outputs.PACKAGED_VERSION }}
+          built_for_mc: ${{ steps.gulp-build-addon.outputs.BUILT_FOR_MC }}
+          min_engine_version: ${{ steps.gulp-build-addon.outputs.MIN_ENGINE_VERSION }}
+          code_name: ${{ vars.PRODUCT_CODENAME }}
+          build_id: ${{ inputs.run_number }}
+          mcworld_url: ${{ steps.upload-artifacts.outputs.mcworld_url }}
+
+  update-internal-build-number:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Increment and update build number
+        run: |
+          current_value=${{ vars.BUILD_NUMBER_INTERNAL }}
+          new_value=$((current_value + 1))
+          curl -X PATCH -H "Authorization: token ${{ secrets.ORDER_VARIABLE_RW_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"value\":\"$new_value\"}" \
+            https://api.github.com/repos/${{ github.repository }}/actions/variables/BUILD_NUMBER_INTERNAL
+

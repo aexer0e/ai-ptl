@@ -1,0 +1,48 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:block": {
+        "description": { "identifier": "gm1_ord:shrine_stone_mossy", "menu_category": { "category": "construction" }},
+        "components": {
+            "minecraft:collision_box": true,
+            "minecraft:selection_box": true,
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')" },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')" },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')" },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')" },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')" },
+                        "destroy_speed": 0.25
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')" },
+                        "destroy_speed": 0.2
+                    }
+                ]
+            },
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:light_dampening": 15,
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_shrine_stone_mossy", "render_method": "opaque" },
+                "up": { "texture": "gm1_ord_shrine_stone_mossy_top", "render_method": "opaque" },
+                "down": { "texture": "gm1_ord_shrine_stone_mossy_top", "render_method": "opaque" }
+            },
+            "minecraft:map_color": "#908c81"
+        }
+    }
+}

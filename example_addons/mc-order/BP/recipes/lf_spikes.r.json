@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:spikes_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "S S", " S ", "S S" ],
+        "key": { "S": { "item": "gm1_ord:lf_spike" }},
+        "result": { "item": "gm1_ord:lf_spikes", "data": 1, "count": 5 },
+        "unlock": [{ "item": "gm1_ord:lf_spike" }]
+    }
+}

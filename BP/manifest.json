@@ -1,0 +1,74 @@
+{
+    "format_version": 2,
+    "metadata": {
+        "authors": [
+            "Ninja Squirrel Gaming"
+        ],
+        "generated_with": {
+            "bridge": [
+                "2.7.33"
+            ],
+            "dash": [
+                "0.11.7"
+            ],
+            "blockbench_block_wizard": [
+                "1.2.1"
+            ]
+        }
+    },
+    "header": {
+        "name": "pack.name",
+        "description": "pack.description",
+        "min_engine_version": [
+            1,
+            21,
+            80
+        ],
+        "uuid": "97b54191-0763-43c9-a039-f797b4a47497",
+        "version": [
+            0,
+            0,
+            1
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "77e62299-3f91-4b0d-b9ee-7a5433f7abd0",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "uuid": "dff4544d-c56b-49b6-9444-7e555fd1cca1",
+            "entry": "scripts/Main.js",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "version": [
+                0,
+                0,
+                1
+            ],
+            "uuid": "1df4ca77-b3f9-4da9-b290-eddd4de9bf5c"
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "2.4.0"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "2.0.0"
+        }
+    ]
+}

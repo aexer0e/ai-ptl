@@ -1,0 +1,91 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:intro_book",
+            "materials": { "default": "entity_alphatest", "animated": "player_animated" },
+            "render_controllers": [
+                "controller.render.gm1_zen.onboarding_book",
+                "controller.render.gm1_zen.intro_book_recipe",
+                "controller.render.gm1_zen.intro_book_logo"
+            ],
+            "textures": {
+                "default": "textures/gm1/zen/entity/onboarding_book",
+                "intro_book_recipe": "textures/gm1/zen/entity/onboarding_book_recipe",
+                "intro_book_logo": "textures/gm1/zen/entity/onboarding_book_logo"
+            },
+            "geometry": {
+                "default": "geometry.gm1_zen.intro_book",
+                "recipe": "geometry.gm1_zen.intro_book_recipe",
+                "logo": "geometry.intro_book_logo"
+            },
+            "scripts": {
+                "initialize": [ "v.status_int = 'home';", "v.status = 'home';" ],
+                "pre_animation": [
+                    "v.status_int = q.property('gm1_zen:page_number');",
+                    "v.status = (v.status_int == 0) ? 'home' : 'none';",
+                    "v.status = (v.status_int == 1) ? 'page_1_1' : v.status;",
+                    "v.status = (v.status_int == 2) ? 'page_1_2' : v.status;",
+                    "v.status = (v.status_int == 3) ? 'page_1_3' : v.status;",
+                    "v.status = (v.status_int == 4) ? 'page_1_4' : v.status;",
+                    "v.status = (v.status_int == 5) ? 'page_1_5' : v.status;",
+                    "v.status = (v.status_int == 6) ? 'page_2_1' : v.status;",
+                    "v.status = (v.status_int == 7) ? 'page_2_2' : v.status;",
+                    "v.status = (v.status_int == 8) ? 'page_2_3' : v.status;",
+                    "v.status = (v.status_int == 9) ? 'page_2_4' : v.status;",
+                    "v.status = (v.status_int == 10) ? 'page_2_5' : v.status;",
+                    "v.status = (v.status_int == 11) ? 'page_3_1' : v.status;",
+                    "v.status = (v.status_int == 12) ? 'page_3_2' : v.status;",
+                    "v.status = (v.status_int == 13) ? 'page_3_3' : v.status;",
+                    "v.status = (v.status_int == 14) ? 'page_3_4' : v.status;",
+                    "v.status = (v.status_int == 15) ? 'page_3_5' : v.status;",
+                    "v.status = (v.status_int == 16) ? 'credits' : v.status;",
+                    "v.status = (v.status_int == 17) ? 'page_4_1' : v.status;",
+                    "v.status = (v.status_int == 18) ? 'page_4_2' : v.status;",
+                    "v.status = (v.status_int == 19) ? 'page_4_3_subpage_1' : v.status;",
+                    "v.status = (v.status_int == 20) ? 'page_4_3_subpage_2' : v.status;",
+                    "v.status = (v.status_int == 21) ? 'page_4_4_subpage_1' : v.status;",
+                    "v.status = (v.status_int == 22) ? 'page_4_4_subpage_2_2' : v.status;",
+                    "v.status = (v.status_int == 23) ? 'page_4_4_subpage_2_3' : v.status;",
+                    "v.status = (v.status_int == 24) ? 'page_4_4_subpage_2_4' : v.status;",
+                    "v.status = (v.status_int == 25) ? 'page_4_4_subpage_2_5' : v.status;",
+                    "v.status = (v.status_int == 26) ? 'page_4_4_subpage_2_1' : v.status;",
+                    "v.status = (v.status_int == 27) ? 'page_5_1' : v.status;"
+                ],
+                "animate": [ "onboarding_book" ]
+            },
+            "animations": {
+                "onboarding_book": "controller.animation.gm1_zen.onboarding_book",
+                "home": "animation.gm1_zen.home",
+                "page_1_1": "animation.gm1_zen.page_1_1",
+                "page_1_2": "animation.gm1_zen.page_1_2",
+                "page_1_3": "animation.gm1_zen.page_1_3",
+                "page_1_4": "animation.gm1_zen.page_1_4",
+                "page_1_5": "animation.gm1_zen.page_1_5",
+                "page_2_1": "animation.gm1_zen.page_2_1",
+                "page_2_2": "animation.gm1_zen.page_2_2",
+                "page_2_3": "animation.gm1_zen.page_2_3",
+                "page_2_4": "animation.gm1_zen.page_2_4",
+                "page_2_5": "animation.gm1_zen.page_2_5",
+                "page_3_1": "animation.gm1_zen.page_3_1",
+                "page_3_2": "animation.gm1_zen.page_3_2",
+                "page_3_3": "animation.gm1_zen.page_3_3",
+                "page_3_4": "animation.gm1_zen.page_3_4",
+                "page_3_5": "animation.gm1_zen.page_3_5",
+                "credits": "animation.gm1_zen.credits",
+                "page_4_1": "animation.gm1_zen.page_4_1",
+                "page_4_2": "animation.gm1_zen.page_4_2",
+                "page_4_3_subpage_1": "animation.gm1_zen.page_4_3_subpage_1",
+                "page_4_3_subpage_2": "animation.gm1_zen.page_4_3_subpage_2",
+                "page_4_4_subpage_1": "animation.gm1_zen.page_4_4_subpage_1",
+                "page_4_4_subpage_2_1": "animation.gm1_zen.page_4_4_subpage_2_1",
+                "page_4_4_subpage_2_2": "animation.gm1_zen.page_4_4_subpage_2_2",
+                "page_4_4_subpage_2_3": "animation.gm1_zen.page_4_4_subpage_2_3",
+                "page_4_4_subpage_2_4": "animation.gm1_zen.page_4_4_subpage_2_4",
+                "page_4_4_subpage_2_5": "animation.gm1_zen.page_4_4_subpage_2_5",
+                "page_5_1": "animation.gm1_zen.page_5_1"
+            },
+            "spawn_egg": { "base_color": "#22629c", "overlay_color": "#bf39eb" }
+        }
+    }
+}

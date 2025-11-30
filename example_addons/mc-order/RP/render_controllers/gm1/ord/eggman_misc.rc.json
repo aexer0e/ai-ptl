@@ -1,0 +1,67 @@
+{
+    "format_version": "1.20.70",
+    "render_controllers": {
+        "controller.render.projectile_dormant": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.dormant" ]
+        },
+        "controller.render.projectile": {
+            "geometry": "Geometry.charged",
+            "materials": [{ "*": "Material.charged" }],
+            "textures": [ "Texture.charged" ],
+            "uv_anim": {
+                "offset": [ "-(Math.floor(query.life_time * 50))*0.06", "-(Math.floor(query.life_time * 50))*0.06" ],
+                "scale": [ 1, 1 ]
+            },
+            "light_color_multiplier": "Math.abs(query.camera_distance_range_lerp(15, 20)-1)"
+        },
+        "controller.render.projectile_danger": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ]
+        },
+        "controller.render.missile_marker": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.default" ],
+            "uv_anim": { "offset": [ 0, "math.mod(math.floor(q.life_time * 16), 8) / 8" ], "scale": [ 1, "1 / 8" ]},
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.eggman_charging_shooting_laser": {
+            "geometry": "Geometry.laser",
+            "materials": [{ "*": "Material.additive" }],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [{ "*": false, "laser_ball*": true, "laser_blast": "v.is_shooting_laser" }],
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.eggman_laser_gadget": {
+            "geometry": "Geometry.laser",
+            "materials": [
+                { "*": "Material.default" },
+                { "charging_laser*": "Material.additive" },
+                { "laser_ball*": "Material.additive" }
+            ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [{ "*": true, "laser_tracking": false, "laser_collision": false, "laser_blast": false }]
+        },
+        "controller.render.gm1_ord.eggman_tracking_laser": {
+            "geometry": "Geometry.laser",
+            "materials": [
+                { "*": "Material.additive" },
+                { "charging_laser*": "Material.additive" },
+                { "laser_ball*": "Material.additive" }
+            ],
+            "textures": [ "Texture.default" ],
+            "overlay_color": { "a": "v.colour_ramp", "r": 1, "g": 0.5, "b": 0.5 },
+            "part_visibility": [{ "*": false, "laser_tracking": true, "laser_collision": true, "laser_blast": false }],
+            "ignore_lighting": true
+        },
+        "controller.render.gm1_ord.eggman_hand_shell": {
+            "geometry": "Geometry.hand_shell",
+            "materials": [{ "*": "Material.additive" }],
+            "textures": [ "Texture.hand_shell" ],
+            "ignore_lighting": true
+        }
+    }
+}

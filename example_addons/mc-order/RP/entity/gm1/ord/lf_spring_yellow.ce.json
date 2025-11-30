@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:lf_spring_yellow",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/gm1/ord/blocks/lf_spring_yellow" },
+            "geometry": { "default": "geometry.gm1_ord.lf_spring" },
+            "animations": {
+                "sound_test": "animation.gm1_ord.spring_sprung",
+                "spring_animation": "animation.gm1_ord.lf_spring.spring",
+                "spring_controller": "controller.animation.gm1_ord.spring"
+            },
+            "scripts": { "animate": [ "spring_controller" ]},
+            "render_controllers": [ "controller.render.default" ],
+            "sound_effects": { "spring": "spring" }
+        }
+    }
+}

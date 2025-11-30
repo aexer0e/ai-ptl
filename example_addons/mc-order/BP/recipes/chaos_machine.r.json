@@ -1,0 +1,17 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:chaos_machine_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "GGG", "EEE", "IMI" ],
+        "key": {
+            "G": { "item": "minecraft:glass" },
+            "I": { "item": "minecraft:iron_block" },
+            "M": { "item": "gm1_ord:mega_ring_platform" },
+            "E": { "item": "gm1_ord:chaos_drive" }
+        },
+        "result": { "item": "gm1_ord:chaos_machine", "data": 1 },
+        "unlock": [{ "item": "gm1_ord:chaos_drive" }]
+    }
+}

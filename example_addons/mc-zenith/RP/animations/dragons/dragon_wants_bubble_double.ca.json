@@ -1,0 +1,105 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.dragon_wants.bubble_activate_left": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 1,
+            "bones": {
+                "want_bubble_left_1": {
+                    "position": { "0.0": [ 0, 0, 0 ], "1.0": [ 0, 0, 0 ]},
+                    "scale": { "0.0": [ 0, 0, 0 ], "0.25": [ 1, 1, 1 ]}
+                },
+                "want_bubble_left_2": {
+                    "position": { "0.4167": [ 0, 0, 0 ], "1.0": [ 0, 8, 0 ]},
+                    "scale": { "0.4167": [ 0, 0, 0 ], "0.6667": [ 1, 1, 1 ]}
+                },
+                "want_bubble_left_3": {
+                    "position": { "0.8333": [ 0, 0, 0 ], "1.0": [ 0, 28, 0 ]},
+                    "scale": { "0.8333": [ 0, 0, 0 ], "1.0": [ 1, 1, 1 ]}
+                }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_activate_right": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 1,
+            "bones": {
+                "want_bubble_right_1": {
+                    "position": { "0.0": [ 0, 0, 0 ], "1.0": [ 0, 0, 0 ]},
+                    "scale": { "0.0": [ 0, 0, 0 ], "0.25": [ 1, 1, 1 ]}
+                },
+                "want_bubble_right_2": {
+                    "position": { "0.4167": [ 0, 0, 0 ], "1.0": [ 0, 8, 0 ]},
+                    "scale": { "0.4167": [ 0, 0, 0 ], "0.6667": [ 1, 1, 1 ]}
+                },
+                "want_bubble_right_3": {
+                    "position": { "0.8333": [ 0, 0, 0 ], "1.0": [ 0, 28, 0 ]},
+                    "scale": { "0.8333": [ 0, 0, 0 ], "1.0": [ 1, 1, 1 ]}
+                }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_activated_left": {
+            "loop": true,
+            "bones": {
+                "want_bubble_left_1": { "position": [ 0, "math.sin(q.anim_time*90+180)*2", 0 ]},
+                "want_bubble_left_2": { "position": [ 0, "8+math.sin(q.anim_time*90+90)*2", 0 ]},
+                "want_bubble_left_3": { "position": [ 0, "28+math.sin(q.anim_time*90)*2", 0 ], "scale": 1 }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_activated_right": {
+            "loop": true,
+            "bones": {
+                "want_bubble_right_1": { "position": [ 0, "math.sin(q.anim_time*90+180)*2", 0 ]},
+                "want_bubble_right_2": { "position": [ 0, "8+math.sin(q.anim_time*90+90)*2", 0 ]},
+                "want_bubble_right_3": { "position": [ 0, "28+math.sin(q.anim_time*90)*2", 0 ], "scale": 1 }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_deactivate_left": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 1,
+            "bones": {
+                "want_bubble_left_1": {
+                    "position": { "0.0": [ 0, 0, 0 ], "1.0": [ 0, 0, 0 ]},
+                    "scale": { "0.75": [ 1, 1, 1 ], "1.0": [ 0, 0, 0 ]}
+                },
+                "want_bubble_left_2": {
+                    "position": { "0.0": [ 0, 8, 0 ], "0.75": [ 0, 0, 0 ]},
+                    "scale": { "0.5": [ 1, 1, 1 ], "0.75": [ 0, 0, 0 ]}
+                },
+                "want_bubble_left_3": {
+                    "position": { "0.0": [ 0, 28, 0 ], "0.5": [ 0, 0, 0 ]},
+                    "scale": { "0.0": [ 1, 1, 1 ], "0.5": [ 0, 0, 0 ]}
+                }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_deactivate_right": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 1,
+            "bones": {
+                "want_bubble_right_1": {
+                    "position": { "0.0": [ 0, 0, 0 ], "1.0": [ 0, 0, 0 ]},
+                    "scale": { "0.75": [ 1, 1, 1 ], "1.0": [ 0, 0, 0 ]}
+                },
+                "want_bubble_right_2": {
+                    "position": { "0.0": [ 0, 8, 0 ], "0.75": [ 0, 0, 0 ]},
+                    "scale": { "0.5": [ 1, 1, 1 ], "0.75": [ 0, 0, 0 ]}
+                },
+                "want_bubble_right_3": {
+                    "position": { "0.0": [ 0, 28, 0 ], "0.5": [ 0, 0, 0 ]},
+                    "scale": { "0.0": [ 1, 1, 1 ], "0.5": [ 0, 0, 0 ]}
+                }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_deactivated_left": {
+            "loop": true,
+            "bones": {
+                "want_bubble_left": { "scale": 0 }
+            }
+        },
+        "animation.gm1_zen.dragon_wants.bubble_deactivated_right": {
+            "loop": true,
+            "bones": {
+                "want_bubble_right": { "scale": 0 }
+            }
+        }
+    }
+}

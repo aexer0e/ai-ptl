@@ -1,0 +1,49 @@
+{
+    "format_version": "1.14.0",
+    "minecraft:npc_dialogue": {
+        "scenes": [
+            {
+                "scene_tag": "gm1_sky:intro",
+                "npc_name": "AI PLAYERS",
+                "text": {
+                    "rawtext": [
+                        {
+                            "translate": "Welcome to §sAI Players§r! Everything is set for you to start an §sAI Mutliplayer§r session and unleash them upon your Minecraft world!",
+                            "with": [ "\n" ]
+                        }
+                    ]
+                },
+                "buttons": [
+                    {
+                        "name": { "rawtext": [{ "translate": "§q§lSTART" }]},
+                        "commands": [ "/execute as @initiator run scriptevent gm1_sky:open_server_form" ]
+                    },
+                    { "name": "HELP", "commands": [ "/dialogue open @s @initiator gm1_sky:info" ]},
+                    { "name": "CREDITS", "commands": [ "/dialogue open @s @initiator gm1_sky:credits" ]}
+                ]
+            },
+            {
+                "scene_tag": "gm1_sky:info",
+                "npc_name": "AI PLAYERS - Information",
+                "text": "I can help you with anything you need! Well, not §oanything§r. I live inside this menu. But here are some frequently asked questions!\n\n§sWill AI Players destroy my world?§r\nYou can turn griefing on or off before you start the AI Player session. Even if griefing is turned on, they will only destroy certain blocks like logs and ores.\n\n§sWhat do I do if I lose this item?§r\nYou can craft a new one using 8 Paper and 1 Iron Ingot. Check your recipe book!\n\n§sWhat can AI Players do?§r\nAI Players are full of surprises! They'll fight monsters, craft gear, mine ores, and much more. The more time you spend with an AI Player, the friendly they become.\n\n§sHow do I remove an AI Player?§r\nYou can end the AI Session at any time using this item! You can also craft a §6Ban Hammer§r to remove a praticular AI. It is crafted with 2 gold ingots, 1 gold block and 2 blaze rods! Check your recipe book!\n\n§sWho are you?§r\nOh, Me? I'm CLYDE! I was sent to help you use this addon :-)",
+                "buttons": [
+                    {
+                        "name": { "rawtext": [{ "translate": "BACK" }]},
+                        "commands": [ "/dialogue open @s @initiator gm1_sky:intro" ]
+                    }
+                ]
+            },
+            {
+                "scene_tag": "gm1_sky:credits",
+                "npc_name": "AI PLAYERS - Credits",
+                "text": "§mCREATED BY GAMEMODE ONE§r\n\nJoin our Discord! §mhttp://discord.gg/gamemode§r\n\n§nGeneral Manager§r: Chinara Adhofter\n§nExecutive Producer§r: Tian Figg\n§nStudio Creative Director§r: Sean Davidson\n§nGame Director§r: Brandon Walsh\n§nProducer§r: JP Wood\n§nRelease Manager§r: Thomas Osbourne\n\n§nProgrammer§r: Eeb\n§nProgrammer§r: Matt Blair\n§nGameplay Technician§r: Jack Woodward\n§nTool Engineer§r: Adam Brady\n\n§nArt Director§r: Wilson Viegas\n§nArtist§r: Lenni Määttänen\n§nAnimator§r: Alyssa Nicholas\n§nArtist§r: Lee Lurz\n§nArtist§r: Oscar San Miguel\n\n§nCommunity Manager§r: Angela de Wet\n§nMarketing Artist§r: Jos Vieveen\n§nGraphic Artist§r: Joanne Leung\n§nHuman Resources§r: Andrea Smith",
+                "buttons": [
+                    {
+                        "name": { "rawtext": [{ "translate": "BACK" }]},
+                        "commands": [ "/dialogue open @s @initiator gm1_sky:intro" ]
+                    }
+                ]
+            }
+        ]
+    }
+}

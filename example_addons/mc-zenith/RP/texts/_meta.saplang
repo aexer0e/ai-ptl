@@ -1,0 +1,20 @@
+Gamemode One: A Canadian game development company responsible for this Minecraft add-on.
+Discord: A platform for voice, video, and text communication used for community discussions.
+X (formerly Twitter): A social media platform used for updates and news sharing.
+Instagram: A photo and video sharing social media platform popular for visual content.
+TikTok: A social media app known for short-form videos and viral trends.
+Bluesky: A social media platform used for updates and news sharing.
+credits: {LOCKED}
+HTTYD: the short form of the franchise name "How to Train Your Dragon". It may have an official translation.
+~LINEBREAK~: {StrContains"~LINEBREAK~"} ~Linebreak~ inserts a new line in the text.
+~LINEBREAK~~LINEBREAK~: {StrContains"~LINEBREAK~"} ~Linebreak~ inserts a new line in the text.
+
+
+#### Build info
+build.title=Template Build Info
+build.versionTitle=Version
+$build.version=Development
+build.idTitle=Build
+$build.id=Last known build; 0
+build.commitSHATitle=Commit
+$build.commitSHA=Development

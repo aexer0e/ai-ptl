@@ -1,0 +1,29 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:monstrousnightmare_projectile",
+            "materials": { "default": "entity_emissive" },
+            "textures": { "default": "textures/gm1/zen/entity/blank" },
+            "geometry": { "default": "geometry.gm1_zen.fire" },
+            "render_controllers": [ "controller.render.default" ],
+            "animations": {
+                "on_hit": "animation.gm1_zen.projectile.on_hit",
+                "trail": "animation.gm1_zen.projectile.trail",
+                "in_air": "animation.gm1_zen.projectile.spin_z",
+                "scale_up": "animation.gm1_zen.projectile.scale_up"
+            },
+            "particle_effects": { "on_hit": "gm1_zen:fire_blast", "trail": "gm1_zen:fire_trail" },
+            "sound_effects": { "hit": "monstrousnightmare_shot_impact" },
+            "scripts": {
+                "animate": [
+                    { "on_hit": "q.property('gm1_zen:has_hit')" },
+                    "trail",
+                    { "in_air": "!q.property('gm1_zen:has_hit')" },
+                    "scale_up"
+                ]
+            },
+            "spawn_egg": { "base_color": "#083864", "overlay_color": "#267ECE" }
+        }
+    }
+}

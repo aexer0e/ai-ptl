@@ -1,0 +1,60 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.gm1_ord.eggmobile": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" },
+                { "*_light_on*": "Material.additive" },
+                { "charging_laser*": "Material.additive" },
+                { "laser_ball*": "Material.additive" },
+                { "rotating_light_beam*": "Material.additive" },
+                { "*lamp*": "v.is_charging_gadget? Material.additive : Material.alpha_blend" },
+                { "plasma*": "Material.additive" }
+            ],
+            "arrays": { "textures": { "Array.t": [ "texture.default", "texture.scuffed" ]}},
+            "textures": [ "Array.t[v.is_burnt]" ],
+            "is_hurt_color": { "a": 0, "b": 0, "g": 0, "r": 0 },
+            "overlay_color": {
+                "a": "v.recently_damaged ? v.recently_damaged_sinewave*v.recently_damaged : 0",
+                "b": 1,
+                "g": 1,
+                "r": 1
+            },
+            "part_visibility": [
+                { "*": true },
+                { "*_light_on": "!v.is_stunned" },
+                { "*_light_back": "!v.is_stunned" },
+                { "*_light_off": "v.is_stunned" },
+                { "plasma*": "!v.is_stunned && !v.is_going_to_shrine" }
+            ],
+            "light_color_multiplier": 1.25
+        },
+        "controller.render.gm1_ord.eggmobile_negative": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" },
+                { "*_light_on*": "Material.additive" },
+                { "charging_laser*": "Material.additive" },
+                { "*lamp*": "v.is_charging_gadget? Material.additive : Material.alpha_blend" },
+                { "plasma*": "Material.additive" }
+            ],
+            "textures": [ "Texture.negative" ],
+            "is_hurt_color": { "a": 0, "b": 0, "g": 0, "r": 0 },
+            "overlay_color": {
+                "a": "v.recently_damaged ? v.recently_damaged_sinewave*v.recently_damaged : 0",
+                "b": 1,
+                "g": 1,
+                "r": 1
+            },
+            "ignore_lighting": true,
+            "part_visibility": [
+                { "*": true },
+                { "*_light_on": "!v.is_stunned" },
+                { "*_light_back": "!v.is_stunned" },
+                { "*_light_off": "v.is_stunned" },
+                { "plasma*": "!v.is_stunned && !v.is_going_to_shrine" }
+            ]
+        }
+    }
+}

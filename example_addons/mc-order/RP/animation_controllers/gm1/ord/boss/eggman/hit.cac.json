@@ -1,0 +1,17 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.hit": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "hit": "v.recently_damaged && !v.is_dying" }]},
+                "hit": {
+                    "animations": [ "hit" ],
+                    "transitions": [{ "default": "!v.recently_damaged && q.all_animations_finished" }],
+                    "blend_via_shortest_path": true,
+                    "blend_transition": 0.25
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_ord.eggmobile_missile",
+				"texture_width": 384,
+				"texture_height": 384,
+				"visible_bounds_width": 14,
+				"visible_bounds_height": 9,
+				"visible_bounds_offset": [0, 2.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "projectile",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"rotation": [90, 0, -180],
+					"cubes": [
+						{"origin": [-3.5, -10.5, -3.5], "size": [7, 4, 7], "uv": [160, 318]},
+						{"origin": [-0.5, -6.5, -4.5], "size": [1, 7, 3], "pivot": [-0.5, 0.5, -4.5], "rotation": [-30, 0, 0], "uv": [208, 328]},
+						{"origin": [1.5, -6.5, -0.5], "size": [3, 7, 1], "pivot": [3.5, 0.5, 0], "rotation": [0, 0, -30], "uv": [160, 329]},
+						{"origin": [-4.5, -6.5, -0.5], "size": [3, 7, 1], "pivot": [-4.5, 0.5, 0], "rotation": [0, 0, 30], "uv": [168, 329]},
+						{"origin": [-0.5, -6.5, 1.5], "size": [1, 7, 3], "pivot": [-0.5, 0.5, 4.5], "rotation": [30, 0, 0], "uv": [208, 328]},
+						{"origin": [-4.5, -6.5, -4.5], "size": [9, 17, 9], "uv": [192, 284]},
+						{"origin": [-3.8, 6.8, -4.5], "size": [7, 7, 9], "inflate": -0.0125, "pivot": [0, 10, 0], "rotation": [0, 0, 45], "uv": [128, 318]}
+					],
+					"locators": {
+						"effect_locator": [0, -12, 0.5]
+					}
+				}
+			]
+		}
+	]
+}

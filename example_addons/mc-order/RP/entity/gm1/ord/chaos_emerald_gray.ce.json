@@ -1,0 +1,18 @@
+{
+    "$templates": [
+        {
+            "$template": "ord:chaos_emerald.ce",
+            "color": "gray",
+            "colour_value": 7,
+            "colour_r": 182,
+            "colour_g": 182,
+            "colour_b": 182
+        }
+    ],
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:chaos_emerald_gray",
+            "spawn_egg": { "texture": "chaos_emeralds", "texture_index": 7 }
+        }
+    }
+}

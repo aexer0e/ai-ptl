@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "properties": {
+        "minecraft:entity": {
+            "properties": {
+                "components": {
+                    "$ref": "#/definitions/references"
+                },
+                "component_groups": {
+                    "patternProperties": { ".*": { "$ref": "#/definitions/references" }}
+                }
+            }
+        }
+    },
+    "definitions": {
+        "references": {
+            "allOf": [
+                { "properties": { "gm1:animation_controllers": { "$ref": "AutoAnimationControllers.json" }}},
+                { "properties": { "gm1:animations": { "$ref": "AutoAnimations.json" }}}
+            ]
+        }
+    }
+}

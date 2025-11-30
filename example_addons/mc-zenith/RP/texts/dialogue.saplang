@@ -1,0 +1,115 @@
+npc_button: limited textbox with a maximum of 12 characters. If the word necessarily overflows 12 characters, you can remove the formatting code to find more characters.
+vanilla: a term in the Minecraft community for referring to the unmodified game.
+
+Night Fury | Night Furies: A species of dragon. This might have an official translation.
+Gronckle | Gronckles: A species of dragon. This might have an official translation.
+Monstrous Nightmare | Monstrous Nightmares: A species of dragon. This might have an official translation.
+Hideous Zippleback | Hideous Zipplebacks | Zippleback | Zipplebacks: A species of dragon. This might have an official translation.
+Deadly Nadder | Nadder | Deadly Nadders | Nadders: A species of dragon. This might have an official translation.
+Toothless: The protagonist's male dragon, and the last Night Fury, in the How to Train Your Dragon franchise. This might have an official translation.
+
+Dragon Horn: An item that the player primarily uses to summon a dragon.
+Book of Dragons: A book in the How to Train Your Dragon series that contains everything vikings know about the dragons they know about. This might have an official translation.
+Dragon Saddle: A saddle that can be equipped on a dragon in order to ride them.
+Scale: An item that a dragon sheds when they scratch.
+Forge: An item that the player uses to craft other items, especially armors.
+Dragon Armor: An item that can be equipped to a dragon to change how they look.
+Rider: A dragon rider; the player.
+
+Iron Ingots: Crafting materials in Minecraft used for creating tools and structures.
+Copper Ingots: Crafting materials in Minecraft used for creating tools and structures.
+Paper: Crafting materials in Minecraft used for creating books and other items.
+Leather: Crafting materials in Minecraft used for creating items and armors.
+
+Helmet | Helmets: A piece of armor in Minecraft that is equipped to the head.
+Chestplate | Chestplates: A piece of armor in Minecraft that is equipped to the torso.
+Leggings: A piece of armor in Minecraft that is equipped to the legs.
+Boots: A piece of armor in Minecraft that is equipped to the feet.
+Armor Slot: The place to equip a set of armor in Minecraft.
+Cobblestone | Cobblestones: A block type for construction in Minecraft.
+Crafting Table: A block that the player crafts other items on in Minecraft.
+Recipe | Recipes: Details on how to make things in Minecraft.
+Rotten Flesh: An item that loot drops from zombies in Minecraft.
+Chicken: A type of animal in Minecraft.
+Cod: A type of fish in Minecraft.
+Tropical Fish: A type of fish in Minecraft.
+
+Boulder: A classification of dragon. This might have an official translation.
+Sharp: A classification of dragon. This might have an official translation.
+Stoker: A classification of dragon. This might have an official translation.
+Strike: A classification of dragon. This might have an official translation.
+Mystery: A classification of dragon. This might have an official translation.
+Class: Short for "classification", for dragon species.
+
+dialogue.exit=§cExit
+oaklogue.back=§cBack
+
+: {MaxLength="32"}
+dialogue.intro_book.name.home=§4How to Train Your Dragon Guide
+: {MaxLength="32"}
+dialogue.intro_book.name.page_1_1=Get Started > Introduction
+: {MaxLength="32"}
+dialogue.intro_book.name.page_1_2=Get Started > Taming Dragons
+: {MaxLength="32"}
+dialogue.intro_book.name.page_1_3=Get Started > Dragon Saddle
+: {MaxLength="32"}
+dialogue.intro_book.name.page_1_4=Get Started > Dragon Riding
+: {MaxLength="32"}
+dialogue.intro_book.name.page_1_5=Get Started > Book of Dragons
+: {MaxLength="32"}
+dialogue.intro_book.name.page_2_1=Controls > Interactions
+: {MaxLength="32"}
+dialogue.intro_book.name.page_2_2=Controls > Sit / Stand Dragon
+: {MaxLength="32"}
+dialogue.intro_book.name.page_2_3=Controls > Ride a Dragon
+: {MaxLength="32"}
+dialogue.intro_book.name.page_2_4=Controls > Flying
+: {MaxLength="32"}
+dialogue.intro_book.name.page_2_5=Controls > Flying Attacks
+: {MaxLength="32"}
+dialogue.intro_book.name.page_3_1=Dragon Training > How To Train
+: {MaxLength="32"}
+dialogue.intro_book.name.page_3_2=Dragon Training > Stats
+: {MaxLength="32"}
+dialogue.intro_book.name.page_3_3=Dragon Training > Dragon Scales
+: {MaxLength="32"}
+dialogue.intro_book.name.page_3_4=Dragon Training > Dragon Horn
+: {MaxLength="32"}
+dialogue.intro_book.name.page_3_5=Dragon Training > Customization
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_1=Recipes > Forge
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_2=Recipes > Dragon Saddle
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_3_subpage_1=Utility > Book of Dragons
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_3_subpage_2=Recipes > Utility > Dragon Horn
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_1=Recipes > Dragon Armor
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_2_1=Recipes > Rider Armor
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_2_2=Rider Armor > Helmet
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_2_3=Rider Armor > Chestplate
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_2_4=Rider Armor > Leggings
+: {MaxLength="32"}
+dialogue.intro_book.name.page_4_4_subpage_2_5=Rider Armor > Boots
+: {MaxLength="32"}
+dialogue.intro_book.name.page_5_1=Changelog
+: {MaxLength="32"}
+dialogue.intro_book.name.credits=Credits
+
+: {MaxLength="32"}
+dialogue.dragon_book.name.home=§4The Book of Dragons
+: {MaxLength="32"}
+dialogue.dragon_book.name.page_1_1=Boulder Class
+: {MaxLength="32"}
+dialogue.dragon_book.name.page_2_1=Stoker Class
+: {MaxLength="32"}
+dialogue.dragon_book.name.page_3_1=Tracker Class
+: {MaxLength="32"}
+dialogue.dragon_book.name.page_4_1=Mystery Class
+: {MaxLength="32"}
+dialogue.dragon_book.name.page_5_1=Strike Class

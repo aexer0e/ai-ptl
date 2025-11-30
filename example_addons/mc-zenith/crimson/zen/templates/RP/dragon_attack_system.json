@@ -1,0 +1,26 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_attack_system",
+    "$inputs": { "dragon_species": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "attack_windup_1": "animation.gm1_zen.dragon_attack.head_windup_1",
+                "attack_windup_2": "animation.gm1_zen.dragon_attack.head_windup_2",
+                "attack_pose_1": "animation.gm1_zen.^{dragon_species}^.attack_1",
+                "attack_pose_2": "animation.gm1_zen.^{dragon_species}^.attack_2",
+                "attack_pose_3": "animation.gm1_zen.^{dragon_species}^.attack_3",
+                "shot_sfx": "animation.gm1_zen.projectile.shot_sfx",
+                "ranged_attack_controller": "controller.animation.gm1_zen.dragon_global.ranged_attack",
+                "melee_attack_controller": "controller.animation.gm1_zen.dragon_global.melee_attack"
+            },
+            "scripts": {
+                "animate": [
+                    "ranged_attack_controller"//,
+                    //"melee_attack_controller"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$templates": [{ "$template": "ord:chaos_emerald_fake.i", "color": "red" }],
+    "minecraft:item": {
+        "description": { "identifier": "gm1_ord:chaos_emerald_red_fake", "menu_category": { "category": "equipment" }},
+        "components": {
+            "minecraft:display_name": { "value": "item.gm1_ord:chaos_emerald_red_fake.name" },
+            "minecraft:icon": "gm1_ord.chaos_emerald_red",
+            "minecraft:block_placer": { "block": "gm1_ord:chaos_emerald_red_fake" }
+        }
+    }
+}

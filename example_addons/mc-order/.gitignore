@@ -1,0 +1,43 @@
+# Windows Files
+Desktop.ini
+.DS_Store
+
+# Javascript node_modules
+node_modules
+
+# Enviroment Files
+.env
+
+# Bridge Files
+.bridge/*
+!.bridge/compiler/
+!.bridge/extensions/
+builds
+
+# Build output
+/build
+!tools/build/*
+server
+dist
+
+# Generated files - Files generated at compliation time which should not be committed
+BP/scripts/.senv.ts
+.tmp
+docs/**/*
+
+# Minecraft world files
+worlds/*/level.dat_old
+worlds/*/world_behavior_pack_history.json
+worlds/*/world_resource_pack_history.json
+
+# Debugging with logpiler
+clipboard.txt
+
+# World Converter Tool
+tools/WorldConverter/*
+!tools/WorldConverter/WorldConverter.ps1
+!tools/WorldConverter/world_settings.json
+!tools/WorldConverter/block_mappings.json
+!tools/WorldConverter/block_mappings*
+!tools/WorldConverter/blockMappings
+

@@ -1,0 +1,24 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:badnik_eggrobo_projectile",
+            "materials": { "default": "entity_emissive" },
+            "textures": { "default": "textures/gm1/ord/entity/badnik/eggrobo" },
+            "geometry": { "default": "geometry.gm1_ord.badnik_eggrobo_projectile" },
+            "sound_effects": {
+                "trail_sfx": "badnik_eggrobo_projectile_trail",
+                "hit_sfx": "badnik_eggrobo_projectile_hit"
+            },
+            "particle_effects": { "trail_vfx": "gm1_ord:badnik_eggrobo_projectile_trail" },
+            "animations": {
+                "align": "animation.badnik_eggrobo_projectile.align",
+                "trail_vfx": "animation.gm1_ord.projectile.trail_vfx",
+                "trail_sfx": "animation.gm1_ord.projectile.trail_sfx",
+                "hit_sfx": "animation.gm1_ord.projectile.hit_sfx"
+            },
+            "scripts": { "animate": [ "trail_sfx", "align", "trail_vfx", { "hit_sfx": "query.is_baby" }]},
+            "render_controllers": [ "controller.render.default" ]
+        }
+    }
+}

@@ -1,0 +1,1136 @@
+{
+    "$identifier": "gm1_zen_onboarding",
+    "$method": "oaklogue.tree",
+    "name": "^o.intro_book.name.home",
+    "scenes": {
+        "1-home": {
+            "name": "^o.intro_book.name.home",
+            "text": "Welcome to the §4How to Train Your Dragon Add-On§r! For help, check out §qGet Started§r!\n\n§1(You can craft this Book again using 1 Dragon Scale of any kind!)§r~LINEBREAK~~LINEBREAK~Join the §mGamemode One§r community!~LINEBREAK~Discord: §8discord.gg/gamemode§r~LINEBREAK~Bluesky: §8@gamemodeone.com§r~LINEBREAK~TikTok: §8tiktok.com/@gmode_one§r~LINEBREAK~Instagram: §8instagram.com/gamemodeone§r~LINEBREAK~X: §8x.com/gmodeone§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§qGet Started",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Controls",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Training",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Recipes",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Changelog",
+                    "scene": "page_5_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Credits",
+                    "scene": "11-credits",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.home" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_1_1": {
+            "name": "^o.intro_book.name.page_1_1",
+            "text": "You can find different species of wild dragons in your world! Most dragons eat meat and fish, but §nGronckles§r only eat rocks! There are more details on dragon differences in the §4Book of Dragons§r!~LINEBREAK~~LINEBREAK~Build a bond by feeding them, giving them a saddle, and flying around with them.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lIntroduction",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Taming Dragons",
+                    "scene": "page_1_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Saddle",
+                    "scene": "page_1_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Riding",
+                    "scene": "page_1_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Info",
+                    "scene": "page_1_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_1_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_1_2": {
+            "name": "^o.intro_book.name.page_1_2",
+            "text": "Dragons can be skittish and will fly away from you. If you're §4holding a weapon, they might attack instead§r!~LINEBREAK~~LINEBREAK~Try §1sneaking§r when you first encounter a wild dragon, and offer some food.~LINEBREAK~~LINEBREAK~A dragon is §qtamed§r at §1Trust Level 3§.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lTaming Dragons",
+                    "scene": "page_1_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Saddle",
+                    "scene": "page_1_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Riding",
+                    "scene": "page_1_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Info",
+                    "scene": "page_1_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_1_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_1_3": {
+            "name": "^o.intro_book.name.page_1_3",
+            "text": "When you've tamed a wild dragon, it will show you that it is ready for a §nDragon Saddle§r! Use the scale that it gives you to craft a §nForge§r, and then you can craft a saddle.~LINEBREAK~Hold a dragon saddle and interact with the dragon to equip it. You'll be able to §1name your dragon§r!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Taming Dragons",
+                    "scene": "page_1_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Saddle",
+                    "scene": "page_1_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Riding",
+                    "scene": "page_1_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Info",
+                    "scene": "page_1_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_1_3" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_1_4": {
+            "name": "^o.intro_book.name.page_1_4",
+            "text": "When you have saddled a dragon, interact with them to hop on their back! You can direct them anywhere, and even fly into the sky with a jump!~LINEBREAK~~LINEBREAK~Keep an eye on the dragon's §1stamina§r, as dragons can only fly for so long before they need a break!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Taming Dragons",
+                    "scene": "page_1_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Saddle",
+                    "scene": "page_1_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Riding",
+                    "scene": "page_1_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Info",
+                    "scene": "page_1_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_1_4" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_1_5": {
+            "name": "^o.intro_book.name.page_1_5",
+            "text": "The §4Book of Dragons§r contains everything we know about every dragon we know of!\n\nIt has information on where different dragons are located, what they prefer to eat, and more! You can find how to craft it under §1Utility§r in the §lRecipes§r section.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Introduction",
+                    "scene": "page_1_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Taming Dragons",
+                    "scene": "page_1_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Saddle",
+                    "scene": "page_1_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Riding",
+                    "scene": "page_1_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Info",
+                    "scene": "page_1_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_1_5" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_2_1": {
+            "name": "^o.intro_book.name.page_2_1",
+            "text": "~LINEBREAK~Use INTERACT ( :_input_key.use: ) to:~LINEBREAK~~LINEBREAK~ - feed a dragon when holding food (and they are hungry or hurt)~LINEBREAK~ - apply a saddle, armor, or paint~LINEBREAK~ - start riding a saddled dragon~LINEBREAK~ - pet a dragon that wants to be pet",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lInteractions",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Sit/Stand",
+                    "scene": "page_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Ride a Dragon",
+                    "scene": "page_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Flight",
+                    "scene": "page_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Attacks",
+                    "scene": "page_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_2_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_2_2": {
+            "name": "^o.intro_book.name.page_2_2",
+            "text": "~LINEBREAK~While sneaking ( :_input_key.sneak: ),\n\nUse INTERACT ( :_input_key.use: ) \n\non a tamed dragon to make them sit or stand. You cannot ride a dragon unless it is standing.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Interactions",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lSit/Stand",
+                    "scene": "page_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Ride a Dragon",
+                    "scene": "page_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Flight",
+                    "scene": "page_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Attacks",
+                    "scene": "page_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_2_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_2_3": {
+            "name": "^o.intro_book.name.page_2_3",
+            "text": "~LINEBREAK~After using INTERACT on a saddled dragon, you can use the MOVE inputs to control where the dragon goes while you are riding it! Forwards, backwards, or side to side!~LINEBREAK~~LINEBREAK~Press JUMP ( :_input_key.jump: ) to start flying!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Interactions",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Sit/Stand",
+                    "scene": "page_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lRide a Dragon",
+                    "scene": "page_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Flight",
+                    "scene": "page_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Attacks",
+                    "scene": "page_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_2_3" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_2_4": {
+            "name": "^o.intro_book.name.page_2_4",
+            "text": "Ride a dragon and JUMP ( :_input_key.jump: ) to fly. Use the MOVE inputs to go forwards, backwards, or side to side.~LINEBREAK~~LINEBREAK~While moving forward, the dragon will fly in the direction you LOOK.~LINEBREAK~~LINEBREAK~§1When flying, hold JUMP for a speed boost§r!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Interactions",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Sit/Stand",
+                    "scene": "page_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Ride a Dragon",
+                    "scene": "page_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Flight",
+                    "scene": "page_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Attacks",
+                    "scene": "page_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_2_4" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_2_5": {
+            "name": "^o.intro_book.name.page_2_5",
+            "text": "When flying on a dragon, you can PUNCH/ATTACK ( :_input_key.attack: ) in order to have the dragon perform a ranged attack!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Interactions",
+                    "scene": "page_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Sit/Stand",
+                    "scene": "page_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Ride a Dragon",
+                    "scene": "page_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Flight",
+                    "scene": "page_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Attacks",
+                    "scene": "page_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_2_5" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_3_1": {
+            "name": "^o.intro_book.name.page_3_1",
+            "text": "The more you care for your tamed dragon, the more your bond will grow! As your bond improves, the dragon becomes stronger and you can interact with them in new ways.~LINEBREAK~~LINEBREAK~Dragons will tell you when they §1want§r something with a §1thought bubble§r above their head. If you help them out, their trust in you will grow!\n\nYou can also build your bond further by doing activities together like §1flying§r or §1fighting mobs§r!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lHow To Train",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Stats",
+                    "scene": "page_3_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Scales",
+                    "scene": "page_3_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Horn",
+                    "scene": "page_3_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Customization",
+                    "scene": "page_3_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_3_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_3_2": {
+            "name": "^o.intro_book.name.page_3_2",
+            "text": "As the Trust Level increases, you can observe your dragon's skills improving in health, attack damage, and stamina!~LINEBREAK~~LINEBREAK~You can see the amount of hearts the dragon has when you are riding them. You can §1heal§r a hurt dragon by feeding them any edible food!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "How To Train",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Stats",
+                    "scene": "page_3_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Scales",
+                    "scene": "page_3_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Horn",
+                    "scene": "page_3_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Customization",
+                    "scene": "page_3_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_3_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_3_3": {
+            "name": "^o.intro_book.name.page_3_3",
+            "text": "A tamed dragon that is seated will periodically get itchy, or sleepy.~LINEBREAK~~LINEBREAK~When a seated dragon scratches, they have a chance to drop some §1dragon scales§r, which are an important resource for crafting armor!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "How To Train",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Stats",
+                    "scene": "page_3_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Scales",
+                    "scene": "page_3_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Horn",
+                    "scene": "page_3_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Customization",
+                    "scene": "page_3_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_3_3" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_3_4": {
+            "name": "^o.intro_book.name.page_3_4",
+            "text": "Once you have a tamed dragon, you can summon it with the §nDragon Horn§r! If your tamed dragon loses all health, you can summon it after it recovers.~LINEBREAK~~LINEBREAK~You can also use the horn to release a dragon. Beware this is a §4destructive§r action, and you will never see that particular dragon again.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "How To Train",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Stats",
+                    "scene": "page_3_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Scales",
+                    "scene": "page_3_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Horn",
+                    "scene": "page_3_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Customization",
+                    "scene": "page_3_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_3_4" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_3_5": {
+            "name": "^o.intro_book.name.page_3_5",
+            "text": "You can add visuals to your dragon with paint or armor!~LINEBREAK~~LINEBREAK~§lFor Paint§r: Get any vanilla dye in Minecraft, and interact with your dragon while holding it in order to apply the paint to them! You can remove paint using a §1bucket of water or lava§r.\n\n§lFor Armor§r: You can equip §nDragon Armor§r by holding it and interacting with a dragon. You can remove armor by using §1shears§r.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "How To Train",
+                    "scene": "page_3_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Stats",
+                    "scene": "page_3_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Scales",
+                    "scene": "page_3_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Horn",
+                    "scene": "page_3_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lCustomization",
+                    "scene": "page_3_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_3_5" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_1": {
+            "name": "^o.intro_book.name.page_4_1",
+            "text": "The §nForge§r is where you will craft various things for your dragons and for yourself- like Dragon Armor, the Dragon Horn, and Rider Scale Armor!~LINEBREAK~~LINEBREAK~You can craft a Forge on a vanilla crafting table using §1Cobblestone§r surrounding any §1Dragon Scale§r.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lForge",
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Saddle",
+                    "scene": "page_4_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Utility",
+                    "scene": "page_4_3_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Armor",
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_2": {
+            "name": "^o.intro_book.name.page_4_2",
+            "text": "You can't ride your dragon without a saddle!\n\nCraft it using 3 §1Leather§r and an §1Iron Ingot§r at a §nForge§r!",
+            "langspace": "intro-book",
+            "options": [
+                { "text": "Forge", "scene": "page_4_1", "speaker": "@s", "commands": [ "playsound next_page @initiator" ]},
+                {
+                    "text": "§lDragon Saddle",
+                    "scene": "page_4_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Utility",
+                    "scene": "page_4_3_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Armor",
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_3_subpage_1": {
+            "name": "^o.intro_book.name.page_4_3_subpage_1",
+            "text": "You can craft the Book of Dragons by using 3 §1paper§r at the §nForge§r",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lBook of Dragons",
+                    "scene": "page_4_3_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Dragon Horn",
+                    "scene": "page_4_3_subpage_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_3_subpage_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_3_subpage_2": {
+            "name": "^o.intro_book.name.page_4_3_subpage_2",
+            "text": "A dragon horn helps you find your lost dragons by allowing them to be called back to you!~LINEBREAK~~LINEBREAK~You can craft one using 5 §1Copper Ingots§r at the §nForge§r!",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Book of Dragons",
+                    "scene": "page_4_3_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lDragon Horn",
+                    "scene": "page_4_3_subpage_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_3_subpage_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_1": {
+            "name": "^o.intro_book.name.page_4_4_subpage_1",
+            "text": "You can create and equip Dragon Armor on your dragons to give them a cool look!\n\nYou can craft it using §1Iron Ingots§r at the §nForge§r.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lDragon Armor",
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Rider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_2_1": {
+            "name": "^o.intro_book.name.page_4_4_subpage_2_1",
+            "text": "Using §1Dragon Scales§r, you can craft Helmets, Chestplates, Leggings, and Boots from each kind of dragon scale to match that dragon!~LINEBREAK~~LINEBREAK~The layout for the crafting recipes are the same as the vanilla crafting recipes for that armor slot.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "§lRider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Helmets",
+                    "scene": "page_4_4_subpage_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Chestplates",
+                    "scene": "page_4_4_subpage_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Leggings",
+                    "scene": "page_4_4_subpage_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Boots",
+                    "scene": "page_4_4_subpage_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_2_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_2_2": {
+            "name": "^o.intro_book.name.page_4_4_subpage_2_2",
+            "text": "Use 5 Dragon Scales of the preferred dragon species at the §nForge§r to make a Helmet for yourself likened to that dragon.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Rider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lHelmets",
+                    "scene": "page_4_4_subpage_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Chestplates",
+                    "scene": "page_4_4_subpage_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Leggings",
+                    "scene": "page_4_4_subpage_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Boots",
+                    "scene": "page_4_4_subpage_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_2_2" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_2_3": {
+            "name": "^o.intro_book.name.page_4_4_subpage_2_3",
+            "text": "Use 8 Dragon Scales of the preferred dragon species at the §nForge§r to make a Chestplate for yourself likened to that dragon.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Rider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Helmets",
+                    "scene": "page_4_4_subpage_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lChestplates",
+                    "scene": "page_4_4_subpage_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Leggings",
+                    "scene": "page_4_4_subpage_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Boots",
+                    "scene": "page_4_4_subpage_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_2_3" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_2_4": {
+            "name": "^o.intro_book.name.page_4_4_subpage_2_4",
+            "text": "Use 7 Dragon Scales of the preferred dragon species at the §nForge§r to make Leggings for yourself likened to that dragon.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Rider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Helmets",
+                    "scene": "page_4_4_subpage_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Chestplates",
+                    "scene": "page_4_4_subpage_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lLeggings",
+                    "scene": "page_4_4_subpage_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Boots",
+                    "scene": "page_4_4_subpage_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_2_4" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_4_4_subpage_2_5": {
+            "name": "^o.intro_book.name.page_4_4_subpage_2_5",
+            "text": "Use 4 Dragon Scales of the preferred dragon species at the §nForge§r to make Boots for yourself likened to that dragon.",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": "Rider Armor",
+                    "scene": "page_4_4_subpage_2_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Helmets",
+                    "scene": "page_4_4_subpage_2_2",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Chestplates",
+                    "scene": "page_4_4_subpage_2_3",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "Leggings",
+                    "scene": "page_4_4_subpage_2_4",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": "§lBoots",
+                    "scene": "page_4_4_subpage_2_5",
+                    "speaker": "@s",
+                    "commands": [ "playsound next_page @initiator" ]
+                },
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "page_4_4_subpage_1",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_4_4_subpage_2_5" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "page_5_1": {
+            "name": "^o.intro_book.name.page_5_1",
+            "text": "§qv1.0.0§r§l:§r~LINEBREAK~~LINEBREAK~ Report bugs at gm1.ca/support",
+            "langspace": "intro-book",
+            "options": [
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.page_5_1" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        },
+        "11-credits": {
+            "name": "^o.intro_book.name.credits",
+            "text": "§mStudio Creative Director§r - SEAN DAVIDSON\n§mExecutive Producer§r - TIAN FIGG\n§mAssociate Producer§r - BRANDON WALSH\n\n§lDESIGN§r\n§mGame Designer§r - KIT HOULE\n JACK WOODWARD\n MARTYN COOKE\n\n§lART§r\n§mArt Director§r - WILSON VIEGAS\n§mSenior Artist§r - JOSETH SEGURA\n§mArtist§r - LENNI MÄÄTTÄNEN\n§mAnimator§r - ALYSSA NICHOLAS\n§mTechnical Artist§r - ALEC CAMERON\n§mArt Intern§r - EM MARTIN\n\n§lENGINEERING§r\n§mGameplay§r - IBRAHIM SHABAN\n HONG HUANG\n ELIOTE SCHULER\n§mTooling§r - ADAM BRADY\n\n§lQUALITY & RELEASE§r\n§mRelease Manager§r - THOMAS ORSBOURNE\n\n§lMARKETING§r\n§mCommunity Manager§r - ANTON CHARPENTIER\n§mMarketing Artist§r - JOS VIEVEEN\n§mGraphic Artist§r - JOANNE LEUNG\n§mVideo Producer§r - JASSEN SCHARIFIE\n\n§lBUSINESS§r\n§mGeneral Manager§r - CHINARA ADHOFER\n§mHR Coordinator§r - SARAH CREELMAN\n\n§lSPECIAL THANKS TO§r\n\n§lOur Partners§r:\nMojang Studios\nNBC Universal\nDreamWorks Animation\n\n§lTools§r:\nbridge.\nBlockbench\n\n§lContributors§r:\nSCOTT KERSLAKE\nMATTEO SIMONETTI\n\nCADE ANDERSON\nLARS RICKERT\nALEXANDER THOMAS\nMATTHEW BLAIR",
+            "langspace": "credits",
+            "options": [
+                {
+                    "text": { "translate": "oaklogue.back" },
+                    "scene": "1-home",
+                    "speaker": "@s",
+                    "commands": [ "playsound prev_page @initiator" ]
+                }
+            ],
+            "on_open": [ "^o.intro_book.try.open", "^o.intro_book.visual.credits" ],
+            "on_close": [ "^o.intro_book.try.close" ]
+        }
+    }
+}

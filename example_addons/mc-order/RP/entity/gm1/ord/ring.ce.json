@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:ring",
+            "materials": { "default": "player_animated", "charged": "charged_creeper" },
+            "textures": {
+                "default": "textures/gm1/ord/blocks/gm1_ring",
+                "charged": "textures/gm1/ord/entity/ring_shine"
+            },
+            "animations": {
+                "rotate": "animation.gm1_ord.ring.rotate",
+                "fast_rotate": "animation.gm1_ord.ring.fast_rotate",
+                "spawn": "animation.gm1_ord.ring.spawn",
+                "scale_up": "animation.gm1_ord.ring.scale_up",
+                "ring_controller": "controller.animation.gm1_ord.ring",
+                "collect": "animation.gm1_ord.ring.collect",
+                "ring_collect_controller": "controller.animation.gm1_ord.ring_collect"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.is_collected = q.property('gm1_ord:is_collected');",
+                    "v.is_dropped_ring = q.property('gm1_ord:is_dropped_ring');",
+                    "variable.flash = v.is_dropped_ring * Math.sin(query.life_time * 1440);"
+                ],
+                "animate": [ "ring_collect_controller", { "scale_up": "v.is_dropped_ring" }, "ring_controller" ]
+            },
+            "render_controllers": [
+                {
+                    "controller.render.gm1_ord.ring.normal": "(variable.flash >= 0 || !query.is_on_ground) && !v.is_collected"
+                },
+                {
+                    "controller.render.gm1_ord.ring.charged": "(variable.flash >= 0 || !query.is_on_ground) && !v.is_collected && query.distance_from_camera < 24"
+                }
+            ],
+            "geometry": { "default": "geometry.gm1_ord.ring", "charged": "geometry.gm1_ord.ring_shine" },
+            "particle_effects": { "collection": "gm1_ord:ring_sparkle" },
+            "sound_effects": { "ring_collect_sound": "gm1_ord:ring_collect" },
+            "spawn_egg": { "texture": "gm1_ord.rings", "texture_index": 0 }
+        }
+    }
+}

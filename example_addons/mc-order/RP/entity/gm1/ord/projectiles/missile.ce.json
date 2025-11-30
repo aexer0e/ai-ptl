@@ -1,0 +1,21 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:missile",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/gm1/ord/entity/eggmobile" },
+            "geometry": { "default": "geometry.gm1_ord.eggmobile_missile" },
+            "sound_effects": { "trail_sfx": "eggmobile_missile_trail", "explode_sfx": "eggmobile_missile_explode" },
+            "particle_effects": { "trail_vfx": "gm1_ord:eggmobile_missile_trail" },
+            "animations": {
+                "align": "animation.badnik_eggrobo_projectile.align",
+                "trail_vfx": "animation.gm1_ord.projectile.trail_vfx",
+                "trail_sfx": "animation.gm1_ord.eggmobile_missile.trail_sfx",
+                "explode_sfx": "animation.gm1_ord.eggmobile_missile.explode_sfx"
+            },
+            "scripts": { "animate": [ "trail_sfx", "align", "trail_vfx", { "explode_sfx": "query.is_baby" }]},
+            "render_controllers": [ "controller.render.default" ]
+        }
+    }
+}

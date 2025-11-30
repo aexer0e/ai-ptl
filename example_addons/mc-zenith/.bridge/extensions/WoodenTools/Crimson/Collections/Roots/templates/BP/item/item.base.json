@@ -1,0 +1,14 @@
+{
+    "$identifier": "roots.BP.item.base",
+    "$inputs": {
+        "identifier": null,
+        "textures": null,
+        "format_version": "1.21.40",
+        "menu_category": { "$nested": true, "category": "items", "group": "", "is_hidden_in_commands": false }
+    },
+    "format_version": "^format_version",
+    "minecraft:item": {
+        "description": { "identifier": "^identifier" },
+        "components": { "minecraft:icon": { "textures": "^textures" }}
+    }
+}

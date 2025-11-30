@@ -1,0 +1,84 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.jump_effects_sonic": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_tails": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }, { "hover": "v.secondary_state == 3" }]
+                },
+                "hover": { "animations": [ "tails_hover" ], "transitions": [{ "out_of_hover": "v.secondary_state != 3" }]},
+                "out_of_hover": {
+                    "transitions": [{ "default": "!v.jumped_recently" }, { "hover": "v.secondary_state == 3" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_knuckles": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_shadow": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_amy": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }, { "double_jump": "v.secondary_state == 4" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }, { "double_jump": "v.secondary_state == 4" }]
+                },
+                "double_jump": {
+                    "sound_effects": [{ "effect": "double_jump" }],
+                    "animations": [ "double_jump_particles" ],
+                    "transitions": [{ "default": "!v.jumped_recently && v.secondary_state != 4" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_super_sonic": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        },
+        "controller.animation.jump_effects_super_shadow": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        }
+    }
+}

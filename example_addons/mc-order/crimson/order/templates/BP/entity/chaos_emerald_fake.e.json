@@ -1,0 +1,65 @@
+{
+    "$identifier": "ord:chaos_emerald_fake.e",
+    "$inputs": { "color": "red" },
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": { "is_summonable": true, "is_spawnable": false, "is_experimental": false },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "components": {
+            "minecraft:collision_box": { "width": 0, "height": 0 },
+            "minecraft:custom_hit_test": { "hitboxes": [{ "width": 0.5, "height": 0.5, "pivot": [ 0, 0.5, 0 ]}]},
+            "minecraft:damage_sensor": { "triggers": { "deals_damage": "no" }},
+            "minecraft:type_family": { "family": [ "chaos_emerald" ]},
+            "minecraft:health": { "value": 2 },
+            "minecraft:physics": { "has_collision": true, "has_gravity": false, "push_towards_closest_space": true },
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:nameable": { "allow_name_tag_renaming": false, "always_show": true },
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}}
+        }
+    }
+}

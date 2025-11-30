@@ -1,0 +1,19 @@
+# .github/release.yml
+changelog:
+  exclude:
+    labels:
+    - Ignore for changelog
+    - Expedite
+  categories:
+    - title: Add
+      labels:
+        - Add
+    - title: Change
+      labels:
+        - Change
+    - title: Fix
+      labels:
+        - Fix
+    - title: Other Changes
+      labels:
+        - "*"

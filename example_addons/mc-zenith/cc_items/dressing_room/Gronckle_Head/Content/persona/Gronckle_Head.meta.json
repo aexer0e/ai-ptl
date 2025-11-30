@@ -1,0 +1,31 @@
+{
+	"piece_id": "0b2e2d57-665f-21b7-01b5-42635a4238a2",
+	"piece_name": "Gronckle_Head",
+	"piece_type": "persona_head",
+	"zone": ["over_hair", "head_top", "head_front", "head_back", "head_right", "head_left"],
+	"geometry_sources": [
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Gronckle_Head.medium",
+			"texture": "meatlug_hat.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Gronckle_Head.tall.over_hair",
+			"zone": ["over_hair"],
+			"texture": "meatlug_hat.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Gronckle_Head.small.over_hair",
+			"zone": ["over_hair"],
+			"texture": "meatlug_hat.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Gronckle_Head.smaller.over_hair",
+			"zone": ["over_hair"],
+			"texture": "meatlug_hat.png"
+		}
+	]
+}

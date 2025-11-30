@@ -1,0 +1,17 @@
+{
+    "$identifier": "roots.RP.client_entity.generic",
+    "$inputs": {
+        "render_controller": "controller.geometry.default",
+        "material": "entity_alphatest",
+        "geometry": null,
+        "texture_path": null
+    },
+    "minecraft:client_entity": {
+        "description": {
+            "materials": { "default": "^material" },
+            "textures": { "default": "^texture_path" },
+            "geometry": { "default": "^geometry" },
+            "render_controllers": [ "^render_controller" ]
+        }
+    }
+}

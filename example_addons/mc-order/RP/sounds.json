@@ -1,0 +1,1 @@
+{ "entity_sounds": { "entities": { "gm1_ord:eggman": { "events": { "hurt": "eggmobile_damage" }, "pitch": 1, "volume": 2 }}}}

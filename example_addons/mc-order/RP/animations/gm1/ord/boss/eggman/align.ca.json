@@ -1,0 +1,18 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.eggmobile.align": {
+            "loop": true,
+            "bones": {
+                "root": { "rotation": [ 0, "math.clamp(-query.target_y_rotation, -5, 5)", 0 ]},
+                "eggmobile": {
+                    "rotation": [
+                        "math.clamp(query.target_x_rotation, -45, 45)",
+                        "math.clamp(query.body_y_rotation, -45, 45)",
+                        0
+                    ]
+                }
+            }
+        }
+    }
+}

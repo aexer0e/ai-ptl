@@ -1,0 +1,15 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.gm1_ord.chaos_machine_vfx": {
+            "loop": true,
+            "animation_length": 1,
+            "particle_effects": {
+                "0.0": [
+                    { "effect": "activate", "locator": "effect_locator" },
+                    { "effect": "charging", "locator": "charge_locator" }
+                ]
+            }
+        }
+    }
+}

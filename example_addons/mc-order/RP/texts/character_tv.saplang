@@ -1,0 +1,13 @@
+gm1_ord.character_tv.title=Character Select
+gm1_ord.character_tv.body=Pick a character!
+gm1_ord.character_tv.button.sonic.line.1=§9Sonic the Hedgehog§r
+gm1_ord.character_tv.button.sonic.line.2=(%s Rings)
+gm1_ord.character_tv.button.tails.line.1=§nMiles 'Tails' Prower§r
+gm1_ord.character_tv.button.tails.line.2=(%s Rings)
+gm1_ord.character_tv.button.knuckles.line.1=§4Knuckles the Echidna§r
+gm1_ord.character_tv.button.knuckles.line.2=(%s Rings)
+gm1_ord.character_tv.button.amy.line.1=§dAmy Rose§r
+gm1_ord.character_tv.button.amy.line.2=(%s Rings)
+gm1_ord.character_tv.button.shadow.line.1=§8Shadow the Hedgehog§r
+gm1_ord.character_tv.button.shadow.line.2=(%s Rings)
+gm1_ord.character_tv.ring_warning=You don't have enough rings!

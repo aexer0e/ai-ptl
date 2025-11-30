@@ -1,0 +1,46 @@
+{
+    "$identifier": "gm1_zen:dragon_lively_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "tail_1": "animation.gm1_zen.dragon_lively.tail_1",
+                "tail_2": "animation.gm1_zen.dragon_lively.tail_2",
+                "tail_3": "animation.gm1_zen.dragon_lively.tail_3",
+                "tail_4": "animation.gm1_zen.dragon_lively.tail_4",
+                "tail_this": "animation.gm1_zen.dragon_lively.tail_this",
+                "tail_controller": "controller.animation.gm1_zen.dragon_lively.tail",
+                "head_1": "animation.gm1_zen.dragon_lively.head_1",
+                "head_2": "animation.gm1_zen.dragon_lively.head_2",
+                "head_3": "animation.gm1_zen.dragon_lively.head_3",
+                "head_4": "animation.gm1_zen.dragon_lively.head_4",
+                "head_5": "animation.gm1_zen.dragon_lively.head_5",
+                "head_controller": "controller.animation.gm1_zen.dragon_lively.head",
+                "shake": "animation.gm1_zen.dragon_lively.shake",
+                "body_1": "animation.gm1_zen.dragon_lively.body_1",
+                "body_2": "animation.gm1_zen.dragon_lively.body_2",
+                "body_3": "animation.gm1_zen.dragon_lively.body_3",
+                "body_4": "animation.gm1_zen.dragon_lively.body_4",
+                "body_controller": "controller.animation.gm1_zen.dragon_lively.body",
+                "mouth_1": "animation.gm1_zen.dragon_lively.mouth_1",
+                "mouth_2": "animation.gm1_zen.dragon_lively.mouth_2",
+                "mouth_3": "animation.gm1_zen.dragon_lively.mouth_3",
+                "mouth_4": "animation.gm1_zen.dragon_lively.mouth_4",
+                "mouth_controller": "controller.animation.gm1_zen.dragon_lively.mouth"
+            },
+            "scripts": {
+                "initialize": [ "v.rand_1 = 0;", "v.rand_2 = 0;" ],
+                "pre_animation": [
+                    "v.rand_1 = Math.ceil(Math.random(-250, 250));",
+                    "v.rand_2 = Math.ceil(Math.random(-250, 250));"
+                ],
+                "animate": [
+                    { "body_controller": "q.property('gm1_zen:rest_state') == 'none' " },
+                    "mouth_controller",
+                    "head_controller",
+                    "tail_controller"
+                ]
+            }
+        }
+    }
+}

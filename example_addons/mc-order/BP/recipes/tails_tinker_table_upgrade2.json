@@ -1,0 +1,11 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "gm1_ord:tails_tinker_table_upgrade2" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "ingredients": [{ "item": "gm1_ord:ring_spawn_egg", "count": 2 }, { "item": "minecraft:crafting_table" }],
+        "result": { "item": "gm1_ord:tails_tinker_table" },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

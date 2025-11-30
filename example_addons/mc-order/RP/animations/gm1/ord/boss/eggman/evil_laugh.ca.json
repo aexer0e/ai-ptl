@@ -1,0 +1,58 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.eggmobile.evil_laugh": {
+            "animation_length": 2.5833,
+            "bones": {
+                "arm_left": {
+                    "position": {
+                        "0.0": [ 0, "math.sin(q.anim_time*1200)*1", 0 ],
+                        "0.75": [ 0, "math.sin(q.anim_time*1200)*1", 0 ]
+                    }
+                },
+                "eggman": { "scale": [ 1, "1+math.sin(q.anim_time*1200+20)*-0.05", 1 ]},
+                "skull": {
+                    "rotation": {
+                        "0.0": [ "math.sin(q.anim_time*1200)*8", 0, 0 ],
+                        "0.75": [ "math.sin(q.anim_time*1200)*6", 0, 0 ]
+                    },
+                    "position": {
+                        "0.0": [ 0, "math.sin(q.anim_time*1200)*-0.3", 0 ],
+                        "0.75": [ 0, "math.sin(q.anim_time*1200)*-0.3", 0 ]
+                    }
+                },
+                "mustache_right": {
+                    "rotation": {
+                        "0.0": [ 0, 0, "math.sin(q.anim_time*1200+40)*4" ],
+                        "1.0": [ 0, 0, "math.sin(q.anim_time*1200+40)*4" ]
+                    }
+                },
+                "mustache_left": {
+                    "rotation": {
+                        "0.0": [ 0, 0, "-(math.sin(q.anim_time*1200+40)*4)" ],
+                        "1.0": [ 0, 0, "-(math.sin(q.anim_time*1200+40)*4)" ]
+                    }
+                },
+                "arm_right": {
+                    "rotation": [ 0, 0, 0 ],
+                    "position": {
+                        "0.0": [ 0, "math.sin(q.anim_time*1200)*1", 0 ],
+                        "0.75": [ 0, "math.sin(q.anim_time*1200)*1", 0 ]
+                    }
+                },
+                "forearm_right": {
+                    "rotation": {
+                        "0.0": [ "math.sin(q.anim_time*1200)*4", 0, 0 ],
+                        "0.75": [ "math.sin(q.anim_time*1200)*1", 0, 0 ]
+                    }
+                },
+                "forearm_left": {
+                    "rotation": {
+                        "0.0": [ "math.sin(q.anim_time*1200)*4", 0, 0 ],
+                        "0.75": [ "math.sin(q.anim_time*1200)*1", 0, 0 ]
+                    }
+                }
+            }
+        }
+    }
+}

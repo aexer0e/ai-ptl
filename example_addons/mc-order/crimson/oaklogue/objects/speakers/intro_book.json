@@ -1,0 +1,6 @@
+{
+    "$identifier": "oaklogue.intro_book",
+    "$method": "oaklogue.npc",
+"entity": "intro_book.e",
+    "scene": "gm1_ord:1-home"
+}

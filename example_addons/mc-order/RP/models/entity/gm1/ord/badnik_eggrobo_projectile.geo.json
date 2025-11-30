@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_ord.badnik_eggrobo_projectile",
+				"texture_width": 112,
+				"texture_height": 112,
+				"visible_bounds_width": 14,
+				"visible_bounds_height": 9,
+				"visible_bounds_offset": [0, 2.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "projectile",
+					"parent": "root",
+					"pivot": [0, 0.5, 0.5],
+					"rotation": [-90, 0, 0],
+					"cubes": [
+						{"origin": [-5, 2.5, 0.5], "size": [10, 2, 2], "uv": [20, 86]},
+						{"origin": [-4.5, 2, -4], "size": [9, 3, 7], "uv": [28, 66]},
+						{"origin": [-3.5, -5, -3], "size": [7, 11, 7], "uv": [84, 94]}
+					],
+					"locators": {
+						"effect_locator": [0, 7, 0.5]
+					}
+				}
+			]
+		}
+	]
+}

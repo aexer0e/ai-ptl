@@ -1,0 +1,110 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 0, "character_string": "super_sonic" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:transform_helmet_super_sonic",
+            "textures": {
+                "ballmode": "textures/gm1/ord/entity/character_super_sonic_ballmode",
+                "super_aura_1": "textures/gm1/ord/entity/aura/super_sonic_aura_1",
+                "super_aura_2": "textures/gm1/ord/entity/aura/super_sonic_aura_2",
+                "super_aura_3": "textures/gm1/ord/entity/aura/super_sonic_aura_3",
+                "super_aura_4": "textures/gm1/ord/entity/aura/super_sonic_aura_4",
+                "super_aura_5": "textures/gm1/ord/entity/aura/super_sonic_aura_5",
+                "super_aura_6": "textures/gm1/ord/entity/aura/super_sonic_aura_6",
+                "super_aura_7": "textures/gm1/ord/entity/aura/super_sonic_aura_7",
+                "super_aura_8": "textures/gm1/ord/entity/aura/super_sonic_aura_8",
+                "super_aura_9": "textures/gm1/ord/entity/aura/super_sonic_aura_9",
+                "super_aura_10": "textures/gm1/ord/entity/aura/super_sonic_aura_10",
+                "super_aura_11": "textures/gm1/ord/entity/aura/super_sonic_aura_11",
+                "super_aura_12": "textures/gm1/ord/entity/aura/super_sonic_aura_12",
+                "super_aura_13": "textures/gm1/ord/entity/aura/super_sonic_aura_13",
+                "super_aura_14": "textures/gm1/ord/entity/aura/super_sonic_aura_14",
+                "super_aura_15": "textures/gm1/ord/entity/aura/super_sonic_aura_15",
+                "super_aura_16": "textures/gm1/ord/entity/aura/super_sonic_aura_16"
+            },
+            "geometry": {
+                "ballmode": "geometry.gm1_ord.character_sonic_ballmode",
+                "ballmode_shell": "geometry.gm1_ord.character_sonic_charge_shell",
+                "super_shell": "geometry.gm1_ord.character_super_sonic_charge_shell",
+                "super_aura": "geometry.gm1_ord.super_aura"
+            },
+            "animations": {
+                "charging.ball1": "animation.gm1_ord.sonic.ball1_sound",
+                "charging.ball2": "animation.gm1_ord.sonic.ball2_sound",
+                "charging.ball3": "animation.gm1_ord.sonic.ball3_sound",
+                "charging.ball4": "animation.gm1_ord.sonic.ball4_sound",
+                "charging.ball5": "animation.gm1_ord.sonic.ball5_sound",
+                "super_sonic_boost_sfx": "animation.gm1_ord.super_sonic.boost_sfx",
+                "twirl": "animation.gm1_ord.transform_twirl.supersonic",
+                "run_water": "animation.gm1_ord.sonic.run_sound_water",
+                "run_snow": "animation.gm1_ord.sonic.run_sound_snow",
+                "run_lava": "animation.gm1_ord.sonic.run_sound_lava",
+                "jog_water": "animation.gm1_ord.sonic.jog_sound_water",
+                "spindash_controller": "controller.animation.gm1_ord.spindash_effect",
+                "spindash_particle": "animation.gm1_ord.spindash.particle",
+                "super_aura_rotation": "animation.gm1_ord.super_aura.rot_to_camera",
+                "super_transform_controller": "controller.animation.gm1_ord.super_transform",
+                "super_loop_sfx": "animation.gm1_ord.super_form.loop_sfx"
+            },
+            "sound_effects": {
+                "ball1": "sonic_spindash1",
+                "ball2": "sonic_spindash2",
+                "ball3": "sonic_spindash3",
+                "ball4": "sonic_spindash4",
+                "ball5": "sonic_spindash5",
+                "super_sonic_boost_sfx": "super_sonic_boost",
+                "super_loop_sfx": "super_loop"
+            },
+            "scripts": {
+                "initialize": [ "v.super_aura = 0;", "v.is_super = 1;" ],
+                "pre_animation": [
+                    "v.super_aura = v.super_aura + 16 * query.delta_time;",
+                    "v.super_aura = v.super_aura >= 16 ? 0 : v.super_aura;"
+                ],
+                "animate": [
+                    {
+                        "movement_controller": "!v.is_first_person && v.has_transform_helmet && v.time_as_character >= 3.0"
+                    },
+                    { "super_transform_controller": "!v.is_first_person" },
+                    { "detransform_controller": "!v.is_first_person" },
+                    { "ability_charge_controller": "!v.is_first_person" },
+                    { "blink_controller": "!v.is_first_person" },
+                    { "target_eyes": "!v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "top_speed.sfx": "!v.is_first_person" },
+                    { "trail_scale": "!v.is_first_person" },
+                    { "liquid_running_offset_controller": "!v.is_first_person" },
+                    { "liquid_running_controller": "!v.is_first_person" },
+                    { "spindash_controller": "!v.is_first_person" },
+                    { "jump_effects_controller": "!v.is_first_person && v.has_transform_helmet" },
+                    "super_aura_rotation",
+                    { "super_loop_sfx": "!v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "particle_effects": { "spindash": "gm1_ord:spindash" },
+            "render_controllers": [
+                {
+                    "controller.render.gm1_ord.ball_mode": "!v.is_first_person && v.ballmode && !v.time_since_ability_active"
+                },
+                {
+                    "controller.render.gm1_ord.ball_mode_shell": "!v.is_first_person && v.ballmode && !v.time_since_ability_active"
+                },
+                {
+                    "controller.render.gm1_ord.character": "v.character <= 1 ? !v.is_first_person && v.is_transformed && !v.detransforming && (!v.ballmode || v.time_since_ability_active) : !v.is_first_person && v.is_transformed && !v.detransforming"
+                },
+                {
+                    "controller.render.gm1_ord.character_transforming": "v.transforming || v.detransforming || v.is_losing_life"
+                },
+                { "controller.render.gm1_ord.trail_flipbook": "!v.is_first_person" },
+                {
+                    "controller.render.gm1_ord.super_shell": "v.character <= 1 ? !v.is_first_person && v.is_transformed && !v.detransforming && (!v.ballmode || v.time_since_ability_active) : !v.is_first_person && v.is_transformed && !v.detransforming"
+                },
+                {
+                    "controller.render.gm1_ord.super_aura": "!v.is_first_person && v.is_transformed && !v.detransforming && (!v.ballmode || v.time_since_ability_active)"
+                }
+            ]
+        }
+    }
+}

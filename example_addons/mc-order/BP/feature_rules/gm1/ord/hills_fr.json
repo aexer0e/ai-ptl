@@ -1,0 +1,30 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:feature_rules": {
+        "description": { "identifier": "gm1_ord:hills_fr", "places_feature": "gm1_ord:arrange_hills_f" },
+        "conditions": {
+            "placement_pass": "final_pass",
+            "minecraft:biome_filter": [
+                {
+                    "all_of": [
+                        { "test": "has_biome_tag", "operator": "!=", "value": "ocean" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "the_end" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "nether" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "beach" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "mesa" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "desert" },
+                        { "test": "has_biome_tag", "operator": "!=", "value": "river" }
+                    ]
+                }
+            ]
+        },
+        "distribution": {
+            "iterations": 1.5,
+            "scatter_chance": 0.2,
+            "coordinate_eval_order": "zxy",
+            "x": 0,
+            "y": "query.heightmap(variable.worldx, variable.worldz)-3",
+            "z": 0
+        }
+    }
+}

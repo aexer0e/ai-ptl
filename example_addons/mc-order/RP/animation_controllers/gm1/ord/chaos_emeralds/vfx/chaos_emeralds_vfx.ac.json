@@ -1,0 +1,45 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.chaos_emerald_trail": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [ "idle" ],
+                    "transitions": [{ "float": "!v.is_locked" }],
+                    "blend_transition": 0.8
+                },
+                "float": {
+                    "animations": [ "float" ],
+                    "transitions": [{ "in_motion": "query.ground_speed >= 0.2" }],
+                    "blend_transition": 0.8
+                },
+                "in_motion": {
+                    "animations": [ "movement_flavour" ],
+                    "particle_effects": [{ "effect": "emerald_trail" }],
+                    "transitions": [{ "default": "query.ground_speed < 0.2" }],
+                    "blend_transition": 0.8
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_emerald_change_direction": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "direction_changed": "v.direction_changed" }], "blend_transition": 0.2 },
+                "direction_changed": {
+                    "particle_effects": [{ "effect": "direction_change", "locator": "effect_locator" }],
+                    "animations": [ "direction_changed" ],
+                    "transitions": [{ "default": "!v.direction_changed && q.any_animation_finished" }],
+                    "blend_transition": 0.2
+                }
+            }
+        },
+        "controller.animation.gm1_ord.chaos_emerald_collect": {
+            "initial_state": "default",
+            "states": {
+                "default": { "transitions": [{ "collect": "v.is_collected" }]},
+                "collect": { "animations": [ "collect_sfx" ], "particle_effects": [{ "effect": "collect_emerald" }]}
+            }
+        }
+    }
+}

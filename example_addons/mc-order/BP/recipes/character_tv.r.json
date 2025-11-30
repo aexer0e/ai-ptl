@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:character_tv_recipe" },
+        "tags": [ "crafting_table" ],
+        "priority": 1,
+        "pattern": [ "III", "IRI", "III" ],
+        "key": { "R": { "item": "gm1_ord:ring_spawn_egg" }, "I": { "item": "minecraft:iron_ingot" }},
+        "result": { "item": "gm1_ord:char_select_tv", "data": 1 },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

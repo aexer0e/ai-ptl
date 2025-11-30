@@ -1,0 +1,56 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.sleep": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "food_controller" ],
+                    "transitions": [{ "fly": "q.property('gm1_zen:rest_state') == 'sitting'" }],
+                    "blend_transition": 0.2
+                },
+                "fly": {
+                    "animations": [
+                        { "fly": "q.property('gm1_zen:rest_state') == 'sitting' ? 0.3 : 1" },
+                        { "fly_pose": "q.property('gm1_zen:rest_state') == 'sitting' ? 0.3 : 1" },
+                        "delay"
+                    ],
+                    "transitions": [
+                        { "none_a": "query.all_animations_finished && !q.property('gm1_zen:rest_state') == 'sitting'" },
+                        { "sleep": "query.all_animations_finished && q.property('gm1_zen:rest_state') == 'sitting'" }
+                    ],
+                    "blend_transition": 0.4
+                },
+                "none_a": {
+                    "animations": [ "delay" ],
+                    "transitions": [
+                        { "yawn": "query.all_animations_finished && !q.property('gm1_zen:rest_state') == 'sitting'" },
+                        { "fly": "q.property('gm1_zen:rest_state') == 'sitting'" }
+                    ],
+                    "blend_transition": 0
+                },
+                "yawn": {
+                    "animations": [{ "mouth_4": 1.1 }],
+                    "transitions": [
+                        { "shake": "query.all_animations_finished && !q.property('gm1_zen:rest_state') == 'sitting'" },
+                        { "fly": "q.property('gm1_zen:rest_state') == 'sitting'" }
+                    ],
+                    "blend_transition": 0.2
+                },
+                "shake": {
+                    "animations": [ "shake" ],
+                    "transitions": [
+                        { "none": "query.all_animations_finished && !q.property('gm1_zen:rest_state') == 'sitting'" },
+                        { "fly": "q.property('gm1_zen:rest_state') == 'sitting'" }
+                    ],
+                    "blend_transition": 0.2
+                },
+                "sleep": {
+                    "animations": [ "sleep", "food_controller" ],
+                    "transitions": [{ "fly": "!q.property('gm1_zen:rest_state') == 'sitting'" }],
+                    "blend_transition": 0.2
+                }
+            }
+        }
+    }
+}

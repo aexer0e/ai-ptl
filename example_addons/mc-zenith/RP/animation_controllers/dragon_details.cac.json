@@ -1,0 +1,255 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_lively.tail": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "tail_1": "v.rand_1==1 && Math.abs(v.rand_2)>235" },
+                        { "tail_2": "v.rand_1==4 && Math.abs(v.rand_2)>235" },
+                        { "tail_3": "v.rand_1==7 && Math.abs(v.rand_2)>235" },
+                        { "tail_4": "v.rand_1==9 && Math.abs(v.rand_2)>235" },
+                        { "tail_12": "v.rand_1==12 && Math.abs(v.rand_2)>235" },
+                        { "tail_14": "v.rand_1==14 && Math.abs(v.rand_2)>235" },
+                        { "tail_32": "v.rand_1==32 && Math.abs(v.rand_2)>235" },
+                        { "tail_34": "v.rand_1==34 && Math.abs(v.rand_2)>235" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "tail_1": {
+                    "animations": [ "tail_1", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_2": {
+                    "animations": [ "tail_2", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_3": {
+                    "animations": [ "tail_3", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_4": {
+                    "animations": [ "tail_4", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_12": {
+                    "animations": [ "tail_1", "tail_2", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_14": {
+                    "animations": [ "tail_1", "tail_4", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_32": {
+                    "animations": [ "tail_3", "tail_2", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                },
+                "tail_34": {
+                    "animations": [ "tail_3", "tail_4", "tail_this" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.4
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_lively.head": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "head_1": "(v.rand_1+v.rand_2)==1" },
+                        { "head_2": "(v.rand_1+v.rand_2)==4" },
+                        { "head_3": "(v.rand_1+v.rand_2)==7" },
+                        { "head_4": "(v.rand_1+v.rand_2)==9" },
+                        { "head_5": "(v.rand_1+v.rand_2)==12" },
+                        {
+                            "dive": "q.vertical_speed < -12 || q.is_stackable || (!(!q.has_target || q.mark_variant != 20) && !q.is_ignited)"
+                        },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "dive": {
+                    "transitions": [{ "head_2": "q.is_on_ground && !q.is_stackable" }, { "none": "q.is_jumping" }],
+                    "blend_transition": 0.1
+                },
+                "head_1": {
+                    "animations": [ "head_1" ],
+                    "transitions": [
+                        { "none": "q.all_animations_finished" },
+                        {
+                            "dive": "q.vertical_speed < -12 || q.is_stackable || (!(!q.has_target || q.mark_variant != 20) && !q.is_ignited)"
+                        },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "head_2": {
+                    "animations": [ "head_2" ],
+                    "transitions": [
+                        { "none": "q.any_animation_finished" },
+                        { "dive": "(q.vertical_speed < -12 || q.is_stackable) && !q.is_on_ground" },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "attack_denied": {
+                    "animations": [ "head_2", "shake" ],
+                    "transitions": [{ "none": "q.any_animation_finished" }],
+                    "blend_transition": 0.1
+                },
+                "head_3": {
+                    "animations": [{ "head_3": "0.4" }],
+                    "transitions": [
+                        { "none": "q.all_animations_finished" },
+                        {
+                            "dive": "q.vertical_speed < -12 || q.is_stackable || (!(!q.has_target || q.mark_variant != 20) && !q.is_ignited)"
+                        },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "head_4": {
+                    "animations": [{ "head_4": "0.6" }],
+                    "transitions": [
+                        { "none": "q.all_animations_finished" },
+                        {
+                            "dive": "q.vertical_speed < -12 || q.is_stackable || (!(!q.has_target || q.mark_variant != 20) && !q.is_ignited)"
+                        },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "head_5": {
+                    "animations": [ "head_5" ],
+                    "transitions": [
+                        { "none": "q.all_animations_finished" },
+                        {
+                            "dive": "q.vertical_speed < -12 || q.is_stackable || (!(!q.has_target || q.mark_variant != 20) && !q.is_ignited)"
+                        },
+                        { "attack_denied": "q.is_illager_captain" }
+                    ],
+                    "blend_transition": 0.1
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_lively.body": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "body_1": "v.rand_2==1 && !q.is_in_water" },
+                        { "body_2": "v.rand_2==4 && !q.is_in_water" },
+                        { "body_3": "v.rand_2==7 && !q.is_in_water" },
+                        { "body_4": "v.rand_2==9 && !q.is_in_water" },
+                        { "shake": "q.is_in_water" }
+                    ],
+                    "blend_transition": 0.1
+                },
+                "body_1": {
+                    "animations": [ "body_1" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }, { "shake": "q.is_in_water" }],
+                    "blend_transition": 0.1
+                },
+                "body_2": {
+                    "animations": [ "body_2" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }, { "shake": "q.is_in_water" }],
+                    "blend_transition": 0.1
+                },
+                "body_3": {
+                    "animations": [ "body_3" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }, { "shake": "q.is_in_water" }],
+                    "blend_transition": 0.1
+                },
+                "body_4": {
+                    "animations": [ "body_4" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }, { "shake": "q.is_in_water" }],
+                    "blend_transition": 0.1
+                },
+                "shake": {
+                    "transitions": [{ "shake_a": "!q.is_in_water && q.is_on_ground || q.is_jumping" }],
+                    "blend_transition": 0
+                },
+                "shake_a": {
+                    "animations": [ "delay" ],
+                    "transitions": [{ "shake_b": "q.all_animations_finished" }],
+                    "blend_transition": 0
+                },
+                "shake_b": {
+                    "animations": [{ "shake": 1.8 }],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.1
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_lively.mouth": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [
+                        { "mouth_1": "(v.rand_2+(-v.rand_2/4)-v.rand_1)==2" },
+                        { "mouth_2": "(v.rand_2+(-v.rand_2/4)-v.rand_1)==4" },
+                        { "mouth_3": "(v.rand_2+(-v.rand_2/4)-v.rand_1)==14" }
+                    ],
+                    "blend_transition": 0.15
+                },
+                "mouth_1": {
+                    "animations": [ "mouth_1" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                },
+                "mouth_2": {
+                    "animations": [ "mouth_2" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                },
+                "mouth_3": {
+                    "animations": [ "mouth_3" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                },
+                "body_4": {
+                    "animations": [ "body_4" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_lively.food": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "delay" ],
+                    "transitions": [{ "none_a": "q.is_interested && q.all_animations_finished" }],
+                    "blend_transition": 0.1
+                },
+                "none_a": {
+                    "transitions": [{ "want_a": "q.is_interested && !q.is_avoiding_mobs" }],
+                    "blend_transition": 0.4
+                },
+                "want_a": {
+                    "animations": [ "food_want" ],
+                    "transitions": [{ "eat": "q.is_eating" }, { "none_a": "q.is_avoiding_mobs || !q.is_interested" }],
+                    "blend_transition": 0.2
+                },
+                "eat": {
+                    "animations": [ "food_eat" ],
+                    "transitions": [{ "chomp": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                },
+                "chomp": {
+                    "animations": [{ "food_chomp": 2 }, "delay" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }],
+                    "blend_transition": 0.2
+                }
+            }
+        }
+    }
+}

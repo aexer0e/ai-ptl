@@ -1,0 +1,68 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 1, "character_string": "tails" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:transform_helmet_tails",
+            "textures": { "ballmode": "textures/gm1/ord/entity/character_tails_ballmode" },
+            "geometry": { "ballmode": "geometry.gm1_ord.character_tails_ballmode" },
+            "animations": {
+                "hover": "animation.gm1_ord.tails_pg.fly",
+                "charging.ball1": "animation.gm1_ord.sonic.ball1_sound",
+                "charging.ball2": "animation.gm1_ord.sonic.ball2_sound",
+                "charging.ball3": "animation.gm1_ord.sonic.ball3_sound",
+                "charging.ball4": "animation.gm1_ord.sonic.ball4_sound",
+                "charging.ball5": "animation.gm1_ord.sonic.ball5_sound",
+                "spindash_release": "animation.gm1_ord.dash_sound",
+                "twirl": "animation.gm1_ord.transform_twirl.tails",
+                "tails_hover": "animation.gm1_ord.tails_hover",
+                "spindash_controller": "controller.animation.gm1_ord.spindash_effect",
+                "spindash_particle": "animation.gm1_ord.spindash.particle"
+            },
+            "sound_effects": {
+                "ball1": "sonic_spindash1",
+                "ball2": "sonic_spindash2",
+                "ball3": "sonic_spindash3",
+                "ball4": "sonic_spindash4",
+                "ball5": "sonic_spindash5",
+                "spindash_release": "spindash_release",
+                "hover": "tails_hover",
+                "single_hov": "single_hover"
+            },
+            "scripts": {
+                "animate": [
+                    { "movement_controller": "!v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "!v.is_first_person" },
+                    { "detransform_controller": "!v.is_first_person" },
+                    { "ability_charge_controller": "!v.is_first_person" },
+                    { "blink_controller": "!v.is_first_person" },
+                    { "target_eyes": "!v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && !v.is_first_person" },
+                    { "top_speed.sfx": "!v.is_first_person" },
+                    { "trail_scale": "!v.is_first_person" },
+                    { "liquid_running_offset_controller": "!v.is_first_person" },
+                    { "liquid_running_controller": "!v.is_first_person" },
+                    { "spindash_controller": "!v.is_first_person" },
+                    { "jump_effects_controller": "!v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "particle_effects": { "spindash": "gm1_ord:spindash" },
+            "render_controllers": [
+                {
+                    "controller.render.gm1_ord.ball_mode": "!v.is_first_person && v.ballmode && !v.time_since_ability_active"
+                },
+                {
+                    "controller.render.gm1_ord.character": "v.character <= 1 ? !v.is_first_person && v.is_transformed && !v.detransforming && (!v.ballmode || v.time_since_ability_active) : !v.is_first_person && v.is_transformed && !v.detransforming"
+                },
+                {
+                    "controller.render.gm1_ord.character_charging": "!v.is_first_person && v.is_transformed && (v.ability_state > 0 && v.ability_state <= 5) && v.in_ability_time > 0.33"
+                },
+                {
+                    "controller.render.gm1_ord.character_transforming": "v.transforming || v.detransforming || v.is_losing_life"
+                },
+                { "controller.render.gm1_ord.trail_flipbook": "!v.is_first_person" }
+            ]
+        }
+    }
+}

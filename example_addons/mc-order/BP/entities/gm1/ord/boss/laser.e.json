@@ -1,0 +1,31 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:laser",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "properties": {
+                "gm1_ord:rot_x": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true },
+                "gm1_ord:rot_y": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true },
+                "gm1_ord:length": { "type": "int", "range": [ -100000, 100000 ], "default": 0, "client_sync": true }
+            }
+        },
+        "component_groups": {
+            "gm1_ord:instant_despawn": { "minecraft:instant_despawn": {}},
+            "gm1_ord:despawn_timer": {}
+        },
+        "components": {
+            "minecraft:physics": { "has_gravity": false, "has_collision": false, "push_towards_closest_space": false },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": "no" }]},
+            "minecraft:knockback_resistance": { "value": 1, "max": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:health": { "value": 12, "max": 12 }
+        },
+        "events": {
+            "gm1_ord:instant_despawn": { "add": { "component_groups": [ "gm1_ord:instant_despawn" ]}},
+            "gm1_ord:despawn_timer": { "add": { "component_groups": [ "gm1_ord:despawn_timer" ]}}
+        }
+    }
+}

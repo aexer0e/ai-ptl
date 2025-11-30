@@ -1,0 +1,125 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_procedural_system",
+    "$inputs": { "speed_multiplier": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "anti_death": "animation.gm1_zen.dragon_global.anti_death",
+                "rotate": "animation.gm1_zen.dragon_global.rotate",
+                "rotate_controller": "controller.animation.gm1_zen.dragon_global.rotate",
+                "tilt": "animation.gm1_zen.dragon_global.tilt",
+                "tilt_rider": "animation.gm1_zen.dragon_global.tilt_rider",
+                "tilt_controller": "controller.animation.gm1_zen.dragon_global.tilt",
+                "breath": "animation.gm1_zen.dragon_global.breath",
+                "breath_sleep": "animation.gm1_zen.dragon_global.breath_sleep"
+            },
+            "scripts": {
+                "initialize": [
+                    // Represents the vertical speed of the dragon
+                    "v.vertical_speed = 0;",
+
+                    // Controls the speed of animations
+                    "v.speed_multiplier = 0;",
+
+                    // Scales the distance moved for animations
+                    "v.movement_distance_scale = 0.025;",
+
+                    // Represents the yaw direction
+                    "v.yaw_direction = 0;",
+
+                    // Smooths the yaw direction over time
+                    "v.yaw_direction_smooth = 0;",
+
+                    // Controls the amplitude of animations
+                    "v.amplitude = 0.75;",
+
+                    // Controls the frequency of animations
+                    "v.frequency = 0.05;",
+
+                    // Scales all animations globally
+                    "v.global_scale = 1;",
+
+                    // Scales animations locally or for specific parts
+                    "v.local_scale = 1;",
+
+                    // Tracks the time span for animations
+                    "v.time_span = 0;",
+
+                    // Represents the periodicity of movement
+                    "v.movement_period = 0;",
+
+                    // Controls the yaw rotation speed
+                    "v.yaw_rotation_speed = 0;",
+
+                    // Smooths yaw rotation over time
+                    "v.yaw_rotation_smooth = 0;",
+
+                    // Represents an offset for rotation calculations
+                    "v.rotation_offset = 0;",
+
+                    // Smooths rotation changes
+                    "v.rotation_smooth = 0;",
+
+                    // Tracks the time the dragon has been on the ground
+                    "v.time_on_ground = 0;",
+
+                    // Tracks the time since the dragon left the ground
+                    "v.time_since_ground = 0;"
+                ],
+                "pre_animation": [
+                    // Adjust vertical speed
+                    "v.vertical_speed = Math.abs(q.vertical_speed-v.vertical_speed)*2 < 1 ? v.vertical_speed : (q.vertical_speed-v.vertical_speed > 0 ? v.vertical_speed+0.5 : v.vertical_speed-0.5);",
+
+                    // Reset vertical speed if moving upward
+                    "v.vertical_speed = q.vertical_speed>=0 ? 0 : v.vertical_speed;",
+
+                    // Adjust animation speed based on taming and rider status
+                    "v.speed_multiplier = !q.is_tamed && q.has_player_rider ? 540 : 180;",
+
+                    // Calculate yaw direction
+                    "v.yaw_direction = Math.abs(q.yaw_speed)<20 ? 0 : (q.yaw_speed+1)/Math.abs(q.yaw_speed+1);",
+
+                    // Smooth yaw direction changes
+                    "v.yaw_direction_smooth = Math.abs(v.yaw_direction-v.yaw_direction_smooth) < 0.04 ? v.yaw_direction_smooth : (v.yaw_direction-v.yaw_direction_smooth > 0 ? v.yaw_direction_smooth+0.02 : v.yaw_direction_smooth-0.02 );",
+
+                    // Calculate the animation time span
+                    "v.time_span = v.speed_multiplier*(q.life_time+v.movement_period);",
+
+                    // Calculate the movement period
+                    "v.movement_period = q.modified_distance_moved*v.movement_distance_scale;",
+
+                    // Set a default period multiplier
+                    "v.period_multiplier = 1;",
+
+                    // Calculate yaw rotation speed
+                    "v.yaw_rotation_speed = q.yaw_speed/10;",
+
+                    // Smooth yaw rotation changes
+                    "v.yaw_rotation_smooth = Math.abs(v.yaw_rotation_speed-v.yaw_rotation_smooth) < 2 ? v.yaw_rotation_smooth : (v.yaw_rotation_speed-v.yaw_rotation_smooth > 0 ? v.yaw_rotation_smooth+0.5 : v.yaw_rotation_smooth-0.5);",
+
+                    // Adjust rotation smoothing based on ground status
+                    "v.rotation_smooth = q.is_on_ground ? Math.abs(q.body_y_rotation*0.60) : v.rotation_smooth;",
+                    "v.rotation_smooth = Math.abs(q.body_y_rotation*0.60-v.rotation_smooth) < 2 ? v.rotation_smooth :( q.is_jumping ? (0-v.rotation_smooth > 0 ? v.rotation_smooth+1 : v.rotation_smooth-1) : (Math.abs(q.body_y_rotation*0.60)-v.rotation_smooth > 0 ? v.rotation_smooth+0.4 : v.rotation_smooth-0.4));",
+
+                    // Calculate rotation offset
+                    "v.rotation_offset = Math.abs(Math.abs(q.body_y_rotation*0.60)-v.rotation_smooth)*v.yaw_direction_smooth;",
+
+                    // Track time on the ground
+                    "v.time_on_ground = q.is_on_ground ? q.life_time : v.time_on_ground;",
+
+                    // Track time since leaving the ground
+                    "v.time_since_ground = q.life_time-v.time_on_ground;"
+                ],
+                "animate": [
+                    "anti_death",
+                    {"breath": "q.property('gm1_zen:rest_state') != 'sleep'"},
+                    {"breath_sleep": "q.property('gm1_zen:rest_state') == 'sleep'"},
+                    "rotate_controller",
+                    "tilt_controller"
+                ]
+            }
+        }
+    }
+}

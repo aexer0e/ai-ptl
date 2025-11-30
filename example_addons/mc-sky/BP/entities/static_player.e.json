@@ -1,0 +1,20 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": { "identifier": "gm1_sky:static_player", "is_spawnable": false, "is_summonable": true },
+        "component_groups": {
+            "gm1_sky:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "components": {
+            "minecraft:push_through": { "value": 1 },
+            "minecraft:npc": {},
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:damage_sensor": { "triggers": [{ "deals_damage": false }]},
+            "minecraft:collision_box": { "width": 0.5, "height": 0.5 }
+        },
+        "events": {
+            "gm1_sky:despawn": { "add": { "component_groups": [ "gm1_sky:despawn" ]}}
+        }
+    }
+}

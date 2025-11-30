@@ -1,0 +1,277 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_wants.want_single": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "hungry": "q.property('gm1_zen:want')=='hungry'" },
+                        { "playful": "q.property('gm1_zen:want')=='playful'" },
+                        { "saddle": "q.property('gm1_zen:want')=='saddle'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "hungry": {
+                    "animations": [{ "want_hungry": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "hungry_success": "q.property('gm1_zen:want')=='hungry_success'" },
+                        { "hungry_favorite_success": "q.property('gm1_zen:want')=='hungry_success_favorite'" },
+                        { "default": "q.property('gm1_zen:want')!='hungry'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "hungry_success": {
+                    "animations": [
+                        "want_success_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success'" }],
+                    "blend_transition": 0.25
+                },
+                "hungry_favorite_success": {
+                    "animations": [
+                        "want_success_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_favorite_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success_favorite'" }],
+                    "blend_transition": 0.25
+                },
+                "playful": {
+                    "animations": [{ "want_playful": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "playful_success": "q.property('gm1_zen:want')=='playful_success'" },
+                        { "default": "q.property('gm1_zen:want')!='playful'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "playful_success": {
+                    "animations": [
+                        "want_success_vfx",
+                        "want_success_sfx",
+                        { "want_playful_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='playful_success'" }],
+                    "blend_transition": 0.25
+                },
+                "saddle": {
+                    "animations": [{ "want_saddle": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "saddle_success": "q.property('gm1_zen:want')=='saddle_success'" },
+                        { "default": "q.property('gm1_zen:want')!='saddle'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "saddle_success": {
+                    "animations": [
+                        "want_success_vfx",
+                        "want_success_sfx",
+                        { "want_saddle_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='saddle_success'" }],
+                    "blend_transition": 0.25
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_wants.want_double": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "hungry_left": "q.property('gm1_zen:want')=='hungry' && v.head_choice <= 1" },
+                        { "hungry_right": "q.property('gm1_zen:want')=='hungry' && v.head_choice > 1" },
+                        { "playful_left": "q.property('gm1_zen:want')=='playful' && v.head_choice <= 1" },
+                        { "playful_right": "q.property('gm1_zen:want')=='playful' && v.head_choice > 1" },
+                        { "saddle": "q.property('gm1_zen:want')=='saddle'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "hungry_left": {
+                    "animations": [{ "want_hungry_left": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "hungry_success_left": "q.property('gm1_zen:want')=='hungry_success'" },
+                        { "hungry_favorite_success_left": "q.property('gm1_zen:want')=='hungry_success_favorite'" },
+                        { "default": "q.property('gm1_zen:want')!='hungry'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "hungry_right": {
+                    "animations": [{ "want_hungry_right": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "hungry_success_right": "q.property('gm1_zen:want')=='hungry_success'" },
+                        { "hungry_favorite_success_right": "q.property('gm1_zen:want')=='hungry_success_favorite'" },
+                        { "default": "q.property('gm1_zen:want')!='hungry'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "hungry_success_left": {
+                    "animations": [
+                        "want_success_left_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_success_left": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success'" }],
+                    "blend_transition": 0.25
+                },
+                "hungry_success_right": {
+                    "animations": [
+                        "want_success_right_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_success_right": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success'" }],
+                    "blend_transition": 0.25
+                },
+                "hungry_favorite_success_left": {
+                    "animations": [
+                        "want_success_left_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_favorite_success_left": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success_favorite'" }],
+                    "blend_transition": 0.25
+                },
+                "hungry_favorite_success_right": {
+                    "animations": [
+                        "want_success_right_vfx",
+                        "want_success_sfx",
+                        { "want_hungry_favorite_success_right": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='hungry_success_favorite'" }],
+                    "blend_transition": 0.25
+                },
+                "playful_left": {
+                    "animations": [{ "want_playful_left": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "playful_success_left": "q.property('gm1_zen:want')=='playful_success'" },
+                        { "default": "q.property('gm1_zen:want')!='playful'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "playful_right": {
+                    "animations": [{ "want_playful_right": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "playful_success_right": "q.property('gm1_zen:want')=='playful_success'" },
+                        { "default": "q.property('gm1_zen:want')!='playful'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "playful_success_left": {
+                    "animations": [
+                        "want_success_left_vfx",
+                        "want_success_sfx",
+                        { "want_playful_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='playful_success'" }],
+                    "blend_transition": 0.25
+                },
+                "playful_success_right": {
+                    "animations": [
+                        "want_success_right_vfx",
+                        "want_success_sfx",
+                        { "want_playful_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='playful_success'" }],
+                    "blend_transition": 0.25
+                },
+                "saddle": {
+                    "animations": [{ "want_saddle": "!q.has_target && q.modified_move_speed <= 0.125" }],
+                    "transitions": [
+                        { "saddle_success": "q.property('gm1_zen:want')=='saddle_success'" },
+                        { "default": "q.property('gm1_zen:want')!='saddle'" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "saddle_success": {
+                    "animations": [
+                        "want_success_left_vfx",
+                        "want_success_right_vfx",
+                        "want_success_sfx",
+                        { "want_saddle_success": "!q.has_target && q.modified_move_speed <= 0.125" }
+                    ],
+                    "transitions": [{ "default": "q.property('gm1_zen:want')!='saddle_success'" }],
+                    "blend_transition": 0.25
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_wants.bubble_single": {
+            "initial_state": "deactivated",
+            "states": {
+                "deactivated": {
+                    "animations": [ "bubble_deactivated" ],
+                    "transitions": [
+                        {
+                            "want_activate": "q.property('gm1_zen:want')=='hungry' || q.property('gm1_zen:want')=='playful' || q.property('gm1_zen:want')=='saddle'"
+                        }
+                    ]
+                },
+                "want_activate": {
+                    "animations": [ "bubble_activate" ],
+                    "transitions": [{ "want_activated": "q.all_animations_finished" }]
+                },
+                "want_activated": {
+                    "animations": [ "bubble_activated" ],
+                    "transitions": [
+                        {
+                            "deactivate": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' || q.property('gm1_zen:want')=='saddle_success' || q.property('gm1_zen:want')=='none'"
+                        }
+                    ]
+                },
+                "deactivate": {
+                    "animations": [ "bubble_deactivate" ],
+                    "transitions": [{ "deactivated": "q.all_animations_finished" }]
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_wants.bubble_double": {
+            "initial_state": "deactivated",
+            "states": {
+                "deactivated": {
+                    "animations": [ "bubble_deactivated_left", "bubble_deactivated_right" ],
+                    "transitions": [
+                        {
+                            "want_activate_left": "(q.property('gm1_zen:want')=='hungry' || q.property('gm1_zen:want')=='playful' || q.property('gm1_zen:want')=='saddle') && v.head_choice <= 1"
+                        },
+                        {
+                            "want_activate_right": "(q.property('gm1_zen:want')=='hungry' || q.property('gm1_zen:want')=='playful' || q.property('gm1_zen:want')=='saddle') && v.head_choice > 1"
+                        }
+                    ]
+                },
+                "want_activate_left": {
+                    "animations": [ "bubble_activate_left", "bubble_deactivated_right" ],
+                    "transitions": [{ "want_activated_left": "q.all_animations_finished" }]
+                },
+                "want_activate_right": {
+                    "animations": [ "bubble_activate_right", "bubble_deactivated_left" ],
+                    "transitions": [{ "want_activated_right": "q.all_animations_finished" }]
+                },
+                "want_activated_left": {
+                    "animations": [ "bubble_activated_left", "bubble_deactivated_right" ],
+                    "transitions": [
+                        {
+                            "deactivate_left": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' || q.property('gm1_zen:want')=='none' || q.property('gm1_zen:want')=='saddle_success'"
+                        }
+                    ]
+                },
+                "want_activated_right": {
+                    "animations": [ "bubble_activated_right", "bubble_deactivated_left" ],
+                    "transitions": [
+                        {
+                            "deactivate_right": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' || q.property('gm1_zen:want')=='none' || q.property('gm1_zen:want')=='saddle_success'"
+                        }
+                    ]
+                },
+                "deactivate_left": {
+                    "animations": [ "bubble_deactivate_left", "bubble_deactivated_right" ],
+                    "transitions": [{ "deactivated": "q.all_animations_finished" }]
+                },
+                "deactivate_right": {
+                    "animations": [ "bubble_deactivated_right", "bubble_deactivated_left" ],
+                    "transitions": [{ "deactivated": "q.all_animations_finished" }]
+                }
+            }
+        }
+    }
+}

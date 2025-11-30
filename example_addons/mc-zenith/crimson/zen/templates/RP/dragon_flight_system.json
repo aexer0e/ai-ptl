@@ -1,0 +1,156 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_flight_system",
+    "$inputs": { "dragon_species": null, "flap_goal": null, "wing_duration": null, "flight_speed": null, "flap_rate": null, "arc_base": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                //Dragon Species Specific Flight Animations
+                "fly_pose": "animation.gm1_zen.^{dragon_species}^.fly",
+                "glide_pose": "animation.gm1_zen.^{dragon_species}^.glide",
+                "wings_pose": "animation.gm1_zen.^{dragon_species}^.wings",
+
+                //Global Flight Animations
+                "wings": "animation.gm1_zen.dragon_global.wings",
+                "boost": "animation.gm1_zen.dragon_global.boost",
+                "hover": "animation.gm1_zen.dragon_global.hover",
+                "fly": "animation.gm1_zen.dragon_global.fly",
+                "land": "animation.gm1_zen.dragon_global.land",
+                "jump": "animation.gm1_zen.dragon_global.jump",
+                "glide": "animation.gm1_zen.dragon_global.glide",
+                "glide_down": "animation.gm1_zen.dragon_global.glide_down",
+                "plummet": "animation.gm1_zen.dragon_global.plummet",
+
+                //*vfx*
+                "boost_vfx": "animation.gm1_zen.dragon_global.boost_vfx",
+
+                //*sfx*
+                //flap sfx
+                "flap_sfx": "animation.gm1_zen.dragon_global.flap_sfx",
+                "flap_up_sfx": "animation.gm1_zen.dragon_global.flap_up_sfx",
+                "flap_ride_sfx": "animation.gm1_zen.dragon_global.flap_ride_sfx",
+                "frantic_flap_sfx": "animation.gm1_zen.dragon_global.frantic_flap_loop_sfx",
+
+                //glide sfx
+                "glide_sfx": "animation.gm1_zen.dragon_global.glide_sfx",
+                "glide_boost_sfx": "animation.gm1_zen.dragon_global.glide_boost_sfx",
+
+                "glide_sfx_controller": "controller.animation.gm1_zen.dragon_global.glide_sfx",
+
+                //dive sfx
+                "dive_sfx": "animation.gm1_zen.dragon_global.dive_sfx",
+                "dive_ride_sfx": "animation.gm1_zen.dragon_global.dive_ride_sfx"
+            },
+            "scripts": {
+                "initialize": [
+                    //Dragon Species Parameters Init
+
+                    // Target duration for a single flap cycle
+                    "v.flap_goal = ^{flap_goal}^;",
+                    // Duration of wing movement
+                    "v.wing_duration = ^{wing_duration}^;",
+                    // Speed multiplier for flight
+                    "v.flight_speed = ^{flight_speed}^;",
+                    // Frequency of wing flapping
+                    "v.flap_rate = ^{flap_rate}^;",
+                    // Base value for the flap arc
+                    "v.arc_base = ^{arc_base}^;",
+
+                    //Calculation Variables Init
+
+                    // Current arc of the wing flap
+                    "v.arc = 0;",
+                    // Fatigue level from flapping
+                    "v.fatigue = 0;",
+                    // Maximum flap angle
+                    "v.max_flap = 0;",
+                    // Minimum flap angle
+                    "v.min_flap = 0;",
+                    // Maximum ascent angle
+                    "v.max_ascend = 0;",
+
+                    // Gaussian smoothing value for transitions
+                    "v.smooth = 0;",
+
+                    // Time when the dragon starts diving
+                    "v.dive_start = 0;",
+
+                    // Duration of the dive
+                    "v.dive_time = 0;",
+
+                    // Time when the dragon starts flapping
+                    "v.flap_start = 0;",
+
+                    // Duration of the flap
+                    "v.flap_time = 0;",
+
+                    // Time since the last flap
+                    "v.last_flap_time = 0;",
+
+                    // Y-axis movement calculation an X-axis movement calculation
+                    "v.calc_x = 0;",
+                    "v.calc_y = 0;",
+
+                    // Memory for X-axis movement and Y-axis movement
+                    "v.mem_x = 0;",
+                    "v.mem_y = 0;"
+                ],
+                "pre_animation": [
+
+                    // Update flap start time if the dragon is a baby
+                    "v.flap_start = q.is_jumping ? q.life_time : v.flap_start;",
+
+                    // Calculate the flap duration
+                    "v.flap_time = q.life_time - v.flap_start;",
+
+                    // Adjust the time since the last flap
+                    "v.last_flap_time = v.flap_time > 5 ? 8 : (q.is_jumping ? v.last_flap_time - 1 : v.last_flap_time);",
+
+                    // Set the maximum flap angle
+                    "v.max_flap = 38.2;",
+
+                    // Set the minimum flap angle
+                    "v.min_flap = 33;",
+
+                    // Set the maximum ascent angle
+                    "v.max_ascend = 5;",
+
+                    // Calculate the flap arc based on fatigue and taming status
+                    "v.arc = v.arc_base * (Math.lerp(0, 1, (!q.is_tamed && q.has_player_rider ? 1.7 : Math.clamp(-v.fatigue / 25, 1, 20))));",
+
+                    // Calculate fatigue value based on vertical speed and movement speed
+                    "v.fatigue_value = Math.clamp((-q.vertical_speed + 0.01) / (Math.abs(q.modified_move_speed) + 0.01), -50, 10);",
+
+                    // Smoothly adjust fatigue over time
+                    "v.fatigue = Math.abs(v.fatigue - v.fatigue_value) > 1 ? (v.fatigue - v.fatigue_value > 0 ? v.fatigue - 0.2 : v.fatigue + 0.8) : v.fatigue;",
+
+                    // Gaussian smoothing for flap transitions
+                    "v.smooth = 0.5 * Math.exp(-Math.pow(v.flap_time - 0.55, 2) / 0.06);",
+
+                    // Update dive start time if the dragon is not on the ground
+                    "v.dive_start = query.vertical_speed < -12 && !q.is_jumping && !q.is_on_ground ? v.dive_start : q.life_time;",
+
+                    // Calculate the dive duration
+                    "v.dive_time = q.life_time - v.dive_start;"
+                ],
+                "animate": [
+                    "glide_sfx_controller"
+                ]
+            },
+            "particle_effects": {
+                "boost_vfx": "gm1_zen:boost"
+            },
+            "sound_effects": {
+                "flap_sfx": "med_flap",
+                "frantic_flap_sfx": "gronkle_glide_empty",
+                "flap_up_sfx": "ascend_flap",
+                "flap_ride_sfx": "med_flap_ride",
+                "glide_sfx": "glide",
+                "glide_boost_sfx": "glide_boost_sfx",
+                "dive_sfx": "dive",
+                "dive_ride_sfx": "dive_ride_sfx"
+            }
+        }
+    }
+}

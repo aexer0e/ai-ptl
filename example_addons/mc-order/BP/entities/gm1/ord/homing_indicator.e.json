@@ -1,0 +1,78 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:homing_indicator",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "properties": {
+                "gm1_ord:is_homing": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:large_indicator": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:in_queue": { "type": "bool", "default": false, "client_sync": true }
+            }
+        },
+        "component_groups": {
+            "gm1_ord:instant_despawn": { "minecraft:instant_despawn": {}},
+            "gm1_ord:despawn_timer": {
+                "minecraft:timer": {
+                    "time": 0.4,
+                    "looping": false,
+                    "time_down_event": { "event": "gm1_ord:instant_despawn" }
+                }
+            }
+        },
+        "components": {
+            "minecraft:physics": { "has_collision": false, "has_gravity": false },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": "no" }]},
+            "minecraft:knockback_resistance": { "value": 1, "max": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "gm1_ord:instant_despawn": { "add": { "component_groups": [ "gm1_ord:instant_despawn" ]}},
+            "gm1_ord:despawn_timer": { "add": { "component_groups": [ "gm1_ord:despawn_timer" ]}},
+            "gm1_ord:set_property_true": { "set_property": { "gm1_ord:is_homing": true }},
+            "gm1_ord:set_property_false": { "set_property": { "gm1_ord:is_homing": false }}
+        }
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "$identifier": "oaklogue.npc",
+    "$inputs": { "entity": null, "scene": null, "triggers": [], "subpath": "gm1/zen" },
+    "$locals": [
+        { "entity_id": "^{entity.endsWith('.json') ? entity.substring(0, entity.length - 5) : entity}^" },
+        { "entity_file": "^{entity_id}^.json", "entity_sanitized": "^entity_id.replace(/[:/]/g, '_')" },
+        {
+            "controller.npc": "controller.animation.gm1_zen.oaklogue.npc.^{entity_sanitized}^",
+            "animation.triggers": "animation.gm1_zen.oaklogue.triggers.^{entity_sanitized}^"
+        },
+        { "triggers_string": "^JSON.stringify(JSON.stringify({triggers: triggers}))" }
+    ],
+    "$calls": [
+        {
+            "$call": "action",
+            "$path": "BP/animation_controllers/^{subpath}^/oaklogue_npc.json",
+            "$content": {
+                "format_version": "1.10.0",
+                "animation_controllers": {
+                    "^controller.npc": { "states": { "default": { "on_entry": [ "/dialogue change @s ^{scene}^" ]}}}
+                }
+            }
+        },
+        {
+            "$call": "action",
+            "$path": "BP/animations/^{subpath}^/oaklogue_npc.json",
+            "$condition": "^triggers.length > 0",
+            "$content": {
+                "format_version": "1.10.0",
+                "animations": {
+                    "^animation.triggers": {
+                        "animation_length": 1,
+                        "loop": true,
+                        "timeline": { "0.0": [ "/scriptevent gm1:oaklogue trigger ^{triggers_string.slice(2,-2)}^" ]}
+                    }
+                }
+            }
+        },
+        {
+            "$call": "action",
+            "$path": "BP/entities/^{entity_file}^",
+            "$condition": "^triggers.length > 0",
+            "$content": {
+                "minecraft:entity": {
+                    "description": {
+                        "animations": { "animation.oaklogue.triggers": "^animation.triggers" },
+                        "scripts": { "animate": [ "animation.oaklogue.triggers" ]}
+                    }
+                }
+            }
+        },
+        {
+            "$call": "action",
+            "$path": "BP/entities/^{entity_file}^",
+            "$content": {
+                "minecraft:entity": {
+                    "description": {
+                        "animations": { "controller.oaklogue.npc": "^controller.npc" },
+                        "scripts": { "animate": [ "controller.oaklogue.npc" ]}
+                    },
+                    "components": {
+                        "minecraft:npc": {}
+                    }
+                }
+            }
+        }
+    ]
+}

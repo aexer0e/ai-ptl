@@ -1,0 +1,78 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_ord:tails_tinker_table",
+            "menu_category": { "category": "construction", "is_hidden_in_commands": false },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [ "minecraft:cardinal_direction" ],
+                    "y_rotation_offset": 180
+                }
+            }
+        },
+        "components": {
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 3.75,
+                "item_specific_speeds": [
+                    { "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:wooden_tier')" }, "destroy_speed": 1.9 },
+                    { "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:stone_tier')" }, "destroy_speed": 0.95 },
+                    { "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:iron_tier')" }, "destroy_speed": 0.65 },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:golden_tier')" },
+                        "destroy_speed": 0.35
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:diamond_tier')" },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": { "tags": "q.all_tags('minecraft:is_axe', 'minecraft:netherite_tier')" },
+                        "destroy_speed": 0.45
+                    }
+                ]
+            },
+            "minecraft:destructible_by_explosion": { "explosion_resistance": 20 },
+            "minecraft:friction": 0.4,
+            "minecraft:map_color": "#9b5e33",
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_tails_tinker_table_side", "render_method": "opaque" },
+                "up": { "texture": "gm1_ord_tails_tinker_table_top", "render_method": "opaque" },
+                "down": { "texture": "gm1_ord_tails_tinker_table_bottom", "render_method": "opaque" },
+                "north": { "texture": "gm1_ord_tails_tinker_table_front", "render_method": "opaque" }
+            },
+            "minecraft:geometry": "geometry.gm1_ord.tails_tinker_table",
+            "minecraft:light_emission": 3,
+            "minecraft:crafting_table": {
+                "crafting_tags": [ "gm1_ord:crafting" ],
+                "table_name": "gm1_ord.tails_tinker_table"
+            }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 0, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 90, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 180, 0 ]}
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, -90, 0 ]}
+                }
+            }
+        ]
+    }
+}

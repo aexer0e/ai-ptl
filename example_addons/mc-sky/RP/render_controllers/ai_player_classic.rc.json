@@ -1,0 +1,52 @@
+{
+    "format_version": "1.20.41",
+    "render_controllers": {
+        "controller.render.ai_player_classic": {
+            "geometry": "geometry.classic",
+            "materials": [{ "*": "material.default" }],
+            "arrays": {
+                "textures": {
+                    "Array.classic": [
+                        "texture.classic1",
+                        "texture.classic2",
+                        "texture.classic3",
+                        "texture.classic4",
+                        "texture.classic5",
+                        "texture.classic6",
+                        "texture.classic7",
+                        "texture.classic8",
+                        "texture.classic9",
+                        "texture.classic10",
+                        "texture.classic11",
+                        "texture.classic12",
+                        "texture.classic13",
+                        "texture.classic14",
+                        "texture.classic15",
+                        "texture.classic16",
+                        "texture.classic17",
+                        "texture.classic18",
+                        "texture.classic19",
+                        "texture.classic20"
+                    ]
+                }
+            },
+            "part_visibility": [{ "*": true }],
+            "textures": [ "Array.classic[v.base-40]" ]
+        },
+        "controller.render.ai_player_classic_spawn": {
+            "light_color_multiplier": "v.starting_light_colour_multi - v.light_colour_multi",
+            "geometry": "geometry.classic_inflated",
+            "materials": [{ "*": "Material.additive" }],
+            "part_visibility": [
+                { "*": false },
+                { "leftSleeve": true },
+                { "rightSleeve": true },
+                { "leftPants": true },
+                { "rightPants": true },
+                { "jacket": true },
+                { "hat": true }
+            ],
+            "textures": [ "Texture.spawning" ]
+        }
+    }
+}

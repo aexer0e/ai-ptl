@@ -1,0 +1,71 @@
+{
+    "entity_sounds": {
+        "entities": {
+            "gm1_zen:nightfury": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "ambient": "toothless_ambient",
+                    "hurt": "toothless_hurt",
+                    "step": "",
+                    "death": "toothless_death",
+                    "mad": "mob.guardian.flop",
+                    "plop": "egg_plop",
+                    "eat": "toothless_eat"
+                }
+            },
+            "gm1_zen:hideouszippleback": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "ambient": "hideouszippleback_ambient",
+                    "hurt": "hideouszippleback_hurt",
+                    "step": "",
+                    "death": "hideouszippleback_death",
+                    "mad": "hideouszippleback_wild_ambient",
+                    "plop": "egg_plop",
+                    "eat": "hideouszippleback_eat"
+                }
+            },
+            "gm1_zen:monstrousnightmare": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "ambient": "monstrousnightmare_ambient",
+                    "hurt": "monstrousnightmare_hurt",
+                    "step": "",
+                    "death": "monstrousnightmare_death",
+                    "mad": "monstrousnightmare_wild_ambient",
+                    "plop": "monstrousnightmare_trust_ambient",
+                    "eat": "monstrousnightmare_eat"
+                }
+            },
+            "gm1_zen:gronckle": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "ambient": "gronckle_ambient",
+                    "hurt": "gronckle_hurt",
+                    "step": "",
+                    "death": "gronckle_death",
+                    "mad": "gronckle_wild_ambient",
+                    "plop": "gronckle_trust_ambient",
+                    "eat": "gronckle_eat"
+                }
+            },
+            "gm1_zen:deadlynadder": {
+                "volume": 1,
+                "pitch": 1,
+                "events": {
+                    "ambient": "deadlynadder_ambient",
+                    "hurt": "deadlynadder_hurt",
+                    "step": "",
+                    "death": "deadlynadder_death",
+                    "mad": "deadlynadder_wild_ambient",
+                    "plop": "deadlynadder_trust_ambient",
+                    "eat": "deadlynadder_eat"
+                }
+            }
+        }
+    }
+}

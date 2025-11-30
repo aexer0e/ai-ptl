@@ -1,0 +1,80 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.gadget_swoop": {
+            "states": {
+                "idle": { "animations": [ "spikes_hidden" ], "transitions": [{ "bits_retracting": "v.is_charging_swoop" }]},
+                "bits_retracting": {
+                    "animations": [
+                        "spikes_hidden",
+                        "balls_retract",
+                        "coils_retract",
+                        "wings_retract",
+                        "headlight_red_retract"
+                    ],
+                    "transitions": [{ "spikes_extending": "v.is_charging_swoop && q.all_animations_finished" }]
+                },
+                "spikes_extending": {
+                    "animations": [
+                        "swoop_charge_sfx",
+                        "spikes_extend",
+                        "spikes_extend_sfx",
+                        "balls_hidden",
+                        "coils_hidden",
+                        "wings_hidden",
+                        "headlight_red_hidden"
+                    ],
+                    "transitions": [{ "charging": "q.all_animations_finished" }]
+                },
+                "charging": {
+                    "animations": [
+                        "swoop_charge",
+                        "balls_hidden",
+                        "coils_hidden",
+                        "wings_hidden",
+                        "headlight_red_hidden"
+                    ],
+                    "transitions": [
+                        { "spikes_retracting": "!v.is_using_swoop && !v.is_charging_swoop" },
+                        { "attacking": "v.is_using_swoop" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "attacking": {
+                    "animations": [
+                        "swoop_attack",
+                        "swoop_attack_sfx",
+                        "balls_hidden",
+                        "coils_hidden",
+                        "wings_hidden",
+                        "headlight_red_hidden",
+                        "hatch_open"
+                    ],
+                    "transitions": [{ "spikes_retracting": "!v.is_charging_swoop && !v.is_using_swoop" }]
+                },
+                "spikes_retracting": {
+                    "animations": [
+                        "spikes_retract",
+                        "spikes_retract_sfx",
+                        "balls_hidden",
+                        "coils_hidden",
+                        "wings_hidden",
+                        "headlight_red_hidden"
+                    ],
+                    "transitions": [{ "bits_extending": "q.all_animations_finished" }]
+                },
+                "bits_extending": {
+                    "animations": [
+                        "spikes_hidden",
+                        "balls_extend",
+                        "coils_extend",
+                        "wings_extend",
+                        "headlight_red_extend"
+                    ],
+                    "transitions": [{ "idle": "q.all_animations_finished" }]
+                }
+            }
+        }
+    }
+}

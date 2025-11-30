@@ -1,0 +1,55 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "gm1_sky:player_alert",
+			"basic_render_parameters": {
+				"material": "particles_alpha",
+				"texture": "textures/gm1/sky/particle/moods/alert"
+			}
+		},
+		"curves": {
+			"variable.size": {
+				"type": "bezier",
+				"input": "v.particle_age",
+				"horizontal_range": "v.particle_lifetime",
+				"nodes": [0, 2, 1, 0]
+			}
+		},
+		"components": {
+			"minecraft:emitter_rate_instant": {
+				"num_particles": 1
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 1
+			},
+			"minecraft:emitter_shape_sphere": {
+				"offset": [0, 2.3, 0],
+				"radius": 0.2,
+				"direction": [0, 1, 1]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": 0.6
+			},
+			"minecraft:particle_initial_speed": 3,
+			"minecraft:particle_motion_dynamic": {
+				"linear_drag_coefficient": 6
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": [0.45, 0.45],
+				"facing_camera_mode": "rotate_xyz",
+				"uv": {
+					"texture_width": 48,
+					"texture_height": 16,
+					"flipbook": {
+						"base_UV": [0, 0],
+						"size_UV": [16, 16],
+						"step_UV": [16, 0],
+						"frames_per_second": 16,
+						"max_frame": 3
+					}
+				}
+			}
+		}
+	}
+}

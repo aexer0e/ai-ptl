@@ -1,0 +1,48 @@
+{
+    "format_version": "1.20.70",
+    "render_controllers": {
+        "controller.render.gm1_ord.onboarding_book": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" },
+                { "gm1_logo": "Material.glow" },
+                { "emerald_1": "Material.glow" },
+                { "emerald_2": "Material.glow" },
+                { "emerald_3": "Material.glow" },
+                { "emerald_4": "Material.glow" },
+                { "emerald_5": "Material.glow" },
+                { "emerald_6": "Material.glow" },
+                { "emerald_7": "Material.glow" },
+                { "emerald_1b": "Material.glow" },
+                { "emerald_2b": "Material.glow" },
+                { "emerald_3b": "Material.glow" },
+                { "emerald_4b": "Material.glow" },
+                { "emerald_5b": "Material.glow" },
+                { "emerald_6b": "Material.glow" },
+                { "emerald_7b": "Material.glow" },
+                { "emerald_8b": "Material.glow" },
+                { "background_element": "Material.alpha_blend" },
+                { "headlight_light_on": "Material.alpha_blend" },
+                { "glass": "Material.alpha_blend" },
+                { "headlight_red_light_on": "Material.alpha_blend" },
+                { "rotating_light_beam_s": "Material.alpha_blend" },
+                { "rotating_light_beam_l": "Material.alpha_blend" },
+                { "alarm_lamp_l": "Material.alpha_blend" },
+                { "alarm_lamp_s": "Material.alpha_blend" },
+                { "panel_crafting": "Material.glow" }
+            ],
+            "textures": [ "Texture.default" ]
+        },
+        "controller.render.gm1_ord.intro_book_recipe": {
+            "geometry": "Geometry.recipe",
+            "materials": [{ "*": "Material.default" }],
+            "textures": [ "Texture.intro_book_recipe" ]
+        },
+        "controller.render.gm1_ord.intro_book_logo": {
+            "geometry": "Geometry.logo",
+            "materials": [{ "*": "Material.animated" }],
+            "textures": [ "Texture.intro_book_logo" ],
+            "uv_anim": { "offset": [ 0, "math.min(math.floor(query.life_time * 16), 24) / 25" ], "scale": [ 1, "1 / 25" ]}
+        }
+    }
+}

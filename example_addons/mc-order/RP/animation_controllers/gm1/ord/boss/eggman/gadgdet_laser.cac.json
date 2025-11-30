@@ -1,0 +1,146 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman_laser": {
+            "states": {
+                "idling": {
+                    "on_entry": [ "v.laser_rot_x = 0;", "v.laser_rot_y = 0;", "v.laser_length = 0;" ],
+                    "transitions": [{ "tracking": "v.is_using_gadget && !v.is_charging_gadget" }],
+                    "animations": [ "laser.default_pose" ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "tracking": {
+                    "transitions": [
+                        { "charging": "v.is_charging_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "animations": [ "laser.tracking" ]
+                },
+                "charging": {
+                    "transitions": [
+                        { "blasting": "v.is_shooting_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "animations": [ "laser.charging", "laser.tracking" ]
+                },
+                "blasting": {
+                    "transitions": [
+                        { "idling": "!v.is_shooting_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "animations": [ "laser.blasting", "laser.tracking" ]
+                },
+                "swoop_charging": {
+                    "animations": [ "laser.default_pose" ],
+                    "transitions": [{ "swoop_attacking": "v.is_using_swoop" }]
+                },
+                "swoop_attacking": {
+                    "animations": [ "laser.default_pose" ],
+                    "transitions": [{ "idling": "!v.is_using_swoop" }]
+                },
+                "eggrobo_charging": {
+                    "animations": [ "laser.default_pose" ],
+                    "transitions": [{ "eggrobo_dropping": "!v.is_dropping_eggrobo && q.all_animations_finished" }]
+                },
+                "eggrobo_dropping": {
+                    "animations": [ "laser.default_pose" ],
+                    "transitions": [{ "idling": "!v.is_dropping_eggrobo" }],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                }
+            }
+        },
+        "controller.animation.gm1_ord.eggman.laser_focus": {
+            "states": {
+                "default": { "transitions": [{ "focus": "v.is_charging_laser" }, { "shoot": "v.is_shooting_laser" }]},
+                "focus": { "animations": [ "laser.focus" ], "transitions": [{ "default": "!v.is_charging_laser" }]},
+                "shoot": { "animations": [ "laser.shoot" ], "transitions": [{ "default": "!v.is_shooting_laser" }]}
+            }
+        },
+        "controller.animation.gm1_ord.eggman.gadget_laser": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [ "laser_hidden" ],
+                    "transitions": [{ "bits_retracting": "v.active_gadget == 1" }]
+                },
+                "bits_retracting": { "transitions": [{ "laser_extending": "!v.is_stunned && q.all_animations_finished" }]},
+                "laser_extending": {
+                    "animations": [ "laser_extend", "gadget_sfx" ],
+                    "transitions": [{ "idling": "q.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "idling": {
+                    "animations": [ "laser_idle" ],
+                    "transitions": [
+                        { "tracking": "v.is_using_gadget && !v.is_charging_gadget" },
+                        { "laser_retracting": "v.active_gadget != 1 || v.is_stunned" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "charging": {
+                    "animations": [ "laser_charge", "laser_charge_sfx", "laser_track_lock_sfx" ],
+                    "transitions": [
+                        { "blasting": "v.is_shooting_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "tracking": {
+                    "animations": [ "laser_track", "laser_track_sfx" ],
+                    "transitions": [
+                        { "charging": "v.is_charging_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "blasting": {
+                    "animations": [ "laser_shoot", "laser_shoot_sfx" ],
+                    "transitions": [
+                        { "idling": "!v.is_shooting_laser" },
+                        { "swoop_charging": "v.is_charging_swoop" },
+                        { "eggrobo_charging": "v.is_charging_eggrobo" }
+                    ],
+                    "blend_via_shortest_path": true
+                },
+                "laser_retracting": {
+                    "animations": [ "laser_retract", "gadget_sfx" ],
+                    "transitions": [{ "bits_extending": "q.all_animations_finished" }]
+                },
+                "bits_extending": {
+                    "animations": [ "headlight_red_extend", "laser_hidden" ],
+                    "transitions": [{ "default": "q.all_animations_finished" }]
+                },
+                "swoop_charging": {
+                    "animations": [ "laser_retract" ],
+                    "transitions": [
+                        { "idling": "!v.is_charging_swoop && !v.is_using_swoop" },
+                        { "swoop_attacking": "v.is_using_swoop" }
+                    ]
+                },
+                "swoop_attacking": { "animations": [ "laser_hidden" ], "transitions": [{ "idling": "!v.is_using_swoop" }]},
+                "eggrobo_charging": {
+                    "animations": [ "laser_retract" ],
+                    "transitions": [{ "eggrobo_dropping": "!v.is_dropping_eggrobo && q.all_animations_finished" }]
+                },
+                "eggrobo_dropping": {
+                    "animations": [ "laser_hidden" ],
+                    "transitions": [{ "laser_extending": "!v.is_dropping_eggrobo" }],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                }
+            }
+        }
+    }
+}

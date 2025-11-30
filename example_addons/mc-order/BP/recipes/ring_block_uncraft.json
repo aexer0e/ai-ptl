@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:ring_block_uncraft" },
+        "tags": [ "crafting_table" ],
+        "priority": 1,
+        "pattern": [ "R" ],
+        "key": { "R": { "item": "gm1_ord:ring_pile" }},
+        "result": { "item": "gm1_ord:ring_spawn_egg", "count": 9 },
+        "unlock": [{ "item": "gm1_ord:ring_pile" }]
+    }
+}

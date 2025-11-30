@@ -1,0 +1,28 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:spawn_rules": {
+        "description": { "identifier": "gm1_zen:deadlynadder", "population_control": "animal" },
+        "conditions": [
+            {
+                "minecraft:spawns_on_surface": {},
+                "minecraft:spawns_underground": {},
+                "minecraft:weight": { "default": 15 },
+                "minecraft:biome_filter": {
+                    "any_of": [
+                        { "test": "has_biome_tag", "operator": "==", "value": "plains" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "meadow" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "ice_plains" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "cold" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "frozen" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "extreme_hills" }
+                    ],
+                    "none_of": { "test": "has_biome_tag", "operator": "==", "value": "ocean" }
+                },
+                "minecraft:permute_type": [{ "weight": 99 }, { "weight": 1, "entity_type": "gm1_zen:nightfury" }],
+                "minecraft:distance_filter": { "min": 40, "max": 128 },
+                "minecraft:brightness_filter": { "adjust_for_weather": false, "max": 15, "min": 0 },
+                "minecraft:density_limit": { "surface": 1, "underground": 1 }
+            }
+        ]
+    }
+}

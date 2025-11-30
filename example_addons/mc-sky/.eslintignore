@@ -1,0 +1,8 @@
+node_modules/*
+.bridge/*
+BP/components/*
+builds/*
+dist
+build
+node_modules
+.github

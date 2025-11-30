@@ -1,0 +1,84 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.chaos_emerald.idle": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "query.life_time*90", 0],
+					"position": [0, "math.sin(query.life_time*90)*2", 0]
+				}
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.movement_tilt": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "variable.direction_y", 0]
+				},
+				"emerald": {
+					"rotation": [0, "variable.rotation ", "v.tilt*16"]
+				}
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.movement_flavour": {
+			"loop": true,
+			"bones": {
+				"emerald": {
+					"position": [0, "2+math.sin(query.anim_time*720)*2", 0]
+				}
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.direction_change": {
+			"animation_length": 0.5,
+			"bones": {
+				"emerald": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [-360, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.25": [0, 12, 0],
+						"0.5": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.float": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": ["math.cos(q.anim_time*90)*10", "q.anim_time*180", "math.sin(q.anim_time*90)*10"],
+					"position": [0, "21+math.sin(q.anim_time*200)*15", 0]
+				},
+				"emerald": {
+					"rotation": [0, "q.anim_time*-3", 0],
+					"position": [0, 0, 0]
+				}
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.collect_sfx": {
+			"animation_length": 5,
+			"loop": false,
+			"sound_effects": {
+				"0.0": [
+					{
+						"effect": "collect_sfx"
+					}
+				]
+			}
+		},
+		"animation.gm1_ord.chaos_emerald.idle_sfx": {
+			"animation_length": 5,
+			"loop": true,
+			"sound_effects": {
+				"0.0": [
+					{
+						"effect": "idle_sfx"
+					}
+				]
+			}
+		}
+	}
+}

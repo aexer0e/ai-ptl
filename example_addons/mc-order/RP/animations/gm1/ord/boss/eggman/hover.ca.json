@@ -1,0 +1,14 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_ord.eggmobile.hover": {
+			"loop": true,
+			"bones": {
+				"eggmobile": {
+					"rotation": [22.5, "math.sin(q.anim_time*150)*-7", "math.sin(q.anim_time*150-20)*7"],
+					"position": ["math.sin(q.anim_time*150)*-9", "math.sin(q.anim_time*300)*8", 0]
+				}
+			}
+		}
+	}
+}

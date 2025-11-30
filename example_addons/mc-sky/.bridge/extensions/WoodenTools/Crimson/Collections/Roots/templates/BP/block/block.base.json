@@ -1,0 +1,10 @@
+{
+    "$identifier": "roots.BP.block.base",
+    "$inputs": {
+        "identifier": null,
+        "format_version": "1.21.40",
+        "menu_category": { "$nested": true, "category": "items", "group": "", "is_hidden_in_commands": false }
+    },
+    "format_version": "^format_version",
+    "minecraft:block": { "description": { "identifier": "^identifier", "menu_category": "^menu_category" }}
+}

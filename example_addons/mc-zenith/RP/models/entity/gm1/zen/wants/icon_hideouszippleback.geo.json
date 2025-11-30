@@ -1,0 +1,66 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:geometry": [
+        {
+            "description": {
+                "identifier": "geometry.gm1_zen.dragon_want_icon_hideouszippleback",
+                "texture_width": 16,
+                "texture_height": 16,
+                "visible_bounds_width": 32,
+                "visible_bounds_height": 24,
+                "visible_bounds_offset": [ 0, 11, 0 ]
+            },
+            "bones": [
+                { "name": "root", "pivot": [ 0, 0, 0 ]},
+                { "name": "body", "parent": "root", "pivot": [ 0, 32, 0 ]},
+                { "name": "torso_front", "parent": "body", "pivot": [ 0, 32, 0 ]},
+                { "name": "neck_right_1", "parent": "torso_front", "pivot": [ -8, 27, -7 ]},
+                { "name": "neck_right_2", "parent": "neck_right_1", "pivot": [ -8.5, 27, -32 ]},
+                { "name": "neck_right_3", "parent": "neck_right_2", "pivot": [ -8.5, 27, -57 ]},
+                { "name": "skull_right", "parent": "neck_right_3", "pivot": [ -8, 26, -80 ]},
+                { "name": "want_bubble_right", "parent": "skull_right", "pivot": [ -8, 44, -89 ]},
+                { "name": "want_bubble_right_3", "parent": "want_bubble_right", "pivot": [ -8, 44, -89 ]},
+                {
+                    "name": "want_icon_right",
+                    "parent": "want_bubble_right_3",
+                    "pivot": [ -10, 44, -89 ],
+                    "cubes": [
+                        {
+                            "origin": [ -18, 36, -89.25 ],
+                            "size": [ 16, 16, 0 ],
+                            "uv": { "north": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ]}}
+                        },
+                        {
+                            "origin": [ -18, 36, -88.75 ],
+                            "size": [ 16, 16, 0 ],
+                            "uv": { "south": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ]}}
+                        }
+                    ]
+                },
+                { "name": "neck_left_1", "parent": "torso_front", "pivot": [ 8, 27, -7 ]},
+                { "name": "neck_left_2", "parent": "neck_left_1", "pivot": [ 7.5, 27, -32 ]},
+                { "name": "neck_left_3", "parent": "neck_left_2", "pivot": [ 7.5, 27, -57 ]},
+                { "name": "skull_left", "parent": "neck_left_3", "pivot": [ 8, 26, -80 ]},
+                { "name": "want_bubble_left", "parent": "skull_left", "pivot": [ 8, 44, -89 ]},
+                { "name": "want_bubble_left_3", "parent": "want_bubble_left", "pivot": [ 8, 44, -89 ]},
+                {
+                    "name": "want_icon_left",
+                    "parent": "want_bubble_left_3",
+                    "pivot": [ 8, 44, -89 ],
+                    "cubes": [
+                        {
+                            "origin": [ 0, 36, -89.25 ],
+                            "size": [ 16, 16, 0 ],
+                            "uv": { "north": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ]}}
+                        },
+                        {
+                            "origin": [ 0, 36, -88.75 ],
+                            "size": [ 16, 16, 0 ],
+                            "uv": { "south": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ]}}
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

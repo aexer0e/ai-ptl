@@ -1,0 +1,13 @@
+# Configurables
+config.title=Sonic Settings
+config.runblockbreaking=Enable block breaking while running
+config.abilityblockbreaking=Enable block breaking using abilities
+config.passivemobs=Enable damaging passive mobs
+config.submit=Confirm
+config.updated=§fSettings Updated:\n
+config.runbreak.true=§f- Running breaks blocks: §aTrue
+config.abilitybreak.true=§f- Abilities break blocks: §aTrue
+config.damagepassive.true=§f- Damaging passive mobs: §aTrue
+config.runbreak.false=§f- Running breaks blocks: §cFalse
+config.abilitybreak.false=§f- Abilities break blocks: §cFalse
+config.damagepassive.false=§f- Damaging passive mobs: §cFalse

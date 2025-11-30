@@ -1,0 +1,14 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.stun_vfx": {
+            "states": {
+                "default": { "transitions": [{ "prestun": "v.is_prestun" }]},
+                "prestun": {
+                    "animations": [{ "prestun_vfx": "v.is_prestun" }, { "prestun_sfx": "v.is_prestun" }],
+                    "transitions": [{ "default": "!v.is_prestun" }]
+                }
+            }
+        }
+    }
+}

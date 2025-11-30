@@ -1,0 +1,15 @@
+## Items
+item.gm1_zen:rider_saddle.name=§cDragon Saddle§r
+item.gm1_zen:dragon_book.name=§4The Book of Dragons§r
+item.gm1_zen:dragon_scale_nightfury.name=§uToothless Scale§r
+item.gm1_zen:dragon_scale_monstrous.name=§cMonstrous Nightmare Scale§r
+item.gm1_zen:dragon_scale_hideous.name=§2Hideous Zippleback Scale§r
+item.gm1_zen:dragon_scale_gronckle.name=§nGronckle Scale§r
+item.gm1_zen:dragon_scale_deadly.name=§3Deadly Nadder Scale§r
+item.gm1_zen:dragon_horn.name=§qDragon Horn§r
+
+## Blocks
+tile.gm1_zen:forge.name=§4Forge§r
+
+## IntroBook
+item.gm1_zen:intro_book.name=§4The HTTYD Rider's Guide§r

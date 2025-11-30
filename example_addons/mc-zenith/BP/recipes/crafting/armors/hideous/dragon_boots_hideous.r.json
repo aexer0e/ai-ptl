@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_zen:dragon_boots_hideous_recipe" },
+        "tags": [ "gm1_zen:crafting" ],
+        "priority": 1,
+        "pattern": [ "S S", "S S" ],
+        "key": { "S": { "item": "gm1_zen:dragon_scale_hideous" }},
+        "result": { "item": "gm1_zen:dragon_boots_hideous" },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

@@ -1,0 +1,150 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gm1_zen.dragon_book.home": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"rotation": [0, "math.abs(q.anim_time*90)*1", 0],
+					"position": [3, "4+math.sin(q.anim_time*180)*1", 0],
+					"scale": 2
+				},
+				"page_1_1": {
+					"scale": 0
+				},
+				"page_2_1": {
+					"scale": 0
+				},
+				"page_4_1": {
+					"scale": 0
+				},
+				"page_5_1": {
+					"scale": 0
+				},
+				"page_3_1": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.gm1_zen.dragon_book.page_1_1": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"scale": 0
+				},
+				"page_1_1": {
+					"position": [2, 11, 0],
+					"scale": 1.5
+				},
+				"page_2_1": {
+					"scale": 0
+				},
+				"page_4_1": {
+					"scale": 0
+				},
+				"page_5_1": {
+					"scale": 0
+				},
+				"page_3_1": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.gm1_zen.dragon_book.page_2_1": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"scale": 0
+				},
+				"page_1_1": {
+					"scale": 0
+				},
+				"page_2_1": {
+					"position": [2, 11, 0],
+					"scale": 1.5
+				},
+				"page_4_1": {
+					"scale": 0
+				},
+				"page_5_1": {
+					"scale": 0
+				},
+				"page_3_1": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.gm1_zen.dragon_book.page_3_1": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"scale": 0
+				},
+				"page_1_1": {
+					"scale": 0
+				},
+				"page_2_1": {
+					"scale": 0
+				},
+				"page_4_1": {
+					"scale": 0
+				},
+				"page_5_1": {
+					"scale": 0
+				},
+				"page_3_1": {
+					"position": [2, 11, 0],
+					"scale": 1.5
+				}
+			}
+		},
+		"animation.gm1_zen.dragon_book.page_4_1": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"scale": 0
+				},
+				"page_1_1": {
+					"scale": 0
+				},
+				"page_2_1": {
+					"scale": 0
+				},
+				"page_4_1": {
+					"position": [2, 11, 0],
+					"scale": 1.5
+				},
+				"page_5_1": {
+					"scale": 0
+				},
+				"page_3_1": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.gm1_zen.dragon_book.page_5_1": {
+			"loop": true,
+			"bones": {
+				"dragon_book": {
+					"scale": 0
+				},
+				"page_1_1": {
+					"scale": 0
+				},
+				"page_2_1": {
+					"scale": 0
+				},
+				"page_4_1": {
+					"scale": 0
+				},
+				"page_5_1": {
+					"position": [2, 11, 0],
+					"scale": 1.5
+				},
+				"page_3_1": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,165 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.spring_sprung": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "spring" }]}
+        },
+        "animation.gm1_ord.sonic.ball1_sound": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "ball1" }]}
+        },
+        "animation.gm1_ord.sonic.ball2_sound": {
+            "animation_length": 0.38,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "ball2" }]}
+        },
+        "animation.gm1_ord.sonic.ball3_sound": {
+            "animation_length": 0.34,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "ball3" }]}
+        },
+        "animation.gm1_ord.sonic.ball4_sound": {
+            "animation_length": 0.3,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "ball4" }]}
+        },
+        "animation.gm1_ord.sonic.ball5_sound": {
+            "animation_length": 0.2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "ball5" }]}
+        },
+        "animation.gm1_ord.dash_sound": {
+            "animation_length": 0.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "spindash_release" }]}
+        },
+        "animation.gm1_ord.super_sonic.boost_sfx": {
+            "animation_length": 5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "super_sonic_boost_sfx" }]}
+        },
+        "animation.gm1_ord.super_shadow.boost_sfx": {
+            "animation_length": 5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "super_shadow_boost_sfx" }]}
+        },
+        "animation.gm1_ord.shadow.blink_in": {
+            "animation_length": 0.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "shadow_blink_in" }]}
+        },
+        "animation.gm1_ord.knuckles.punch_explode": {
+            "animation_length": 0.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "punch_explosion" }]}
+        },
+        "animation.gm1_ord.knuckles.punch1_sound": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "punch1" }]}
+        },
+        "animation.gm1_ord.knuckles.punch2_sound": {
+            "animation_length": 0.38,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "punch2" }]}
+        },
+        "animation.gm1_ord.knuckles.punch3_sound": {
+            "animation_length": 0.34,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "punch3" }]}
+        },
+        "animation.gm1_ord.knuckles.punch4_sound": {
+            "animation_length": 0.3,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "punch4" }]}
+        },
+        "animation.gm1_ord.knuckles.punch5_sound": {
+            "animation_length": 0.2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "punch5" }]}
+        },
+        "animation.gm1_ord.amy.hammer_swipe": {
+            "animation_length": 0.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "hammer_swipe" }]}
+        },
+        "animation.gm1_ord.amy.hammer_smash": {
+            "animation_length": 0.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "hammer_smash" }]}
+        },
+        "animation.gm1_ord.amy.hammer1_sound": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hammer1" }]}
+        },
+        "animation.gm1_ord.amy.hammer2_sound": {
+            "animation_length": 0.38,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hammer2" }]}
+        },
+        "animation.gm1_ord.amy.hammer3_sound": {
+            "animation_length": 0.34,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hammer3" }]}
+        },
+        "animation.gm1_ord.amy.hammer4_sound": {
+            "animation_length": 0.3,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hammer4" }]}
+        },
+        "animation.gm1_ord.amy.hammer5_sound": {
+            "animation_length": 0.2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hammer5" }]}
+        },
+        "animation.gm1_ord.shadow.chaos1_sound": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "chaos1" }]}
+        },
+        "animation.gm1_ord.shadow.chaos2_sound": {
+            "animation_length": 0.38,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "chaos2" }]}
+        },
+        "animation.gm1_ord.shadow.chaos3_sound": {
+            "animation_length": 0.34,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "chaos3" }]}
+        },
+        "animation.gm1_ord.shadow.chaos4_sound": {
+            "animation_length": 0.3,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "chaos4" }]}
+        },
+        "animation.gm1_ord.shadow.chaos5_sound": {
+            "animation_length": 0.2,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "chaos5" }]}
+        },
+        "animation.gm1_ord.charge_lightning.sound": {
+            "animation_length": 0.5,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "charge_lightning" }]}
+        },
+        "animation.gm1_ord.tails_hover": {
+            "animation_length": 0.6,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "hover" }], "0.2": [{ "effect": "hover" }], "0.4": [{ "effect": "hover" }]}
+        },
+        "animation.gm1_ord.chaos_emerald.unlock": {
+            "animation_length": 1,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "unlock_sfx" }]}
+        },
+        "animation.gm1_ord.super_form.loop_sfx": {
+            "animation_length": 2.65,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "super_loop_sfx" }]}
+        }
+    }
+}

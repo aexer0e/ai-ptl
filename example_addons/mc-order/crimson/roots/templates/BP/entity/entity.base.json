@@ -1,0 +1,8 @@
+{
+    "$identifier": "roots.BP.entity.base",
+    "$inputs": { "identifier": null, "format_version": "1.21.40", "is_spawnable": true, "is_summonable": true },
+    "format_version": "^format_version",
+    "minecraft:entity": {
+        "description": { "identifier": "^identifier", "is_spawnable": "^is_spawnable", "is_summonable": "^is_summonable" }
+    }
+}

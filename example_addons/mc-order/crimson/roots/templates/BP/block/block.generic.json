@@ -1,0 +1,16 @@
+{
+    "$identifier": "roots.BP.block.generic",
+    "$inputs": {
+        "texture": null,
+        "geometry": "minecraft:geometry.full_block",
+        "render_method": "opaque",
+        "collision_box": { "$nested": true, "width": 1, "height": 1 },
+        "selection_box": { "$nested": true, "width": 1, "height": 1 }
+    },
+    "minecraft:block": {
+        "components": {
+            "minecraft:geometry": "^geometry",
+            "minecraft:material_instances": { "*": { "texture": "^texture", "render_method": "^render_method" }}
+        }
+    }
+}

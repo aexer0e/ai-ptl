@@ -1,0 +1,25 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.homing_indicator": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "ready" ],
+                    "blend_transition": 0.05,
+                    "transitions": [{ "homing": "v.is_homing" }, { "in_queue": "v.in_queue" }]
+                },
+                "homing": {
+                    "animations": [ "locked" ],
+                    "blend_transition": 0.05,
+                    "transitions": [{ "none": "!v.is_homing" }]
+                },
+                "in_queue": {
+                    "animations": [ "locked" ],
+                    "blend_transition": 0.05,
+                    "transitions": [{ "homing": "v.is_homing" }]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+:An error message that is displayed when a player tries to ride a dragon without a saddle.
+gm1_zen.message.try_to_ride_unsaddled=§cYou can't ride a dragon that doesn't have a saddle!§r
+: This message is displayed when a players bond with a dragon levels up. It is split in two parts, this is part 1, the space after "the" should not be removed.
+gm1_zen.message.milestone_update_part1=Your bond with the 
+: This message is displayed when a players bond with a dragon levels up. It is split in two parts, this is part 2, {StrContains="%s"} %s represents a milestone name.
+gm1_zen.message.milestone_update_part2= has grown! You are now %s!
+: This message is displayed when a tamed dragon dies. {StrContains="6%s"} 6%s represents the tamed dragon's name.
+gm1_zen.message.tamedDragonDeath2=§6%s §chas fled! Call them back using a Dragon horn.§r
+: This message is displayed when a tamed dragon dies. This is prefix before the dragon name you own. The space after "Your" should not be removed.
+gm1_zen.message.tamedDragonDeath1=§cYour §r
+: This message is an error when you try to summon more than one Night Fury into the world.
+gm1_zen.message.nightfuryspawnerror=§cToothless is the last of his kind, there are no other Night Furies to summon.
+: This message is displayed in a action form after a player saddles a dragon. They are prompted to give a name to their dragon.
+gm1_zen.message.tame_prompt.title=Name Your Dragon
+: This message is a display above a text field where players enter a dragon name. Do not remove the space
+gm1_zen.message.tame_prompt.text=Dragon Name: 

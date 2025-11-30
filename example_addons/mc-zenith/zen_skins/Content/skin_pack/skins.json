@@ -1,0 +1,42 @@
+{
+	"serialize_name": "",
+	"localization_name": "",
+	"skins": [
+		{
+			"localization_name": "movie_hiccup",
+			"geometry": "geometry..movie_hiccup",
+			"texture": "movie_hiccup.png",
+			"type": "paid"
+		},
+		{
+			"localization_name": "movie_astrid",
+			"geometry": "geometry..movie_astrid",
+			"texture": "movie_astrid.png",
+			"type": "paid"
+		},
+		{
+			"localization_name": "movie_fishlegs",
+			"geometry": "geometry..movie_fishlegs",
+			"texture": "movie_fishlegs.png",
+			"type": "paid"
+		},
+		{
+			"localization_name": "movie_snotlout",
+			"geometry": "geometry..movie_snotlout",
+			"texture": "movie_snotlout.png",
+			"type": "paid"
+		},
+		{
+			"localization_name": "movie_ruffnut",
+			"geometry": "geometry..movie_ruffnut",
+			"texture": "movie_ruffnut.png",
+			"type": "paid"
+		},
+		{
+			"localization_name": "movie_tuffnut",
+			"geometry": "geometry..movie_tuffnut",
+			"texture": "movie_tuffnut.png",
+			"type": "paid"
+		}
+	]
+}

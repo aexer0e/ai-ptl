@@ -1,0 +1,16 @@
+{
+    "version": "0.3.0",
+    "configurations": [
+        {
+            "type": "minecraft-js",
+            "request": "attach",
+            "name": "Wait for Minecraft Debug Connections",
+            "mode": "listen",
+            "localRoot": "${workspaceFolder}/BP/scripts/",
+            "port": 19144,
+            "inlineSourceMap": true,
+            "generatedSourceRoot": "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/development_behavior_packs/gm1_zen BP/scripts/",
+            "sourceMapRoot": "%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/development_behavior_packs/gm1_zen BP/scripts/"
+        }
+    ]
+}

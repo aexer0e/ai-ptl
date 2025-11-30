@@ -1,0 +1,24 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.player_jump": {
+            "states": {
+                "default": { "transitions": [{ "jump": "v.jumped_recently" }]},
+                "jump": {
+                    "sound_effects": [{ "effect": "player_jump" }],
+                    "transitions": [{ "default": "!v.jumped_recently" }]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.max_speed": {
+            "states": {
+                "default": { "transitions": [{ "max": "v.momentum >= 6 && v.ability_state < 1" }]},
+                "max": {
+                    "sound_effects": [{ "effect": "top_speed" }],
+                    "animations": [{ "breakthrough_anim": "v.is_first_person" }, "speed_lines" ],
+                    "transitions": [{ "default": "v.momentum < 6 && (q.is_on_ground || v.secondary_state == 7)" }]
+                }
+            }
+        }
+    }
+}

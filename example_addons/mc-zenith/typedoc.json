@@ -1,0 +1,16 @@
+{
+    "entryPoints": [ "./BP/scripts" ],
+    "out": "docs",
+    "includeVersion": true,
+    "excludePrivate": true,
+    "excludeProtected": false,
+    "excludeExternals": true,
+    "name": "MC-Zenith",
+    "readme": "none",
+    "sort": [ "kind" ],
+    "entryPointStrategy": "expand",
+    "theme": "default",
+    "plugin": [ "typedoc-plugin-merge-modules" ],
+    "mergeModulesRenameDefaults": true,
+    "mergeModulesMergeMode": "project"
+}

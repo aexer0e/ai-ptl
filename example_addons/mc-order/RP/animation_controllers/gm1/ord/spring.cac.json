@@ -1,0 +1,14 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.spring": {
+            "states": {
+                "none": { "transitions": [{ "spring": "query.is_sheared" }]},
+                "spring": {
+                    "animations": [ "sound_test", "spring_animation" ],
+                    "transitions": [{ "none": "query.all_animations_finished" }]
+                }
+            }
+        }
+    }
+}

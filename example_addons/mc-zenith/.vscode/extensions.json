@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "GamemodeOne.json-compact-prettier",
+        "mojang-studios.minecraft-debugger",
+        "ZainChen.json",
+        "BlockceptionLtd.blockceptionvscodeminecraftbedrockdevelopmentextension",
+        "dbaeumer.vscode-eslint"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:lf_spring_yellow_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ "D", "P", "R" ],
+        "key": {
+            "D": { "item": "minecraft:yellow_dye" },
+            "P": { "item": "minecraft:piston" },
+            "R": { "item": "gm1_ord:ring_spawn_egg" }
+        },
+        "result": { "item": "gm1_ord:lf_spring_yellow" },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

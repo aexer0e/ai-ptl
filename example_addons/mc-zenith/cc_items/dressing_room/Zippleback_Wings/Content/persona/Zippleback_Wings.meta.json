@@ -1,0 +1,55 @@
+{
+	"piece_id": "67a51287-a018-7e40-4dc5-7925fa9772ab",
+	"piece_name": "Zippleback_Wings",
+	"piece_type": "persona_back",
+	"geometry_sources": [
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Zippleback_Wings.tall.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "tall",
+			"geometry": "geometry.Zippleback_Wings.tall.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Zippleback_Wings.medium.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "medium",
+			"geometry": "geometry.Zippleback_Wings.medium.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Zippleback_Wings.small.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "small",
+			"geometry": "geometry.Zippleback_Wings.small.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Zippleback_Wings.smaller.body_back_upper",
+			"zone": ["body_back_upper"],
+			"texture": "barf_belch_wings.png"
+		},
+		{
+			"body_size": "smaller",
+			"geometry": "geometry.Zippleback_Wings.smaller.body_back_lower",
+			"zone": ["body_back_lower"],
+			"texture": "barf_belch_wings.png"
+		}
+	]
+}

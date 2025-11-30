@@ -1,0 +1,58 @@
+{
+    "type": "minecraftBedrock",
+    "name": "mc-order",
+    "namespace": "gm1_ord",
+    "authors": [ "Gamemode One" ],
+    "targetVersion": "1.21.70",
+    "description": "",
+    "experimentalGameplay": {
+        "holidayCreatorFeatures": false,
+        "creationOfCustomBiomes": false,
+        "upcomingCreatorFeatures": false,
+        "enableGameTestFramework": true,
+        "experimentalMolangFeatures": false,
+        "educationEdition": false
+    },
+    "packs": { "behaviorPack": "./BP", "resourcePack": "./RP" },
+    "worldHub": { "dirPath": "./worlds/" },
+    "gm1Dash": {
+        "watch": {
+            "rebuildIfIncludes": [ "\\.bridge/extensions", "config\\.json" ],
+            "ignoreIfExcludes": [ "\\.", "(/(BP|RP|crimson)/)" ],
+            "ignoreIfIncludes": [ "\\.(crswap|tmp|~tmp|temp|TMP|pdnSave)$", "/\\." ],
+            "globridgeDir": "/.globridge/"
+        },
+        "world": { "gitTrackWorlds": true },
+        "logpiler": {
+            "pointers": [
+                {
+                    "regex": "(?<=clipboard-start)(.+?)(?=clipboard-end)",
+                    "file": "tools/clipboard/clipboard.txt",
+                    "actions": [{ "type": "console", "command": "node ./tools/clipboard/clipboard.js" }]
+                }
+            ],
+            "readMaxBytes": 5000000
+        },
+        "mcTargetBuild": {
+            "version": "1.21.7003.0",
+            "downloadURL": "storageexplorer://?v=2&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&type=fileSystemPath&path=durable%2F1.21.70.03_RC2%2FBedrock_UWP_x64_Win10%2FMinecraft-release_Bedrock_UWP_x64_Win10_32061301.zip&container=mcbuilds&serviceEndpoint=https%3A%2F%2Fdtsminecraft.blob.core.windows.net"
+        }
+    },
+    "compiler": {
+        "plugins": [
+            [ "axiom", { "enabled": false, "log": false }],
+            "entityIdentifierAlias",
+            [ "typeScript", { "inlineSourceMap": true }],
+            "customEntityComponents",
+            "customItemComponents",
+            "customBlockComponents",
+            "customCommands",
+            "betterCC",
+            "generatorScripts",
+            "woodenTools.Crimson",
+            "woodenTools.Saplang",
+            "woodenTools.Senvanna",
+            [ "simpleRewrite", { "packName": "gm1_ord", "rewriteToComMojang": true }]
+        ]
+    }
+}

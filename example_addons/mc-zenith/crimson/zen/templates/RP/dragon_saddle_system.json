@@ -1,0 +1,12 @@
+{
+    "$identifier": "gm1_zen:dragon_saddle_system",
+    "$inputs": { "dragon_species": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "geometry": { "saddle": "geometry.gm1_zen.dragon_saddle_^{dragon_species}^" },
+            "textures": { "saddle": "textures/gm1/zen/entity/dragon/saddle/player" },
+            "render_controllers": [{ "controller.render.gm1_zen.dragon_saddle": "q.property('gm1_zen:is_saddled')" }]
+        }
+    }
+}

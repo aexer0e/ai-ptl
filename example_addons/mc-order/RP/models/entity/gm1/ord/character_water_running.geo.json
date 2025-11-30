@@ -1,0 +1,79 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.gm1_ord.character_water_running",
+				"texture_width": 32,
+				"texture_height": 16,
+				"visible_bounds_width": 14,
+				"visible_bounds_height": 6,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "liquid_running",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "water_left",
+					"parent": "liquid_running",
+					"pivot": [3, 0, -11],
+					"cubes": [
+						{
+							"origin": [3, 0, -12],
+							"size": [0, 16, 32],
+							"uv": {
+								"west": {"uv": [0, 0], "uv_size": [32, 16]}
+							}
+						}
+					]
+				},
+				{
+					"name": "water_locator",
+					"parent": "water_left",
+					"pivot": [3, 3, -8],
+					"locators": {
+						"water_left_locator": {
+							"offset": [3, 3, -8],
+							"rotation": [0, 180, -180]
+						}
+					}
+				},
+				{
+					"name": "water_right",
+					"parent": "liquid_running",
+					"pivot": [-3, 0, -11],
+					"cubes": [
+						{
+							"origin": [-3, 0, -12],
+							"size": [0, 16, 32],
+							"uv": {
+								"west": {"uv": [0, 0], "uv_size": [32, 16]}
+							}
+						}
+					]
+				},
+				{
+					"name": "water_locator2",
+					"parent": "water_right",
+					"pivot": [-3, 0, -11],
+					"locators": {
+						"water_right_locator": {
+							"offset": [-3, 3, -8],
+							"rotation": [0, 180, -180]
+						}
+					}
+				},
+				{
+					"name": "water_wake",
+					"parent": "liquid_running",
+					"pivot": [0, 0, 0],
+					"locators": {
+						"water_wake_locator": [0, 0, 0]
+					}
+				}
+			]
+		}
+	]
+}

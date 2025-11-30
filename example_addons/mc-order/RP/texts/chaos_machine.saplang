@@ -1,0 +1,8 @@
+chaos_machine.player.transform.fail=§cTransform into Sonic or Shadow and try again!
+chaos_machine.player.transform.success.super_sonic=The Chaos Machine transformed you into §eSuper Sonic§r!
+chaos_machine.player.transform.success.super_shadow=The Chaos Machine transformed you into §eSuper Shadow§r!
+chaos_machine.no_emerald.transform.fail=§cCollect all 7 Chaos Emeralds to power the machine!
+
+chaos_machine.super_transform.out_of_ring=§cOut of Rings! %s deactivated.§r
+chaos_machine.super_transform.consume_ring.start=%s Ring Draining Active!
+chaos_machine.super_transform.consume_ring.count=Go %s! - Rings Left: %s

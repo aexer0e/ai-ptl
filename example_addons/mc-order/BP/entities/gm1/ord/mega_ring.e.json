@@ -1,0 +1,94 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:mega_ring",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "animations": { "player_tp": "controller.animation.gm1_ord.mega_ring" },
+            "scripts": { "animate": [ "player_tp" ]}
+        },
+        "component_groups": {
+            "gm1_ord:await": {
+                "minecraft:skin_id": { "value": 0 },
+                "minecraft:entity_sensor": {
+                    "subsensors": [
+                        {
+                            "range": "^o.mega_ring.teleport_range",
+                            "event_filters": { "test": "is_family", "subject": "other", "value": "player" },
+                            "event": "gm1_ord:tp"
+                        }
+                    ]
+                }
+            },
+            "gm1_ord:tp": {
+                "minecraft:skin_id": { "value": 1 },
+                "minecraft:timer": {
+                    "time": "^o.mega_ring.teleport_cooldown",
+                    "looping": true,
+                    "time_down_event": { "event": "gm1_ord:await", "target": "self" }
+                }
+            }
+        },
+        "components": {
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:damage_sensor": { "triggers": [{ "cause": "all", "deals_damage": "no" }]},
+            "minecraft:physics": { "has_collision": false, "has_gravity": false, "push_towards_closest_space": false },
+            "minecraft:nameable": { "allow_name_tag_renaming": true, "always_show": false },
+            "minecraft:collision_box": { "height": "^o.mega_ring.hitbox_y", "width": "^o.mega_ring.hitbox_x" },
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { "add": { "component_groups": [ "gm1_ord:await" ]}},
+            "gm1_ord:await": {
+                "add": { "component_groups": [ "gm1_ord:await" ]},
+                "remove": { "component_groups": [ "gm1_ord:tp" ]}
+            },
+            "gm1_ord:tp": {
+                "add": { "component_groups": [ "gm1_ord:tp" ]},
+                "remove": { "component_groups": [ "gm1_ord:await" ]}
+            }
+        }
+    }
+}

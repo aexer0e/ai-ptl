@@ -1,0 +1,130 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.nightfury.attack_1": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 0.21667,
+            "anim_time_update": "query.anim_time + query.delta_time*0.6",
+            "bones": {
+                "skull": { "rotation": { "0.0667": [ "37.5-this", 0, 0 ], "0.1583": [ -42.07, 0, 0 ]}},
+                "body": {
+                    "rotation": { "0.0083": [ 0, 0, 0 ], "0.1417": [ -8.89, 0, 0 ], "0.2083": [ -10, 0, 0 ]},
+                    "position": {
+                        "0.0083": [ 0, 0, 0 ],
+                        "0.1417": [ 0, "query.has_rider ? 0 : 5", 4 ],
+                        "0.2083": [ 0, "query.has_rider ? 0 : 5", 5 ]
+                    }
+                },
+                "neck": { "rotation": { "0.0667": [ "-this", 0, 0 ], "0.1583": [ 2.5, 0, 0 ]}},
+                "jaw_upper": { "rotation": [ 0, 0, 0 ]},
+                "tongue": { "position": [ 0, 0, -1.5 ]},
+                "thigh_front_right": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ -25, 0, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1417": [ 0, -3, 0 ]}
+                },
+                "leg_front_right": { "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ 40, 0, 0 ]}},
+                "thigh_front_left": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ -25, 0, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1417": [ 0, -3, 0 ]}
+                },
+                "leg_front_left": { "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ 40, 0, 0 ]}},
+                "thigh_back_right": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ -22.5, 0, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1417": [ 0, -2, 0 ]}
+                },
+                "leg_back_right": { "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ 47.5, 0, 0 ]}},
+                "thigh_back_left": {
+                    "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ -12.5, 0, 0 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.1417": [ 0, -2, 0 ]}
+                },
+                "leg_back_left": { "rotation": { "0.0": [ 0, 0, 0 ], "0.1417": [ 35, 0, 0 ]}},
+                "jaw_lower": { "rotation": [ 45, 0, 0 ]}
+            }
+        },
+        "animation.gm1_zen.nightfury.attack_2": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 0.2083,
+            "anim_time_update": "query.anim_time + query.delta_time*0.6",
+            "bones": {
+                "skull": { "rotation": { "0.0": [ 0, 0, 0 ], "0.0667": [ -20, 0, 0 ], "0.1583": [ -32.07, 0, 0 ]}},
+                "tail_1": { "rotation": { "0.0667": [ 0, 0, 0 ], "0.2083": [ 13.6, 0, 0 ]}},
+                "tail_2": { "rotation": { "0.125": [ 0, 0, 0 ], "0.2083": [ 25, 0, -1.24 ]}},
+                "body": {
+                    "rotation": { "0.0083": [ 0, 0, 0 ], "0.1417": [ -22.89, 0, 0 ], "0.2083": [ -25, 0, 0 ]},
+                    "position": {
+                        "0.0083": [ 0, 0, 0 ],
+                        "0.1417": [ 0, "query.has_rider ? 0 : 11", 4 ],
+                        "0.2083": [ 0, "query.has_rider ? 0 : 12", 5 ]
+                    }
+                },
+                "neck": { "rotation": { "0.0583": [ 0, 0, 0 ], "0.1583": [ 22.5, 0, 0 ]}},
+                "jaw_upper": { "rotation": [ 0, 0, 0 ]},
+                "tongue": { "position": [ 0, 0, -1.5 ]},
+                "thigh_front_right": { "rotation": [ -40, 0, 0 ]},
+                "leg_front_right": { "rotation": [ -40, 0, 0 ]},
+                "leg_front_right_claw_left": { "rotation": [ 82.5, 0, 0 ]},
+                "leg_front_right_claw_right": { "rotation": [ 72.5, 0, 0 ]},
+                "thigh_front_left": { "rotation": [ -32.5, 0, 0 ]},
+                "leg_front_left": { "rotation": [ -50, 0, 0 ]},
+                "leg_front_left_claw_left": { "rotation": [ 90, 0, 0 ]},
+                "leg_front_left_claw_right": { "rotation": [ 77.5, 0, 0 ]},
+                "thigh_back_right": { "rotation": [ -22.5, 0, 0 ], "position": [ 0, "query.has_rider ? 10 : -5", 0 ]},
+                "leg_back_right": { "rotation": [ 47.5, 0, 0 ]},
+                "thigh_back_left": { "rotation": [ -12.5, 0, 0 ], "position": [ 0, "query.has_rider ? 10 : -5", 0 ]},
+                "leg_back_left": { "rotation": [ 35, 0, 0 ]}
+            }
+        },
+        "animation.gm1_zen.nightfury.attack_3": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 0.7,
+            "anim_time_update": "query.anim_time + query.delta_time*0.6",
+            "sound_effects": { "0.00": { "effect": "shot_sfx" }},
+            "bones": {
+                "skull": { "rotation": { "0.0": [ -24.57, 0, 0 ], "0.05": [ 14.17, 0, 0 ], "0.2667": [ 50, 0, 0 ]}},
+                "tail_1": { "rotation": { "0.0": [ 13.6, 0, 0 ], "0.025": [ 20, 0, 0 ], "0.1583": [ 0, 0, 0 ]}},
+                "tail_2": {
+                    "rotation": {
+                        "0.0": [ 25, 0, -1.24 ],
+                        "0.0917": [ 65, 0, "Math.sin(query.anim_time*200)*5" ],
+                        "0.2083": [ 0, 0, 0 ]
+                    }
+                },
+                "body": {
+                    "rotation": { "0.0": [ -25, 0, 0 ], "0.0583": [ -14.74, 0, 0 ], "0.0833": [ 0, 0, 0 ]},
+                    "position": {
+                        "0.0": [ 0, "query.has_rider ? 0 : 12", 5 ],
+                        "0.0583": [ 0, "query.has_rider ? 0 : 7", 3 ],
+                        "0.0833": [ 0, 0, 0 ]
+                    }
+                },
+                "neck": { "rotation": { "0.0": [ 32.5, 0, 0 ], "0.05": [ 35, 0, 0 ], "0.1917": [ -35, 0, 0 ]}},
+                "jaw_upper": { "rotation": { "0.0": [ 0, 0, 0 ], "0.1083": [ -30, 0, 0 ]}},
+                "tongue": { "position": [ 0, 0, -1.5 ]},
+                "thigh_front_right": {
+                    "rotation": { "0.0": [ -40, 0, 0 ], "0.125": [ -15, 0, 12.5 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.125": [ 0, -2, 0 ]}
+                },
+                "leg_front_right": { "rotation": { "0.0": [ -40, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "leg_front_right_claw_left": { "rotation": { "0.0": [ 82.5, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "leg_front_right_claw_right": { "rotation": { "0.0": [ 72.5, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "thigh_front_left": {
+                    "rotation": { "0.0": [ -32.5, 0, 0 ], "0.125": [ -7.5, 0, -17.5 ]},
+                    "position": { "0.0": [ 0, 0, 0 ], "0.125": [ 0, -2, 0 ]}
+                },
+                "leg_front_left": { "rotation": { "0.0": [ -50, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "leg_front_left_claw_left": { "rotation": { "0.0": [ 90, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "leg_front_left_claw_right": { "rotation": { "0.0": [ 77.5, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "thigh_back_right": {
+                    "rotation": { "0.0": [ -22.5, 0, 0 ], "0.125": [ 0, 0, 0 ]},
+                    "position": { "0.0": [ 0, "query.has_rider ? 10 : -5", 0 ], "0.125": [ 0, 0, 0 ]}
+                },
+                "leg_back_right": { "rotation": { "0.0": [ 47.5, 0, 0 ], "0.125": [ 0, 0, 0 ]}},
+                "thigh_back_left": {
+                    "rotation": { "0.0": [ -12.5, 0, 0 ], "0.125": [ 0, 0, 0 ]},
+                    "position": { "0.0": [ 0, "query.has_rider ? 10 : -5", 0 ], "0.125": [ 0, 0, 0 ]}
+                },
+                "leg_back_left": { "rotation": { "0.0": [ 35, 0, 0 ], "0.125": [ 0, 0, 0 ]}}
+            }
+        }
+    }
+}

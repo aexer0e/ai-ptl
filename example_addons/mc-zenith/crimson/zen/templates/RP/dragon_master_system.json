@@ -1,0 +1,16 @@
+{
+    "$identifier": "gm1_zen:dragon_master_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "master_controller": "controller.animation.gm1_zen.dragon_global.master",
+                "sleep": "animation.gm1_zen.nightfury.sleep",
+                "sleep_controller": "controller.animation.gm1_zen.dragon_global.sleep",
+                "detail_air_controller": "controller.animation.gm1_zen.dragon_global.det_air",
+                "breeding": "animation.gm1_zen.nightfury.dance"
+            },
+            "scripts": { "animate": [{ "master_controller": "!query.is_in_love" }, { "breeding": "query.is_in_love" }]}
+        }
+    }
+}

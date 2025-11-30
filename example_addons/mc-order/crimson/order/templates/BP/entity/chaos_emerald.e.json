@@ -1,0 +1,87 @@
+{
+    "$identifier": "ord:chaos_emerald.e",
+    "$inputs": { "color": "red" },
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "is_summonable": true,
+            "is_spawnable": false,
+            "properties": {
+                "gm1_ord:type": {
+                    "type": "enum",
+                    "default": "moving",
+                    "values": [ "moving", "locked", "unlocked" ],
+                    "client_sync": true
+                },
+                "gm1_ord:is_eggman": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:direction_changed": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:average_speed": { "type": "float", "range": [ -0.1, 100.1 ], "default": 0.1, "client_sync": true },
+                "gm1_ord:move_dir_x": { "type": "float", "range": [ -1.1, 1.1 ], "default": 0.1, "client_sync": true },
+                "gm1_ord:move_dir_z": { "type": "float", "range": [ -1.1, 1.1 ], "default": 0.1, "client_sync": true },
+                "gm1_ord:starting_up": { "type": "bool", "default": false, "client_sync": true },
+                "gm1_ord:collected": { "type": "bool", "default": false, "client_sync": true}
+            }
+        },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:instant_despawn": {}}
+        },
+        "components": {
+            "minecraft:collision_box": { "width": 0, "height": 0 },
+            "minecraft:custom_hit_test": { "hitboxes": [{ "width": 0.5, "height": 0.5, "pivot": [ 0, 0.5, 0 ]}]},
+            "minecraft:damage_sensor": { "triggers": { "deals_damage": "no" }},
+            "minecraft:type_family": { "family": [ "chaos_emerald" ]},
+            "minecraft:health": { "value": 2 },
+            "minecraft:physics": { "has_collision": true, "has_gravity": false, "push_towards_closest_space": true },
+            "minecraft:knockback_resistance": { "value": 1 },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:nameable": { "allow_name_tag_renaming": false, "always_show": true },
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "absorption",
+                    "bad_omen",
+                    "blindness",
+                    "conduit_power",
+                    "darkness",
+                    "fatal_poison",
+                    "fire_resistance",
+                    "haste",
+                    "health_boost",
+                    "hunger",
+                    "infested",
+                    "instant_damage",
+                    "instant_health",
+                    "invisibility",
+                    "jump_boost",
+                    "levitation",
+                    "mining_fatigue",
+                    "nausea",
+                    "night_vision",
+                    "oozing",
+                    "poison",
+                    "raid_omen",
+                    "regeneration",
+                    "resistance",
+                    "saturation",
+                    "slow_falling",
+                    "slowness",
+                    "speed",
+                    "strength",
+                    "trial_omen",
+                    "village_hero",
+                    "water_breathing",
+                    "weakness",
+                    "weaving",
+                    "wind_charged",
+                    "wither"
+                ]
+            }
+        },
+        "events": {
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}},
+            "gm1_ord:moving": { "set_property": { "gm1_ord:type": "moving" }},
+            "gm1_ord:locked": { "set_property": { "gm1_ord:type": "locked" }},
+            "gm1_ord:locked_eggman": { "set_property": { "gm1_ord:type": "locked", "gm1_ord:is_eggman": true }},
+            "gm1_ord:unlocked": { "set_property": { "gm1_ord:type": "unlocked" }}
+        }
+    }
+}

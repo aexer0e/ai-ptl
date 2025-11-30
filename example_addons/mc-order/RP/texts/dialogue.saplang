@@ -1,0 +1,135 @@
+Sonic | Sonic the Hedgehog: a male hedgehog; the protagonist of the Sonic series known for his super speed. This might have an offical translation.
+Tails: a male fox with two tails; Sonic's loyal sidekick and a skilled inventor. This might have an offical translation.
+Knuckles: a male echidna; a guardian with immense strength. This might have an offical translation.
+Amy | Amy Rose: a female hedgehog; a cheerful character with a crush on Sonic, known for her hammer weapon. This might have an offical translation.
+Shadow | Shadow the Hedgehog: a male hedgehog; a dark antihero with powers derived from Chaos energy. This might have an offical translation.
+Dr Eggman | Eggman: A male human; the antagonist of sonic the Hedgehog. "Dr" is his title, short for "Doctor". His full name is Ivo Robotnik although he goes by "Dr Eggman". This might have an offical translation.
+
+Gamemode One: A Canadian game development company responsible for this Minecraft add-on.
+Discord: A platform for voice, video, and text communication used for community discussions.
+X (formerly Twitter): A social media platform used for updates and news sharing.
+Instagram: A photo and video sharing social media platform popular for visual content.
+TikTok: A social media app known for short-form videos and viral trends.
+BUTTON: limited textbox with a maximum of 12 characters. If the word necessarily overflows 12 characters, you can remove the formatting code to find more characters.
+Blue Blur: An allias of Sonic.
+credits: {LOCKED}
+
+Ring | Rings: Collectible items in Sonic games that protect the player and serve as a scoring element. This might have an offical translation.
+Spin Dash: A move where Sonic curls into a ball and charges forward at high speed. This might have an offical translation.
+Homing Attack: A targeted mid-air attack that locks onto enemies or objects.
+Chaos Dash: A swift movement powered by Chaos energy. This might have an offical translation.
+Chaos Snap: A teleportation move using Chaos energy to reposition quickly. This might have an offical translation.
+Hover: An ability to float or maintain altitude temporarily.
+Glide: A controlled aerial descent, often used by Knuckles.
+Hammer Smash: A powerful attack using Amy's iconic hammer.
+Double Jump: A mid-air jump allowing the player to reach greater heights.
+Dash Punch: A forward charge attack often associated with Knuckles.
+Select Screen: A block that acts as a menu allowing the player to choose characters.
+
+Iron Ingots: Crafting materials in Minecraft used for creating tools and structures.
+Iron Nuggets: Small crafting components derived from iron ingots in Minecraft.
+Iron Blocks: A building block in Minecraft.
+Glass Blocks: A building block in Minecraft.
+
+Tinker Table: A crafting station in Minecraft add-ons used for advanced item customization.
+Yellow Spring: A bounce pad propelling players upwards in Sonic games. This might have an offical translation.
+Red Spring: A bounce pad propelling players forward in Sonic games. This might have an offical translation.
+Dash Panel: A boost pad increasing player speed in Sonic games. This might have an offical translation.
+Jump Panel: A pad that propels players into the air in Sonic games. This might have an offical translation.
+Spike Block: A hazardous block dealing damage on contact in Sonic games.
+Spike Panel: A trap-like element causing damage in Sonic games.
+Ring Block: A block containing collectible rings in Sonic games or add-ons.
+Warp Ring: A portal enabling fast travel to different locations. This might have an offical translation.
+Powered Rail: A track element in Minecraft used to propel minecarts.
+Piston: A mechanical block in Minecraft used to push or pull blocks.
+Planks: "Wooden planks", Basic building materials in Minecraft derived from wood.
+Chaos: a reoccuring term in the Sonic Franchise that references a type of magical energy. It may have an offical translation.
+Chaos Machine: A machine that the player constructs. It harnesses the power of the Chaos Emeralds to turn Sonic or Shadow into Super Sonic and Super Shadow.
+Chaos Emerald | Chaos Emeralds: Legendary magical artefacts that appear throughout the Sonic the Hedgehog franchise. There are 7 of them, and each is a different colour. This might have an offical translation.
+Chaos Shrine | Shrine | Shrines: Shrines are found around the player's world. They're structures made from Shrine Stone and contain a Chaos Emerald.
+Shrine Stone: An ancient rock that shrines are built from.
+Chaos Drive: A powerful piece of technology that is used to create a Chaos Machine. This might have an offical translation.
+
+Super Form | Super Forms: Some characters in the Sonic the Hedgehog franchise have an alternative "Super" form where they turn gold and become more powerful.
+Super Sonic: Sonic the Hedgehog's Super Form. This might have an offical translation.
+Super Shadow: Shadow the Hedgehog's Super Form. This might have an offical translation.
+
+Super Boost: A powerful ability that Super Sonic and Super Shadow can use.
+Super Homing: A powerful ability that Super Sonic can use. It is a stronger version of his Homing Attack.
+Super Snap: A powerful ability that Super Shadow can use. It is a stronger version of his Chaos Snap.
+
+Eggrobo | Eggrobos: A type of robot created by Dr Eggman. This might have an offical translation.
+
+View Bobbing: A toggleable effect in Minecraft simulating walking movement.
+Mob Griefing: A game setting controlling if mobs can modify the environment.
+Mob: A "monster" in Minecraft.
+
+dialogue.exit=§cExit
+
+: Max length of this string is 32 characters.
+dialogue.name.home=§0Sonic Guidebook
+: Max length of this string is 32 characters.
+dialogue.name.get_started.introduction=Get Started > Introduction
+: Max length of this string is 32 characters.
+dialogue.name.get_started.collect_rings=Get Started > Collect Rings
+: Max length of this string is 32 characters.
+dialogue.name.get_started.use_a_tv=Get Started > Select Screen
+: Max length of this string is 32 characters.
+dialogue.name.get_started.controls=Get Started > Controls
+: Max length of this string is 32 characters.
+dialogue.name.get_started.abilities=Get Started > Abilities
+: Max length of this string is 32 characters.
+dialogue.name.characters.sonic=Characters > Sonic
+: Max length of this string is 32 characters.
+dialogue.name.characters.tails=Characters > Tails
+: Max length of this string is 32 characters.
+dialogue.name.characters.knuckles=Characters > Knuckles
+: Max length of this string is 32 characters.
+dialogue.name.characters.amy=Characters > Amy
+: Max length of this string is 32 characters.
+dialogue.name.characters.shadow=Characters > Shadow
+: Max length of this string is 32 characters.
+dialogue.name.recipes=Recipes
+: Max length of this string is 32 characters.
+dialogue.name.recipes.sonic_tv=Recipes > General > Screen
+: Max length of this string is 32 characters.
+dialogue.name.recipes.tinker_table=Recipes > General > Tinker Table
+: Max length of this string is 32 characters.
+dialogue.name.recipes.yellow_spring=Recipes > Movement > Spring
+: Max length of this string is 32 characters.
+dialogue.name.recipes.red_spring=Recipes > Movement > Red Spring
+: Max length of this string is 32 characters.
+dialogue.name.recipes.dash_panel=Recipes > Movement > Dash Panel
+: Max length of this string is 32 characters.
+dialogue.name.recipes.jump_panel=Recipes > Movement > Jump Panel
+dialogue.name.recipes.spike=Recipes > Hazards > Spike Block
+: Max length of this string is 32 characters.
+dialogue.name.recipes.spikes=Recipes > Hazards > Spike Panel
+: Max length of this string is 32 characters.
+dialogue.name.chaos_machine=Recipes > Special > Machine
+: Max length of this string is 32 characters.
+dialogue.name.recipes.warp_ring=Recipes > Special > Warp Ring
+: Max length of this string is 32 characters.
+dialogue.name.recipes.ring_block=Recipes > Building > Ring Block
+: Max length of this string is 32 characters.
+dialogue.name.shrine_stone=Recipes > Building > Shrines
+
+: Max length of this string is 32 characters.
+dialogue.name.settings=Technical
+: Max length of this string is 32 characters.
+dialogue.name.changelog=Technical > Changelog
+: Max length of this string is 32 characters.
+dialogue.name.credits=Credits
+
+: Max length of this string is 32 characters.
+dialogue.name.missions=Become Super
+: Max length of this string is 32 characters.
+dialogue.name.chaos_emeralds=Become Super > Chaos Emeralds
+: Max length of this string is 32 characters.
+dialogue.name.eggman=Become Super > Dr Eggman
+: Max length of this string is 32 characters.
+dialogue.name.super=Become Super > Transform
+: Max length of this string is 32 characters.
+dialogue.name.super_sonic=Become Super > Super Sonic
+: Max length of this string is 32 characters.
+dialogue.name.super_shadow=Become Super > Super Shadow

@@ -1,0 +1,132 @@
+{
+    "format_version": "1.20.41",
+    "render_controllers": {
+        "controller.render.ai_player_staff": {
+            "geometry": "Array.staff[v.base-100]",
+            "materials": [{ "*": "material.default" }],
+            "arrays": {
+                "textures": {
+                    "Array.staff": [
+                        "texture.staff0",
+                        "texture.staff1",
+                        "texture.staff2",
+                        "texture.staff3",
+                        "texture.staff4",
+                        "texture.staff5",
+                        "texture.staff6",
+                        "texture.staff7",
+                        "texture.staff8",
+                        "texture.staff9",
+                        "texture.staff10",
+                        "texture.staff11",
+                        "texture.staff12",
+                        "texture.staff13",
+                        "texture.staff14",
+                        "texture.staff15",
+                        "texture.staff16",
+                        "texture.staff17",
+                        "texture.staff18",
+                        "texture.staff19",
+                        "texture.staff20",
+                        "texture.staff21",
+                        "texture.staff22",
+                        "texture.staff23",
+                        "texture.staff24",
+                        "texture.staff25",
+                        "texture.staff26",
+                        "texture.staff27",
+                        "texture.staff28",
+                        "texture.staff29"
+                    ]
+                },
+                "geometries": {
+                    "Array.staff": [
+                        "geometry.classic_narrow",
+                        "geometry.classic_narrow",
+                        "geometry.classic",
+                        "geometry.classic_narrow",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic_narrow",
+                        "geometry.classic",
+                        "geometry.classic_narrow",
+                        "geometry.classic_narrow",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic_narrow",
+                        "geometry.classic",
+                        "geometry.classic",
+                        "geometry.classic"
+                    ]
+                }
+            },
+            "part_visibility": [{ "*": true }],
+            "textures": [ "Array.staff[v.base-100]" ]
+        },
+        "controller.render.ai_player_staff_spawn": {
+            "light_color_multiplier": "v.starting_light_colour_multi - v.light_colour_multi",
+            "arrays": {
+                "geometries": {
+                    "Array.staff": [
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_narrow_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated",
+                        "geometry.classic_inflated"
+                    ]
+                }
+            },
+            "geometry": "Array.staff[v.base-100]",
+            "materials": [{ "*": "Material.additive" }],
+            "part_visibility": [
+                { "*": false },
+                { "leftSleeve": true },
+                { "rightSleeve": true },
+                { "leftPants": true },
+                { "rightPants": true },
+                { "jacket": true },
+                { "hat": true }
+            ],
+            "textures": [ "Texture.spawning" ]
+        }
+    }
+}

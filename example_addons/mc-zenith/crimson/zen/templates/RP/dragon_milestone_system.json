@@ -1,0 +1,37 @@
+// @prettier-ignore
+{
+    "$identifier": "gm1_zen:dragon_milestone_system",
+    "$inputs": { "dragon_species": null, "dragon_diet": null },
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "milestone_tracker": "controller.animation.gm1_zen.dragon_global.milestone_tracker"
+            },
+            "particle_effects": {
+                "milestone_small": "gm1_zen:milestone_small",
+                "milestone_medium": "gm1_zen:milestone_medium",
+                "milestone_large": "gm1_zen:milestone_large",
+                "want_success": "gm1_zen:want_success"
+            },
+            "sound_effects": {
+                //global
+                "milestone_small_sfx": "milestone_small",
+                "milestone_medium_sfx": "milestone_medium",
+                "milestone_large_sfx": "milestone_large"
+            },
+            "scripts": {
+                "initialize": [
+                    "v.milestone = q.property('gm1_zen:milestone'); v.milestone_cache = q.property('gm1_zen:milestone');",
+                    "v.time_since_milestone_change = 100000;"
+                ],
+                "pre_animation": [
+                    "v.milestone_cache = v.milestone;",
+                    "v.milestone = q.property('gm1_zen:milestone');",
+                    "v.time_since_milestone_change = v.milestone != v.milestone_cache ? 0 : v.time_since_milestone_change + q.delta_time;"
+                ],
+                "animate": [ "milestone_tracker" ]
+            }
+        }
+    }
+}

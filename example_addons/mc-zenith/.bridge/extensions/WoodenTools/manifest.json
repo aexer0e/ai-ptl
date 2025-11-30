@@ -1,0 +1,14 @@
+{
+    "author": "Gamemode One",
+    "name": "WoodenTools",
+    "version": "v1.3.0",
+    "id": "f2c5b44f-a668-4bf0-ae4d-1aa574dd0d05",
+    "documentation": "https://www.notion.so/gamemodeone/WoodenTools-014d4421a8154787b80a59ed11837616",
+    "compiler": {
+        "plugins": {
+            "woodenTools.Saplang": "./Saplang/Main.ts",
+            "woodenTools.Senvanna": "./Senvanna/Main.ts",
+            "woodenTools.Crimson": "./Crimson/Main.ts"
+        }
+    }
+}

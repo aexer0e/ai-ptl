@@ -1,0 +1,132 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_zen.dragon_global.speed_lines_frantic": {
+            "loop": true,
+            "animation_length": 0.45,
+            "particle_effects": {
+                "0": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.1": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.2": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.3": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.45": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }]
+            }
+        },
+        "animation.gm1_zen.dragon_global.boost_vfx": {
+            "loop": true,
+            "animation_length": 1,
+            "particle_effects": { "0": [{ "effect": "boost_vfx", "locator": "effect_locator" }]}
+        },
+        "animation.gm1_zen.dragon_global.speed_lines_chonk": {
+            "loop": true,
+            "animation_length": 1.2,
+            "particle_effects": {
+                "0": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.1": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.2": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.3": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.4": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.5": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.6": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.7": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.8": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "0.9": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "1.0": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "1.1": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }],
+                "1.2": [{ "effect": "speed_lines_vfx", "locator": "effect_locator" }]
+            }
+        },
+        "animation.gm1_zen.dragon_global.breed_vfx": {
+            "loop": true,
+            "animation_length": 0.35,
+            "particle_effects": { "0": [{ "effect": "fed", "locator": "training_locator" }]}
+        },
+        "animation.gm1_zen.dragon_global.grab_sfx": {
+            "loop": false,
+            "animation_length": 1,
+            "sound_effects": { "0": [{ "effect": "grab_sfx" }]}
+        },
+        "animation.gm1_zen.dragon_global.sheep_grab": {
+            "loop": false,
+            "animation_length": 1,
+            "sound_effects": { "0": [{ "effect": "sheep_grab" }]}
+        },
+        "animation.gm1_zen.dragon_global.sheep_release": {
+            "loop": false,
+            "animation_length": 1,
+            "sound_effects": { "0": [{ "effect": "sheep_release" }]}
+        },
+        "animation.gm1_zen.dragon_global.frantic_flap_loop_sfx": {
+            "loop": true,
+            "animation_length": 1.03,
+            "sound_effects": { "0": [{ "effect": "frantic_flap_sfx" }]}
+        },
+        "animation.gm1_zen.dragon_global.scratch_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "1.3": [{ "effect": "scratch_sfx" }]}
+        },
+        "animation.gm1_zen.baby_hatch": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": [{ "effect": "hatch" }]},
+            "particle_effects": { "0": [{ "effect": "hatch" }]}
+        },
+        "animation.gm1_zen.baby_hatching": {
+            "loop": false,
+            "animation_length": 5,
+            "sound_effects": {
+                "0.0": [{ "effect": "hatching" }],
+                "1.0": [{ "effect": "hatching" }],
+                "2.0": [{ "effect": "hatching" }],
+                "3.0": [{ "effect": "hatching" }],
+                "3.4": [{ "effect": "hatching" }],
+                "3.5": [{ "effect": "hatching" }],
+                "3.6": [{ "effect": "hatching" }]
+            }
+        },
+        "animation.gm1_zen.dragon_global.flap_sfx": {
+            "loop": true,
+            "animation_length": 2,
+            "anim_time_update": "query.has_player_rider && query.vertical_speed>-4 && query.is_tamed ? (query.is_baby && query.delta_time<2 ? query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006 : 2.0) : query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006",
+            "sound_effects": { "0.0": { "effect": "flap_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.flap_up_sfx": {
+            "loop": true,
+            "animation_length": 2,
+            "anim_time_update": "query.has_player_rider && query.vertical_speed>-4 && query.is_tamed ? (query.is_baby && query.delta_time<2 ? query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006 : 2.0) : query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006",
+            "sound_effects": { "0.0": { "effect": "flap_up_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.flap_ride_sfx": {
+            "loop": true,
+            "animation_length": 2,
+            "anim_time_update": "query.has_player_rider && query.vertical_speed>-4 && query.is_tamed ? (query.is_baby && query.delta_time<2 ? query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006 : 2.0) : query.anim_time+query.delta_time*v.speed_multiplier*v.flap_rate*0.006",
+            "sound_effects": { "0.0": { "effect": "flap_ride_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.glide_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "glide_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.glide_boost_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "glide_boost_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.dive_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "dive_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.dive_ride_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "dive_ride_sfx" }}
+        },
+        "animation.gm1_zen.dragon_global.attack_sfx": {
+            "loop": false,
+            "animation_length": 2,
+            "sound_effects": { "0.0": { "effect": "attack_sfx" }}
+        }
+    }
+}

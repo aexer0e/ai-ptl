@@ -1,0 +1,40 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:block": {
+        "description": {
+            "identifier": "gm1_sky:ai_bed",
+            "states": {
+                "gm1_sky:ai_bed_entity": [ false, true ]
+            },
+            "menu_category": { "category": "construction", "is_hidden_in_commands": false }
+        },
+        "components": {
+            "minecraft:display_name": "tile.gm1_sky:ai_bed.name",
+            "minecraft:destructible_by_mining": true,
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:friction": 0.4,
+            "minecraft:map_color": "#ffffff",
+            "minecraft:geometry": "geometry.gm1_sky.ai_bed.b",
+            "minecraft:selection_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 16, 16 ]},
+            "minecraft:collision_box": { "origin": [ -8, 0, -8 ], "size": [ 16, 16, 16 ]},
+            "minecraft:custom_components": [ "gm1_sky:ai_bed_block_entity" ],
+            "minecraft:tick": { "interval_range": [ 0, 0 ], "looping": true }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('gm1_sky:ai_bed_entity') == true",
+                "components": {
+                    "minecraft:geometry": {
+                        "identifier": "geometry.gm1_sky.ai_bed.b",
+                        "bone_visibility": { "root": false }
+                    },
+                    "minecraft:material_instances": {
+                        "*": { "texture": "gm1_sky_ai_bed_side", "render_method": "opaque" },
+                        "up": { "texture": "gm1_sky_ai_bed_top", "render_method": "opaque" },
+                        "down": { "texture": "gm1_sky_ai_bed_bottom", "render_method": "opaque" }
+                    }
+                }
+            }
+        ]
+    }
+}

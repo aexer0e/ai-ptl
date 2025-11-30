@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "$identifier": "gm1_sky:ai_player_classic",
+    "minecraft:client_entity": {
+        "description": {
+            "textures": {
+                "classic1": "textures/gm1/sky/entity/classic/spelunker",
+                "classic2": "textures/gm1/sky/entity/classic/stalker",
+                "classic3": "textures/gm1/sky/entity/classic/generic1",
+                "classic4": "textures/gm1/sky/entity/classic/survivalist",
+                "classic5": "textures/gm1/sky/entity/classic/agent",
+                "classic6": "textures/gm1/sky/entity/classic/griefer",
+                "classic7": "textures/gm1/sky/entity/classic/caveman",
+                "classic8": "textures/gm1/sky/entity/classic/computer",
+                "classic9": "textures/gm1/sky/entity/classic/anonymous",
+                "classic10": "textures/gm1/sky/entity/classic/capybara",
+                "classic11": "textures/gm1/sky/entity/classic/chicken",
+                "classic12": "textures/gm1/sky/entity/classic/fish",
+                "classic13": "textures/gm1/sky/entity/classic/norman",
+                "classic14": "textures/gm1/sky/entity/classic/mystery",
+                "classic15": "textures/gm1/sky/entity/classic/pufferhat",
+                "classic16": "textures/gm1/sky/entity/classic/horse",
+                "classic17": "textures/gm1/sky/entity/classic/astronaut",
+                "classic18": "textures/gm1/sky/entity/classic/crazy_scientist",
+                "classic19": "textures/gm1/sky/entity/classic/farmer",
+                "classic20": "textures/gm1/sky/entity/classic/knight"
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "$identifier": "gm1_zen:dragon_emotion_system",
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "animations": {
+                "eyes_blank": "animation.gm1_zen.dragon_global.eyes_blank",
+                "eyes_closed": "animation.gm1_zen.dragon_global.eyes_closed",
+                "eyes_want": "animation.gm1_zen.dragon_global.eyes_want",
+                "eyes_want_favorite": "animation.gm1_zen.dragon_global.eyes_want_favorite",
+                "eyes_happy": "animation.gm1_zen.dragon_global.eyes_happy",
+                "eyes_sad": "animation.gm1_zen.dragon_global.eyes_sad",
+                "eyes_irritated": "animation.gm1_zen.dragon_global.eyes_irritated",
+                "eyes_scared": "animation.gm1_zen.dragon_global.eyes_scared",
+                "eyes_focused": "animation.gm1_zen.dragon_global.eyes_focused",
+                "eyes_blink": "animation.gm1_zen.dragon_global.eyes_blink",
+                "eyes_wink_left": "animation.gm1_zen.dragon_global.eyes_wink_left",
+                "eyes_wink_right": "animation.gm1_zen.dragon_global.eyes_wink_right",
+                "emotion_controller": "controller.animation.gm1_zen.dragon_global.emotion"
+            },
+            "scripts": { "initialize": [ "v.blink_timer = 0;" ], "animate": [ "emotion_controller" ]}
+        }
+    }
+}

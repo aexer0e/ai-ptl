@@ -1,0 +1,23 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.gadget_hand": {
+            "initial_state": "default",
+            "states": {
+                "default": { "animations": [ "hand_hidden" ], "transitions": [{ "hand_extending": "v.is_going_to_shrine" }]},
+                "hand_extending": {
+                    "animations": [ "hand_extend", "gadget_sfx" ],
+                    "transitions": [{ "idling": "v.at_shrine && q.all_animations_finished" }]
+                },
+                "idling": {
+                    "animations": [ "hand_idle", "recharge_sfx" ],
+                    "transitions": [{ "hand_retracting": "!v.at_shrine" }]
+                },
+                "hand_retracting": {
+                    "animations": [ "hand_retract", "gadget_sfx" ],
+                    "transitions": [{ "default": "q.all_animations_finished" }]
+                }
+            }
+        }
+    }
+}

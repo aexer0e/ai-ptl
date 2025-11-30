@@ -1,0 +1,15 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.gm1_ord.breakthrough.vfx": {
+            "loop": false,
+            "animation_length": 1,
+            "particle_effects": {
+                "0.0": {
+                    "pre_effect_script": "v.character_p = 0; v.character_p = (c.owning_entity -> query.is_item_name_any('slot.armor.head','gm1_ord:transform_helmet_sonic')) ? 0 : v.character_p; v.character_p = (c.owning_entity -> query.is_item_name_any('slot.armor.head','gm1_ord:transform_helmet_tails')) ? 1 : v.character_p; v.character_p = (c.owning_entity -> query.is_item_name_any('slot.armor.head','gm1_ord:transform_helmet_knuckles')) ? 2 : v.character_p; v.character_p = (c.owning_entity -> query.is_item_name_any('slot.armor.head','gm1_ord:transform_helmet_shadow')) ? 4 : v.character_p; v.character_p = (c.owning_entity -> query.is_item_name_any('slot.armor.head','gm1_ord:transform_helmet_amy')) ? 3 : v.character_p;",
+                    "effect": "breakthrough"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,791 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.sonic_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ]
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [
+                        "run",
+                        "yaw",
+                        { "run_sound": "!v.liquid_running && !v.is_creative_flight" },
+                        { "run_water": "v.water_running && !v.jumped_recently" },
+                        { "run_snow": "v.snow_running && !v.jumped_recently" }
+                    ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.liquid_running)"
+                        },
+                        { "none": "!v.jumped_recently && !v.is_moving && v.is_grounded || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ]
+                },
+                "ability_charging": {
+                    "transitions": [
+                        { "ability_released": "v.ability_state > 5" },
+                        { "none": "v.ability_state == 0 && v.is_grounded && !v.is_moving" }
+                    ],
+                    "animations": [ "charge", "negate_sneaking_tilt", { "charging_vfx": "v.ability_state == 5" }]
+                },
+                "ability_released": {
+                    "transitions": [{ "roll": "v.time_since_in_ability > 0 " }, { "none": "v.ability_state == 0" }],
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw", { "charging_vfx": "v.is_block_breaking" }]
+                },
+                "roll": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        {
+                            "run": "v.momentum >= 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        {
+                            "jog": "v.momentum < 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        {
+                            "none": "v.ability_state < 1 && (v.is_grounded || v.liquid_running) && !v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" }
+                    ]
+                },
+                "chaos_machine_transform": {
+                    "animations": [ "machine_step" ],
+                    "transitions": [{ "none": "v.helmet_slot != 5" }]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.tails_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "hover": "v.secondary_state == 3" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "hover": "v.secondary_state == 3" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [ "run", "yaw", "run_sound" ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "hover": "v.secondary_state == 3" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        {
+                            "run": "!v.jumped_recently && v.momentum >= 6 && v.is_moving && (v.is_grounded || v.liquid_running)"
+                        },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.liquid_running)"
+                        },
+                        { "none": "!v.jumped_recently && v.momentum <= 0 && !v.is_moving || v.is_creative_flight" },
+                        { "hover": "v.secondary_state == 3 && v.air_time >= 0.33" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ]
+                },
+                "hover": {
+                    "animations": [{ "hover": "!v.is_first_person" }, { "fp_tails_hover": "v.is_first_person" }],
+                    "transitions": [
+                        {
+                            "run": "v.secondary_state != 3 && !v.jumped_recently && v.momentum >= 6 && v.is_moving && ((v.is_grounded && v.is_grounded_timer > 0.1) || v.liquid_running)"
+                        },
+                        {
+                            "jog": "v.secondary_state != 3 && (v.is_moving || (v.momentum > 0 && v.momentum < 6)) && ((v.is_grounded && v.is_grounded_timer > 0.1) || v.liquid_running)"
+                        },
+                        { "roll": "v.secondary_state != 3 && v.jumped_recently" },
+                        { "ability_charging": "v.secondary_state != 3 && v.ability_state > 0" },
+                        {
+                            "none": "v.is_grounded && v.momentum <= 0 && v.secondary_state != 3  || v.secondary_state == 7"
+                        }
+                    ]
+                },
+                "ability_charging": {
+                    "transitions": [
+                        { "ability_released": "v.ability_state > 5" },
+                        { "none": "v.ability_state == 0 && v.is_grounded && !v.is_moving" },
+                        { "hover": "v.secondary_state == 3 && v.air_time >= 0.33" }
+                    ],
+                    "animations": [ "charge", "negate_sneaking_tilt", { "charging_vfx": "v.ability_state == 5" }],
+                    "blend_transition": 0.25
+                },
+                "ability_released": {
+                    "transitions": [
+                        { "roll": "v.time_since_in_ability > 0 " },
+                        { "hover": "v.secondary_state == 3 && v.air_time >= 0.33" },
+                        { "none": "v.ability_state == 0" }
+                    ],
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw", { "charging_vfx": "v.is_block_breaking" }]
+                },
+                "roll": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        {
+                            "run": "v.momentum >= 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && (v.time_since_in_ability > 0.4 || !v.time_since_ability_active)"
+                        },
+                        {
+                            "jog": "v.momentum < 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && (v.time_since_in_ability > 0.4 || !v.time_since_ability_active)"
+                        },
+                        {
+                            "none": "v.ability_state < 1 && (v.is_grounded || v.liquid_running) && !v.is_moving && (v.time_since_in_ability > 0.4 || !v.time_since_ability_active)"
+                        },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "hover": "v.secondary_state == 3 && v.air_time >= 0.33" }
+                    ]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.knuckles_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "glide": "v.secondary_state == 6" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "glide": "v.secondary_state == 6" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [
+                        "run",
+                        "yaw",
+                        { "run_sound": "!v.liquid_running && !v.is_creative_flight" },
+                        { "run_water": "v.water_running && !v.jumped_recently" },
+                        { "run_snow": "v.snow_running && !v.jumped_recently" }
+                    ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "glide": "v.secondary_state == 6" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving || v.is_creative_flight" },
+                        { "glide": "v.jumped_recently && v.secondary_state == 6 && !v.is_grounded && v.air_time >= 0.33" }
+                    ]
+                },
+                "ability_charging": {
+                    "on_entry": [ "v.charge_variant = !v.charge_variant;" ],
+                    "transitions": [
+                        { "ability_released": "v.ability_state > 5" },
+                        { "none": "v.ability_state == 0 && v.is_grounded && !v.is_moving" },
+                        { "glide": "v.secondary_state == 6" }
+                    ],
+                    "animations": [
+                        { "charge_right": "!v.is_first_person && v.charge_variant" },
+                        { "charge_left": "!v.is_first_person && !v.charge_variant" },
+                        { "fp_knuckles_charge_right": "v.is_first_person && v.charge_variant" },
+                        { "fp_knuckles_charge_left": "v.is_first_person && !v.charge_variant" },
+                        "negate_sneaking_tilt",
+                        { "charging_vfx": "v.ability_state == 5" }
+                    ],
+                    "blend_transition": 0.3
+                },
+                "ability_released": {
+                    "on_entry": [ "v.punch_variant = !v.punch_variant;" ],
+                    "transitions": [
+                        { "run": "v.ability_state < 1 && v.is_grounded && v.is_moving" },
+                        { "none": "v.ability_state < 1 && v.is_grounded && !v.is_moving" },
+                        { "glide": "v.secondary_state == 6" }
+                    ],
+                    "animations": [
+                        { "punch_right": "!v.is_first_person &&v.punch_variant" },
+                        { "punch_left": "!v.is_first_person && !v.punch_variant" },
+                        { "fp_punch_right": "v.is_first_person && v.punch_variant" },
+                        { "fp_punch_left": "v.is_first_person && !v.punch_variant" },
+                        { "charging_vfx": "v.is_block_breaking" }
+                    ],
+                    "blend_transition": 0.3
+                },
+                "glide": {
+                    "animations": [{ "glide": "!v.is_first_person" }, { "fp_glide": "v.is_first_person" }],
+                    "transitions": [
+                        { "none": "v.secondary_state != 6 || v.is_creative_flight" },
+                        {
+                            "run": "q.all_animations_finished || v.ability_state < 1 && v.is_grounded && v.is_moving && v.momentum >= 6"
+                        },
+                        { "jog": "q.all_animations_finished || v.momentum < 6 && v.is_grounded" }
+                    ],
+                    "blend_transition": 0.3
+                }
+            }
+        },
+        "controller.animation.gm1_ord.shadow_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [ "run", "yaw", { "run_sound": "!v.is_creative_flight" }],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "chaos_machine_transform": "v.helmet_slot == 5" }
+                    ]
+                },
+                "ability_charging": {
+                    "transitions": [{ "ability_teleport": "v.ability_state > 5" }],
+                    "animations": [
+                        { "charge": "!v.is_first_person" },
+                        { "fp_shadow_charge": "v.is_first_person" },
+                        "negate_sneaking_tilt",
+                        { "charging_vfx": "v.ability_state == 5" }
+                    ]
+                },
+                "ability_teleport": {
+                    "animations": [ "dash_disappear", { "charging_vfx": "v.is_block_breaking" }],
+                    "transitions": [{ "ability_finished": "v.ability_state <= 0" }]
+                },
+                "ability_finished": {
+                    "animations": [ "dash_reappear" ],
+                    "transitions": [
+                        {
+                            "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded && query.any_animation_finished || v.secondary_state == 11"
+                        },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && v.is_grounded && query.any_animation_finished"
+                        },
+                        { "run": "v.momentum >= 6 && query.any_animation_finished" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "homing_start": {
+                    "animations": [ "snap_disappear" ],
+                    "transitions": [{ "homing_end": "q.all_animations_finished && !v.secondary_state == 1" }],
+                    "on_entry": [ "v.chosen_attack = math.random_integer(1,3);" ],
+                    "blend_transition": 0.25
+                },
+                "homing_end": {
+                    "animations": [
+                        { "dash_reappear": "v.chosen_attack == 1" },
+                        { "dash_reappear2": "v.chosen_attack == 2" },
+                        { "dash_reappear3": "v.chosen_attack == 3" }
+                    ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded && query.any_animation_finished" },
+                        { "roll": " v.momentum <= 0 && !v.is_grounded && query.any_animation_finished" },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && v.is_grounded && query.any_animation_finished"
+                        },
+                        { "run": "v.momentum >= 6 && query.any_animation_finished" },
+                        { "homing_start": "v.secondary_state == 1" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "roll": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving && v.is_grounded || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                },
+                "chaos_machine_transform": {
+                    "animations": [ "machine_step" ],
+                    "transitions": [{ "none": "v.helmet_slot != 5" }],
+                    "blend_transition": 0.5
+                }
+            }
+        },
+        "controller.animation.gm1_ord.amy_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [
+                        "walk",
+                        "bob",
+                        "yaw",
+                        { "jog_sound": "!v.liquid_running && !v.is_creative_flight" },
+                        { "fp_hide_hammer": "v.is_first_person" }
+                    ],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [
+                        "run",
+                        "yaw",
+                        { "run_sound": "!v.liquid_running && !v.is_creative_flight" },
+                        { "run_water": "v.water_running && !v.jumped_recently" },
+                        { "run_snow": "v.snow_running && !v.jumped_recently" },
+                        { "fp_hide_hammer": "v.is_first_person" }
+                    ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw", { "fp_hide_hammer": "v.is_first_person" }],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving || v.is_creative_flight" },
+                        { "double_jump": "v.secondary_state == 4" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ]
+                },
+                "double_jump": {
+                    "animations": [ "double_jump", { "fp_hide_hammer": "v.is_first_person" }],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving || v.secondary_state == 11" },
+                        { "ability_charging": "v.ability_state > 0" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "ability_charging": {
+                    "transitions": [{ "ability_released": "v.ability_state > 5" }],
+                    "animations": [
+                        { "charge": "!v.is_first_person" },
+                        { "fp_amy_charge": "v.is_first_person" },
+                        "negate_sneaking_tilt",
+                        { "charging_vfx": "v.ability_state == 5" }
+                    ]
+                },
+                "ability_released": {
+                    "transitions": [
+                        { "ability_impact": "v.ability_state > 6 " },
+                        { "none": "v.ability_state == 0 || v.secondary_state == 11" }
+                    ],
+                    "animations": [{ "ball": "!v.is_first_person" }],
+                    "blend_transition": 0.3
+                },
+                "ability_impact": {
+                    "transitions": [
+                        { "run": "v.ability_state < 1 && v.is_grounded && v.is_moving" },
+                        { "none": "v.ability_state < 1 && v.is_grounded && !v.is_moving" },
+                        { "jump": "v.jumped_recently && v.ability_state < 6" }
+                    ],
+                    "animations": [{ "hammer": "!v.is_first_person" }, { "fp_amy_hammer": "v.is_first_person" }]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.super_sonic_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [
+                        "run",
+                        "yaw",
+                        { "run_sound": "!v.liquid_running && !v.is_creative_flight" },
+                        { "run_water": "v.water_running && !v.jumped_recently" },
+                        { "run_snow": "v.snow_running && !v.jumped_recently" }
+                    ],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.liquid_running)"
+                        },
+                        { "none": "!v.jumped_recently && !v.is_moving && v.is_grounded || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "flight": "v.ability_state == 8" }
+                    ]
+                },
+                "flight": {
+                    "animations": [ "flight", "yaw", { "charging_vfx": "v.is_block_breaking && !v.is_first_person" }],
+                    "transitions": [{ "super_hover": "!v.is_moving" }, { "none": "v.ability_state != 8" }],
+                    "blend_transition": 0.6
+                },
+                "super_hover": {
+                    "animations": [ "super_hover" ],
+                    "transitions": [{ "flight": "v.is_moving" }, { "none": "v.ability_state != 8" }],
+                    "blend_transition": 0.4
+                },
+                "ability_charging": {
+                    "transitions": [{ "flight": "v.ability_state == 8" }],
+                    "animations": [ "charge", "negate_sneaking_tilt", { "charging_vfx": "v.ability_state == 5" }]
+                },
+                "ability_released": {
+                    "transitions": [{ "roll": "v.time_since_in_ability > 0 " }, { "none": "v.ability_state == 0" }],
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw", { "charging_vfx": "v.is_block_breaking" }]
+                },
+                "roll": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        {
+                            "run": "v.momentum >= 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        {
+                            "jog": "v.momentum < 6 && v.ability_state < 1 && (v.is_grounded || v.liquid_running) && v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        {
+                            "none": "v.ability_state < 1 && (v.is_grounded || v.liquid_running) && !v.is_moving && v.time_since_in_ability > 0.4"
+                        },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" }
+                    ]
+                }
+            }
+        },
+        "controller.animation.gm1_ord.super_shadow_movement": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "bob", "idle_controller" ],
+                    "transitions": [
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && (v.is_grounded || v.is_creative_flight)"
+                        },
+                        { "run": "v.momentum >= 6" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jog": {
+                    "animations": [ "walk", "bob", "yaw", { "jog_sound": "!v.liquid_running && !v.is_creative_flight" }],
+                    "transitions": [
+                        { "run": "v.momentum >= 6" },
+                        { "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "run": {
+                    "animations": [ "run", "yaw", { "run_sound": "!v.is_creative_flight" }],
+                    "transitions": [
+                        { "none": "!v.is_moving && v.momentum <= 0 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jog": "v.momentum < 6 && (v.is_grounded || v.is_creative_flight)" },
+                        { "jump": "v.jumped_recently && v.secondary_state != 7" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "flight": "v.ability_state == 8" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "jump": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" },
+                        { "flight": "v.ability_state == 8" }
+                    ]
+                },
+                "ability_charging": {
+                    "transitions": [{ "flight": "v.ability_state == 8" }],
+                    "animations": [
+                        { "charge": "!v.is_first_person" },
+                        { "fp_shadow_charge": "v.is_first_person" },
+                        "negate_sneaking_tilt",
+                        { "charging_vfx": "v.ability_state == 5" }
+                    ]
+                },
+                "ability_teleport": {
+                    "animations": [ "dash_disappear", { "charging_vfx": "v.is_block_breaking" }],
+                    "transitions": [
+                        { "ability_finished": "q.all_animations_finished" },
+                        { "flight": "v.ability_state == 8" }
+                    ]
+                },
+                "ability_finished": {
+                    "animations": [ "dash_reappear" ],
+                    "transitions": [
+                        {
+                            "none": "!v.is_moving && v.momentum <= 0 && v.is_grounded && query.any_animation_finished || v.secondary_state == 11"
+                        },
+                        {
+                            "jog": "(v.is_moving || (v.momentum > 0 && v.momentum < 6)) && v.is_grounded && query.any_animation_finished"
+                        },
+                        { "run": "v.momentum >= 6 && query.any_animation_finished" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "flight": {
+                    "animations": [
+                        "shadow_flight",
+                        "yaw",
+                        { "charging_vfx": "v.is_block_breaking && !v.is_first_person" }
+                    ],
+                    "transitions": [
+                        { "super_hover": "!v.is_moving" },
+                        { "none": "v.ability_state !=8" },
+                        { "homing_start": "v.secondary_state == 1" }
+                    ],
+                    "blend_transition": 0.4
+                },
+                "super_hover": {
+                    "animations": [ "super_hover" ],
+                    "transitions": [{ "flight": "v.is_moving" }, { "none": "v.ability_state !=8 && v.is_grounded" }],
+                    "blend_transition": 0.4
+                },
+                "homing_start": {
+                    "animations": [ "snap_disappear" ],
+                    "transitions": [
+                        { "homing_end": "q.all_animations_finished && !v.secondary_state == 1 && v.ability_state != 8" },
+                        {
+                            "multi_homing_end": "q.all_animations_finished && !v.secondary_state == 1 && v.ability_state == 8"
+                        }
+                    ],
+                    "on_entry": [ "v.chosen_attack = math.random_integer(1,3);" ]
+                },
+                "homing_end": {
+                    "animations": [
+                        { "dash_reappear": "v.chosen_attack == 1" },
+                        { "dash_reappear2": "v.chosen_attack == 2" },
+                        { "dash_reappear3": "v.chosen_attack == 3" }
+                    ],
+                    "transitions": [
+                        {
+                            "none": "v.secondary_state != 1 && !v.is_moving && v.momentum <= 0 && v.is_grounded && query.any_animation_finished"
+                        },
+                        {
+                            "roll": " v.secondary_state != 1 && v.momentum <= 0 && !v.is_grounded && query.any_animation_finished"
+                        },
+                        {
+                            "jog": "v.secondary_state != 1 && (v.is_moving || (v.momentum > 0 && v.momentum < 6)) && v.is_grounded && query.any_animation_finished"
+                        },
+                        { "run": "v.secondary_state != 1 && v.momentum >= 6 && query.any_animation_finished" },
+                        { "homing_start": "v.secondary_state == 1" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "multi_homing_end": {
+                    "animations": [
+                        { "dash_reappear": "v.chosen_attack == 1" },
+                        { "dash_reappear2": "v.chosen_attack == 2" },
+                        { "dash_reappear3": "v.chosen_attack == 3" }
+                    ],
+                    "transitions": [
+                        {
+                            "none": "v.secondary_state != 1 && v.ability_state != 8 && !v.is_moving && v.momentum <= 0 && v.is_grounded && query.any_animation_finished"
+                        },
+                        {
+                            "roll": " v.secondary_state != 1 && v.ability_state != 8 && v.momentum <= 0 && !v.is_grounded && query.any_animation_finished"
+                        },
+                        {
+                            "jog": "v.secondary_state != 1 && v.ability_state != 8 && (v.is_moving || (v.momentum > 0 && v.momentum < 6)) && v.is_grounded && query.any_animation_finished"
+                        },
+                        {
+                            "run": "v.secondary_state != 1 && v.ability_state != 8 && v.momentum >= 6 && query.any_animation_finished"
+                        },
+                        { "homing_start": "v.secondary_state == 1" },
+                        {
+                            "flight": "v.secondary_state != 1 && v.ability_state == 8 && query.any_animation_finished && query.state_time > 0.45"
+                        }
+                    ]
+                },
+                "roll": {
+                    "animations": [{ "ball": "!v.is_first_person" }, "yaw" ],
+                    "transitions": [
+                        { "run": "!v.jumped_recently && v.is_moving && (v.is_grounded || v.liquid_running)" },
+                        { "none": "!v.jumped_recently && !v.is_moving && v.is_grounded || v.is_creative_flight" },
+                        { "ability_charging": "v.ability_state > 0" },
+                        { "homing_start": "v.secondary_state == 1" }
+                    ],
+                    "blend_transition": 0.25,
+                    "blend_via_shortest_path": true
+                }
+            }
+        },
+        "controller.animation.gm1_ord.blink": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "animations": [ "eyes_open" ],
+                    "transitions": [{ "blink": "math.die_roll_integer(1, 0, 999)>996" }],
+                    "blend_transition": 0
+                },
+                "blink": {
+                    "animations": [ "eyes_close" ],
+                    "transitions": [{ "none": "query.any_animation_finished" }],
+                    "blend_transition": 0.1
+                }
+            }
+        },
+        "controller.animation.gm1_ord.character.liquid_running_offset": {
+            "initial_state": "none",
+            "states": {
+                "none": {
+                    "transitions": [{ "liquid_running_offset": "!v.is_grounded && v.liquid_running" }],
+                    "blend_transition": 0.5
+                },
+                "liquid_running_offset": {
+                    "animations": [ "liquid_running_offset" ],
+                    "transitions": [{ "none": "v.is_grounded && !v.liquid_running" }],
+                    "blend_transition": 0.1
+                }
+            }
+        }
+    }
+}

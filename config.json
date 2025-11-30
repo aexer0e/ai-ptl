@@ -1,0 +1,29 @@
+{
+    "type": "minecraftBedrock",
+    "name": "bedrock-addon",
+    "namespace": "ns_tpl",
+    "authors": [ "Ninja Squirrel Gaming" ],
+    "targetVersion": "1.21.80",
+    "description": "",
+    "experimentalGameplay": {
+        "holidayCreatorFeatures": false,
+        "creationOfCustomBiomes": false,
+        "upcomingCreatorFeatures": false,
+        "enableGameTestFramework": true,
+        "experimentalMolangFeatures": false,
+        "educationEdition": false
+    },
+    "packs": { "behaviorPack": "./BP", "resourcePack": "./RP" },
+    "compiler": {
+        "plugins": [
+            "entityIdentifierAlias",
+            [ "typeScript", { "inlineSourceMap": false }],
+            "customEntityComponents",
+            "customItemComponents",
+            "customBlockComponents",
+            "customCommands",
+            "generatorScripts",
+            [ "simpleRewrite", { "packName": "ns_tpl", "rewriteToComMojang": true }]
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_ord:mega_ring",
+            "geometry": {
+                "default": "geometry.gm1_ord.warp_ring",
+                "charged": "geometry.gm1_ord.warp_ring_shine",
+                "portal": "geometry.gm1_ord.warp_ring_portal"
+            },
+            "materials": { "default": "entity_alphatest", "charged": "charged_creeper", "portal": "charged_creeper" },
+            "textures": {
+                "default": "textures/gm1/ord/entity/warp_ring",
+                "charged": "textures/gm1/ord/entity/ring_shine",
+                "portal": "textures/gm1/ord/entity/warp_ring_portal"
+            },
+            "animations": {
+                "rotate": "animation.gm1_ord.warp_ring.rotate",
+                "fast_rotate": "animation.gm1_ord.ring.fast_rotate",
+                "spawn": "animation.gm1_ord.ring.spawn",
+                "face_player": "animation.gm1_ord.warp_ring.face_player",
+                "warp_ring_controller": "controller.animation.gm1_ord.warp_ring"
+            },
+            "scripts": { "animate": [ "warp_ring_controller" ]},
+            "render_controllers": [
+                "controller.render.gm1_ord.ring.normal",
+                "controller.render.gm1_ord.ring.charged",
+                "controller.render.gm1_ord.warp_ring.portal"
+            ]
+        }
+    }
+}

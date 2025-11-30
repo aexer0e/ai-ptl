@@ -1,0 +1,19 @@
+{
+    "icon": "mdi-rocket",
+    "name": "writeForPackaging",
+    "plugins": [
+        [ "axiom", { "enabled": false, "log": false }],
+        "entityIdentifierAlias",
+        [ "typeScript", { "inlineSourceMap": true }],
+        "customEntityComponents",
+        "customItemComponents",
+        "customBlockComponents",
+        "customCommands",
+        "betterCC",
+        "generatorScripts",
+        "woodenTools.Crimson",
+        "woodenTools.Saplang",
+        "woodenTools.Senvanna",
+        [ "rewriteForPackaging", { "packName": "gm1_ord", "format": "mcworld" }]
+    ]
+}

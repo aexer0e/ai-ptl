@@ -1,0 +1,1065 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_sky:ai_player",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "properties": {
+                "gm1_sky:is_using_item": {
+                    "default": "idle",
+                    "type": "enum",
+                    "values": [ "idle", "swinging", "eating", "punching", "trust_up", "trust_down" ],
+                    "client_sync": true
+                },
+                "gm1_sky:ban_level": { "default": 0, "type": "int", "range": [ 0, 3 ], "client_sync": true },
+                "gm1_sky:is_sneaking": { "default": false, "type": "bool", "client_sync": true },
+                "gm1_sky:is_in_darkness": { "default": false, "type": "bool", "client_sync": true },
+                "gm1_sky:is_emoting": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:bodytype": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:base": { "default": 0, "type": "int", "range": [ 0, 199 ], "client_sync": true },
+                "gm1_sky:shirt": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:pants": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:eyes": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:eyes_color": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:mouth": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:mouth_color": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:hair": { "default": 0, "type": "int", "range": [ 0, 199 ], "client_sync": true },
+                "gm1_sky:hair_color": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:air_punch": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true },
+                "gm1_sky:spawn_sequence": { "default": 0, "type": "int", "range": [ 0, 99 ], "client_sync": true }
+            }
+        },
+        "component_groups": {
+            "gm1_sky:chop_tree": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 8,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:log_reached", "target": "self" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:acacia_log",
+                        "minecraft:birch_log",
+                        "minecraft:cherry_log",
+                        "minecraft:dark_oak_log",
+                        "minecraft:jungle_log",
+                        "minecraft:mangrove_log",
+                        "minecraft:oak_log",
+                        "minecraft:spruce_log"
+                    ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "look_time": [ 0, 1 ],
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:locate_log": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 8,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:log_found", "target": "self" },
+                    "goal_radius": 32,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:acacia_log",
+                        "minecraft:birch_log",
+                        "minecraft:cherry_log",
+                        "minecraft:dark_oak_log",
+                        "minecraft:jungle_log",
+                        "minecraft:mangrove_log",
+                        "minecraft:oak_log",
+                        "minecraft:spruce_log"
+                    ]
+                }
+            },
+            "gm1_sky:go_to_crafting_table": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 3,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:crafting_table_reached", "target": "self" },
+                    "goal_radius": 2,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:crafting_table" ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 12,
+                    "y_dist": 12,
+                    "speed_multiplier": 1.1
+                }
+            },
+            "gm1_sky:go_to_furnace": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 3,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:furnace_reached", "target": "self" },
+                    "goal_radius": 2,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:furnace" ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 12,
+                    "y_dist": 12,
+                    "speed_multiplier": 1.1
+                }
+            },
+            "gm1_sky:go_to_chest": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 3,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:chest_reached", "target": "self" },
+                    "goal_radius": 2,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:chest", "minecraft:trapped_chest" ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 12,
+                    "y_dist": 12,
+                    "speed_multiplier": 1.1
+                }
+            },
+            "gm1_sky:go_to_ai_bed": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "goal_radius": 2,
+                    "search_height": 8,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:ai_bed_reached", "target": "self" },
+                    "stay_duration": 1,
+                    "target_blocks": [ "gm1_sky:ai_bed" ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                }
+            },
+            "gm1_sky:go_to_door": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 1,
+                    "on_reach": { "event": "gm1_sky:door_reached", "target": "self" },
+                    "goal_radius": 2,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:acacia_door",
+                        "minecraft:bamboo_door",
+                        "minecraft:birch_door",
+                        "minecraft:cherry_door",
+                        "minecraft:copper_door",
+                        "minecraft:crimson_door",
+                        "minecraft:dark_oak_door",
+                        "minecraft:exposed_copper_door",
+                        "minecraft:iron_door",
+                        "minecraft:jungle_door",
+                        "minecraft:mangrove_door",
+                        "minecraft:oxidized_copper_door",
+                        "minecraft:pale_oak_door",
+                        "minecraft:spruce_door",
+                        "minecraft:warped_door",
+                        "minecraft:waxed_copper_door",
+                        "minecraft:waxed_exposed_copper_door",
+                        "minecraft:waxed_oxidized_copper_door",
+                        "minecraft:waxed_weathered_copper_door",
+                        "minecraft:weathered_copper_door",
+                        "minecraft:wooden_door"
+                    ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 12,
+                    "y_dist": 12,
+                    "speed_multiplier": 1.1
+                }
+            },
+            "gm1_sky:open_door": { "minecraft:behavior.open_door": { "priority": 2, "close_door_after": false }},
+            "gm1_sky:gather_items": {
+                "minecraft:behavior.random_stroll": {
+                    "priority": 4,
+                    "interval": 8,
+                    "xz_dist": 3,
+                    "y_dist": 3,
+                    "speed_multiplier": 1.12
+                },
+                "minecraft:behavior.ranged_attack": { "priority": 1, "attack_radius": 0, "speed_multiplier": 1.2 }
+            },
+            "gm1_sky:mine_ores": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 0,
+                    "search_height": 6,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "on_reach": { "event": "gm1_sky:log_reached", "target": "self" },
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [
+                        "minecraft:redstone_ore",
+                        "minecraft:copper_ore",
+                        "minecraft:diamond_ore",
+                        "minecraft:gold_ore",
+                        "minecraft:emerald_ore",
+                        "minecraft:iron_ore",
+                        "minecraft:lapis_ore",
+                        "minecraft:coal_ore",
+                        "minecraft:deepslate_redstone_ore",
+                        "minecraft:deepslate_copper_ore",
+                        "minecraft:deepslate_diamond_ore",
+                        "minecraft:deepslate_emerald_ore",
+                        "minecraft:deepslate_gold_ore",
+                        "minecraft:deepslate_iron_ore",
+                        "minecraft:deepslate_lapis_ore",
+                        "minecraft:deepslate_coal_ore",
+                        "minecraft:nether_gold_ore",
+                        "minecraft:quartz_ore"
+                    ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 5,
+                    "interval": 20,
+                    "xz_dist": 32,
+                    "y_dist": 48,
+                    "speed_multiplier": 1.1
+                },
+            },
+            "gm1_sky:explore_area": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 4,
+                    "search_height": 8,
+                    "search_range": 32,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "goal_radius": 3,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:decorated_pot", "minecraft:trial_spawner", "minecraft:vault" ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 2,
+                    "interval": 20,
+                    "xz_dist": 32,
+                    "y_dist": 48,
+                    "speed_multiplier": 1.2
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "look_time": [ 0, 1 ],
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:explore_underwater": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 4,
+                    "search_height": 16,
+                    "search_range": 20,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "goal_radius": 3,
+                    "target_offset": [ 0, 2, 0 ],
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:grass_block", "minecraft:air" ]
+                },
+                "minecraft:behavior.random_stroll": { "priority": 2, "interval": 20, "xz_dist": 32, "y_dist": 48 },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "look_time": [ 0, 1 ],
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:stroll": {
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:look_at_player": {
+                "minecraft:behavior.look_at_player": {
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360,
+                    "look_distance": 16,
+                    "probability": 1,
+                    "look_time": [ 20, 21 ],
+                    "target_distance": 16
+                }
+            },
+            "gm1_sky:farm": {
+                "minecraft:behavior.harvest_farm_block": { "priority": 0, "search_range": 32, "speed_multiplier": 1.2 }
+            },
+            "gm1_sky:follow_ai_players": {
+                "minecraft:behavior.follow_mob": { "priority": 5, "search_range": 24, "speed_multiplier": 2 }
+            },
+            "gm1_sky:flee_monsters": {
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 1,
+                    "max_dist": 16,
+                    "max_flee": 12,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    { "all_of": [{ "subject": "other", "test": "is_family", "value": "monster" }]},
+                                    {
+                                        "all_of": [
+                                            { "subject": "other", "test": "is_family", "value": "player" },
+                                            { "subject": "other", "test": "has_tag", "value": "attacked_ai_player" }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "walk_speed_multiplier": 1.25,
+                    "sprint_speed_multiplier": 1.25,
+                    "ignore_visibility": true,
+                    "remove_target": true
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:attack_monsters": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 2,
+                    "melee_fov": 180,
+                    "track_target": false,
+                    "random_stop_interval": 0,
+                    "reach_multiplier": 3.8,
+                    "attack_once": false,
+                    "require_complete_path": false,
+                    "cooldown_time": 0
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:attack_animals": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 2,
+                    "melee_fov": 180,
+                    "track_target": false,
+                    "random_stop_interval": 0,
+                    "reach_multiplier": 3.8,
+                    "attack_once": false,
+                    "require_complete_path": false,
+                    "cooldown_time": 0
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                }
+            },
+            "gm1_sky:flee_players": {
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 0,
+                    "max_dist": 48,
+                    "max_flee": 48,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [{ "all_of": [{ "subject": "other", "test": "is_family", "value": "player" }]}]
+                            }
+                        }
+                    ],
+                    "walk_speed_multiplier": 1.25,
+                    "sprint_speed_multiplier": 1.25,
+                    "ignore_visibility": true,
+                    "remove_target": true
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:float": {
+                "minecraft:behavior.float": { "priority": 0 },
+                "minecraft:behavior.move_to_block": {
+                    "priority": 4,
+                    "search_height": 16,
+                    "search_range": 8,
+                    "start_chance": 1,
+                    "tick_interval": 5,
+                    "goal_radius": 1,
+                    "stay_duration": 1,
+                    "target_blocks": [ "minecraft:air" ]
+                }
+            },
+            "gm1_sky:ranged_attack": {
+                "minecraft:shooter": { "def": "minecraft:arrow", "sound": "bow", "power": 1 },
+                "minecraft:behavior.charge_held_item": { "priority": 1, "items": [ "minecraft:arrow" ]},
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_max": 20,
+                    "attack_interval_min": 5,
+                    "attack_radius": 32,
+                    "attack_radius_min": 1,
+                    "charge_charged_trigger": 0.4,
+                    "charge_shoot_trigger": 0.9
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 7,
+                    "interval": 20,
+                    "xz_dist": 16,
+                    "y_dist": 16,
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 8,
+                    "look_distance": 16,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:pelt_eggs": {
+                "minecraft:shooter": { "def": "minecraft:egg", "power": 1 },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_max": 25,
+                    "attack_interval_min": 15,
+                    "attack_radius": 32,
+                    "speed_multiplier": 1.1,
+                    "ranged_fov": 165,
+                    "burst_interval": 0.2,
+                    "burst_shots": 5,
+                    "target_in_sight_time": 0.1,
+                    "y_max_head_rotation": 90,
+                    "x_max_rotation": 180,
+                    "attack_radius_min": 3,
+                    "charge_charged_trigger": 0.4,
+                    "charge_shoot_trigger": 0.9
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 24,
+                    "y_dist": 24,
+                    "speed_multiplier": 1.1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 5,
+                    "look_distance": 32,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:pelt_snowballs": {
+                "minecraft:shooter": { "def": "minecraft:snowball", "power": 1 },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_max": 20,
+                    "attack_interval_min": 5,
+                    "attack_radius": 32,
+                    "speed_multiplier": 1.1,
+                    "ranged_fov": 165,
+                    "burst_interval": 0.2,
+                    "burst_shots": 5,
+                    "target_in_sight_time": 0.1,
+                    "y_max_head_rotation": 90,
+                    "x_max_rotation": 180,
+                    "attack_radius_min": 3,
+                    "charge_charged_trigger": 0.4,
+                    "charge_shoot_trigger": 0.9
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 6,
+                    "interval": 20,
+                    "xz_dist": 24,
+                    "y_dist": 24,
+                    "speed_multiplier": 1.1
+                },
+                "minecraft:behavior.look_at_entity": {
+                    "priority": 5,
+                    "look_distance": 32,
+                    "probability": 0.1,
+                    "angle_of_view_vertical": 360,
+                    "angle_of_view_horizontal": 360
+                }
+            },
+            "gm1_sky:follow_players": {
+                "minecraft:behavior.ranged_attack": { "priority": 1, "attack_radius": 4, "speed_multiplier": 1.35 }
+            },
+            "gm1_sky:pickup_items": {
+                "minecraft:behavior.ranged_attack": { "priority": 1, "attack_radius": 0, "speed_multiplier": 1.1 }
+            },
+            "gm1_sky:go_to_block": {
+                "minecraft:behavior.ranged_attack": { "priority": 1, "attack_radius": 0, "speed_multiplier": 1 }
+            },
+            "gm1_sky:attack_players": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 2,
+                    "melee_fov": 180,
+                    "track_target": false,
+                    "random_stop_interval": 0,
+                    "reach_multiplier": 3.8,
+                    "attack_once": false,
+                    "require_complete_path": false,
+                    "cooldown_time": 0
+                }
+            },
+            "gm1_sky:go_to_home": {
+                "minecraft:behavior.go_home": { "goal_radius": 0.5, "interval": 20, "priority": 0, "speed_multiplier": 1 }
+            },
+            "gm1_sky:run_around": {
+                "minecraft:behavior.random_stroll": {
+                    "priority": 0,
+                    "interval": 3,
+                    "xz_dist": 3,
+                    "y_dist": 3,
+                    "speed_multiplier": 1.12
+                }
+            },
+            "gm1_sky:seek_safety": {
+                "minecraft:behavior.move_to_block": {
+                    "priority": 5,
+                    "search_height": 3,
+                    "search_range": 32,
+                    "start_chance": 0.7,
+                    "tick_interval": 40,
+                    "goal_radius": 6,
+                    "stay_duration": 4,
+                    "target_blocks": [
+                        "minecraft:crafting_table",
+                        "minecraft:furnace",
+                        "minecraft:door",
+                        "minecraft:torch",
+                        "minecraft:campfire",
+                        "minecraft:soul_campfire",
+                        "minecraft:barrel",
+                        "minecraft:chest"
+                    ]
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 5,
+                    "interval": 20,
+                    "xz_dist": 32,
+                    "y_dist": 8,
+                    "speed_multiplier": 1.15
+                }
+            }
+        },
+        "components": {
+            "minecraft:can_climb": {},
+            "minecraft:item_hopper": {},
+            "minecraft:annotation.open_door": {},
+            "minecraft:tick_world": { "never_despawn": true, "radius": 2 },
+            "minecraft:behavior.nearest_prioritized_attackable_target": {
+                "priority": 4,
+                "must_reach": false,
+                "persist_time": 0,
+                "reselect_targets": true,
+                "scan_interval": 5,
+                "set_persistent": false,
+                "reevaluate_description": true,
+                "within_radius": 64,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "attack_players" },
+                                { "subject": "other", "test": "is_family", "value": "player" },
+                                { "subject": "other", "operator": "!=", "test": "is_family", "value": "fake_player" }
+                            ]
+                        }
+                    },
+                    {
+                        "max_dist": 64,
+                        "reevaluate_description": true,
+                        "must_see": false,
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "follow_players" },
+                                { "subject": "other", "test": "is_family", "value": "player" },
+                                { "subject": "other", "test": "is_family", "operator": "!=", "value": "fake_player" }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "target_nearest_item" },
+                                { "subject": "other", "test": "has_tag", "value": "item" }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "attack_animals" },
+                                {
+                                    "any_of": [
+                                        { "test": "is_family", "subject": "other", "value": "cow" },
+                                        { "test": "is_family", "subject": "other", "value": "chicken" },
+                                        { "test": "is_family", "subject": "other", "value": "pig" },
+                                        { "test": "is_family", "subject": "other", "value": "rabbit" },
+                                        { "test": "is_family", "subject": "other", "value": "sheep" },
+                                        { "test": "is_family", "subject": "other", "value": "animal" },
+                                        { "test": "is_family", "subject": "other", "value": "pufferfish" },
+                                        { "test": "is_family", "subject": "other", "value": "tropicalfish" },
+                                        { "test": "is_family", "subject": "other", "value": "squid" },
+                                        { "test": "is_family", "subject": "other", "value": "glow_squid" },
+                                        { "test": "is_family", "subject": "other", "value": "cod" },
+                                        { "test": "is_family", "subject": "other", "value": "salmon" }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "attack_monsters" },
+                                { "test": "is_family", "subject": "other", "value": "monster" }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "pickup_items" },
+                                { "subject": "other", "test": "is_family", "value": "follow_marker" }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "go_to_block" },
+                                { "subject": "other", "test": "is_family", "value": "follow_marker" }
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "subject": "self", "test": "has_tag", "value": "target_nearest_mob" },
+                                { "subject": "other", "operator": "!=", "test": "is_family", "value": "static" }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "minecraft:home": { "restriction_radius": 0, "home_block_list": []},
+            "minecraft:follow_range": { "value": 600 },
+            "minecraft:inventory": {
+                "additional_slots_per_strength": 0,
+                "can_be_siphoned_from": false,
+                "container_type": "inventory",
+                "inventory_size": 27,
+                "private": false,
+                "restrict_to_owner": false
+            },
+            "minecraft:behavior.share_items": {
+                "priority": 10,
+                "max_dist": 10,
+                "goal_radius": 2,
+                "speed_multiplier": 1,
+                "entity_types": [{ "filters": { "test": "is_family", "subject": "other", "value": "player" }}]
+            },
+            "minecraft:underwater_movement": { "value": 0.2 },
+            "minecraft:tamemount": {
+                "attempt_temper_mod": 5,
+                "feed_text": "example",
+                "max_temper": 100,
+                "min_temper": 0,
+                "ride_text": "example"
+            },
+            "minecraft:experience_reward": { "on_death": "Math.Min(query.player_level * 7, 100)" },
+            "minecraft:type_family": { "family": [ "player", "fake_player" ]},
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:loot": { "table": "loot_tables/empty.json" },
+            "minecraft:collision_box": { "width": 0.6, "height": 1.8 },
+            "minecraft:health": { "value": 20, "max": 20 },
+            "minecraft:jump.static": { "jump_power": 0.42 },
+            "minecraft:movement.amphibious": { "max_turn": 30 },
+            "minecraft:navigation.generic": {
+                "is_amphibious": false,
+                "can_path_over_water": true,
+                "can_swim": true,
+                "can_walk": true,
+                "can_open_doors": true,
+                "can_pass_doors": true,
+                "can_sink": false,
+                "avoid_damage_blocks": true
+            },
+            "minecraft:preferred_path": {
+                "max_fall_blocks": 8,
+                "jump_cost": 1,
+                "default_block_cost": 1,
+                "preferred_path_blocks": [
+                    { "cost": 0, "blocks": [ "grass_path" ]},
+                    {
+                        "cost": 1,
+                        "blocks": [
+                            "cobblestone",
+                            "stone",
+                            "stonebrick",
+                            "sandstone",
+                            "sand",
+                            "gravel",
+                            "mossy_cobblestone",
+                            "stone_slab",
+                            "stone_slab2",
+                            "stone_slab3",
+                            "stone_slab4",
+                            "double_stone_slab",
+                            "double_stone_slab2",
+                            "double_stone_slab3",
+                            "double_stone_slab4",
+                            "wooden_slab",
+                            "double_wooden_slab",
+                            "planks",
+                            "brick_block",
+                            "nether_brick",
+                            "red_nether_brick",
+                            "end_bricks",
+                            "red_sandstone",
+                            "stained_glass",
+                            "glass",
+                            "glowstone",
+                            "prismarine",
+                            "emerald_block",
+                            "diamond_block",
+                            "lapis_block",
+                            "gold_block",
+                            "redstone_block",
+                            "purple_glazed_terracotta",
+                            "white_glazed_terracotta",
+                            "orange_glazed_terracotta",
+                            "magenta_glazed_terracotta",
+                            "light_blue_glazed_terracotta",
+                            "yellow_glazed_terracotta",
+                            "lime_glazed_terracotta",
+                            "pink_glazed_terracotta",
+                            "gray_glazed_terracotta",
+                            "silver_glazed_terracotta",
+                            "cyan_glazed_terracotta",
+                            "blue_glazed_terracotta",
+                            "brown_glazed_terracotta",
+                            "green_glazed_terracotta",
+                            "red_glazed_terracotta",
+                            "black_glazed_terracotta"
+                        ]
+                    },
+                    {
+                        "cost": 50,
+                        "blocks": [
+                            "bed",
+                            "lectern",
+                            "composter",
+                            "grindstone",
+                            "blast_furnace",
+                            "smoker",
+                            "fletching_table",
+                            "cartography_table",
+                            "brewing_stand",
+                            "smithing_table",
+                            "cauldron",
+                            "barrel",
+                            "loom",
+                            "stonecutter",
+                            "chest",
+                            "web"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:movement": { "value": 0.3 },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "subject": "other",
+                                "test": "has_equipment",
+                                "domain": "hand",
+                                "value": "gm1_sky:ban_hammer"
+                            },
+                            "event": "gm1_sky:ban"
+                        },
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "swing": true,
+                        "interact_text": "Hit",
+                        "on_interact": {
+                            "filters": {
+                                "all_of": {
+                                    "subject": "other",
+                                    "test": "has_equipment",
+                                    "domain": "hand",
+                                    "value": "gm1_sky:ban_hammer"
+                                }
+                            },
+                            "event": "gm1_sky:ban"
+                        }
+                    }
+                ]
+            },
+            "minecraft:attack": { "damage": 1 },
+            "minecraft:exhaustion_values": {
+                "heal": 6,
+                "jump": 0.05,
+                "sprint_jump": 0.2,
+                "mine": 0.005,
+                "attack": 0.1,
+                "damage": 0.1,
+                "walk": 0,
+                "sprint": 0.1,
+                "swim": 0.01
+            },
+            "minecraft:equipment": {},
+            "minecraft:behavior.random_look_around": { "priority": 9 },
+            "minecraft:breathable": {
+                "total_supply": 25,
+                "suffocate_time": -1,
+                "inhale_time": 3.75,
+                "generates_bubbles": false
+            },
+            "minecraft:break_blocks": { "breakable_blocks": [ "web" ]},
+            "minecraft:nameable": { "always_show": true, "allow_name_tag_renaming": false },
+            "minecraft:physics": { "push_towards_closest_space": true },
+            "minecraft:insomnia": { "days_until_insomnia": 3 },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "family_types": [ "parrot_tame" ],
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [ 0.4, -0.2, -0.1 ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 0,
+                        "lock_rider_rotation": 0
+                    },
+                    {
+                        "position": [ -0.4, -0.2, -0.1 ],
+                        "min_rider_count": 1,
+                        "max_rider_count": 2,
+                        "lock_rider_rotation": 0
+                    }
+                ]
+            },
+            "minecraft:floats_in_liquid": {},
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:block_climber": {},
+            "minecraft:behavior.harvest_farm_block": { "priority": 5 },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "test": "has_mob_effect", "subject": "self", "value": "bad_omen" },
+                                { "test": "is_in_village", "subject": "self", "value": true }
+                            ]
+                        },
+                        "event": "minecraft:gain_raid_omen"
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "test": "light_level", "operator": "<", "value": 3 },
+                                { "test": "bool_property", "domain": "gm1_sky:is_in_darkness", "value": false }
+                            ]
+                        },
+                        "event": "gm1_sky:is_in_darkness.true"
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "test": "light_level", "operator": ">=", "value": 3 },
+                                { "test": "bool_property", "domain": "gm1_sky:is_in_darkness", "value": true }
+                            ]
+                        },
+                        "event": "gm1_sky:is_in_darkness.false"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "gm1_sky:reset_target": { "reset_target": {}},
+            "gm1_sky:chop_tree.add": { "add": { "component_groups": [ "gm1_sky:chop_tree" ]}},
+            "gm1_sky:chop_tree.remove": { "remove": { "component_groups": [ "gm1_sky:chop_tree" ]}},
+            "gm1_sky:is_in_darkness.true": { "set_property": { "gm1_sky:is_in_darkness": true }},
+            "gm1_sky:is_in_darkness.false": { "set_property": { "gm1_sky:is_in_darkness": false }},
+            "gm1_sky:mine_ores.add": { "add": { "component_groups": [ "gm1_sky:mine_ores" ]}},
+            "gm1_sky:mine_ores.remove": { "remove": { "component_groups": [ "gm1_sky:mine_ores" ]}},
+            "gm1_sky:explore_area.add": { "add": { "component_groups": [ "gm1_sky:explore_area" ]}},
+            "gm1_sky:explore_area.remove": { "remove": { "component_groups": [ "gm1_sky:explore_area" ]}},
+            "gm1_sky:explore_underwater.add": { "add": { "component_groups": [ "gm1_sky:explore_underwater" ]}},
+            "gm1_sky:explore_underwater.remove": { "remove": { "component_groups": [ "gm1_sky:explore_underwater" ]}},
+            "gm1_sky:stroll.add": { "add": { "component_groups": [ "gm1_sky:stroll" ]}},
+            "gm1_sky:stroll.remove": { "remove": { "component_groups": [ "gm1_sky:stroll" ]}},
+            "gm1_sky:flee_monsters.add": { "add": { "component_groups": [ "gm1_sky:flee_monsters" ]}},
+            "gm1_sky:flee_monsters.remove": { "remove": { "component_groups": [ "gm1_sky:flee_monsters" ]}},
+            "gm1_sky:flee_players.add": { "add": { "component_groups": [ "gm1_sky:flee_players" ]}},
+            "gm1_sky:flee_players.remove": { "remove": { "component_groups": [ "gm1_sky:flee_players" ]}},
+            "gm1_sky:float.add": { "add": { "component_groups": [ "gm1_sky:float" ]}},
+            "gm1_sky:float.remove": { "remove": { "component_groups": [ "gm1_sky:float" ]}},
+            "gm1_sky:attack_monsters.add": { "add": { "component_groups": [ "gm1_sky:attack_monsters" ]}},
+            "gm1_sky:attack_monsters.remove": { "remove": { "component_groups": [ "gm1_sky:attack_monsters" ]}},
+            "gm1_sky:ranged_attack.add": { "add": { "component_groups": [ "gm1_sky:ranged_attack" ]}},
+            "gm1_sky:ranged_attack.remove": { "remove": { "component_groups": [ "gm1_sky:ranged_attack" ]}},
+            "gm1_sky:attack_animals.add": { "add": { "component_groups": [ "gm1_sky:attack_animals" ]}},
+            "gm1_sky:attack_animals.remove": { "remove": { "component_groups": [ "gm1_sky:attack_animals" ]}},
+            "gm1_sky:go_to_home.add": { "add": { "component_groups": [ "gm1_sky:go_to_home" ]}},
+            "gm1_sky:go_to_home.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_home" ]}},
+            "gm1_sky:farm.add": { "add": { "component_groups": [ "gm1_sky:farm" ]}},
+            "gm1_sky:farm.remove": { "remove": { "component_groups": [ "gm1_sky:farm" ]}},
+            "gm1_sky:follow_players.add": { "add": { "component_groups": [ "gm1_sky:follow_players" ]}},
+            "gm1_sky:follow_players.remove": { "remove": { "component_groups": [ "gm1_sky:follow_players" ]}},
+            "gm1_sky:pickup_items.add": { "add": { "component_groups": [ "gm1_sky:pickup_items" ]}},
+            "gm1_sky:pickup_items.remove": { "remove": { "component_groups": [ "gm1_sky:pickup_items" ]}},
+            "gm1_sky:go_to_block.add": { "add": { "component_groups": [ "gm1_sky:go_to_block" ]}},
+            "gm1_sky:go_to_block.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_block" ]}},
+            "gm1_sky:follow_ai_players.add": { "add": { "component_groups": [ "gm1_sky:follow_ai_players" ]}},
+            "gm1_sky:follow_ai_players.remove": { "remove": { "component_groups": [ "gm1_sky:follow_ai_players" ]}},
+            "gm1_sky:look_at_player.add": { "add": { "component_groups": [ "gm1_sky:look_at_player" ]}},
+            "gm1_sky:look_at_player.remove": { "remove": { "component_groups": [ "gm1_sky:look_at_player" ]}},
+            "gm1_sky:check_tree.add": { "add": { "component_groups": [ "gm1_sky:check_tree" ]}},
+            "gm1_sky:attack_players.add": { "add": { "component_groups": [ "gm1_sky:attack_players" ]}},
+            "gm1_sky:attack_players.remove": { "remove": { "component_groups": [ "gm1_sky:attack_players" ]}},
+            "gm1_sky:gather_items.add": { "add": { "component_groups": [ "gm1_sky:gather_items" ]}},
+            "gm1_sky:gather_items.remove": { "remove": { "component_groups": [ "gm1_sky:gather_items" ]}},
+            "gm1_sky:log_found": {
+                "add": { "component_groups": [ "gm1_sky:chop_tree" ]},
+                "remove": { "component_groups": [ "gm1_sky:check_tree" ]}
+            },
+            "gm1_sky:go_to_crafting_table.add": { "add": { "component_groups": [ "gm1_sky:go_to_crafting_table" ]}},
+            "gm1_sky:go_to_crafting_table.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_crafting_table" ]}},
+            "gm1_sky:go_to_furnace.add": { "add": { "component_groups": [ "gm1_sky:go_to_furnace" ]}},
+            "gm1_sky:go_to_furnace.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_furnace" ]}},
+            "gm1_sky:go_to_chest.add": { "add": { "component_groups": [ "gm1_sky:go_to_chest" ]}},
+            "gm1_sky:go_to_chest.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_chest" ]}},
+            "gm1_sky:go_to_ai_bed.add": { "add": { "component_groups": [ "gm1_sky:go_to_ai_bed" ]}},
+            "gm1_sky:go_to_ai_bed.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_ai_bed" ]}},
+            "gm1_sky:go_to_door.add": { "add": { "component_groups": [ "gm1_sky:go_to_door" ]}},
+            "gm1_sky:go_to_door.remove": { "remove": { "component_groups": [ "gm1_sky:go_to_door" ]}},
+            "gm1_sky:run_around.add": { "add": { "component_groups": [ "gm1_sky:run_around" ]}},
+            "gm1_sky:run_around.remove": { "remove": { "component_groups": [ "gm1_sky:run_around" ]}},
+            "gm1_sky:locate_log.add": { "add": { "component_groups": [ "gm1_sky:locate_log" ]}},
+            "gm1_sky:locate_log.remove": { "remove": { "component_groups": [ "gm1_sky:locate_log" ]}},
+            "gm1_sky:locate_ores.add": { "add": { "component_groups": [ "gm1_sky:locate_ore" ]}},
+            "gm1_sky:locate_ores.remove": { "remove": { "component_groups": [ "gm1_sky:locate_ore" ]}},
+            "gm1_sky:log_reached": {},
+            "gm1_sky:crafting_table_reached": { "remove": { "component_groups": [ "gm1_sky:go_to_crafting_table" ]}},
+            "gm1_sky:furnace_reached": { "remove": { "component_groups": [ "gm1_sky:go_to_furnace" ]}},
+            "gm1_sky:chest_reached": { "remove": { "component_groups": [ "gm1_sky:go_to_chest" ]}},
+            "gm1_sky:door_reached": { "remove": { "component_groups": [ "gm1_sky:go_to_door" ]}},
+            "gm1_sky:ai_bed_reached": {},
+            "gm1_sky:ban": {},
+            "gm1_sky:pelt_eggs.add": { "add": { "component_groups": [ "gm1_sky:pelt_eggs" ]}},
+            "gm1_sky:pelt_eggs.remove": { "remove": { "component_groups": [ "gm1_sky:pelt_eggs" ]}},
+            "gm1_sky:pelt_snowballs.add": { "add": { "component_groups": [ "gm1_sky:pelt_snowballs" ]}},
+            "gm1_sky:pelt_snowballs.remove": { "remove": { "component_groups": [ "gm1_sky:pelt_snowballs" ]}},
+            "gm1_sky:seek_safety.add": { "add": { "component_groups": [ "gm1_sky:seek_safety" ]}},
+            "gm1_sky:seek_safety.remove": { "remove": { "component_groups": [ "gm1_sky:seek_safety" ]}},
+            "gm1_sky:look_at_entity.add": { "add": { "component_groups": [ "gm1_sky:look_at_entity" ]}},
+            "gm1_sky:look_at_entity.remove": { "remove": { "component_groups": [ "gm1_sky:look_at_entity" ]}},
+            "gm1_sky:sleep.add": { "add": { "component_groups": [ "gm1_sky:sleep" ]}},
+            "gm1_sky:sleep.remove": { "remove": { "component_groups": [ "gm1_sky:sleep" ]}}
+        }
+    }
+}

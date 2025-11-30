@@ -1,0 +1,43 @@
+{
+    "$templates": [
+        {
+            "$template": "gm1_zen:dragon_wants_system",
+            "dragon_species": "hideouszippleback",
+            "dragon_diet": "fish",
+            "head_count": "double"
+        },
+        "gm1_zen:dragon_emotion_system",
+        "gm1_zen:dragon_look_system",
+        "gm1_zen:dragon_lively_system",
+        "gm1_zen:dragon_milestone_system",
+        { "$template": "gm1_zen:dragon_procedural_system", "speed_multiplier": 0.025 },
+        {
+            "$template": "gm1_zen:dragon_flight_system",
+            "dragon_species": "hideouszippleback",
+            "flap_goal": 1,
+            "wing_duration": 225,
+            "flight_speed": 1.75,
+            "flap_rate": 1.5,
+            "arc_base": 0.25
+        },
+        { "$template": "gm1_zen:dragon_movement_system", "dragon_species": "hideouszippleback" },
+        { "$template": "gm1_zen:dragon_paint_system", "dragon_species": "hideouszippleback" },
+        { "$template": "gm1_zen:dragon_saddle_system", "dragon_species": "hideouszippleback" },
+        { "$template": "gm1_zen:dragon_attack_system", "dragon_species": "hideouszippleback" }
+    ],
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "gm1_zen:hideouszippleback",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/gm1/zen/entity/dragon/hideouszippleback" },
+            "geometry": { "default": "geometry.gm1_zen.dragon_hideouszippleback" },
+            "animations": { "delay": "animation.gm1_zen.dragon_global.delay_medium" },
+            "sound_effects": { "shot_sfx": "hideouszippleback_shot" },
+            "scripts": { "scale": "0.9375" },
+            "render_controllers": [ "controller.render.gm1_zen.dragon_global" ],
+            "spawn_egg": { "texture": "gm1_zen_egg_zippleback" },
+            "enable_attachables": true
+        }
+    }
+}

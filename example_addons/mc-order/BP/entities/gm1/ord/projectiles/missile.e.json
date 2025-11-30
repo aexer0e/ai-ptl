@@ -1,0 +1,62 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "gm1_ord:missile",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "gm1_ord:despawn": { "minecraft:is_baby": {}, "minecraft:instant_despawn": {}},
+            "gm1_ord:dangerous": {
+                "minecraft:projectile": {
+                    "on_hit": { "definition_event": { "event_trigger": { "event": "gm1_ord:death_target" }}},
+                    "power": 0.2,
+                    "gravity": 0,
+                    "uncertainty_base": 0,
+                    "uncertainty_multiplier": 0,
+                    "anchor": 1,
+                    "offset": [ 0, -0.1, 0 ],
+                    "catch_fire": false,
+                    "inertia": 1,
+                    "hit_sound": "bullet_hit",
+                    "shoot_sound": "bullet_shoot",
+                    "hit_ground_sound": "bullet_hit"
+                },
+                "minecraft:timer": { "looping": true, "time": [ 8, 8 ], "time_down_event": { "event": "gm1_ord:despawn" }},
+                "minecraft:is_ignited": {},
+                "minecraft:is_sheared": {}
+            },
+            "gm1_ord:death_target": { "minecraft:is_baby": {}}
+        },
+        "components": {
+            "minecraft:collision_box": { "width": 0.375, "height": 0.375 },
+            "minecraft:projectile": {
+                "power": 0.5,
+                "gravity": 0,
+                "uncertainty_base": 0,
+                "uncertainty_multiplier": 0,
+                "anchor": 1,
+                "offset": [ -0.625, -0.25, 0 ],
+                "catch_fire": false,
+                "inertia": 1,
+                "on_hit": { "definition_event": { "event_trigger": { "event": "gm1_ord:death_target" }}},
+                "hit_sound": "bullet_hit",
+                "shoot_sound": "bullet_shoot",
+                "hit_ground_sound": "bullet_hit"
+            },
+            "minecraft:physics": { "has_collision": true },
+            "minecraft:timer": {
+                "looping": false,
+                "time": [ 2, 2 ],
+                "time_down_event": { "event": "gm1_ord:become_dangerous" }
+            }
+        },
+        "events": {
+            "gm1_ord:despawn": { "add": { "component_groups": [ "gm1_ord:despawn" ]}},
+            "gm1_ord:become_dangerous": { "add": { "component_groups": [ "gm1_ord:dangerous" ]}},
+            "gm1_ord:death_target": { "add": { "component_groups": [ "gm1_ord:death_target" ]}}
+        }
+    }
+}

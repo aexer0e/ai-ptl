@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.warp_ring": {
+            "states": {
+                "default": { "transitions": [{ "spawn": "!query.is_sheared" }]},
+                "spawn": {
+                    "animations": [ "spawn" ],
+                    "transitions": [{ "idle": "query.all_animations_finished" }],
+                    "blend_via_shortest_path": true
+                },
+                "idle": {
+                    "animations": [{ "rotate": "!query.is_stunned" }],
+                    "transitions": [
+                        { "face_player": "query.distance_from_camera < 20 && query.all_animations_finished" }
+                    ],
+                    "blend_transition": 1,
+                    "blend_via_shortest_path": true
+                },
+                "face_player": {
+                    "animations": [ "face_player" ],
+                    "transitions": [{ "idle": "!query.is_stunned && query.distance_from_camera > 25" }],
+                    "blend_transition": 0.75
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,479 @@
+{
+	"format_version": "1.8.0",
+	"geometry.Nightmare_Wings.tall.body_back_upper": {
+		"bones": [
+			{
+				"name": "bodyArmor",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [2, 13, 2],
+						"size": [0, 16, 16],
+						"pivot": [2, 24, 2],
+						"rotation": [0, 45, 0],
+						"uv": {
+							"east": {"uv": [16, 0], "uv_size": [16, 16]},
+							"west": {"uv": [16, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-2, 13, 2],
+						"size": [0, 16, 16],
+						"pivot": [-2, 24, 2],
+						"rotation": [0, -45, 0],
+						"uv": {
+							"east": {"uv": [0, 0], "uv_size": [16, 16]},
+							"west": {"uv": [0, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-3, 12, 2.75],
+						"size": [6, 12, 0],
+						"uv": {
+							"north": {"uv": [0, 32], "uv_size": [6, 12]},
+							"south": {"uv": [32, 0], "uv_size": [6, 12]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.tall.body_back_lower": {
+		"bones": [
+			{
+				"name": "belt",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [-1, 13.17416, 0.29631],
+						"size": [2, 3, 7],
+						"pivot": [0.125, 14, 1],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"north": {"uv": [32, 30], "uv_size": [2, 3]},
+							"east": {"uv": [14, 32], "uv_size": [7, 3]},
+							"south": {"uv": [32, 33], "uv_size": [2, 3]},
+							"west": {"uv": [32, 20], "uv_size": [7, 3]},
+							"up": {"uv": [21, 32], "uv_size": [2, 7]},
+							"down": {"uv": [23, 39], "uv_size": [2, -7]}
+						}
+					},
+					{
+						"origin": [0.0019, 12.1689, 1.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 15.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [0.0019, 11.1689, 6.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 15.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [-0.99334, 11.60795, 6.66478],
+						"size": [2, 2, 5],
+						"inflate": -0.025,
+						"pivot": [-0.11834, 15.10662, -0.03721],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"north": {"uv": [25, 34], "uv_size": [2, 2]},
+							"east": {"uv": [32, 23], "uv_size": [5, 2]},
+							"south": {"uv": [34, 25], "uv_size": [2, 2]},
+							"west": {"uv": [25, 32], "uv_size": [5, 2]},
+							"up": {"uv": [32, 25], "uv_size": [2, 5]},
+							"down": {"uv": [30, 37], "uv_size": [2, -5]}
+						}
+					},
+					{
+						"origin": [-0.51542, 16.25133, 10.95199],
+						"size": [1, 1, 6],
+						"pivot": [-0.01542, 20, -10],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"east": {"uv": [7, 34], "uv_size": [6, 1]},
+							"south": {"uv": [7, 33], "uv_size": [1, 1]},
+							"west": {"uv": [7, 34], "uv_size": [6, 1]},
+							"up": {"uv": [8, 33], "uv_size": [1, 6]},
+							"down": {"uv": [8, 33], "uv_size": [1, 6]}
+						}
+					},
+					{
+						"origin": [0.00318, 3.4219, 8.30249],
+						"size": [0, 8, 8],
+						"pivot": [-1.99682, 6.4219, 12.30249],
+						"rotation": [22.5, 0, 0],
+						"uv": {
+							"west": {"uv": [6, 32], "uv_size": [8, 8]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.medium.body_back_upper": {
+		"bones": [
+			{
+				"name": "bodyArmor",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [2, 13, 2],
+						"size": [0, 16, 16],
+						"pivot": [2, 24, 2],
+						"rotation": [0, 45, 0],
+						"uv": {
+							"east": {"uv": [16, 0], "uv_size": [16, 16]},
+							"west": {"uv": [16, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-2, 13, 2],
+						"size": [0, 16, 16],
+						"pivot": [-2, 24, 2],
+						"rotation": [0, -45, 0],
+						"uv": {
+							"east": {"uv": [0, 0], "uv_size": [16, 16]},
+							"west": {"uv": [0, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-3, 12, 2.75],
+						"size": [6, 12, 0],
+						"uv": {
+							"north": {"uv": [0, 32], "uv_size": [6, 12]},
+							"south": {"uv": [32, 0], "uv_size": [6, 12]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.medium.body_back_lower": {
+		"bones": [
+			{
+				"name": "belt",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [-1, 13.17416, 0.29631],
+						"size": [2, 3, 7],
+						"pivot": [0.125, 14, 1],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"north": {"uv": [32, 30], "uv_size": [2, 3]},
+							"east": {"uv": [14, 32], "uv_size": [7, 3]},
+							"south": {"uv": [32, 33], "uv_size": [2, 3]},
+							"west": {"uv": [32, 20], "uv_size": [7, 3]},
+							"up": {"uv": [21, 32], "uv_size": [2, 7]},
+							"down": {"uv": [23, 39], "uv_size": [2, -7]}
+						}
+					},
+					{
+						"origin": [0.0019, 12.1689, 1.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 15.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [0.0019, 11.1689, 6.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 15.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [-0.99334, 11.60795, 6.66478],
+						"size": [2, 2, 5],
+						"inflate": -0.025,
+						"pivot": [-0.11834, 15.10662, -0.03721],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"north": {"uv": [25, 34], "uv_size": [2, 2]},
+							"east": {"uv": [32, 23], "uv_size": [5, 2]},
+							"south": {"uv": [34, 25], "uv_size": [2, 2]},
+							"west": {"uv": [25, 32], "uv_size": [5, 2]},
+							"up": {"uv": [32, 25], "uv_size": [2, 5]},
+							"down": {"uv": [30, 37], "uv_size": [2, -5]}
+						}
+					},
+					{
+						"origin": [-0.51542, 16.25133, 10.95199],
+						"size": [1, 1, 6],
+						"pivot": [-0.01542, 20, -10],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"east": {"uv": [7, 34], "uv_size": [6, 1]},
+							"south": {"uv": [7, 33], "uv_size": [1, 1]},
+							"west": {"uv": [7, 34], "uv_size": [6, 1]},
+							"up": {"uv": [8, 33], "uv_size": [1, 6]},
+							"down": {"uv": [8, 33], "uv_size": [1, 6]}
+						}
+					},
+					{
+						"origin": [0.00318, 3.4219, 8.30249],
+						"size": [0, 8, 8],
+						"pivot": [-1.99682, 6.4219, 12.30249],
+						"rotation": [22.5, 0, 0],
+						"uv": {
+							"west": {"uv": [6, 32], "uv_size": [8, 8]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.small.body_back_upper": {
+		"bones": [
+			{
+				"name": "bodyArmor",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [2, 11, 2],
+						"size": [0, 16, 16],
+						"pivot": [2, 22, 2],
+						"rotation": [0, 45, 0],
+						"uv": {
+							"east": {"uv": [16, 0], "uv_size": [16, 16]},
+							"west": {"uv": [16, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-2, 11, 2],
+						"size": [0, 16, 16],
+						"pivot": [-2, 22, 2],
+						"rotation": [0, -45, 0],
+						"uv": {
+							"east": {"uv": [0, 0], "uv_size": [16, 16]},
+							"west": {"uv": [0, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-3, 10, 2.75],
+						"size": [6, 12, 0],
+						"uv": {
+							"north": {"uv": [0, 32], "uv_size": [6, 12]},
+							"south": {"uv": [32, 0], "uv_size": [6, 12]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.small.body_back_lower": {
+		"bones": [
+			{
+				"name": "belt",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [-1, 11.17416, 0.29631],
+						"size": [2, 3, 7],
+						"pivot": [0.125, 12, 1],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"north": {"uv": [32, 30], "uv_size": [2, 3]},
+							"east": {"uv": [14, 32], "uv_size": [7, 3]},
+							"south": {"uv": [32, 33], "uv_size": [2, 3]},
+							"west": {"uv": [32, 20], "uv_size": [7, 3]},
+							"up": {"uv": [21, 32], "uv_size": [2, 7]},
+							"down": {"uv": [23, 39], "uv_size": [2, -7]}
+						}
+					},
+					{
+						"origin": [0.0019, 10.1689, 1.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 13.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [0.0019, 9.1689, 6.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 13.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [-0.99334, 9.60795, 6.66478],
+						"size": [2, 2, 5],
+						"inflate": -0.025,
+						"pivot": [-0.11834, 13.10662, -0.03721],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"north": {"uv": [25, 34], "uv_size": [2, 2]},
+							"east": {"uv": [32, 23], "uv_size": [5, 2]},
+							"south": {"uv": [34, 25], "uv_size": [2, 2]},
+							"west": {"uv": [25, 32], "uv_size": [5, 2]},
+							"up": {"uv": [32, 25], "uv_size": [2, 5]},
+							"down": {"uv": [30, 37], "uv_size": [2, -5]}
+						}
+					},
+					{
+						"origin": [-0.51542, 14.25133, 10.95199],
+						"size": [1, 1, 6],
+						"pivot": [-0.01542, 18, -10],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"east": {"uv": [7, 34], "uv_size": [6, 1]},
+							"south": {"uv": [7, 33], "uv_size": [1, 1]},
+							"west": {"uv": [7, 34], "uv_size": [6, 1]},
+							"up": {"uv": [8, 33], "uv_size": [1, 6]},
+							"down": {"uv": [8, 33], "uv_size": [1, 6]}
+						}
+					},
+					{
+						"origin": [0.00318, 1.4219, 8.30249],
+						"size": [0, 8, 8],
+						"pivot": [-1.99682, 4.4219, 12.30249],
+						"rotation": [22.5, 0, 0],
+						"uv": {
+							"west": {"uv": [6, 32], "uv_size": [8, 8]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.smaller.body_back_upper": {
+		"bones": [
+			{
+				"name": "bodyArmor",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [2, 10, 2],
+						"size": [0, 16, 16],
+						"pivot": [2, 21, 2],
+						"rotation": [0, 45, 0],
+						"uv": {
+							"east": {"uv": [16, 0], "uv_size": [16, 16]},
+							"west": {"uv": [16, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-2, 10, 2],
+						"size": [0, 16, 16],
+						"pivot": [-2, 21, 2],
+						"rotation": [0, -45, 0],
+						"uv": {
+							"east": {"uv": [0, 0], "uv_size": [16, 16]},
+							"west": {"uv": [0, 16], "uv_size": [16, 16]}
+						}
+					},
+					{
+						"origin": [-3, 9, 2.75],
+						"size": [6, 12, 0],
+						"uv": {
+							"north": {"uv": [0, 32], "uv_size": [6, 12]},
+							"south": {"uv": [32, 0], "uv_size": [6, 12]}
+						}
+					}
+				]
+			}
+		]
+	},
+	"geometry.Nightmare_Wings.smaller.body_back_lower": {
+		"bones": [
+			{
+				"name": "belt",
+				"parent": "body",
+				"mirror": false,
+				"cubes": [
+					{
+						"origin": [-1, 10.17416, 0.29631],
+						"size": [2, 3, 7],
+						"pivot": [0.125, 11, 1],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"north": {"uv": [32, 30], "uv_size": [2, 3]},
+							"east": {"uv": [14, 32], "uv_size": [7, 3]},
+							"south": {"uv": [32, 33], "uv_size": [2, 3]},
+							"west": {"uv": [32, 20], "uv_size": [7, 3]},
+							"up": {"uv": [21, 32], "uv_size": [2, 7]},
+							"down": {"uv": [23, 39], "uv_size": [2, -7]}
+						}
+					},
+					{
+						"origin": [0.0019, 9.1689, 1.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 12.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [0.0019, 8.1689, 6.50465],
+						"size": [0, 8, 4],
+						"pivot": [0.0019, 12.7689, 4.50465],
+						"rotation": [-45, 0, 0],
+						"uv": {
+							"west": {"uv": [36, 12], "uv_size": [-4, 8]}
+						}
+					},
+					{
+						"origin": [-0.99334, 8.60795, 6.66478],
+						"size": [2, 2, 5],
+						"inflate": -0.025,
+						"pivot": [-0.11834, 12.10662, -0.03721],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"north": {"uv": [25, 34], "uv_size": [2, 2]},
+							"east": {"uv": [32, 23], "uv_size": [5, 2]},
+							"south": {"uv": [34, 25], "uv_size": [2, 2]},
+							"west": {"uv": [25, 32], "uv_size": [5, 2]},
+							"up": {"uv": [32, 25], "uv_size": [2, 5]},
+							"down": {"uv": [30, 37], "uv_size": [2, -5]}
+						}
+					},
+					{
+						"origin": [-0.51542, 13.25133, 10.95199],
+						"size": [1, 1, 6],
+						"pivot": [-0.01542, 17, -10],
+						"rotation": [-22.5, 0, 0],
+						"uv": {
+							"east": {"uv": [7, 34], "uv_size": [6, 1]},
+							"south": {"uv": [7, 33], "uv_size": [1, 1]},
+							"west": {"uv": [7, 34], "uv_size": [6, 1]},
+							"up": {"uv": [8, 33], "uv_size": [1, 6]},
+							"down": {"uv": [8, 33], "uv_size": [1, 6]}
+						}
+					},
+					{
+						"origin": [0.00318, 0.4219, 8.30249],
+						"size": [0, 8, 8],
+						"pivot": [-1.99682, 3.4219, 12.30249],
+						"rotation": [22.5, 0, 0],
+						"uv": {
+							"west": {"uv": [6, 32], "uv_size": [8, 8]}
+						}
+					}
+				]
+			}
+		]
+	}
+}

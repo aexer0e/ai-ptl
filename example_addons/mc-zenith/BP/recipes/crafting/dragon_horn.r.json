@@ -1,0 +1,12 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_zen:dragon_horn_recipe" },
+        "tags": [ "gm1_zen:crafting" ],
+        "priority": 1,
+        "pattern": [ " ", "UU ", "UUU" ],
+        "key": { "U": { "item": "minecraft:copper_ingot" }},
+        "result": { "item": "gm1_zen:dragon_horn" },
+        "unlock": { "context": "AlwaysUnlocked" }
+    }
+}

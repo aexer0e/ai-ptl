@@ -1,0 +1,26 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.ban_hammer": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "ban_1": "query.property('gm1_sky:ban_level') == 1" },
+                        { "ban_2": "query.property('gm1_sky:ban_level') == 2" }
+                    ]
+                },
+                "ban_1": {
+                    "animations": [ "ai_ban_hammer_1" ],
+                    "transitions": [
+                        { "ban_2": "query.property('gm1_sky:ban_level') == 2" },
+                        { "default": "query.property('gm1_sky:ban_level') == 0" }
+                    ]
+                },
+                "ban_2": {
+                    "animations": [ "ai_ban_hammer_2" ],
+                    "transitions": [{ "default": "query.property('gm1_sky:ban_level') == 0" }]
+                }
+            }
+        }
+    }
+}

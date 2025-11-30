@@ -1,0 +1,7 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:weighted_random_feature": {
+        "description": { "identifier": "gm1_ord:arrange_ring_paths_f" },
+        "features": [[ "gm1_ord:ring_pathx_f", 1 ], [ "gm1_ord:ring_pathz_f", 1 ]]
+    }
+}

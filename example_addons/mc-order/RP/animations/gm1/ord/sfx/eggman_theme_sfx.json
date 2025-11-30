@@ -1,0 +1,20 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.gm1_ord.eggmobile.theme_intro_sfx": {
+            "animation_length": 15.5,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "theme_intro_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.theme_outro_sfx": {
+            "animation_length": 14,
+            "loop": false,
+            "sound_effects": { "0.0": [{ "effect": "theme_outro_sfx" }]}
+        },
+        "animation.gm1_ord.eggmobile.theme_loop_sfx": {
+            "animation_length": 15,
+            "loop": true,
+            "sound_effects": { "0.0": [{ "effect": "theme_loop_sfx" }]}
+        }
+    }
+}

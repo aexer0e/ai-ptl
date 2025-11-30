@@ -1,0 +1,42 @@
+{
+    "$identifier": "ord:chaos_emerald_fake.b",
+    "$inputs": { "color": "red" },
+    "format_version": "1.21.40",
+    "minecraft:block": {
+        "description": {
+            "states": {
+                "gm1_ord:chaos_emerald_entity": [ false, true ]
+            },
+            "menu_category": { "category": "none", "is_hidden_in_commands": false }
+        },
+        "components": {
+            "minecraft:destructible_by_mining": true,
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:geometry": "geometry.gm1_ord.chaos_emerald",
+            "minecraft:selection_box": { "origin": [ -6, 2, -6 ], "size": [ 12, 12, 12 ]},
+            "minecraft:collision_box": { "origin": [ -6, 2, -6 ], "size": [ 12, 12, 12 ]},
+            "minecraft:custom_components": [ "gm1_ord:chaos_emerald_entity" ],
+            "minecraft:light_emission": 13,
+            "minecraft:material_instances": {
+                "*": { "texture": "gm1_ord_blank", "render_method": "alpha_test" },
+                "down": { "texture": "gm1_ord_blank", "render_method": "alpha_test" }
+            },
+            "minecraft:tick": { "interval_range": [ 0, 0 ], "looping": true }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('gm1_ord:chaos_emerald_entity') == true",
+                "components": {
+                    "minecraft:geometry": {
+                        "identifier": "geometry.gm1_ord.chaos_emerald",
+                        "bone_visibility": { "root": false }
+                    },
+                    "minecraft:material_instances": {
+                        "*": { "texture": "gm1_ord_blank", "render_method": "alpha_test" },
+                        "down": { "texture": "gm1_ord_blank", "render_method": "alpha_test" }
+                    }
+                }
+            }
+        ]
+    }
+}

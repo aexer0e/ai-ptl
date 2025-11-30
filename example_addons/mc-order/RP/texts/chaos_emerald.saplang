@@ -1,0 +1,30 @@
+# Chaos Emerald Collect
+chaos_emerald.collect.blue=§f%s has collected the §9Blue Chaos Emerald§f!
+chaos_emerald.collect.cyan=§f%s has collected the §bCyan Chaos Emerald§f!
+chaos_emerald.collect.green=§f%s has collected the §aGreen Chaos Emerald§f!
+chaos_emerald.collect.purple=§f%s has collected the §dPurple Chaos Emerald§f!
+chaos_emerald.collect.red=§f%s has collected the §cRed Chaos Emerald§f!
+chaos_emerald.collect.white=§f%s has collected the §iWhite Chaos Emerald§f!
+chaos_emerald.collect.yellow=§f%s has collected the §eYellow Chaos Emerald§f!
+chaos_emerald.collect.gray=§f%s has completed the challenge!
+
+# Chaos Emerald Gameover
+chaos_emerald.gameover.blue=The §9Blue Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.cyan=The §bCyan Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.green=The §aGreen Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.purple=The §dPurple Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.red=The §cRed Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.white=The §iWhite Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.yellow=The §eYellow Chaos Emerald §fgot away! Better luck next time!
+chaos_emerald.gameover.gray=The §7Chaos Emerald §fgot away! Better luck next time!
+
+# Chaos Emerald Timer
+chaos_emerald.timer.default=§fKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.blue=§9Keep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.cyan=§bKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.green=§aKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.purple=§dKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.red=§cKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.white=§iKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.yellow=§eKeep up with the Chaos Emerald for %s more seconds!
+chaos_emerald.timer.gray=§7Keep up with the Chaos Emerald for %s more seconds!

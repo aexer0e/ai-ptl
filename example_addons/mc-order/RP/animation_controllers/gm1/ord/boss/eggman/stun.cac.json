@@ -1,0 +1,36 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.stun": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "engine",
+                        "engine_sfx",
+                        { "idle": "!v.is_dying && !v.is_intro && !v.is_using_swoop" },
+                        { "hover": "!v.active_gadget == 1 && !v.at_shrine" }
+                    ],
+                    "transitions": [{ "stun": "v.is_stunned" }],
+                    "blend_transition": 0.25
+                },
+                "stun": { "animations": [ "stun_sfx" ], "transitions": [{ "stun_loop": "q.all_animations_finished" }]},
+                "stun_loop": {
+                    "animations": [ "stun", "stun_loop_sfx" ],
+                    "particle_effects": [
+                        { "effect": "stun", "locator": "stun_locator" },
+                        { "effect": "smoking", "locator": "exaust_left" },
+                        { "effect": "smoking", "locator": "exaust_main" },
+                        { "effect": "smoking", "locator": "exaust_right" }
+                    ],
+                    "transitions": [{ "stun_exit": "!v.is_stunned" }]
+                },
+                "stun_exit": {
+                    "animations": [ "stun_exit" ],
+                    "transitions": [{ "default": "q.all_animations_finished" }],
+                    "blend_transition": 0.25
+                }
+            }
+        }
+    }
+}

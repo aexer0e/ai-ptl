@@ -1,0 +1,8 @@
+gm1_ord.game_rule.mob_griefing.disable_warning=§cIn order to break blocks using your abilities, "Mob Griefing" must be enabled.§r
+: a warning message displayed in chat when a player takes fatal damage, does not have any rings, and loses a character life token. They do not die when this happens.
+gm1_ord.life_lost=§c%1%s ran out of rings and lost a %2%s§r§c!§r
+
+# Items
+gm1_ord.char.transform.remove_armor=§eYou must empty your armor slots before transforming!§r
+gm1_ord.char.transform.stop_riding=§eYou must dismount before transforming!§r
+gm1_ord.ring.collect_failed=§cYou cannot collect rings when your inventory is full!§r

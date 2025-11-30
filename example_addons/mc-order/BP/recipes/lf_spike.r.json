@@ -1,0 +1,16 @@
+{
+    "format_version": "1.20.80",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "gm1_ord:spike_recipe" },
+        "tags": [ "gm1_ord:crafting" ],
+        "priority": 1,
+        "pattern": [ " I ", "IDI", "RRR" ],
+        "key": {
+            "D": { "item": "minecraft:iron_ingot" },
+            "R": { "item": "gm1_ord:ring_spawn_egg" },
+            "I": { "item": "minecraft:iron_nugget" }
+        },
+        "result": { "item": "gm1_ord:lf_spike", "data": 1 },
+        "unlock": [{ "item": "gm1_ord:ring_spawn_egg" }]
+    }
+}

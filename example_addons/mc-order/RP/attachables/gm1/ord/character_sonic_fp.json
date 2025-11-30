@@ -1,0 +1,59 @@
+{
+    "$templates": [{ "$template": "ord:character_controller", "character": 0, "character_string": "sonic" }],
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "gm1_ord:sonic_life",
+            "animations": {
+                "run_water": "animation.gm1_ord.blank",
+                "run_lava": "animation.gm1_ord.blank",
+                "run_snow": "animation.gm1_ord.blank",
+                "charging.ball1": "animation.gm1_ord.sonic.ball1_sound",
+                "charging.ball2": "animation.gm1_ord.sonic.ball2_sound",
+                "charging.ball3": "animation.gm1_ord.sonic.ball3_sound",
+                "charging.ball4": "animation.gm1_ord.sonic.ball4_sound",
+                "charging.ball5": "animation.gm1_ord.sonic.ball5_sound",
+                "spindash_release": "animation.gm1_ord.dash_sound",
+                "twirl": "animation.gm1_ord.transform_twirl.sonic",
+                "token_adjust": "animation.gm1_ord.token_adjust",
+                "spindash_controller": "controller.animation.gm1_ord.spindash_effect",
+                "spindash_particle": "animation.gm1_ord.spindash.particle",
+                "machine_step": "animation.gm1_ord.transform_twirl.machine_step"
+            },
+            "sound_effects": {
+                "ball1": "sonic_spindash1",
+                "ball2": "sonic_spindash2",
+                "ball3": "sonic_spindash3",
+                "ball4": "sonic_spindash4",
+                "ball5": "sonic_spindash5",
+                "spindash_release": "spindash_release"
+            },
+            "scripts": {
+                "animate": [
+                    { "fp_body": "v.is_first_person" },
+                    { "fp_arms": "v.is_first_person" },
+                    { "movement_controller": "v.is_first_person && v.has_transform_helmet" },
+                    { "transform_controller": "v.is_first_person" },
+                    { "detransform_controller": "v.is_first_person" },
+                    { "ability_charge_controller": "v.is_first_person" },
+                    { "blink_controller": "v.is_first_person" },
+                    { "target_eyes": "v.is_first_person" },
+                    { "flycam": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "body_direction": "v.flycam_turned_on && !q.is_in_ui && v.is_first_person" },
+                    { "top_speed.sfx": "v.is_first_person" },
+                    { "trail_scale": "v.is_first_person" },
+                    { "liquid_running_offset_controller": "v.is_first_person" },
+                    { "liquid_running_controller": "v.is_first_person" },
+                    { "token_adjust": "!v.is_transformed" },
+                    { "spindash_controller": "v.is_first_person" },
+                    { "jump_effects_controller": "v.is_first_person && v.has_transform_helmet" }
+                ]
+            },
+            "particle_effects": { "spindash": "gm1_ord:spindash" },
+            "render_controllers": [
+                { "controller.render.gm1_ord.character_fp": "v.is_first_person && v.is_transformed" },
+                { "controller.render.gm1_ord.character_fp_token": "!v.is_transformed" }
+            ]
+        }
+    }
+}

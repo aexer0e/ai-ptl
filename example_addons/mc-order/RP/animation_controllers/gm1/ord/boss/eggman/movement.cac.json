@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_ord.eggman.movement": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "orbit": "v.is_orbiting" },
+                        { "chase": "v.is_chasing" },
+                        { "going_to_shrine": "v.is_going_to_shrine && !v.at_shrine" },
+                        { "at_shrine": "v.is_going_to_shrine && v.at_shrine" }
+                    ]
+                },
+                "orbit": { "transitions": [{ "default": "!v.is_orbiting" }]},
+                "chase": { "transitions": [{ "default": "!v.is_chasing" }]},
+                "going_to_shrine": {
+                    "animations": [ "ring_drop_sfx" ],
+                    "transitions": [{ "default": "!v.is_going_to_shrine || v.at_shrine" }],
+                    "particle_effects": [
+                        { "effect": "smoking", "locator": "exaust_left" },
+                        { "effect": "smoking", "locator": "exaust_main" },
+                        { "effect": "smoking", "locator": "exaust_right" }
+                    ]
+                },
+                "at_shrine": { "transitions": [{ "default": "!v.at_shrine" }]}
+            }
+        }
+    }
+}

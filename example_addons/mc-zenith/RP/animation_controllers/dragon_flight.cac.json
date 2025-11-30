@@ -1,0 +1,228 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.flight": {
+            "initial_state": "flying",
+            "states": {
+                "none": {
+                    "animations": [ "wings_pose" ],
+                    "transitions": [
+                        {
+                            "jumping": "q.is_tamed && (q.is_jumping || (!q.has_player_rider && !(q.is_on_ground || q.is_in_water)))"
+                        },
+                        {
+                            "jump": "q.is_tamed && !q.is_jumping && !q.is_on_ground && q.vertical_speed > 0 && !q.has_player_rider"
+                        },
+                        { "landing": "(q.all_animations_finished && q.is_in_water && q.is_powered)" },
+                        { "plummeting": "(!q.is_jumping && v.time_since_ground>0.5 && q.vertical_speed < -4)" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "ditching": {
+                    "animations": [ "wings_pose" ],
+                    "transitions": [{ "jumping": "q.is_jumping" }, { "pre_jumping": "!q.is_in_water && !q.is_jumping" }],
+                    "blend_transition": 0.25
+                },
+                "pre_jumping": {
+                    "animations": [ "wings_pose" ],
+                    "transitions": [{ "none": "q.all_animations_finished" }, { "jumping": "q.is_jumping" }],
+                    "blend_transition": 0.25
+                },
+                "jumping": {
+                    "animations": [
+                        { "jump": 0.75 },
+                        "fly_pose",
+                        "wings_pose",
+                        { "flap_ride_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation >= 0)" },
+                        {
+                            "flap_up_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation < 0) || (q.distance_from_camera <= 7 && q.ground_speed <= v.max_ascend)"
+                        },
+                        { "flap_sfx": "q.distance_from_camera > 7" }
+                    ],
+                    "transitions": [
+                        { "pre_flying": "v.flap_time>0.2 && q.has_player_rider" },
+                        { "flying": "!q.has_player_rider && v.time_since_ground>0.4" },
+                        { "pre_jumping": "q.all_animations_finished && !q.is_jumping" },
+                        { "none": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "post_gliding": "!q.has_player_rider && v.flap_time>v.flap_goal && (q.all_animations_finished && !q.is_jumping && q.vertical_speed < -1)"
+                        },
+                        {
+                            "post_gliding": "q.has_player_rider && v.flap_time>v.flap_goal && (q.all_animations_finished && !q.is_jumping && !q.is_on_ground)"
+                        }
+                    ],
+                    "blend_transition": 0.5
+                },
+                "landing": {
+                    "animations": [
+                        { "land": 0.5 },
+                        "fly",
+                        "fly_pose",
+                        "delay",
+                        { "flap_ride_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation >= 0)" },
+                        {
+                            "flap_up_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation < 0) || (q.distance_from_camera <= 7 && q.ground_speed <= v.max_ascend)"
+                        },
+                        { "flap_sfx": "q.distance_from_camera > 7" }
+                    ],
+                    "transitions": [
+                        { "pre_jumping": "q.is_on_ground" },
+                        { "gliding": "q.all_animations_finished && !q.is_in_water" },
+                        { "ditching": "q.all_animations_finished && !q.is_jumping && q.is_in_water" }
+                    ],
+                    "blend_transition": 0.5
+                },
+                "post_gliding": {
+                    "animations": [ "glide", "glide_pose", "delay", { "frantic_flap_sfx": "q.distance_from_camera <= 7" }],
+                    "transitions": [
+                        { "pre_jumping": "q.any_animation_finished && !q.is_jumping && q.is_on_ground" },
+                        { "ditching": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "flying": "q.is_jumping || (!q.has_player_rider && q.vertical_speed >= 0 && !q.is_jumping && v.time_since_ground>0.3)"
+                        },
+                        { "gliding": "q.has_player_rider && v.flap_time>3 && !q.is_on_ground" },
+                        { "gliding": "!q.has_player_rider && !q.is_on_ground && q.all_animations_finished" },
+                        { "plummeting": "(q.vertical_speed < -12 && !q.is_jumping && !q.is_on_ground)" }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "gliding": {
+                    "animations": [ "glide", "glide_pose", { "frantic_flap_sfx": "q.distance_from_camera <= 7" }],
+                    "transitions": [
+                        { "pre_jumping": "q.any_animation_finished && !q.is_jumping && q.is_on_ground" },
+                        { "ditching": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "post_gliding": "q.is_jumping || (!q.has_player_rider && q.vertical_speed >= 0 && !q.is_jumping && v.time_since_ground>0.3)"
+                        },
+                        { "plummeting": "(q.vertical_speed < -12 && !q.is_jumping && !q.is_on_ground)" }
+                    ],
+                    "blend_transition": 0.4
+                },
+                "plummeting": {
+                    "animations": [{ "plummet": 1.2 }],
+                    "transitions": [
+                        { "gliding_down": "q.all_animations_finished" },
+                        {
+                            "flying": "q.is_jumping || (!q.has_player_rider && q.vertical_speed >= 0 && !q.is_jumping && v.time_since_ground>0.3)"
+                        }
+                    ],
+                    "blend_transition": 0.15
+                },
+                "gliding_down": {
+                    "animations": [ "glide_down" ],
+                    "transitions": [
+                        { "pre_jumping": "q.all_animations_finished && !q.is_jumping && q.is_on_ground" },
+                        { "none": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "jumping": "q.is_jumping || (!q.has_player_rider && q.vertical_speed >= 0 && !q.is_jumping && v.time_since_ground>0.3)"
+                        }
+                    ],
+                    "blend_transition": 0.3
+                },
+                "pre_flying": {
+                    "animations": [
+                        "fly",
+                        "fly_pose",
+                        "delay",
+                        { "flap_ride_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation >= 0)" },
+                        {
+                            "flap_up_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation < 0) || (q.distance_from_camera <= 7 && q.ground_speed <= v.max_ascend)"
+                        },
+                        { "flap_sfx": "q.distance_from_camera > 7" }
+                    ],
+                    "transitions": [
+                        { "flying": "q.is_jumping && q.all_animations_finished" },
+                        { "pre_jumping": "q.all_animations_finished && !q.is_jumping && q.is_on_ground" },
+                        { "none": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "post_gliding": "q.vertical_speed<-2 ? q.has_player_rider && v.flap_time>0 && (q.all_animations_finished && !q.is_jumping && !q.is_on_ground) : q.has_player_rider && v.flap_time<0.1 && (q.all_animations_finished && !q.is_jumping && !q.is_on_ground)"
+                        }
+                    ],
+                    "blend_transition": 0.4,
+                    "particle_effects": [{ "effect": "air_stream" }]
+                },
+                "flying": {
+                    "animations": [
+                        "wings",
+                        "fly",
+                        "fly_pose",
+                        "delay",
+                        { "flap_ride_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation >= 0)" },
+                        {
+                            "flap_up_sfx": "(q.distance_from_camera <= 7 && q.target_x_rotation < 0) || (q.distance_from_camera <= 7 && q.ground_speed <= v.max_ascend)"
+                        },
+                        { "flap_sfx": "q.distance_from_camera > 7" }
+                    ],
+                    "transitions": [
+                        { "boosting": "q.property('gm1_zen:is_boosting')" },
+                        { "hovering": "q.property('gm1_zen:flight_state') == 'hovering'" },
+                        { "pre_jumping": "q.all_animations_finished && !q.is_jumping && q.is_on_ground" },
+                        { "ditching": "q.all_animations_finished && !q.is_jumping && q.is_in_water" },
+                        {
+                            "post_gliding": "!q.has_player_rider && (q.all_animations_finished && !q.is_jumping && !q.is_on_ground && q.vertical_speed < -1)"
+                        },
+                        {
+                            "post_gliding": "q.has_player_rider && v.flap_time>v.flap_goal && (q.all_animations_finished && !q.is_jumping && !q.is_on_ground)"
+                        }
+                    ],
+                    "blend_transition": 0.25
+                },
+                "boosting": {
+                    "animations": [ "glide", "boost" ],
+                    "transitions": [
+                        { "flying": "!q.property('gm1_zen:is_boosting')" },
+                        { "hovering": "q.property('gm1_zen:flight_state') == 'hovering' && q.state_time > 2" }
+                    ],
+                    "blend_transition": 0.5
+                },
+                "hovering": {
+                    "animations": [ "hover" ],
+                    "transitions": [
+                        { "flying": "q.property('gm1_zen:flight_state') == 'flying'" },
+                        { "boosting": "q.property('gm1_zen:is_boosting') && q.state_time > 2" }
+                    ],
+                    "blend_transition": 0.5
+                },
+                "jump": {
+                    "animations": [ "wings_pose" ],
+                    "transitions": [
+                        { "none": "!q.is_jumping && q.is_on_ground || q.has_player_rider" },
+                        {
+                            "flying": "q.is_jumping || (!q.has_player_rider && q.vertical_speed > 0 && !q.is_jumping && v.time_since_ground>0.3)"
+                        },
+                        { "gliding": "!q.is_jumping && !q.is_on_ground && q.vertical_speed < -3" }
+                    ],
+                    "blend_transition": 0.25
+                }
+            }
+        },
+        "controller.animation.gm1_zen.dragon_global.glide_sfx": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "boosting": "q.distance_from_camera <= 7 && q.ground_speed >= v.max_flap" },
+                        {
+                            "gliding": "q.distance_from_camera <= 7 && q.ground_speed < v.max_flap && q.ground_speed >= v.min_flap && !q.is_on_ground"
+                        }
+                    ]
+                },
+                "boosting": {
+                    "transitions": [
+                        {
+                            "gliding": "q.distance_from_camera <= 7 && q.ground_speed < v.max_flap && q.ground_speed >= v.min_flap && !q.is_on_ground && q.all_animations_finished"
+                        },
+                        { "default": "q.is_on_ground || q.all_animations_finished" }
+                    ],
+                    "animations": [ "glide_boost_sfx" ]
+                },
+                "gliding": {
+                    "transitions": [
+                        { "boosting": "q.distance_from_camera <= 7 && q.ground_speed >= v.max_flap" },
+                        { "default": "q.is_on_ground || q.all_animations_finished" }
+                    ],
+                    "animations": [ "glide_sfx" ]
+                }
+            }
+        }
+    }
+}

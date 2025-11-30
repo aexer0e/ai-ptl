@@ -1,0 +1,68 @@
+{
+    "files.associations": { ".eslintrc": "json", "**/BP/**/*.json": "jsonc", "**/RP/**/*.json": "jsonc" },
+    "[jsonc]": { "editor.formatOnSave": true, "editor.defaultFormatter": "GamemodeOne.json-compact-prettier" },
+    "[typescript]": { "editor.formatOnSave": true, "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
+    "BC-MC.Diagnostics.Enable": false,
+    "json.schemas": [
+        { "fileMatch": [ "BP/**", "RP/**" ], "url": ".vscode/custom_schemas/sch_entities/index.json" },
+        { "fileMatch": [ "world_settings.json" ], "url": "https://chunker.app/schemas/world_settings.schema.json" },
+        {
+            "fileMatch": [ "tools/WorldConverter/blockMappings/*" ],
+            "url": "https://chunker.app/schemas/block_mappings.schema.json"
+        }
+    ],
+    "eslint.useFlatConfig": true,
+    "JSON Compact Prettier.alwaysOpenKeys": [
+        "minecraft:entity",
+        "component_groups",
+        "components",
+        "events",
+        "dependencies",
+        "states",
+        "properties",
+        "texture_data",
+        "bones",
+        "randomize",
+        "minecraft:entity",
+        "minecraft:item"
+    ],
+    "JSON Compact Prettier.maxLineLength": 120,
+    "JSON Compact Prettier.indentLength": 4,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            { "scope": "saplang.mc.o", "settings": { "fontStyle": "italic" }},
+            { "scope": "saplang.mc.l", "settings": { "fontStyle": "bold" }},
+            { "scope": "saplang.mc.ol", "settings": { "fontStyle": "italic bold" }},
+            { "scope": "saplang.mc.0", "settings": { "foreground": "#000000" }},
+            { "scope": "saplang.mc.1", "settings": { "foreground": "#0000AA" }},
+            { "scope": "saplang.mc.2", "settings": { "foreground": "#00AA00" }},
+            { "scope": "saplang.mc.3", "settings": { "foreground": "#00AAAA" }},
+            { "scope": "saplang.mc.4", "settings": { "foreground": "#AA0000" }},
+            { "scope": "saplang.mc.5", "settings": { "foreground": "#AA00AA" }},
+            { "scope": "saplang.mc.6", "settings": { "foreground": "#FFAA00" }},
+            { "scope": "saplang.mc.7", "settings": { "foreground": "#AAAAAA" }},
+            { "scope": "saplang.mc.8", "settings": { "foreground": "#555555" }},
+            { "scope": "saplang.mc.9", "settings": { "foreground": "#5555FF" }},
+            { "scope": "saplang.mc.a", "settings": { "foreground": "#55FF55" }},
+            { "scope": "saplang.mc.b", "settings": { "foreground": "#55FFFF" }},
+            { "scope": "saplang.mc.c", "settings": { "foreground": "#FF5555" }},
+            { "scope": "saplang.mc.d", "settings": { "foreground": "#FF55FF" }},
+            { "scope": "saplang.mc.e", "settings": { "foreground": "#FFFF55" }},
+            { "scope": "saplang.mc.f", "settings": { "foreground": "#FFFFFF" }},
+            { "scope": "saplang.mc.g", "settings": { "foreground": "#DDD605" }},
+            { "scope": "saplang.mc.h", "settings": { "foreground": "#E3D4D1" }},
+            { "scope": "saplang.mc.i", "settings": { "foreground": "#CECACA" }},
+            { "scope": "saplang.mc.j", "settings": { "foreground": "#443A3B" }},
+            { "scope": "saplang.mc.m", "settings": { "foreground": "#971607" }},
+            { "scope": "saplang.mc.n", "settings": { "foreground": "#B4684D" }},
+            { "scope": "saplang.mc.p", "settings": { "foreground": "#DEB12D" }},
+            { "scope": "saplang.mc.q", "settings": { "foreground": "#47A036" }},
+            { "scope": "saplang.mc.s", "settings": { "foreground": "#2CBAA8" }},
+            { "scope": "saplang.mc.t", "settings": { "foreground": "#21497B" }},
+            { "scope": "saplang.mc.u", "settings": { "foreground": "#9A5CC6" }}
+        ]
+    },
+    "minecraft-debugger.showDiagnosticViewOnConnect": true
+}

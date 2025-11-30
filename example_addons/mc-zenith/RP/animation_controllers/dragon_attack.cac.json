@@ -1,0 +1,61 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.ranged_attack": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [{ "rider": "q.has_player_rider" }, { "not_rider": "!q.has_player_rider" }],
+                    "blend_transition": 0.25
+                },
+                "rider": {
+                    "transitions": [
+                        { "not_rider": "!q.has_player_rider" },
+                        { "attack_charge_r": "q.property('gm1_zen:is_ranged_attacking')" }
+                    ],
+                    "blend_transition": 0.125
+                },
+                "not_rider": { "transitions": [{ "rider": "q.has_player_rider" }], "blend_transition": 0.25 },
+                "attack_charge_nr": {
+                    "animations": [ "attack_windup_1", "attack_pose_1" ],
+                    "transitions": [
+                        { "rider": "q.has_player_rider" },
+                        { "default": "!q.property('gm1_zen:is_ranged_attacking')" },
+                        {
+                            "attack_nr": "q.has_player_rider && !q.is_using_item && !q.item_is_charged && !q.is_avoiding_mobs && q.any_animation_finished  && q.state_time > 0.25"
+                        },
+                        {
+                            "attack_nr": "!q.has_player_rider && q.any_animation_finished && v.time_since_ground<0.25 && !q.property('gm1_zen:is_ranged_attacking') && q.state_time > 0.25"
+                        }
+                    ],
+                    "blend_transition": 0.125
+                },
+                "attack_nr": {
+                    "animations": [ "attack_windup_2", "attack_pose_2", "shot_sfx" ],
+                    "transitions": [
+                        { "rider": "q.has_player_rider" },
+                        {
+                            "default": "(!q.has_player_rider && (q.is_avoiding_mobs)) || !q.property('gm1_zen:is_ranged_attacking') || query.vertical_speed < -4 && q.state_time > 0.25"
+                        }
+                    ],
+                    "blend_transition": 0.5
+                },
+                "attack_charge_r": {
+                    "animations": [ "attack_windup_1", "attack_pose_1" ],
+                    "transitions": [{ "attack_r": "q.any_animation_finished && q.state_time > 0.25" }],
+                    "blend_transition": 0.125
+                },
+                "attack_r": {
+                    "animations": [ "attack_windup_2", "attack_pose_2", "shot_sfx" ],
+                    "transitions": [
+                        { "not_rider": "!q.has_player_rider" },
+                        {
+                            "rider": "(!q.has_player_rider && (q.is_avoiding_mobs)) || !q.property('gm1_zen:is_ranged_attacking') && q.state_time > 0.25"
+                        }
+                    ],
+                    "blend_transition": 0.5
+                }
+            }
+        }
+    }
+}

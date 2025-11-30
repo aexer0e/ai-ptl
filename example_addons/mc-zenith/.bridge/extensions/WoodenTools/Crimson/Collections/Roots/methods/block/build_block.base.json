@@ -1,0 +1,48 @@
+{
+    "$identifier": "roots.build_block.base",
+    "$inputs": {
+        "common": { "$nested": true, "identifier": null, "display_name": null, "description": "$default", "addon": "" },
+        "server": {
+            "$nested": true,
+            "menu_category": {
+                "$nested": true,
+                "category": "$default",
+                "group": "$default",
+                "is_hidden_in_commands": "$default"
+            },
+            "content": {}
+        }
+    },
+    "$locals": [
+        {
+            "identifier.sanitized": "^common.identifier.replace(/[^a-z0-9_.]/g, '_')",
+            "path.addon": "^common.addon.replace('_', '/')"
+        },
+        { "path.server": "BP/blocks/^{path.addon}^/^{identifier.sanitized}^.b.json" }
+    ],
+    "$calls": [
+        {
+            "$call": "action",
+            "$path": "^path.server",
+            "$content": {
+                "$templates": [
+                    {
+                        "$template": "roots.BP.block.base",
+                        "identifier": "^common.identifier",
+                        "menu_category": "^server.menu_category"
+                    }
+                ]
+            }
+        },
+        { "$call": "action", "$path": "^path.server", "$content": "^server.content" },
+        {
+            "$call": "method",
+            "$method": "roots.utils.add_saplang_entry",
+            "category": "roots.blocks",
+            "description": "^common.description",
+            "key": "tile.^{common.identifier}^.name",
+            "value": "^common.display_name"
+        }
+    ],
+    "$outputs": { "path.server": "^path.server", "identifier.sanitized": "^identifier.sanitized" }
+}

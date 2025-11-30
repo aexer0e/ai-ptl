@@ -1,0 +1,132 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.gm1_zen.dragon_global.eyes_emotion": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "on_entry": [ "v.blink_timer = math.random_integer(1,5);" ],
+                    "animations": [ "eyes_blank" ],
+                    "transitions": [
+                        {
+                            "want": "q.is_interested || q.property('gm1_zen:want')=='hungry' || q.property('gm1_zen:want')=='playful'"
+                        },
+                        {
+                            "happy": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' || v.time_since_milestone_change < 2"
+                        },
+                        { "scared": "query.is_avoiding_mobs" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        { "irritated": "q.has_target && v.attack_time > 0.01" },
+                        { "blink": "q.state_time >= v.blink_timer" },
+                        {
+                            "focused": "q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own')"
+                        }
+                    ]
+                },
+                "blink": {
+                    "animations": [ "eyes_blink" ],
+                    "on_entry": [ "v.blink_timer = math.random_integer(1,2);" ],
+                    "transitions": [
+                        {
+                            "want": "q.is_interested || q.property('gm1_zen:want')=='hungry' || q.property('gm1_zen:want')=='playful' && q.all_animations_finished"
+                        },
+                        {
+                            "happy": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' && q.all_animations_finished"
+                        },
+                        { "scared": "query.is_avoiding_mobs && q.all_animations_finished" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping' && q.all_animations_finished" },
+                        { "irritated": "q.has_target && v.attack_time > 0.01" },
+                        { "blink": "q.state_time >= v.blink_timer" },
+                        { "default": "q.all_animations_finished" },
+                        {
+                            "focused": "q.all_animations_finished && (q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own'))"
+                        }
+                    ]
+                },
+                "want": {
+                    "animations": [ "eyes_want" ],
+                    "transitions": [
+                        {
+                            "happy": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success'"
+                        },
+                        { "sad": "q.state_time >= 12" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        { "irritated": "q.has_target && v.attack_time > 0.01" },
+                        {
+                            "focused": "q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own')"
+                        }
+                    ]
+                },
+                "want_favorite": {
+                    "animations": [ "eyes_want_favorite" ],
+                    "transitions": [
+                        { "happy": "q.property('gm1_zen:want')!='hungry_success_favorite'" },
+                        { "sad": "q.state_time >= 12" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        {
+                            "focused": "q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own')"
+                        }
+                    ]
+                },
+                "happy": {
+                    "on_entry": [ "v.blink_timer = math.random_integer(1,10);" ],
+                    "animations": [ "eyes_happy" ],
+                    "transitions": [
+                        {
+                            "default": "q.property('gm1_zen:want')!='hungry_success' && q.property('gm1_zen:want')!='hungry_success_favorite' && q.property('gm1_zen:want')!='hungry_success_favorite' && q.state_time >= 8"
+                        },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        {
+                            "focused": "q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own') && q.state_time >= 4"
+                        }
+                    ]
+                },
+                "sad": {
+                    "animations": [ "eyes_sad" ],
+                    "transitions": [
+                        { "default": "q.state_time >= 8" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        {
+                            "happy": "q.property('gm1_zen:want')=='hungry_success' || q.property('gm1_zen:want')=='hungry_success_favorite' || q.property('gm1_zen:want')=='playful_success' || q.property('gm1_zen:want')=='saddle_success'"
+                        }
+                    ]
+                },
+                "scared": {
+                    "animations": [ "eyes_scared" ],
+                    "transitions": [
+                        { "default": "!q.is_avoiding_mobs" },
+                        {
+                            "irritated": "!q.is_avoiding_mobs && q.state_time >= 1 && q.has_target && v.attack_time > 0.01"
+                        },
+                        {
+                            "focused": "q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own')"
+                        }
+                    ]
+                },
+                "closed": {
+                    "animations": [ "eyes_closed" ],
+                    "transitions": [{ "default": "q.property('gm1_zen:rest_state')!='sleeping'" }]
+                },
+                "irritated": {
+                    "animations": [ "eyes_irritated" ],
+                    "transitions": [
+                        { "default": "!q.has_target && q.state_time >= 8" },
+                        { "closed": "q.property('gm1_zen:rest_state')=='sleeping'" },
+                        {
+                            "focused": "(q.property('gm1_zen:flight_state') == 'flying' || q.property('gm1_zen:flight_state') == 'hovering' || q.property('gm1_zen:is_flying_on_own')) && q.state_time >= 4"
+                        }
+                    ]
+                },
+                "focused": {
+                    "on_entry": [ "v.blink_timer = math.random_integer(5,10);" ],
+                    "animations": [ "eyes_focused" ],
+                    "transitions": [
+                        { "blink": "q.state_time >= v.blink_timer" },
+                        { "irritated": "q.has_target && v.attack_time > 0.01" },
+                        { "happy": "v.time_since_milestone_change < 2 && q.state_time >= 2" }
+                    ]
+                }
+            }
+        }
+    }
+}

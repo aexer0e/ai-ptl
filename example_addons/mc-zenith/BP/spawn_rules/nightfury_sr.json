@@ -1,0 +1,19 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:spawn_rules": {
+        "description": { "identifier": "gm1_zen:nightfury", "population_control": "animal" },
+        "conditions": [
+            {
+                "minecraft:spawns_on_surface": {},
+                "minecraft:spawns_underground": {},
+                "minecraft:weight": { "default": 0 },
+                "minecraft:biome_filter": {
+                    "any_of": [{ "test": "has_biome_tag", "operator": "==", "value": "overworld" }]
+                },
+                "minecraft:distance_filter": { "min": 40, "max": 128 },
+                "minecraft:brightness_filter": { "adjust_for_weather": false, "max": 15, "min": 0 },
+                "minecraft:density_limit": { "surface": 1, "underground": 1 }
+            }
+        ]
+    }
+}

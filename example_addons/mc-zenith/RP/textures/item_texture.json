@@ -1,0 +1,84 @@
+{
+    "resource_pack_name": "sprite",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "gm1_common_configurables": { "textures": { "path": "textures/gm1/common/items/configurables" }},
+        "gm1_zen_debug_controller": { "textures": { "path": "textures/gm1/common/items/debug_controller" }},
+        "gm1_zen_dragon_book": { "textures": { "path": "textures/gm1/zen/items/dragon_book" }},
+        "gm1_zen_dragon_scale_nightfury": { "textures": { "path": "textures/gm1/zen/items/dragon_scale_nightfury" }},
+        "gm1_zen_dragon_scale_monstrous": { "textures": { "path": "textures/gm1/zen/items/dragon_scale_monstrous" }},
+        "gm1_zen_dragon_scale_hideous": { "textures": { "path": "textures/gm1/zen/items/dragon_scale_hideous" }},
+        "gm1_zen_dragon_scale_gronckle": { "textures": { "path": "textures/gm1/zen/items/dragon_scale_gronckle" }},
+        "gm1_zen_dragon_scale_deadly": { "textures": { "path": "textures/gm1/zen/items/dragon_scale_deadly" }},
+        "gm1_zen_dragon_saddle": { "textures": { "path": "textures/gm1/zen/items/dragon_saddle" }},
+        "gm1_zen_dragon_chest_deadly": {
+            "textures": { "path": "textures/gm1/zen/items/armor/deadly/dragon_chestplate_deadly" }
+        },
+        "gm1_zen_dragon_leggings_deadly": {
+            "textures": { "path": "textures/gm1/zen/items/armor/deadly/dragon_leggings_deadly" }
+        },
+        "gm1_zen_dragon_helm_deadly": {
+            "textures": { "path": "textures/gm1/zen/items/armor/deadly/dragon_helmet_deadly" }
+        },
+        "gm1_zen_dragon_boots_deadly": {
+            "textures": { "path": "textures/gm1/zen/items/armor/deadly/dragon_boots_deadly" }
+        },
+        "gm1_zen_dragon_chest_gronckle": {
+            "textures": { "path": "textures/gm1/zen/items/armor/gronckle/dragon_chestplate_gronckle" }
+        },
+        "gm1_zen_dragon_leggings_gronckle": {
+            "textures": { "path": "textures/gm1/zen/items/armor/gronckle/dragon_leggings_gronckle" }
+        },
+        "gm1_zen_dragon_helm_gronckle": {
+            "textures": { "path": "textures/gm1/zen/items/armor/gronckle/dragon_helmet_gronckle" }
+        },
+        "gm1_zen_dragon_boots_gronckle": {
+            "textures": { "path": "textures/gm1/zen/items/armor/gronckle/dragon_boots_gronckle" }
+        },
+        "gm1_zen_dragon_chest_hideous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/hideous/dragon_chestplate_hideous" }
+        },
+        "gm1_zen_dragon_leggings_hideous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/hideous/dragon_leggings_hideous" }
+        },
+        "gm1_zen_dragon_helm_hideous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/hideous/dragon_helmet_hideous" }
+        },
+        "gm1_zen_dragon_boots_hideous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/hideous/dragon_boots_hideous" }
+        },
+        "gm1_zen_dragon_chest_monstrous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/monstrous/dragon_chestplate_monstrous" }
+        },
+        "gm1_zen_dragon_leggings_monstrous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/monstrous/dragon_leggings_monstrous" }
+        },
+        "gm1_zen_dragon_helm_monstrous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/monstrous/dragon_helmet_monstrous" }
+        },
+        "gm1_zen_dragon_boots_monstrous": {
+            "textures": { "path": "textures/gm1/zen/items/armor/monstrous/dragon_boots_monstrous" }
+        },
+        "gm1_zen_dragon_chest_nightfury": {
+            "textures": { "path": "textures/gm1/zen/items/armor/nightfury/dragon_chestplate_nightfury" }
+        },
+        "gm1_zen_dragon_leggings_nightfury": {
+            "textures": { "path": "textures/gm1/zen/items/armor/nightfury/dragon_leggings_nightfury" }
+        },
+        "gm1_zen_dragon_helm_nightfury": {
+            "textures": { "path": "textures/gm1/zen/items/armor/nightfury/dragon_helmet_nightfury" }
+        },
+        "gm1_zen_dragon_boots_nightfury": {
+            "textures": { "path": "textures/gm1/zen/items/armor/nightfury/dragon_boots_nightfury" }
+        },
+        "gm1_zen_dragon_armor": { "textures": { "path": "textures/gm1/zen/items/dragon_armor" }},
+        "gm1_zen_intro_book": { "textures": { "path": "textures/gm1/zen/items/gm1_intro_book" }},
+        "gm1_zen_dragon_horn": { "textures": { "path": "textures/gm1/zen/items/dragon_horn" }},
+        //spawn eggs
+        "gm1_zen_egg_gronckle": { "textures": { "path": "textures/gm1/zen/items/egg_gronckle"}},
+        "gm1_zen_egg_nadder": { "textures": { "path": "textures/gm1/zen/items/egg_nadder"}},
+        "gm1_zen_egg_nightfury": { "textures": { "path": "textures/gm1/zen/items/egg_nightfury"}},
+        "gm1_zen_egg_nightmare": { "textures": { "path": "textures/gm1/zen/items/egg_nightmare"}},
+        "gm1_zen_egg_zippleback": { "textures": { "path": "textures/gm1/zen/items/egg_zippleback"}}
+    }
+}
