@@ -2,7 +2,7 @@
     "resource_pack_name": "sprite",
     "texture_name": "atlas.items",
     "texture_data": {
-        "ns_ptl.configurables": { "textures": { "path": "textures/items/dev/configurables" }},
-        "ns_ptl.cycle": { "textures": { "path": "textures/items/dev/cycle" }}
+        "ns_ptl:tuner_wand": { "textures": { "path": "textures/items/tuner_wand" }},
+        "ns_ptl:aether_lens": { "textures": { "path": "textures/items/aether_lens" }}
     }
 }

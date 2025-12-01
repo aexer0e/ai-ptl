@@ -11,6 +11,7 @@ services:
       # Prevent overwriting world settings
       EXISTING_WORLD: "true"
       VERSION: "PREVIEW"
+      CONTENT_LOG_CONSOLE_OUTPUT_ENABLED: "true"
     ports:
       - "19132:19132/udp"
     volumes:

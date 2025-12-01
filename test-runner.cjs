@@ -80,8 +80,11 @@ function runTestsAndWatch() {
     let idleTimer = null;
     let testsStarted = false;
     let finished = false;
+    let stdoutBuffer = '';
+    let stderrBuffer = '';
 
-    const logs = spawn('docker', ['logs', '-f', '--tail', '0', CONTAINER_NAME]);
+    // Use --tail 100 to catch any logs that might have been emitted during startup
+    const logs = spawn('docker', ['logs', '-f', '--tail', '100', CONTAINER_NAME]);
 
     const doFinish = () => {
         if (finished) return;
@@ -103,6 +106,9 @@ function runTestsAndWatch() {
     });
 
     const handleLogLine = (line) => {
+        // Skip empty lines
+        if (!line.trim()) return;
+
         // Detect when tests start running
         if (line.includes('Running') && line.includes('tests with tag')) {
             testsStarted = true;
@@ -138,8 +144,24 @@ function runTestsAndWatch() {
         }
     };
 
-    logs.stdout.on('data', (data) => handleLogLine(data.toString()));
-    logs.stderr.on('data', (data) => handleLogLine(data.toString()));
+    // Process buffered data line-by-line to handle partial chunks
+    const processBuffer = (buffer, data) => {
+        buffer += data.toString();
+        const lines = buffer.split('\n');
+        // Keep the last partial line in the buffer
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+            handleLogLine(line);
+        }
+        return buffer;
+    };
+
+    logs.stdout.on('data', (data) => {
+        stdoutBuffer = processBuffer(stdoutBuffer, data);
+    });
+    logs.stderr.on('data', (data) => {
+        stderrBuffer = processBuffer(stderrBuffer, data);
+    });
 
     // Set a maximum timeout in case tests never start (30 seconds)
     const maxTimeout = setTimeout(() => {

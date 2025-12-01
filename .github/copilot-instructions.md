@@ -59,7 +59,7 @@ Custom Vector3 class with utilities. Use `new V3(x, y, z)` or `V3.grid(x, y, z)`
 ## Workflow & Commands
 
 ### Automated Testing (GameTest)
-We use a Docker-based test runner (`test-runner.js`) for rapid iteration.
+We use a Docker-based test runner (`test-runner.js`) for rapid iteration. When fixing a bug, run the smoketest to verify. All warnings and errors are treated as failures.
 
 **Usage:**
 1.  **Verify:** Run `node test-runner.js` in terminal.

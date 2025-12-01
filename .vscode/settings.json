@@ -10,7 +10,6 @@
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
     "BC-MC.Diagnostics.Enable": false,
-    "json.schemas": [{ "fileMatch": [ "BP/**", "RP/**" ], "url": ".vscode/custom_schemas/sch_entities/index.json" }],
     "eslint.useFlatConfig": true,
     "JSON Compact Prettier.alwaysOpenKeys": [
         "minecraft:entity",

@@ -1,0 +1,47 @@
+{
+    "format_version": "1.10.0",
+    "particle_effect": {
+        "description": {
+            "identifier": "ns_ptl:fireflies",
+            "basic_render_parameters": { "material": "particles_add", "texture": "textures/particle/particles" }
+        },
+        "components": {
+            "minecraft:emitter_rate_steady": { "spawn_rate": "variable.emitter_density * 0.5", "max_particles": 20 },
+            "minecraft:emitter_lifetime_looping": { "active_time": 1 },
+            "minecraft:emitter_shape_box": {
+                "offset": [
+                    "variable.emitter_spread * (Math.random(-0.5, 0.5))",
+                    "Math.random(0, 2)",
+                    "variable.emitter_spread * (Math.random(-0.5, 0.5))"
+                ],
+                "half_dimensions": [ 1, 1, 1 ],
+                "direction": "outwards"
+            },
+            "minecraft:particle_initial_speed": 0,
+            "minecraft:particle_lifetime_expression": { "max_lifetime": "Math.random(2.0, 5.0)" },
+            "minecraft:particle_motion_parametric": {
+                "relative_position": [
+                    "Math.sin(variable.particle_age * 2 + variable.particle_random_1 * 6.28) * 0.3",
+                    "Math.sin(variable.particle_age * 1.5 + variable.particle_random_2 * 6.28) * 0.2",
+                    "Math.cos(variable.particle_age * 2 + variable.particle_random_3 * 6.28) * 0.3"
+                ]
+            },
+            "minecraft:particle_appearance_billboard": {
+                "size": [
+                    "0.05 + Math.sin(variable.particle_age * 4) * 0.03",
+                    "0.05 + Math.sin(variable.particle_age * 4) * 0.03"
+                ],
+                "facing_camera_mode": "lookat_xyz",
+                "uv": { "texture_width": 128, "texture_height": 128, "uv": [ 0, 24 ], "uv_size": [ 8, 8 ]}
+            },
+            "minecraft:particle_appearance_tinting": {
+                "color": [
+                    "0.8 + Math.sin(variable.particle_age * 3) * 0.2",
+                    "1.0",
+                    "0.2",
+                    "0.5 + Math.sin(variable.particle_age * 4) * 0.5"
+                ]
+            }
+        }
+    }
+}

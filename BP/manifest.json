@@ -24,7 +24,7 @@
             21,
             80
         ],
-        "uuid": "97b54191-0763-43c9-a039-f797b4a47497",
+        "uuid": "02f3ba7e-7af2-47c1-a996-4a43254b779c",
         "version": [
             0,
             0,
@@ -34,7 +34,7 @@
     "modules": [
         {
             "type": "data",
-            "uuid": "77e62299-3f91-4b0d-b9ee-7a5433f7abd0",
+            "uuid": "5f09f333-ff38-4416-a958-5ccf4a608958",
             "version": [
                 0,
                 0,
@@ -44,7 +44,7 @@
         {
             "type": "script",
             "language": "javascript",
-            "uuid": "dff4544d-c56b-49b6-9444-7e555fd1cca1",
+            "uuid": "68944d86-b76a-4eda-af26-a4d4b0bb4f3b",
             "entry": "scripts/Main.js",
             "version": [
                 0,
@@ -60,7 +60,7 @@
                 0,
                 1
             ],
-            "uuid": "1df4ca77-b3f9-4da9-b290-eddd4de9bf5c"
+            "uuid": "e0083c1d-ada9-4f22-b9f1-7bf32e7b1341"
         },
         {
             "module_name": "@minecraft/server",
