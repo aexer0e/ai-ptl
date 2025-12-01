@@ -1,12 +1,2 @@
 pack.name=Atmosphere+ BP
 pack.description=The Particle Architect - Dynamic atmospheric effects for your builds
-
-## Blocks
-tile.ns_ptl:universal_emitter.name=Universal Emitter
-
-## Items
-item.ns_ptl:tuner_wand.name=Tuner Wand
-item.ns_ptl:aether_lens.name=Aether Lens
-
-## Item Groups
-itemGroup.name.atmosphere=Atmosphere+

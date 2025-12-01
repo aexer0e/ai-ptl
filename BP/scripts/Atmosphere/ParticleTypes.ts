@@ -1,5 +1,4 @@
-// Particle type definitions for the Atmosphere+ addon
-// Each particle has an ID, display name, category, and the particle effect identifier
+// Particle type definitions for Atmosphere+
 
 export interface ParticleType {
     id: string;
@@ -18,116 +17,57 @@ export const ParticleCategories: Record<ParticleCategory, string> = {
 };
 
 export const ParticleTypes: ParticleType[] = [
-    // Category A: Elemental & Nature
     {
         id: "dripping_water",
         name: "Dripping Water",
         category: "elemental",
         particleId: "ns_ptl:dripping_water",
-        description: "Heavy water droplets for sewers and caves",
+        description: "Water droplets",
     },
-    {
-        id: "rising_steam",
-        name: "Rising Steam",
-        category: "elemental",
-        particleId: "ns_ptl:rising_steam",
-        description: "White puffs for hot springs, vents, or chimneys",
-    },
+    { id: "rising_steam", name: "Rising Steam", category: "elemental", particleId: "ns_ptl:rising_steam", description: "Steam puffs" },
     {
         id: "falling_leaves_oak",
         name: "Falling Leaves (Oak)",
         category: "elemental",
         particleId: "ns_ptl:falling_leaves_oak",
-        description: "Green oak leaves drifting down",
+        description: "Oak leaves",
     },
     {
         id: "falling_leaves_autumn",
         name: "Falling Leaves (Autumn)",
         category: "elemental",
         particleId: "ns_ptl:falling_leaves_autumn",
-        description: "Orange and red autumn leaves",
+        description: "Autumn leaves",
     },
     {
         id: "falling_leaves_cherry",
         name: "Falling Leaves (Cherry)",
         category: "elemental",
         particleId: "ns_ptl:falling_leaves_cherry",
-        description: "Pink cherry blossom petals",
+        description: "Cherry blossoms",
     },
-    {
-        id: "fireflies",
-        name: "Fireflies",
-        category: "elemental",
-        particleId: "ns_ptl:fireflies",
-        description: "Bioluminescent dots for forests",
-    },
-    {
-        id: "ocean_spray",
-        name: "Ocean Spray",
-        category: "elemental",
-        particleId: "ns_ptl:ocean_spray",
-        description: "Low, horizontal splash effects",
-    },
-
-    // Category B: Industrial & Tech
+    { id: "fireflies", name: "Fireflies", category: "elemental", particleId: "ns_ptl:fireflies", description: "Glowing dots" },
+    { id: "ocean_spray", name: "Ocean Spray", category: "elemental", particleId: "ns_ptl:ocean_spray", description: "Splash effects" },
     {
         id: "electricity_arc",
         name: "Electricity Arc",
         category: "industrial",
         particleId: "ns_ptl:electricity_arc",
-        description: "Blue/yellow sparks for electrical effects",
+        description: "Electric sparks",
     },
-    {
-        id: "black_smoke",
-        name: "Black Smoke",
-        category: "industrial",
-        particleId: "ns_ptl:black_smoke",
-        description: "Heavy dark plumes for factories or fires",
-    },
-    {
-        id: "welding_sparks",
-        name: "Sparks",
-        category: "industrial",
-        particleId: "ns_ptl:welding_sparks",
-        description: "Bright orange welding sparks",
-    },
+    { id: "black_smoke", name: "Black Smoke", category: "industrial", particleId: "ns_ptl:black_smoke", description: "Dark plumes" },
+    { id: "welding_sparks", name: "Sparks", category: "industrial", particleId: "ns_ptl:welding_sparks", description: "Orange sparks" },
     {
         id: "radiation_glow",
         name: "Radiation Glow",
         category: "industrial",
         particleId: "ns_ptl:radiation_glow",
-        description: "Sickly green pulsing aura",
+        description: "Green glow",
     },
-
-    // Category C: Spooky & Magic
-    {
-        id: "watcher_eyes",
-        name: "The Watchers",
-        category: "spooky",
-        particleId: "ns_ptl:watcher_eyes",
-        description: "Glowing eyes that blink in darkness",
-    },
-    {
-        id: "void_tendrils",
-        name: "Void Tendrils",
-        category: "spooky",
-        particleId: "ns_ptl:void_tendrils",
-        description: "Dark purple particles rising from the floor",
-    },
-    {
-        id: "floating_runes",
-        name: "Runes",
-        category: "spooky",
-        particleId: "ns_ptl:floating_runes",
-        description: "Enchanting characters floating upward",
-    },
-    {
-        id: "ghost_orb",
-        name: "Ghost Orb",
-        category: "spooky",
-        particleId: "ns_ptl:ghost_orb",
-        description: "A single wandering will-o'-the-wisp",
-    },
+    { id: "watcher_eyes", name: "The Watchers", category: "spooky", particleId: "ns_ptl:watcher_eyes", description: "Blinking eyes" },
+    { id: "void_tendrils", name: "Void Tendrils", category: "spooky", particleId: "ns_ptl:void_tendrils", description: "Dark particles" },
+    { id: "floating_runes", name: "Runes", category: "spooky", particleId: "ns_ptl:floating_runes", description: "Floating characters" },
+    { id: "ghost_orb", name: "Ghost Orb", category: "spooky", particleId: "ns_ptl:ghost_orb", description: "Will-o'-the-wisp" },
 ];
 
 export const ParticleTypesMap = new Map<string, ParticleType>(ParticleTypes.map((p) => [p.id, p]));

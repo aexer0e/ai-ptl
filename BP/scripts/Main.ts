@@ -5,7 +5,6 @@ import "Prototype/Entity";
 import "Prototype/system";
 
 import { system, world } from "@minecraft/server";
-import { initAtmosphere } from "Atmosphere/index";
 import CustomCommands from "CustomCommands/CustomCommands";
 import MobComponentManager from "MobComponents/MobComponentManager";
 import TriggerManager from "Triggers/TriggerManager";
@@ -30,7 +29,6 @@ export default class _Main {
     private static initFinalSystems() {
         MobComponentManager.init();
         TriggerManager.init();
-        initAtmosphere();
     }
 
     private static onWorldLoad() {
