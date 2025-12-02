@@ -48,11 +48,6 @@ Extensions to Minecraft's `Entity` class:
   ```
 - Define schemas in `BP/scripts/Store/Entity/Properties.ts`
 
-### Custom Commands
-- Triggered via `/scriptevent ns_ptl:debug <command> <args>`
-- Define in `BP/scripts/CustomCommands/Commands/` implementing `Command` interface
-- Register in `Commands/index.ts`
-
 ### V3 Wrapper
 Custom Vector3 class with utilities. Use `new V3(x, y, z)` or `V3.grid(x, y, z)` (multiplies by 16).
 
@@ -63,12 +58,8 @@ We use a Docker-based test runner (`test-runner.js`) for rapid iteration. When f
 
 **Usage:**
 1.  **Verify:** Run `node test-runner.js` in terminal.
-    - **Hot Mode:** If container `mc-gametest-runner` is running, it reloads scripts (`/reload`) and runs tests immediately (~3s).
-    - **Cold Mode:** If stopped, it starts the container (~20s).
 2.  **Troubleshooting:**
-    - **Manifest Changes:** If `manifest.json` is modified, run `docker restart mc-gametest-runner` manually.
     - **Logs:** The runner handles log streaming. Do not check `docker logs` manually.
-    - **Environment:** Requires `server-data/worlds/BetaTestWorld` seeded with Beta APIs enabled.
 
 ### Development Commands
 ```powershell
@@ -80,13 +71,15 @@ npm run lint # TypeScript check + ESLint + Prettier
 - **BP/scripts/**: TypeScript source (compiled to BP by bridge.)
   - `Main.ts` - entry point
   - `GlobalVars.ts` - imports all global utilities
-  - `Utilities/` - global utility classes
+  - `Utilities/` - global utility classes (EntityUtil, BroadcastUtil, EventSubscriber, etc.)
   - `MobComponents/` - custom entity behavior components
-  - `CustomCommands/` - debug commands
-  - `Game/` - game data, events definitions
+  - `Components/` - block/item custom components
   - `Store/` - entity/world storage systems
   - `Wrappers/` - V2, V3 vector classes
   - `Prototype/` - Entity/System extensions
+  - `Types/` - TypeScript type definitions
+  - `Atmosphere/` - atmosphere/environment systems
+  - `GameTests/` - automated game tests
 
 - **config.json** - bridge. project config, compiler plugins, experimental toggles
 - **example_addons/** - Reference projects (mc-order, mc-sky, mc-zenith). Use for learning and reference.
