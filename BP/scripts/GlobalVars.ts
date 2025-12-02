@@ -15,7 +15,6 @@ import "Store/World/WorldStore";
 import "Utilities/BroadcastUtil";
 import "Utilities/ControlsUtil";
 import "Utilities/EntityUtil";
-import "Utilities/EventEmitter";
 import "Utilities/EventSubscriber";
 import "Utilities/Filter";
 import "Utilities/GenericBuffer";
@@ -23,9 +22,6 @@ import "Utilities/InventoryUtil";
 import "Utilities/MathUtil";
 import "Utilities/PlayersCache";
 import "Utilities/PlayerSound";
-import "Utilities/ScriptEventListener";
 import "Utilities/SpatialHashGrid2D";
 
 import "Store/Entity/EntityStore";
-
-import "Game/GameData";

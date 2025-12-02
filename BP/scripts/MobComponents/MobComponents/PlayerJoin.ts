@@ -19,8 +19,6 @@ export default class PlayerJoin extends MobComponentPlayer {
         this.spawnLocation = new V3(player.location);
         if (!EntityStore.get(player, "PlayerInitialized")) this.initializePlayer();
 
-        GameData.events.emit("PlayerJoined", player);
-
         ControlsUtil.unlockControls(player);
         ControlsUtil.showHUD(player);
     }
@@ -39,7 +37,6 @@ export default class PlayerJoin extends MobComponentPlayer {
     }
 
     onFirstMove() {
-        GameData.events.emit("PlayerFullyJoined", this.entityF);
         EntityStore.temporary.set(this.entityF, "PlayerFullyJoined", true);
     }
 

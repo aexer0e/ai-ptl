@@ -5,10 +5,7 @@ import "Prototype/Entity";
 import "Prototype/system";
 
 import { system, world } from "@minecraft/server";
-import CustomCommands from "CustomCommands/CustomCommands";
 import MobComponentManager from "MobComponents/MobComponentManager";
-import TriggerManager from "Triggers/TriggerManager";
-import ScriptEventListener from "Utilities/ScriptEventListener";
 
 // Main is private with a _ prefix as we omit this class as a global variable
 export default class _Main {
@@ -22,13 +19,10 @@ export default class _Main {
     private static initPreliminarySystems() {
         PlayersCache.init();
         EntityStore.init();
-        ScriptEventListener.init();
-        CustomCommands.init();
     }
 
     private static initFinalSystems() {
         MobComponentManager.init();
-        TriggerManager.init();
     }
 
     private static onWorldLoad() {

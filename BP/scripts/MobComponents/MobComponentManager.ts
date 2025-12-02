@@ -1,5 +1,4 @@
 import { Dimension, DimensionTypes, Entity, system, Vector3, world } from "@minecraft/server";
-import TemporaryEntities from "../Game/TemporaryEntities";
 import MobComponent from "./MobComponents/MobComponent";
 import MobComponents from "./MobComponents/index";
 
@@ -36,13 +35,6 @@ export default class MobComponentManager {
     }
 
     static registerPreExisting(entity: Entity) {
-        const entityId = entity.typeId;
-        if (TemporaryEntities.includes(entityId)) {
-            try {
-                entity.remove();
-            } catch (e) {}
-            return;
-        }
         this.register(entity, true);
     }
 
@@ -67,8 +59,6 @@ export default class MobComponentManager {
                 this.mobComponents[entity.id][component.name] = componentInstance;
             }
         }
-
-        GameData.events.emit("EntityLoaded", entity);
     }
 
     static isWithinRange(location: Vector3, dimension: Dimension) {

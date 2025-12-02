@@ -1,5 +1,4 @@
 import { Entity, Player, system } from "@minecraft/server";
-import { GameEvents } from "Types/GameEvents";
 import { Maybe } from "Types/GenericTypes";
 import { EventCallback, EventClassName, EventName } from "Utilities/EventSubscriber";
 
@@ -20,7 +19,6 @@ export default class MobComponent {
     processInterval: Maybe<number> = null;
     private intId: number = 0;
     private worldSubscriptions: [type: EventClassName, event: string, callback: number][] = [];
-    private gameSubscriptions: [event: keyof GameEvents, callback: (...args: never) => void][] = [];
     private runnerIds: number[] = [];
 
     constructor(entity: Entity, processInterval?: Maybe<number>, _preExisting = false) {
@@ -49,11 +47,6 @@ export default class MobComponent {
         callback: EventCallback<ClassName, Name>
     ) {
         this.worldSubscriptions.push([type, event as string, EventSubscriber.subscribe(type, event, callback)]);
-    }
-
-    protected onGameEvent<GameEvent extends keyof GameEvents>(event: GameEvent, callback: (...args: GameEvents[GameEvent]) => void) {
-        this.gameSubscriptions.push([event, callback]);
-        GameData.events.subscribe(event, callback);
     }
 
     protected interval(callback: () => void, interval: number, condition?: () => boolean) {
@@ -96,10 +89,6 @@ export default class MobComponent {
     destroy() {
         this.worldSubscriptions.forEach(([type, event, id]) => {
             EventSubscriber.unsubscribe(type, event as unknown as never, id);
-        });
-
-        this.gameSubscriptions.forEach(([event, callback]) => {
-            GameData.events.unsubscribe(event, callback);
         });
 
         this.runnerIds.forEach((runnerId) => system.clearRun(runnerId));

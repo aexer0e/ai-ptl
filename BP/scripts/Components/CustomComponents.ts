@@ -1,5 +1,5 @@
 import { EquipmentSlot, MolangVariableMap, Player, system, world } from "@minecraft/server";
-import { DefaultEmitterConfig, EmitterConfig, getConfigKey } from "Atmosphere/EmitterConfig";
+import { ColorPresets, DefaultEmitterConfig, EmitterConfig, getConfigKey } from "Atmosphere/EmitterConfig";
 import TunerUI from "Atmosphere/ParticleComposer";
 
 const tunerWandId = "ns_ptl:tuner_wand";
@@ -17,7 +17,10 @@ function locationKey(x: number, y: number, z: number, dimId: string) {
 function getConfig(x: number, y: number, z: number, dimId: string): EmitterConfig {
     try {
         const data = world.getDynamicProperty(getConfigKey(x, y, z, dimId)) as string | undefined;
-        if (data) return JSON.parse(data);
+        if (data) {
+            // Merge with defaults to ensure new fields have values for old configs
+            return { ...DefaultEmitterConfig, ...JSON.parse(data) };
+        }
     } catch {
         /* invalid */
     }
@@ -87,19 +90,22 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             if (!molangVars) molangVars = new MolangVariableMap();
 
             // === Tab A: Appearance ===
-            // texture_id: 0 for basic (soft circle), 1-15 for presets
-            molangVars.setFloat("texture_id", config.renderStyle === "basic" ? 0 : config.textureId);
+            molangVars.setFloat("texture_id", config.textureId);
 
-            // Color: Use white (1,1,1) for preset textures without tinting to preserve original colors
-            if (config.renderStyle === "preset" && !config.tintMode) {
-                molangVars.setFloat("color_r", 1.0);
-                molangVars.setFloat("color_g", 1.0);
-                molangVars.setFloat("color_b", 1.0);
-            } else {
-                molangVars.setFloat("color_r", config.colorR);
-                molangVars.setFloat("color_g", config.colorG);
-                molangVars.setFloat("color_b", config.colorB);
-            }
+            // Color gradient: Get start and end colors from presets
+            const startColor = ColorPresets[config.colorStartIndex] ?? ColorPresets[0];
+            const endColor = ColorPresets[config.colorEndIndex] ?? ColorPresets[0];
+
+            // Pass start color (spawn color)
+            molangVars.setFloat("color_r", startColor[1]);
+            molangVars.setFloat("color_g", startColor[2]);
+            molangVars.setFloat("color_b", startColor[3]);
+
+            // Pass end color (fade-to color)
+            molangVars.setFloat("color_end_r", endColor[1]);
+            molangVars.setFloat("color_end_g", endColor[2]);
+            molangVars.setFloat("color_end_b", endColor[3]);
+
             molangVars.setFloat("alpha", config.alpha);
             molangVars.setFloat("blend_mode", config.blendMode === "add" ? 1 : 0);
             molangVars.setFloat("size_start", config.sizeStart);
@@ -130,8 +136,13 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             // Select particle based on blend mode
             const particleId = config.blendMode === "add" ? "ns_ptl:master_particle_glow" : "ns_ptl:master_particle";
 
+            // Apply spawn offset
+            const spawnX = x + 0.5 + (config.offsetX ?? 0);
+            const spawnY = y + 0.5 + (config.offsetY ?? 0);
+            const spawnZ = z + 0.5 + (config.offsetZ ?? 0);
+
             try {
-                dimension.spawnParticle(particleId, { x: x + 0.5, y: y + 0.5, z: z + 0.5 }, molangVars);
+                dimension.spawnParticle(particleId, { x: spawnX, y: spawnY, z: spawnZ }, molangVars);
             } catch {
                 /* unloaded */
             }
@@ -146,7 +157,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
 
             const mainhand = equipment.getEquipment(EquipmentSlot.Mainhand);
             if (!mainhand || mainhand.typeId !== tunerWandId) {
-                player.sendMessage("§7Use a Tuner Wand to configure this emitter.");
+                player.sendMessage("§eUse a Tuner Wand to configure this emitter.");
                 return;
             }
 
