@@ -11,7 +11,8 @@
         "clipboard": "node ./tools/clipboard/Clipboard.js",
         "docs": "npx typedoc",
         "build-dist": "dash_compiler build -m development -o -c .bridge/compiler/writeForPackaging.json",
-        "new-uuids": "node ./scripts/randomize-uuids.cjs"
+        "new-uuids": "node ./scripts/randomize-uuids.cjs",
+        "build-addon": "node ./scripts/build-mcaddon.cjs"
     },
     "dependencies": {
         "@bridge-editor/compiler-plugin-types": "^1.0.0",
@@ -29,6 +30,7 @@
         "@typescript-eslint/eslint-plugin": "^7.7.1",
         "@typescript-eslint/parser": "^7.7.1",
         "@typescript-eslint/typescript-estree": "^7.7.1",
+        "archiver": "^7.0.1",
         "del": "^7.1.0",
         "dotenv": "^16.4.5",
         "eslint": "^8.57.0",
