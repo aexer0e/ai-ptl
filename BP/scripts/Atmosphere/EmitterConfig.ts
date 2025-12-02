@@ -32,15 +32,12 @@ export type BlendMode = "blend" | "add";
  */
 export interface EmitterConfig {
     // === Tab A: Appearance ===
-    renderStyle: RenderStyle;
-    /** Texture index 0-15 (0 = soft circle for basic, 1-15 = presets) */
+    /** Texture index 0-15 (0 = soft circle, 1-15 = presets) */
     textureId: number;
-    /** Whether to tint preset textures with RGB values */
-    tintMode: boolean;
-    /** RGB color values 0.0-1.0 */
-    colorR: number;
-    colorG: number;
-    colorB: number;
+    /** Start color preset index (0 = None/White) */
+    colorStartIndex: number;
+    /** End color preset index (0 = None/White, same as start = solid color) */
+    colorEndIndex: number;
     /** Alpha/opacity 0.0-1.0 */
     alpha: number;
     /** Blending mode */
@@ -49,6 +46,13 @@ export interface EmitterConfig {
     sizeStart: number;
     /** Size when particle dies (0.0-5.0) */
     sizeEnd: number;
+
+    // === Legacy fields (kept for compatibility) ===
+    renderStyle: RenderStyle;
+    tintMode: boolean;
+    colorR: number;
+    colorG: number;
+    colorB: number;
 
     // === Tab B: Physics & Motion ===
     /** Initial velocity (0.0-2.0) */
@@ -75,6 +79,12 @@ export interface EmitterConfig {
     emissionRadius: number;
     /** Emission shape */
     shape: EmissionShape;
+    /** Spawn offset X (-2.0 to 2.0) */
+    offsetX: number;
+    /** Spawn offset Y (-2.0 to 2.0) */
+    offsetY: number;
+    /** Spawn offset Z (-2.0 to 2.0) */
+    offsetZ: number;
 
     // === Tab D: Advanced ===
     /** Rotation speed of particle texture */
@@ -113,20 +123,43 @@ export const TexturePresets: string[] = [
 ];
 
 /**
+ * Preset colors for tinting particles
+ * Each entry is [name, R, G, B] with RGB values 0.0-1.0
+ */
+export const ColorPresets: [string, number, number, number][] = [
+    ["None (White)", 1.0, 1.0, 1.0],
+    ["Red", 1.0, 0.2, 0.2],
+    ["Orange", 1.0, 0.5, 0.1],
+    ["Yellow", 1.0, 1.0, 0.2],
+    ["Lime", 0.5, 1.0, 0.2],
+    ["Green", 0.2, 0.8, 0.2],
+    ["Cyan", 0.2, 1.0, 1.0],
+    ["Blue", 0.2, 0.4, 1.0],
+    ["Purple", 0.6, 0.2, 1.0],
+    ["Pink", 1.0, 0.4, 0.8],
+    ["Brown", 0.6, 0.4, 0.2],
+    ["Black", 0.1, 0.1, 0.1],
+];
+
+/**
  * Default configuration for new emitters
  */
 export const DefaultEmitterConfig: EmitterConfig = {
     // Appearance
-    renderStyle: "basic",
-    textureId: 0,
-    tintMode: false,
-    colorR: 1.0,
-    colorG: 1.0,
-    colorB: 1.0,
+    textureId: 1, // Default to Star instead of Soft Circle
+    colorStartIndex: 0, // None (White)
+    colorEndIndex: 0, // None (White) - same as start = no gradient
     alpha: 0.8,
     blendMode: "blend",
     sizeStart: 0.5,
     sizeEnd: 0.2,
+
+    // Legacy (kept for compatibility)
+    renderStyle: "preset",
+    tintMode: false,
+    colorR: 1.0,
+    colorG: 1.0,
+    colorB: 1.0,
 
     // Physics
     speed: 0.5,
@@ -143,6 +176,9 @@ export const DefaultEmitterConfig: EmitterConfig = {
     lifetime: 3.0,
     emissionRadius: 0.5,
     shape: "sphere",
+    offsetX: 0.0,
+    offsetY: 0.0,
+    offsetZ: 0.0,
 
     // Advanced
     spinSpeed: 0,

@@ -1,6 +1,6 @@
 import { Block, Player, system, world } from "@minecraft/server";
 import { ActionFormData, FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
-import { DefaultEmitterConfig, EmissionShape, EmitterConfig, getConfigKey, TexturePresets } from "./EmitterConfig";
+import { ColorPresets, DefaultEmitterConfig, EmissionShape, EmitterConfig, getConfigKey, TexturePresets } from "./EmitterConfig";
 
 // ============================================================================
 // Storage Functions
@@ -11,7 +11,10 @@ export function getEmitterConfig(block: Block): EmitterConfig {
     try {
         const key = getConfigKey(block.location.x, block.location.y, block.location.z, block.dimension.id);
         const data = world.getDynamicProperty(key) as string | undefined;
-        if (data) return JSON.parse(data);
+        if (data) {
+            // Merge with defaults to ensure new fields have values for old configs
+            return { ...DefaultEmitterConfig, ...JSON.parse(data) };
+        }
     } catch {
         /* invalid */
     }
@@ -53,10 +56,10 @@ export default class TunerUI {
             .title("§l§dParticle Composer")
             .body(this.getStatusSummary(config))
             .button("§6Appearance\n§rStyle, Color, Size")
-            .button("§bPhysics & Motion\n§rSpeed, Gravity, Direction")
-            .button("§aSpawning Rules\n§rRate, Lifetime, Shape")
+            .button("§3Physics & Motion\n§rSpeed, Gravity, Direction")
+            .button("§2Spawning Rules\n§rRate, Lifetime, Shape")
             .button("§5Advanced\n§rSpin, Pulse, Billboard")
-            .button(config.enabled ? "§cDisable Emitter" : "§aEnable Emitter")
+            .button(config.enabled ? "§cDisable Emitter" : "§2Enable Emitter")
             .button("§eCopy Settings")
             .button("§ePaste Settings")
             .button("§4Reset to Default");
@@ -116,10 +119,10 @@ export default class TunerUI {
 
         const form = new ActionFormData()
             .title("§l§eQuick Actions")
-            .body(clipboard ? "§aClipboard has settings" : "§7Clipboard is empty")
+            .body(clipboard ? "§aClipboard has settings" : "§8Clipboard is empty")
             .button("§eCopy Settings")
             .button("§ePaste Settings")
-            .button("§7Cancel");
+            .button("Cancel");
 
         const response = await form.show(player);
         if (response.canceled) return;
@@ -145,11 +148,10 @@ export default class TunerUI {
     // ========================================================================
 
     private static getStatusSummary(config: EmitterConfig): string {
-        const style = config.renderStyle === "basic" ? "Basic Color" : `Preset: ${TexturePresets[config.textureId]}`;
-        const color =
-            config.renderStyle === "basic" || config.tintMode
-                ? `RGB(${(config.colorR * 255).toFixed(0)}, ${(config.colorG * 255).toFixed(0)}, ${(config.colorB * 255).toFixed(0)})`
-                : "Original";
+        const texture = TexturePresets[config.textureId] || "Unknown";
+        const startColor = ColorPresets[config.colorStartIndex]?.[0] || "White";
+        const endColor = ColorPresets[config.colorEndIndex]?.[0] || "White";
+        const colorText = config.colorStartIndex === config.colorEndIndex ? startColor : `${startColor} → ${endColor}`;
         const blend = config.blendMode === "add" ? "Additive (Glow)" : "Normal";
         const dir =
             config.directionMode === "radial"
@@ -157,15 +159,15 @@ export default class TunerUI {
                 : `(${config.vectorX.toFixed(1)}, ${config.vectorY.toFixed(1)}, ${config.vectorZ.toFixed(1)})`;
 
         return [
-            `§l§6Style:§r ${style}`,
-            `§l§6Color:§r ${color} | α=${(config.alpha * 100).toFixed(0)}%`,
+            `§l§6Texture:§r ${texture}`,
+            `§l§6Color:§r ${colorText} | α=${(config.alpha * 100).toFixed(0)}%`,
             `§l§6Blend:§r ${blend}`,
             `§l§6Size:§r ${config.sizeStart.toFixed(1)} → ${config.sizeEnd.toFixed(1)}`,
-            `§l§bSpeed:§r ${config.speed.toFixed(1)} | Gravity: ${config.gravity.toFixed(1)}`,
-            `§l§bDirection:§r ${dir}`,
-            `§l§aRate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s`,
-            `§l§aShape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})`,
-            `§l§5Status:§r ${config.enabled ? "§aActive" : "§cDisabled"}`,
+            `§l§3Speed:§r ${config.speed.toFixed(1)} | Gravity: ${config.gravity.toFixed(1)}`,
+            `§l§3Direction:§r ${dir}`,
+            `§l§2Rate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s`,
+            `§l§2Shape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})`,
+            `§l§5Status:§r ${config.enabled ? "§2Active" : "§cDisabled"}`,
         ].join("\n");
     }
 
@@ -175,18 +177,22 @@ export default class TunerUI {
 
     private static async openAppearanceTab(player: Player, block: Block, config: EmitterConfig) {
         const currentTexture = TexturePresets[config.textureId] || "Unknown";
+        const startColor = ColorPresets[config.colorStartIndex]?.[0] || "White";
+        const endColor = ColorPresets[config.colorEndIndex]?.[0] || "White";
+        const colorText = config.colorStartIndex === config.colorEndIndex ? startColor : `${startColor} → ${endColor}`;
 
         const form = new ActionFormData()
             .title("§l§6Appearance")
             .body(
-                `Current: ${config.renderStyle === "basic" ? "Basic Color" : `Preset: ${currentTexture}`}\n` +
-                    `Color: RGB(${Math.round(config.colorR * 100)}%, ${Math.round(config.colorG * 100)}%, ${Math.round(config.colorB * 100)}%)\n` +
-                    `Size: ${config.sizeStart.toFixed(1)} -> ${config.sizeEnd.toFixed(1)}`
+                `§lTexture:§r ${currentTexture}\n` +
+                    `§lColor:§r ${colorText}\n` +
+                    `§lSize:§r ${config.sizeStart.toFixed(1)} → ${config.sizeEnd.toFixed(1)}`
             )
-            .button("Select Texture\n§7Choose particle shape", "textures/particle/icons/texture_" + config.textureId + ".png")
-            .button("Color Settings\n§7RGB, Alpha, Blend")
-            .button("Size Settings\n§7Start/End size")
-            .button("§7Back to Main Menu");
+            .button("§6Select Texture\n§rChoose particle shape", `textures/particle/icons/texture_${config.textureId}.png`)
+            .button("§dColor / Gradient\n§rTint start and end colors")
+            .button("§eSize Settings\n§rStart/End size")
+            .button("§5Blend & Opacity\n§rGlow effects, transparency")
+            .button("Back to Main Menu");
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -199,12 +205,15 @@ export default class TunerUI {
                 await this.openTextureSelector(player, block, config);
                 break;
             case 1:
-                await this.openColorSettings(player, block, config);
+                await this.openColorGradientSettings(player, block, config);
                 break;
             case 2:
                 await this.openSizeSettings(player, block, config);
                 break;
             case 3:
+                await this.openBlendSettings(player, block, config);
+                break;
+            case 4:
                 system.run(() => this.openComposer(player, block));
                 break;
         }
@@ -215,15 +224,17 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openTextureSelector(player: Player, block: Block, config: EmitterConfig) {
-        const form = new ActionFormData().title("§l§6Select Texture").body(`Current: ${TexturePresets[config.textureId]}`);
+        const currentTexture = TexturePresets[config.textureId] || "Unknown";
 
-        // Add each texture as a button with its icon
+        const form = new ActionFormData().title("§l§6Select Texture").body(`Current: ${currentTexture}`);
+
+        // Add all textures (0-15)
         for (let i = 0; i < TexturePresets.length; i++) {
-            const selected = i === config.textureId ? " §a[Selected]" : "";
+            const selected = i === config.textureId ? " §2✓" : "";
             form.button(`${TexturePresets[i]}${selected}`, `textures/particle/icons/texture_${i}.png`);
         }
 
-        form.button("§7Back");
+        form.button("Back");
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -233,26 +244,70 @@ export default class TunerUI {
 
         if (response.selection !== undefined && response.selection < TexturePresets.length) {
             config.textureId = response.selection;
-            config.renderStyle = response.selection === 0 ? "basic" : "preset";
             setEmitterConfig(block, config);
             player.sendMessage(`§6Texture set to: ${TexturePresets[response.selection]}`);
+            system.run(() => this.openTextureSelector(player, block, config));
+        } else {
+            system.run(() => this.openAppearanceTab(player, block, config));
+        }
+    }
+
+    // ========================================================================
+    // Color / Gradient Settings
+    // ========================================================================
+
+    private static async openColorGradientSettings(player: Player, block: Block, config: EmitterConfig) {
+        const colorNames = ColorPresets.map((c) => c[0]);
+
+        const form = new ModalFormData()
+            .title("§l§dColor / Gradient")
+            .dropdown("Start Color (spawn)", colorNames, {
+                defaultValueIndex: config.colorStartIndex,
+            })
+            .dropdown("End Color (fade to)", colorNames, {
+                defaultValueIndex: config.colorEndIndex,
+            });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
         }
 
+        const [startIdx, endIdx] = response.formValues as [number, number];
+
+        config.colorStartIndex = startIdx;
+        config.colorEndIndex = endIdx;
+
+        // Update legacy RGB fields from start color for compatibility
+        const startPreset = ColorPresets[startIdx];
+        if (startPreset) {
+            config.colorR = startPreset[1];
+            config.colorG = startPreset[2];
+            config.colorB = startPreset[3];
+            config.tintMode = startIdx !== 0; // Enable tint if not "None"
+        }
+
+        setEmitterConfig(block, config);
+
+        const startName = ColorPresets[startIdx]?.[0] || "White";
+        const endName = ColorPresets[endIdx]?.[0] || "White";
+        if (startIdx === endIdx) {
+            player.sendMessage(`§dColor set to: ${startName}`);
+        } else {
+            player.sendMessage(`§dGradient set: ${startName} → ${endName}`);
+        }
         system.run(() => this.openAppearanceTab(player, block, config));
     }
 
     // ========================================================================
-    // Color Settings
+    // Blend & Opacity Settings
     // ========================================================================
 
-    private static async openColorSettings(player: Player, block: Block, config: EmitterConfig) {
+    private static async openBlendSettings(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
-            .title("§l§6Color Settings")
-            .toggle("Tint Preset with RGB", { defaultValue: config.tintMode })
-            .slider("Color: Red %", 0, 100, { defaultValue: Math.round(config.colorR * 100), valueStep: 5 })
-            .slider("Color: Green %", 0, 100, { defaultValue: Math.round(config.colorG * 100), valueStep: 5 })
-            .slider("Color: Blue %", 0, 100, { defaultValue: Math.round(config.colorB * 100), valueStep: 5 })
-            .slider("Alpha / Opacity %", 10, 100, { defaultValue: Math.round(config.alpha * 100), valueStep: 5 })
+            .title("§l§5Blend & Opacity")
+            .slider("Opacity %", 10, 100, { defaultValue: Math.round(config.alpha * 100), valueStep: 5 })
             .dropdown("Blending Mode", ["Normal (Alpha)", "Additive (Glow)"], {
                 defaultValueIndex: config.blendMode === "add" ? 1 : 0,
             });
@@ -263,24 +318,13 @@ export default class TunerUI {
             return;
         }
 
-        const [tintMode, colorR, colorG, colorB, alpha, blendIdx] = response.formValues as [
-            boolean,
-            number,
-            number,
-            number,
-            number,
-            number,
-        ];
+        const [alpha, blendIdx] = response.formValues as [number, number];
 
-        config.tintMode = tintMode;
-        config.colorR = colorR / 100;
-        config.colorG = colorG / 100;
-        config.colorB = colorB / 100;
         config.alpha = alpha / 100;
         config.blendMode = blendIdx === 0 ? "blend" : "add";
 
         setEmitterConfig(block, config);
-        player.sendMessage("§6Color settings saved!");
+        player.sendMessage("§5Blend settings saved!");
         system.run(() => this.openAppearanceTab(player, block, config));
     }
 
@@ -364,11 +408,48 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openSpawningTab(player: Player, block: Block, config: EmitterConfig) {
-        const shapeOptions: EmissionShape[] = ["sphere", "box", "disc"];
-        const shapeLabels = ["Sphere", "Box", "Disc"];
+        const offsetText =
+            config.offsetX === 0 && config.offsetY === 0 && config.offsetZ === 0
+                ? "Centered"
+                : `(${config.offsetX.toFixed(1)}, ${config.offsetY.toFixed(1)}, ${config.offsetZ.toFixed(1)})`;
 
+        const form = new ActionFormData()
+            .title("§l§2Spawning Rules")
+            .body(
+                `§lRate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s\n` +
+                    `§lShape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})\n` +
+                    `§lOffset:§r ${offsetText}`
+            )
+            .button("§2Rate & Lifetime\n§rParticles per second")
+            .button("§2Shape & Radius\n§rEmission area")
+            .button("§2Position Offset\n§rXYZ spawn offset")
+            .button("Back to Main Menu");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openComposer(player, block));
+            return;
+        }
+
+        switch (response.selection) {
+            case 0:
+                await this.openSpawningRateSettings(player, block, config);
+                break;
+            case 1:
+                await this.openSpawningShapeSettings(player, block, config);
+                break;
+            case 2:
+                await this.openSpawningOffsetSettings(player, block, config);
+                break;
+            case 3:
+                system.run(() => this.openComposer(player, block));
+                break;
+        }
+    }
+
+    private static async openSpawningRateSettings(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
-            .title("§l§aSpawning Rules")
+            .title("§l§2Rate & Lifetime")
             .slider("Spawn Rate (particles/second)", 1, 50, {
                 defaultValue: config.spawnRate,
                 valueStep: 1,
@@ -376,7 +457,30 @@ export default class TunerUI {
             .slider("Particle Lifetime (x2 seconds)", 1, 20, {
                 defaultValue: Math.round(config.lifetime * 2),
                 valueStep: 1,
-            })
+            });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openSpawningTab(player, block, config));
+            return;
+        }
+
+        const [spawnRate, lifetime] = response.formValues as [number, number];
+
+        config.spawnRate = spawnRate;
+        config.lifetime = lifetime / 2;
+
+        setEmitterConfig(block, config);
+        player.sendMessage("§2Rate settings saved!");
+        system.run(() => this.openSpawningTab(player, block, config));
+    }
+
+    private static async openSpawningShapeSettings(player: Player, block: Block, config: EmitterConfig) {
+        const shapeOptions: EmissionShape[] = ["sphere", "box", "disc"];
+        const shapeLabels = ["Sphere", "Box", "Disc"];
+
+        const form = new ModalFormData()
+            .title("§l§2Shape & Radius")
             .slider("Emission Radius (x4)", 0, 20, {
                 defaultValue: Math.round(config.emissionRadius * 4),
                 valueStep: 1,
@@ -387,20 +491,51 @@ export default class TunerUI {
 
         const response = await form.show(player);
         if (response.canceled) {
-            system.run(() => this.openComposer(player, block));
+            system.run(() => this.openSpawningTab(player, block, config));
             return;
         }
 
-        const [spawnRate, lifetime, emissionRadius, shapeIdx] = response.formValues as [number, number, number, number];
+        const [emissionRadius, shapeIdx] = response.formValues as [number, number];
 
-        config.spawnRate = spawnRate;
-        config.lifetime = lifetime / 2;
         config.emissionRadius = emissionRadius / 4;
         config.shape = shapeOptions[shapeIdx];
 
         setEmitterConfig(block, config);
-        player.sendMessage("§aSpawning settings saved!");
-        system.run(() => this.openComposer(player, block));
+        player.sendMessage("§2Shape settings saved!");
+        system.run(() => this.openSpawningTab(player, block, config));
+    }
+
+    private static async openSpawningOffsetSettings(player: Player, block: Block, config: EmitterConfig) {
+        const form = new ModalFormData()
+            .title("§l§2Position Offset")
+            .slider("Offset X (x10)", -20, 20, {
+                defaultValue: Math.round(config.offsetX * 10),
+                valueStep: 1,
+            })
+            .slider("Offset Y (x10)", -20, 20, {
+                defaultValue: Math.round(config.offsetY * 10),
+                valueStep: 1,
+            })
+            .slider("Offset Z (x10)", -20, 20, {
+                defaultValue: Math.round(config.offsetZ * 10),
+                valueStep: 1,
+            });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openSpawningTab(player, block, config));
+            return;
+        }
+
+        const [offsetX, offsetY, offsetZ] = response.formValues as [number, number, number];
+
+        config.offsetX = offsetX / 10;
+        config.offsetY = offsetY / 10;
+        config.offsetZ = offsetZ / 10;
+
+        setEmitterConfig(block, config);
+        player.sendMessage("§2Offset settings saved!");
+        system.run(() => this.openSpawningTab(player, block, config));
     }
 
     // ========================================================================

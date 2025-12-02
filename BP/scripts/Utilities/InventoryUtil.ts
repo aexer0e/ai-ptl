@@ -267,13 +267,8 @@ class _InventoryUtil {
         if (inventory) {
             if (lockMode) itemStack.lockMode = lockMode;
             inventory.setItem(slot, itemStack);
-            if (entity instanceof Player) this.onPlayerGivenItem(entity, itemStack);
         }
         DebugTimer.countEnd();
-    }
-
-    private static onPlayerGivenItem(player: Player, itemStack: ItemStack) {
-        GameData.events.emit("PlayerGivenItem", player, itemStack);
     }
 
     /**
@@ -289,7 +284,6 @@ class _InventoryUtil {
         if (inventory) {
             if (itemStack && lockMode) itemStack.lockMode = lockMode;
             inventory.setItem(player.selectedSlotIndex, itemStack);
-            if (itemStack) this.onPlayerGivenItem(player, itemStack);
         }
         DebugTimer.countEnd();
     }
@@ -314,7 +308,6 @@ class _InventoryUtil {
             console.warn(`Entity ${entity.typeId} does not have equipment`);
         } else {
             equipment.setEquipment(slot, itemStack);
-            if (entity instanceof Player && itemStack) this.onPlayerGivenItem(entity, itemStack);
         }
         DebugTimer.countEnd();
     }
@@ -330,7 +323,6 @@ class _InventoryUtil {
         if (inventory) {
             if (lockMode) itemStack.lockMode = lockMode;
             inventory.addItem(itemStack);
-            if (entity instanceof Player) this.onPlayerGivenItem(entity, itemStack);
         }
     }
 

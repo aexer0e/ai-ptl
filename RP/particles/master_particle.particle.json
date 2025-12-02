@@ -45,9 +45,9 @@
             },
             "minecraft:particle_appearance_tinting": {
                 "color": [
-                    "variable.color_r",
-                    "variable.color_g",
-                    "variable.color_b",
+                    "math.lerp(variable.color_r, variable.color_end_r, variable.particle_age / variable.particle_lifetime)",
+                    "math.lerp(variable.color_g, variable.color_end_g, variable.particle_age / variable.particle_lifetime)",
+                    "math.lerp(variable.color_b, variable.color_end_b, variable.particle_age / variable.particle_lifetime)",
                     "variable.pulse == 1 ? variable.alpha * (0.5 + 0.5 * math.sin(variable.particle_age * 6.28)) * (1 - variable.particle_age / variable.particle_lifetime) : variable.alpha * (1 - variable.particle_age / variable.particle_lifetime)"
                 ]
             },

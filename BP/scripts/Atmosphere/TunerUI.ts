@@ -59,7 +59,7 @@ export default class TunerUI {
             .button("§2Select Effect Type")
             .button("§6Adjust Settings")
             .button("§3Toggle Mode\n§r" + (config.requiresRedstone ? "Redstone" : "Always On"))
-            .button(config.enabled ? "§c⬛ Disable" : "§a⬜ Enable")
+            .button(config.enabled ? "§c⬛ Disable" : "§2⬜ Enable")
             .button("§4Reset");
 
         const response = await form.show(player);
