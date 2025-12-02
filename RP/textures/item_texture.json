@@ -3,6 +3,22 @@
     "texture_name": "atlas.items",
     "texture_data": {
         "ns_ptl:tuner_wand": { "textures": { "path": "textures/items/tuner_wand" }},
-        "ns_ptl:aether_lens": { "textures": { "path": "textures/items/aether_lens" }}
+        "ns_ptl:aether_lens": { "textures": { "path": "textures/items/aether_lens" }},
+        "ns_ptl:particle_icon_0": { "textures": { "path": "textures/particle/icons/texture_0" }},
+        "ns_ptl:particle_icon_1": { "textures": { "path": "textures/particle/icons/texture_1" }},
+        "ns_ptl:particle_icon_2": { "textures": { "path": "textures/particle/icons/texture_2" }},
+        "ns_ptl:particle_icon_3": { "textures": { "path": "textures/particle/icons/texture_3" }},
+        "ns_ptl:particle_icon_4": { "textures": { "path": "textures/particle/icons/texture_4" }},
+        "ns_ptl:particle_icon_5": { "textures": { "path": "textures/particle/icons/texture_5" }},
+        "ns_ptl:particle_icon_6": { "textures": { "path": "textures/particle/icons/texture_6" }},
+        "ns_ptl:particle_icon_7": { "textures": { "path": "textures/particle/icons/texture_7" }},
+        "ns_ptl:particle_icon_8": { "textures": { "path": "textures/particle/icons/texture_8" }},
+        "ns_ptl:particle_icon_9": { "textures": { "path": "textures/particle/icons/texture_9" }},
+        "ns_ptl:particle_icon_10": { "textures": { "path": "textures/particle/icons/texture_10" }},
+        "ns_ptl:particle_icon_11": { "textures": { "path": "textures/particle/icons/texture_11" }},
+        "ns_ptl:particle_icon_12": { "textures": { "path": "textures/particle/icons/texture_12" }},
+        "ns_ptl:particle_icon_13": { "textures": { "path": "textures/particle/icons/texture_13" }},
+        "ns_ptl:particle_icon_14": { "textures": { "path": "textures/particle/icons/texture_14" }},
+        "ns_ptl:particle_icon_15": { "textures": { "path": "textures/particle/icons/texture_15" }}
     }
 }

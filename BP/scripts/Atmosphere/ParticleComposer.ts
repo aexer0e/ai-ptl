@@ -174,25 +174,19 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openAppearanceTab(player: Player, block: Block, config: EmitterConfig) {
-        const form = new ModalFormData()
+        const currentTexture = TexturePresets[config.textureId] || "Unknown";
+
+        const form = new ActionFormData()
             .title("§l§6Appearance")
-            .dropdown("Render Style", ["Basic Color (Soft Circle)", "Preset Texture"], {
-                defaultValueIndex: config.renderStyle === "basic" ? 0 : 1,
-            })
-            .slider("Texture ID (Preset only)", 0, 15, {
-                defaultValue: config.textureId,
-                valueStep: 1,
-            })
-            .toggle("Tint Preset with RGB", { defaultValue: config.tintMode })
-            .slider("Color: Red", 0, 1, { defaultValue: config.colorR, valueStep: 0.05 })
-            .slider("Color: Green", 0, 1, { defaultValue: config.colorG, valueStep: 0.05 })
-            .slider("Color: Blue", 0, 1, { defaultValue: config.colorB, valueStep: 0.05 })
-            .slider("Alpha / Opacity", 0.1, 1, { defaultValue: config.alpha, valueStep: 0.05 })
-            .dropdown("Blending Mode", ["Normal (Alpha)", "Additive (Glow)"], {
-                defaultValueIndex: config.blendMode === "add" ? 1 : 0,
-            })
-            .slider("Size: Start", 0.1, 5, { defaultValue: config.sizeStart, valueStep: 0.1 })
-            .slider("Size: End", 0, 5, { defaultValue: config.sizeEnd, valueStep: 0.1 });
+            .body(
+                `Current: ${config.renderStyle === "basic" ? "Basic Color" : `Preset: ${currentTexture}`}\n` +
+                    `Color: RGB(${Math.round(config.colorR * 100)}%, ${Math.round(config.colorG * 100)}%, ${Math.round(config.colorB * 100)}%)\n` +
+                    `Size: ${config.sizeStart.toFixed(1)} -> ${config.sizeEnd.toFixed(1)}`
+            )
+            .button("Select Texture\n§7Choose particle shape", "textures/particle/icons/texture_" + config.textureId + ".png")
+            .button("Color Settings\n§7RGB, Alpha, Blend")
+            .button("Size Settings\n§7Start/End size")
+            .button("§7Back to Main Menu");
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -200,12 +194,77 @@ export default class TunerUI {
             return;
         }
 
-        const [styleIdx, textureId, tintMode, colorR, colorG, colorB, alpha, blendIdx, sizeStart, sizeEnd] = response.formValues as [
-            number,
-            number,
+        switch (response.selection) {
+            case 0:
+                await this.openTextureSelector(player, block, config);
+                break;
+            case 1:
+                await this.openColorSettings(player, block, config);
+                break;
+            case 2:
+                await this.openSizeSettings(player, block, config);
+                break;
+            case 3:
+                system.run(() => this.openComposer(player, block));
+                break;
+        }
+    }
+
+    // ========================================================================
+    // Texture Selector (with icons)
+    // ========================================================================
+
+    private static async openTextureSelector(player: Player, block: Block, config: EmitterConfig) {
+        const form = new ActionFormData().title("§l§6Select Texture").body(`Current: ${TexturePresets[config.textureId]}`);
+
+        // Add each texture as a button with its icon
+        for (let i = 0; i < TexturePresets.length; i++) {
+            const selected = i === config.textureId ? " §a[Selected]" : "";
+            form.button(`${TexturePresets[i]}${selected}`, `textures/particle/icons/texture_${i}.png`);
+        }
+
+        form.button("§7Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        if (response.selection !== undefined && response.selection < TexturePresets.length) {
+            config.textureId = response.selection;
+            config.renderStyle = response.selection === 0 ? "basic" : "preset";
+            setEmitterConfig(block, config);
+            player.sendMessage(`§6Texture set to: ${TexturePresets[response.selection]}`);
+        }
+
+        system.run(() => this.openAppearanceTab(player, block, config));
+    }
+
+    // ========================================================================
+    // Color Settings
+    // ========================================================================
+
+    private static async openColorSettings(player: Player, block: Block, config: EmitterConfig) {
+        const form = new ModalFormData()
+            .title("§l§6Color Settings")
+            .toggle("Tint Preset with RGB", { defaultValue: config.tintMode })
+            .slider("Color: Red %", 0, 100, { defaultValue: Math.round(config.colorR * 100), valueStep: 5 })
+            .slider("Color: Green %", 0, 100, { defaultValue: Math.round(config.colorG * 100), valueStep: 5 })
+            .slider("Color: Blue %", 0, 100, { defaultValue: Math.round(config.colorB * 100), valueStep: 5 })
+            .slider("Alpha / Opacity %", 10, 100, { defaultValue: Math.round(config.alpha * 100), valueStep: 5 })
+            .dropdown("Blending Mode", ["Normal (Alpha)", "Additive (Glow)"], {
+                defaultValueIndex: config.blendMode === "add" ? 1 : 0,
+            });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        const [tintMode, colorR, colorG, colorB, alpha, blendIdx] = response.formValues as [
             boolean,
-            number,
-            number,
             number,
             number,
             number,
@@ -213,20 +272,42 @@ export default class TunerUI {
             number,
         ];
 
-        config.renderStyle = styleIdx === 0 ? "basic" : "preset";
-        config.textureId = textureId;
         config.tintMode = tintMode;
-        config.colorR = colorR;
-        config.colorG = colorG;
-        config.colorB = colorB;
-        config.alpha = alpha;
+        config.colorR = colorR / 100;
+        config.colorG = colorG / 100;
+        config.colorB = colorB / 100;
+        config.alpha = alpha / 100;
         config.blendMode = blendIdx === 0 ? "blend" : "add";
-        config.sizeStart = sizeStart;
-        config.sizeEnd = sizeEnd;
 
         setEmitterConfig(block, config);
-        player.sendMessage("§6Appearance settings saved!");
-        system.run(() => this.openComposer(player, block));
+        player.sendMessage("§6Color settings saved!");
+        system.run(() => this.openAppearanceTab(player, block, config));
+    }
+
+    // ========================================================================
+    // Size Settings
+    // ========================================================================
+
+    private static async openSizeSettings(player: Player, block: Block, config: EmitterConfig) {
+        const form = new ModalFormData()
+            .title("§l§6Size Settings")
+            .slider("Size: Start", 1, 50, { defaultValue: Math.round(config.sizeStart * 10), valueStep: 1 })
+            .slider("Size: End", 0, 50, { defaultValue: Math.round(config.sizeEnd * 10), valueStep: 1 });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        const [sizeStart, sizeEnd] = response.formValues as [number, number];
+
+        config.sizeStart = sizeStart / 10;
+        config.sizeEnd = sizeEnd / 10;
+
+        setEmitterConfig(block, config);
+        player.sendMessage("§6Size settings saved!");
+        system.run(() => this.openAppearanceTab(player, block, config));
     }
 
     // ========================================================================
@@ -236,15 +317,15 @@ export default class TunerUI {
     private static async openPhysicsTab(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
             .title("§l§bPhysics & Motion")
-            .slider("Speed (Initial velocity)", 0, 2, { defaultValue: config.speed, valueStep: 0.1 })
-            .slider("Gravity (-2=float, +2=fall)", -2, 2, { defaultValue: config.gravity, valueStep: 0.1 })
-            .slider("Drag (Air resistance)", 0, 10, { defaultValue: config.drag, valueStep: 0.5 })
+            .slider("Speed (x10)", 0, 20, { defaultValue: Math.round(config.speed * 10), valueStep: 1 })
+            .slider("Gravity (x10, -20=float, +20=fall)", -20, 20, { defaultValue: Math.round(config.gravity * 10), valueStep: 1 })
+            .slider("Drag (x10)", 0, 100, { defaultValue: Math.round(config.drag * 10), valueStep: 5 })
             .dropdown("Direction Mode", ["Vector (Specific direction)", "Radial (Explosion)"], {
                 defaultValueIndex: config.directionMode === "radial" ? 1 : 0,
             })
-            .slider("Vector X", -1, 1, { defaultValue: config.vectorX, valueStep: 0.1 })
-            .slider("Vector Y", -1, 1, { defaultValue: config.vectorY, valueStep: 0.1 })
-            .slider("Vector Z", -1, 1, { defaultValue: config.vectorZ, valueStep: 0.1 })
+            .slider("Vector X (x10)", -10, 10, { defaultValue: Math.round(config.vectorX * 10), valueStep: 1 })
+            .slider("Vector Y (x10)", -10, 10, { defaultValue: Math.round(config.vectorY * 10), valueStep: 1 })
+            .slider("Vector Z (x10)", -10, 10, { defaultValue: Math.round(config.vectorZ * 10), valueStep: 1 })
             .toggle("Collision (bounce/die on blocks)", { defaultValue: config.collision });
 
         const response = await form.show(player);
@@ -264,13 +345,13 @@ export default class TunerUI {
             boolean,
         ];
 
-        config.speed = speed;
-        config.gravity = gravity;
-        config.drag = drag;
+        config.speed = speed / 10;
+        config.gravity = gravity / 10;
+        config.drag = drag / 10;
         config.directionMode = dirIdx === 0 ? "vector" : "radial";
-        config.vectorX = vectorX;
-        config.vectorY = vectorY;
-        config.vectorZ = vectorZ;
+        config.vectorX = vectorX / 10;
+        config.vectorY = vectorY / 10;
+        config.vectorZ = vectorZ / 10;
         config.collision = collision;
 
         setEmitterConfig(block, config);
@@ -292,13 +373,13 @@ export default class TunerUI {
                 defaultValue: config.spawnRate,
                 valueStep: 1,
             })
-            .slider("Particle Lifetime (seconds)", 0.5, 10, {
-                defaultValue: config.lifetime,
-                valueStep: 0.5,
+            .slider("Particle Lifetime (x2 seconds)", 1, 20, {
+                defaultValue: Math.round(config.lifetime * 2),
+                valueStep: 1,
             })
-            .slider("Emission Radius", 0, 5, {
-                defaultValue: config.emissionRadius,
-                valueStep: 0.25,
+            .slider("Emission Radius (x4)", 0, 20, {
+                defaultValue: Math.round(config.emissionRadius * 4),
+                valueStep: 1,
             })
             .dropdown("Emission Shape", shapeLabels, {
                 defaultValueIndex: shapeOptions.indexOf(config.shape),
@@ -313,8 +394,8 @@ export default class TunerUI {
         const [spawnRate, lifetime, emissionRadius, shapeIdx] = response.formValues as [number, number, number, number];
 
         config.spawnRate = spawnRate;
-        config.lifetime = lifetime;
-        config.emissionRadius = emissionRadius;
+        config.lifetime = lifetime / 2;
+        config.emissionRadius = emissionRadius / 4;
         config.shape = shapeOptions[shapeIdx];
 
         setEmitterConfig(block, config);
