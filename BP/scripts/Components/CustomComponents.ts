@@ -1,6 +1,6 @@
 import { EquipmentSlot, MolangVariableMap, Player, system, world } from "@minecraft/server";
-import { DirectionType, ParticleTypesMap } from "Atmosphere/ParticleTypes";
-import TunerUI from "Atmosphere/TunerUI";
+import { DefaultEmitterConfig, EmitterConfig, getConfigKey } from "Atmosphere/EmitterConfig";
+import TunerUI from "Atmosphere/ParticleComposer";
 
 const tunerWandId = "ns_ptl:tuner_wand";
 const aetherLensId = "ns_ptl:aether_lens";
@@ -14,36 +14,14 @@ function locationKey(x: number, y: number, z: number, dimId: string) {
     return `${dimId}:${Math.floor(x)},${Math.floor(y)},${Math.floor(z)}`;
 }
 
-interface EmitterConfig {
-    particleTypeId: string;
-    density: number;
-    spread: number;
-    direction: DirectionType;
-    requiresRedstone: boolean;
-    enabled: boolean;
-}
-
-const DefaultConfig: EmitterConfig = {
-    particleTypeId: "rising_steam",
-    density: 5,
-    spread: 2,
-    direction: "up",
-    requiresRedstone: false,
-    enabled: true,
-};
-
-function configKey(x: number, y: number, z: number, dimId: string) {
-    return `emitter:${dimId}:${Math.floor(x)},${Math.floor(y)},${Math.floor(z)}`;
-}
-
 function getConfig(x: number, y: number, z: number, dimId: string): EmitterConfig {
     try {
-        const data = world.getDynamicProperty(configKey(x, y, z, dimId)) as string | undefined;
+        const data = world.getDynamicProperty(getConfigKey(x, y, z, dimId)) as string | undefined;
         if (data) return JSON.parse(data);
     } catch {
         /* invalid */
     }
-    return { ...DefaultConfig };
+    return { ...DefaultEmitterConfig };
 }
 
 system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRegistry }) => {
@@ -74,6 +52,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             const isRecentlyPlaced = recentlyPlaced.has(key);
 
             // Update visibility based on nearby players with lens/wand OR recently placed
+            // GDDv2: 32 block radius for Aether Lens
             let shouldBeVisible = isRecentlyPlaced;
             if (!shouldBeVisible) {
                 for (const player of world.getAllPlayers()) {
@@ -81,7 +60,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
                     const dx = player.location.x - x;
                     const dy = player.location.y - y;
                     const dz = player.location.z - z;
-                    if (dx * dx + dy * dy + dz * dz > 400) continue; // 20 block radius
+                    if (dx * dx + dy * dy + dz * dz > 1024) continue; // 32 block radius (32^2 = 1024)
 
                     const equip = player.getComponent("minecraft:equippable");
                     if (!equip) continue;
@@ -103,23 +82,56 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
 
             // Spawn particles if enabled
             if (!config.enabled) return;
-            if (config.requiresRedstone && !block.getRedstonePower()) return;
 
-            const particle = ParticleTypesMap.get(config.particleTypeId);
-            if (!particle) return;
-
+            // Create MolangVariableMap with all GDDv2 parameters
             if (!molangVars) molangVars = new MolangVariableMap();
-            // Density: 1-10 maps to multiplier for spawn rate
-            molangVars.setFloat("emitter_density", config.density);
-            // Spread: 0-4 maps to 0.5-2.5 blocks emission radius (0.5 base + 0.5 per level)
-            molangVars.setFloat("emitter_spread", 0.5 + config.spread * 0.5);
-            // Direction: 0=down, 1=up, 2=omni (particles can use this)
-            const dirValue = config.direction === "down" ? 0 : config.direction === "up" ? 1 : 2;
-            molangVars.setFloat("emitter_direction", dirValue);
 
-            const spawnY = config.direction === "down" ? y : config.direction === "up" ? y + 1 : y + 0.5;
+            // === Tab A: Appearance ===
+            // texture_id: 0 for basic (soft circle), 1-15 for presets
+            molangVars.setFloat("texture_id", config.renderStyle === "basic" ? 0 : config.textureId);
+
+            // Color: Use white (1,1,1) for preset textures without tinting to preserve original colors
+            if (config.renderStyle === "preset" && !config.tintMode) {
+                molangVars.setFloat("color_r", 1.0);
+                molangVars.setFloat("color_g", 1.0);
+                molangVars.setFloat("color_b", 1.0);
+            } else {
+                molangVars.setFloat("color_r", config.colorR);
+                molangVars.setFloat("color_g", config.colorG);
+                molangVars.setFloat("color_b", config.colorB);
+            }
+            molangVars.setFloat("alpha", config.alpha);
+            molangVars.setFloat("blend_mode", config.blendMode === "add" ? 1 : 0);
+            molangVars.setFloat("size_start", config.sizeStart);
+            molangVars.setFloat("size_end", config.sizeEnd);
+
+            // === Tab B: Physics & Motion ===
+            molangVars.setFloat("speed", config.speed);
+            molangVars.setFloat("gravity", config.gravity);
+            molangVars.setFloat("drag", config.drag);
+            molangVars.setFloat("direction_mode", config.directionMode === "radial" ? 1 : 0);
+            molangVars.setFloat("vector_x", config.vectorX);
+            molangVars.setFloat("vector_y", config.vectorY);
+            molangVars.setFloat("vector_z", config.vectorZ);
+            molangVars.setFloat("collision", config.collision ? 1 : 0);
+
+            // === Tab C: Spawning Rules ===
+            molangVars.setFloat("spawn_rate", config.spawnRate);
+            molangVars.setFloat("lifetime", config.lifetime);
+            molangVars.setFloat("emission_radius", config.emissionRadius);
+            // shape: 0 = sphere, 1 = box, 2 = disc
+            molangVars.setFloat("shape", config.shape === "sphere" ? 0 : config.shape === "box" ? 1 : 2);
+
+            // === Tab D: Advanced ===
+            molangVars.setFloat("spin_speed", config.spinSpeed);
+            molangVars.setFloat("face_camera", config.faceCamera ? 1 : 0);
+            molangVars.setFloat("pulse", config.pulse ? 1 : 0);
+
+            // Select particle based on blend mode
+            const particleId = config.blendMode === "add" ? "ns_ptl:master_particle_glow" : "ns_ptl:master_particle";
+
             try {
-                dimension.spawnParticle(particle.particleId, { x: x + 0.5, y: spawnY, z: z + 0.5 }, molangVars);
+                dimension.spawnParticle(particleId, { x: x + 0.5, y: y + 0.5, z: z + 0.5 }, molangVars);
             } catch {
                 /* unloaded */
             }
@@ -138,7 +150,12 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
                 return;
             }
 
-            system.run(() => TunerUI.openTunerMenu(player, event.block));
+            // GDDv2: Sneak + Right-Click for Copy/Paste quick actions
+            if (player.isSneaking) {
+                system.run(() => TunerUI.handleSneakInteract(player, event.block));
+            } else {
+                system.run(() => TunerUI.openComposer(player, event.block));
+            }
         },
     });
 });

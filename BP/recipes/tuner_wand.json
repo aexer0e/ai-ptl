@@ -3,8 +3,8 @@
     "minecraft:recipe_shapeless": {
         "description": { "identifier": "ns_ptl:tuner_wand" },
         "tags": [ "crafting_table" ],
-        "ingredients": [ "minecraft:stick", "minecraft:glowstone_dust", "minecraft:echo_shard" ],
+        "ingredients": [ "minecraft:blaze_rod", "minecraft:amethyst_shard", "minecraft:copper_ingot" ],
         "result": { "item": "ns_ptl:tuner_wand", "count": 1 },
-        "unlock": [{ "item": "minecraft:echo_shard" }]
+        "unlock": [{ "item": "minecraft:blaze_rod" }]
     }
 }

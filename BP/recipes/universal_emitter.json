@@ -3,15 +3,9 @@
     "minecraft:recipe_shaped": {
         "description": { "identifier": "ns_ptl:universal_emitter" },
         "tags": [ "crafting_table" ],
-        "pattern": [ "GAG", "IRI", "SSS" ],
-        "key": {
-            "G": "minecraft:glass",
-            "A": "minecraft:amethyst_shard",
-            "I": "minecraft:iron_ingot",
-            "R": "minecraft:redstone",
-            "S": "minecraft:stone"
-        },
-        "result": { "item": "ns_ptl:universal_emitter", "count": 4 },
-        "unlock": [{ "item": "minecraft:amethyst_shard" }]
+        "pattern": [ "IGI", "GEG", "IGI" ],
+        "key": { "I": "minecraft:iron_ingot", "G": "minecraft:glass_pane", "E": "minecraft:ender_eye" },
+        "result": { "item": "ns_ptl:universal_emitter", "count": 1 },
+        "unlock": [{ "item": "minecraft:ender_eye" }]
     }
 }
