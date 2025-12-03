@@ -1,6 +1,14 @@
 import { Block, Player, system, world } from "@minecraft/server";
 import { ActionFormData, FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
-import { ColorPresets, DefaultEmitterConfig, EmissionShape, EmitterConfig, getConfigKey, TexturePresets } from "./EmitterConfig";
+import {
+    ColorPresets,
+    DefaultEmitterConfig,
+    EmissionShape,
+    EmitterConfig,
+    getConfigKey,
+    ParticlePresets,
+    TexturePresets,
+} from "./EmitterConfig";
 
 // ============================================================================
 // Storage Functions
@@ -42,6 +50,58 @@ export function getClipboard(playerId: string): EmitterConfig | undefined {
 }
 
 // ============================================================================
+// Saved Creations Storage (World Dynamic Properties)
+// ============================================================================
+
+interface SavedCreation {
+    name: string;
+    config: EmitterConfig;
+}
+
+const savedCreationsKey = "saved_creations";
+const maxSavedCreations = 20;
+
+/** Get all saved creations from world storage */
+function getSavedCreations(): SavedCreation[] {
+    try {
+        const data = world.getDynamicProperty(savedCreationsKey) as string | undefined;
+        if (data) {
+            return JSON.parse(data);
+        }
+    } catch {
+        /* invalid */
+    }
+    return [];
+}
+
+/** Save creations to world storage */
+function setSavedCreations(creations: SavedCreation[]) {
+    world.setDynamicProperty(savedCreationsKey, JSON.stringify(creations));
+}
+
+/** Add a new saved creation */
+function addSavedCreation(name: string, config: EmitterConfig): boolean {
+    const creations = getSavedCreations();
+    if (creations.length >= maxSavedCreations) {
+        return false;
+    }
+    creations.push({ name, config: { ...config } });
+    setSavedCreations(creations);
+    return true;
+}
+
+/** Delete a saved creation by index */
+function deleteSavedCreation(index: number): boolean {
+    const creations = getSavedCreations();
+    if (index < 0 || index >= creations.length) {
+        return false;
+    }
+    creations.splice(index, 1);
+    setSavedCreations(creations);
+    return true;
+}
+
+// ============================================================================
 // Particle Composer UI
 // ============================================================================
 
@@ -51,17 +111,20 @@ export default class TunerUI {
      */
     static async openComposer(player: Player, block: Block) {
         const config = getEmitterConfig(block);
+        const savedCount = getSavedCreations().length;
 
         const form = new ActionFormData()
             .title("§l§dParticle Composer")
             .body(this.getStatusSummary(config))
+            .button("§6Presets\n§rPre-made effects")
+            .button(`§5Saved Creations\n§r${savedCount}/${maxSavedCreations} saved`)
             .button("§6Appearance\n§rStyle, Color, Size")
             .button("§3Physics & Motion\n§rSpeed, Gravity, Direction")
             .button("§2Spawning Rules\n§rRate, Lifetime, Shape")
             .button("§5Advanced\n§rSpin, Pulse, Billboard")
             .button(config.enabled ? "§cDisable Emitter" : "§2Enable Emitter")
-            .button("§eCopy Settings")
-            .button("§ePaste Settings")
+            .button("§6Copy Settings")
+            .button("§6Paste Settings")
             .button("§4Reset to Default");
 
         const response = await form.show(player);
@@ -69,29 +132,35 @@ export default class TunerUI {
 
         switch (response.selection) {
             case 0:
-                await this.openAppearanceTab(player, block, config);
+                await this.openPresetsMenu(player, block, config);
                 break;
             case 1:
-                await this.openPhysicsTab(player, block, config);
+                await this.openSavedCreationsMenu(player, block, config);
                 break;
             case 2:
-                await this.openSpawningTab(player, block, config);
+                await this.openAppearanceTab(player, block, config);
                 break;
             case 3:
-                await this.openAdvancedTab(player, block, config);
+                await this.openPhysicsTab(player, block, config);
                 break;
             case 4:
+                await this.openSpawningTab(player, block, config);
+                break;
+            case 5:
+                await this.openAdvancedTab(player, block, config);
+                break;
+            case 6:
                 config.enabled = !config.enabled;
                 setEmitterConfig(block, config);
                 player.sendMessage(config.enabled ? "§aEmitter enabled!" : "§cEmitter disabled.");
                 system.run(() => this.openComposer(player, block));
                 break;
-            case 5:
+            case 7:
                 copyEmitterConfig(player.id, config);
-                player.sendMessage("§eSettings copied to clipboard!");
+                player.sendMessage("§6Settings copied to clipboard!");
                 system.run(() => this.openComposer(player, block));
                 break;
-            case 6: {
+            case 8: {
                 const clipboard = getClipboard(player.id);
                 if (clipboard) {
                     setEmitterConfig(block, { ...clipboard });
@@ -102,9 +171,9 @@ export default class TunerUI {
                 system.run(() => this.openComposer(player, block));
                 break;
             }
-            case 7:
+            case 9:
                 setEmitterConfig(block, { ...DefaultEmitterConfig });
-                player.sendMessage("§eReset to default settings.");
+                player.sendMessage("§6Reset to default settings.");
                 system.run(() => this.openComposer(player, block));
                 break;
         }
@@ -169,6 +238,166 @@ export default class TunerUI {
             `§l§2Shape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})`,
             `§l§5Status:§r ${config.enabled ? "§2Active" : "§cDisabled"}`,
         ].join("\n");
+    }
+
+    // ========================================================================
+    // Presets Menu
+    // ========================================================================
+
+    private static async openPresetsMenu(player: Player, block: Block, _config: EmitterConfig) {
+        const form = new ActionFormData()
+            .title("§l§6Effect Presets")
+            .body("§8Select a pre-configured particle effect.\n§8These are ready-to-use starting points!");
+
+        for (const preset of ParticlePresets) {
+            form.button(`§${preset.color}${preset.name}\n§r§8${preset.description}`);
+        }
+
+        form.button("§c<- Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openComposer(player, block));
+            return;
+        }
+
+        // Back button is the last one
+        if (response.selection === ParticlePresets.length) {
+            system.run(() => this.openComposer(player, block));
+            return;
+        }
+
+        // Apply the selected preset
+        const preset = ParticlePresets[response.selection!];
+        const newConfig: EmitterConfig = {
+            ...DefaultEmitterConfig,
+            ...preset.config,
+            enabled: true,
+        };
+
+        setEmitterConfig(block, newConfig);
+        player.sendMessage(`§aApplied preset: §${preset.color}${preset.name}`);
+        system.run(() => this.openComposer(player, block));
+    }
+
+    // ========================================================================
+    // Saved Creations Menu
+    // ========================================================================
+
+    private static async openSavedCreationsMenu(player: Player, block: Block, config: EmitterConfig) {
+        const creations = getSavedCreations();
+
+        const form = new ActionFormData()
+            .title("§l§5Saved Creations")
+            .body(`§8Your saved particle effects.\n§8${creations.length}/${maxSavedCreations} slots used.`);
+
+        form.button("§2Save Current\n§8Save this emitter's settings");
+
+        for (const creation of creations) {
+            form.button(`§5${creation.name}\n§8Tap to load`);
+        }
+
+        form.button("§c<- Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openComposer(player, block));
+            return;
+        }
+
+        // Save Current button
+        if (response.selection === 0) {
+            await this.openSaveCreationForm(player, block, config);
+            return;
+        }
+
+        // Back button is the last one
+        if (response.selection === creations.length + 1) {
+            system.run(() => this.openComposer(player, block));
+            return;
+        }
+
+        // Load a saved creation
+        const creationIndex = response.selection! - 1;
+        await this.openCreationOptionsMenu(player, block, creations[creationIndex], creationIndex);
+    }
+
+    private static async openSaveCreationForm(player: Player, block: Block, config: EmitterConfig) {
+        const creations = getSavedCreations();
+
+        if (creations.length >= maxSavedCreations) {
+            player.sendMessage(`§cCannot save: Maximum of ${maxSavedCreations} creations reached.`);
+            system.run(() => this.openSavedCreationsMenu(player, block, config));
+            return;
+        }
+
+        const form = new ModalFormData().title("§l§2Save Creation").textField("Name your creation:", "My Particle Effect");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openSavedCreationsMenu(player, block, config));
+            return;
+        }
+
+        const name = (response.formValues?.[0] as string)?.trim() || "Unnamed";
+        const success = addSavedCreation(name, config);
+
+        if (success) {
+            player.sendMessage(`§aSaved creation: §5${name}`);
+        } else {
+            player.sendMessage("§cFailed to save creation.");
+        }
+
+        system.run(() => this.openSavedCreationsMenu(player, block, config));
+    }
+
+    private static async openCreationOptionsMenu(player: Player, block: Block, creation: SavedCreation, index: number) {
+        const form = new ActionFormData()
+            .title(`§l§5${creation.name}`)
+            .body("§8Choose an action for this saved creation.")
+            .button("§2Load\n§8Apply to this emitter")
+            .button("§4Delete\n§8Remove from saved")
+            .button("§c<- Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            const config = getEmitterConfig(block);
+            system.run(() => this.openSavedCreationsMenu(player, block, config));
+            return;
+        }
+
+        switch (response.selection) {
+            case 0: {
+                // Load
+                const newConfig: EmitterConfig = {
+                    ...DefaultEmitterConfig,
+                    ...creation.config,
+                    enabled: true,
+                };
+                setEmitterConfig(block, newConfig);
+                player.sendMessage(`§aLoaded: §5${creation.name}`);
+                system.run(() => this.openComposer(player, block));
+                break;
+            }
+            case 1: {
+                // Delete
+                const success = deleteSavedCreation(index);
+                if (success) {
+                    player.sendMessage(`§cDeleted: §5${creation.name}`);
+                } else {
+                    player.sendMessage("§cFailed to delete creation.");
+                }
+                const config = getEmitterConfig(block);
+                system.run(() => this.openSavedCreationsMenu(player, block, config));
+                break;
+            }
+            case 2: {
+                // Back
+                const config = getEmitterConfig(block);
+                system.run(() => this.openSavedCreationsMenu(player, block, config));
+                break;
+            }
+        }
     }
 
     // ========================================================================

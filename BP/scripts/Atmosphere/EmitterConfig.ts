@@ -195,3 +195,241 @@ export const DefaultEmitterConfig: EmitterConfig = {
 export function getConfigKey(x: number, y: number, z: number, dimId: string): string {
     return `emitter:${dimId}:${Math.floor(x)},${Math.floor(y)},${Math.floor(z)}`;
 }
+
+/**
+ * Preset particle effect configuration
+ */
+export interface ParticlePreset {
+    /** Display name for the preset */
+    name: string;
+    /** Short description of the effect */
+    description: string;
+    /** Color code for button display (e.g., "6" for gold) */
+    color: string;
+    /** The emitter configuration to apply */
+    config: Partial<EmitterConfig>;
+}
+
+/**
+ * Pre-configured particle effect presets
+ * Each preset overrides specific values from DefaultEmitterConfig
+ */
+export const ParticlePresets: ParticlePreset[] = [
+    {
+        name: "Campfire",
+        description: "Warm flickering flames rising upward",
+        color: "6", // Gold/Orange for fire
+        config: {
+            textureId: 9, // Flame
+            colorStartIndex: 2, // Orange
+            colorEndIndex: 1, // Red
+            alpha: 0.9,
+            blendMode: "add",
+            sizeStart: 0.4,
+            sizeEnd: 0.1,
+            speed: 0.6,
+            gravity: -0.5,
+            drag: 0.5,
+            directionMode: "vector",
+            vectorX: 0.0,
+            vectorY: 1.0,
+            vectorZ: 0.0,
+            spawnRate: 15,
+            lifetime: 2.0,
+            emissionRadius: 0.3,
+            shape: "disc",
+            spinSpeed: 30,
+            faceCamera: true,
+            pulse: true,
+        },
+    },
+    {
+        name: "Enchantment Runes",
+        description: "Mystical runes floating upward",
+        color: "5", // Purple for magic
+        config: {
+            textureId: 8, // Rune
+            colorStartIndex: 8, // Purple
+            colorEndIndex: 6, // Cyan
+            alpha: 0.85,
+            blendMode: "add",
+            sizeStart: 0.3,
+            sizeEnd: 0.0,
+            speed: 0.3,
+            gravity: -0.4,
+            drag: 2.0,
+            directionMode: "radial",
+            spawnRate: 8,
+            lifetime: 3.5,
+            emissionRadius: 1.0,
+            shape: "sphere",
+            spinSpeed: 90,
+            faceCamera: true,
+            pulse: false,
+        },
+    },
+    {
+        name: "Soul Fire",
+        description: "Eerie blue ghostly flames",
+        color: "3", // Dark cyan for soul
+        config: {
+            textureId: 9, // Flame
+            colorStartIndex: 6, // Cyan
+            colorEndIndex: 7, // Blue
+            alpha: 0.8,
+            blendMode: "add",
+            sizeStart: 0.5,
+            sizeEnd: 0.1,
+            speed: 0.5,
+            gravity: -0.6,
+            drag: 0.8,
+            directionMode: "vector",
+            vectorX: 0.1,
+            vectorY: 1.0,
+            vectorZ: 0.0,
+            spawnRate: 12,
+            lifetime: 2.5,
+            emissionRadius: 0.4,
+            shape: "disc",
+            spinSpeed: 45,
+            faceCamera: true,
+            pulse: true,
+        },
+    },
+    {
+        name: "Water Fountain",
+        description: "Droplets spraying up and falling",
+        color: "9", // Blue for water
+        config: {
+            textureId: 7, // Bubble
+            colorStartIndex: 6, // Cyan
+            colorEndIndex: 7, // Blue
+            alpha: 0.7,
+            blendMode: "blend",
+            sizeStart: 0.2,
+            sizeEnd: 0.15,
+            speed: 1.2,
+            gravity: 0.8,
+            drag: 0.2,
+            directionMode: "vector",
+            vectorX: 0.0,
+            vectorY: 1.0,
+            vectorZ: 0.0,
+            spawnRate: 20,
+            lifetime: 2.0,
+            emissionRadius: 0.2,
+            shape: "disc",
+            spinSpeed: 0,
+            faceCamera: true,
+            pulse: false,
+            collision: true,
+        },
+    },
+    {
+        name: "Fireflies",
+        description: "Gentle glowing orbs drifting",
+        color: "2", // Dark green for nature
+        config: {
+            textureId: 13, // Magic Orb
+            colorStartIndex: 3, // Yellow
+            colorEndIndex: 4, // Lime
+            alpha: 0.9,
+            blendMode: "add",
+            sizeStart: 0.15,
+            sizeEnd: 0.1,
+            speed: 0.15,
+            gravity: -0.05,
+            drag: 3.0,
+            directionMode: "radial",
+            spawnRate: 5,
+            lifetime: 5.0,
+            emissionRadius: 2.0,
+            shape: "sphere",
+            spinSpeed: 0,
+            faceCamera: true,
+            pulse: true,
+        },
+    },
+    {
+        name: "Snow Globe",
+        description: "Gentle snowflakes drifting down",
+        color: "8", // Dark gray for winter
+        config: {
+            textureId: 10, // Snowflake
+            colorStartIndex: 0, // White
+            colorEndIndex: 0, // White
+            alpha: 0.9,
+            blendMode: "blend",
+            sizeStart: 0.25,
+            sizeEnd: 0.2,
+            speed: 0.2,
+            gravity: 0.15,
+            drag: 2.5,
+            directionMode: "vector",
+            vectorX: 0.2,
+            vectorY: -1.0,
+            vectorZ: 0.1,
+            spawnRate: 12,
+            lifetime: 4.0,
+            emissionRadius: 1.5,
+            shape: "box",
+            spinSpeed: 60,
+            faceCamera: true,
+            pulse: false,
+        },
+    },
+    {
+        name: "Portal Swirl",
+        description: "Spinning particles like a portal",
+        color: "5", // Purple for portal
+        config: {
+            textureId: 6, // Spark
+            colorStartIndex: 8, // Purple
+            colorEndIndex: 9, // Pink
+            alpha: 0.85,
+            blendMode: "add",
+            sizeStart: 0.2,
+            sizeEnd: 0.05,
+            speed: 0.8,
+            gravity: 0.0,
+            drag: 1.5,
+            directionMode: "radial",
+            spawnRate: 25,
+            lifetime: 1.5,
+            emissionRadius: 0.8,
+            shape: "disc",
+            spinSpeed: 180,
+            faceCamera: true,
+            pulse: false,
+            offsetY: 0.5,
+        },
+    },
+    {
+        name: "Toxic Fumes",
+        description: "Noxious green smoke rising",
+        color: "2", // Dark green for toxic
+        config: {
+            textureId: 5, // Smoke Puff
+            colorStartIndex: 4, // Lime
+            colorEndIndex: 5, // Green
+            alpha: 0.6,
+            blendMode: "blend",
+            sizeStart: 0.3,
+            sizeEnd: 0.8,
+            speed: 0.25,
+            gravity: -0.3,
+            drag: 1.0,
+            directionMode: "vector",
+            vectorX: 0.0,
+            vectorY: 1.0,
+            vectorZ: 0.0,
+            spawnRate: 8,
+            lifetime: 4.0,
+            emissionRadius: 0.5,
+            shape: "sphere",
+            spinSpeed: 15,
+            faceCamera: true,
+            pulse: false,
+        },
+    },
+];
