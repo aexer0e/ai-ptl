@@ -103,7 +103,7 @@ function generateParticle(shape: ShapeType, blend: BlendType, collision: Collisi
         "minecraft:particle_initial_speed": "variable.speed",
         "minecraft:particle_initial_spin": {
             rotation: "variable.random_rotation == 1 ? math.random(-variable.rotation_range, variable.rotation_range) + variable.initial_rotation : variable.initial_rotation",
-            rotation_rate: "variable.spin_speed",
+            rotation_rate: "variable.spin_speed + math.random(-variable.spin_speed_range, variable.spin_speed_range)",
         },
         "minecraft:particle_lifetime_expression": { max_lifetime: "variable.lifetime" },
         "minecraft:particle_motion_dynamic": {
@@ -126,9 +126,9 @@ function generateParticle(shape: ShapeType, blend: BlendType, collision: Collisi
         },
         "minecraft:particle_appearance_tinting": {
             color: [
-                "math.lerp(variable.color_r, variable.color_end_r, variable.particle_age / variable.particle_lifetime)",
-                "math.lerp(variable.color_g, variable.color_end_g, variable.particle_age / variable.particle_lifetime)",
-                "math.lerp(variable.color_b, variable.color_end_b, variable.particle_age / variable.particle_lifetime)",
+                "2*math.lerp(variable.color_r, variable.color_end_r, variable.particle_age / variable.particle_lifetime)",
+                "2*math.lerp(variable.color_g, variable.color_end_g, variable.particle_age / variable.particle_lifetime)",
+                "2*math.lerp(variable.color_b, variable.color_end_b, variable.particle_age / variable.particle_lifetime)",
                 "variable.fade_out == 1 ? variable.alpha * (1 - variable.particle_age / variable.particle_lifetime) : variable.alpha",
             ],
         },

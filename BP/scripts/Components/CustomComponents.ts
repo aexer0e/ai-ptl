@@ -135,6 +135,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
 
             // Spin speed (from Physics tab)
             molangVars.setFloat("spin_speed", config.spinSpeed);
+            molangVars.setFloat("spin_speed_range", config.spinSpeedRange ?? 0);
 
             // Select particle based on shape, blend mode, and collision
             // Shape: sphere (default), box, disc

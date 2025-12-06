@@ -76,6 +76,8 @@ export interface EmitterConfig {
     collision: boolean;
     /** Rotation speed of particle texture (degrees/sec) */
     spinSpeed: number;
+    /** Randomization range for spin speed (+/- degrees/sec) */
+    spinSpeedRange: number;
 
     // === Tab C: Spawning Rules ===
     /** Particles per second (1-50) */
@@ -202,6 +204,7 @@ export const DefaultEmitterConfig: EmitterConfig = {
     vectorZ: 0.0,
     collision: false,
     spinSpeed: 0,
+    spinSpeedRange: 0,
 
     // Spawning
     spawnRate: 10,

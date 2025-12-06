@@ -194,6 +194,7 @@ function exportToCode(config: EmitterConfig): string {
         encodeFloat(config.offsetZ, -5, 5), // 23: offset Z
         encodeFloat(config.initialRotation, 0, 360), // 24: initial rotation
         encodeFloat(config.rotationRange, 0, 360), // 25: rotation range
+        encodeFloat(config.spinSpeedRange ?? 0, 0, 180), // 26: spin speed range
     ];
 
     return "P2-" + bytes.map(toHex2).join("");
@@ -233,12 +234,12 @@ function importFromHexCode(hex: string): EmitterConfig | null {
     // Remove any non-hex characters
     const cleanHex = hex.replace(/[^0-9a-fA-F]/g, "");
 
-    // Need at least 26 bytes (52 hex chars)
+    // Need at least 26 bytes (52 hex chars) - support older 26-byte and newer 27-byte codes
     if (cleanHex.length < 52) return null;
 
-    // Parse bytes
+    // Parse bytes (up to 27 for new format)
     const bytes: number[] = [];
-    for (let i = 0; i < cleanHex.length && bytes.length < 26; i += 2) {
+    for (let i = 0; i < cleanHex.length && bytes.length < 27; i += 2) {
         bytes.push(fromHex2(cleanHex.slice(i, i + 2)));
     }
 
@@ -278,6 +279,7 @@ function importFromHexCode(hex: string): EmitterConfig | null {
         offsetZ: decodeFloat(bytes[23], -5, 5),
         initialRotation: decodeFloat(bytes[24], 0, 360),
         rotationRange: decodeFloat(bytes[25], 0, 360),
+        spinSpeedRange: bytes.length > 26 ? decodeFloat(bytes[26], 0, 180) : 0,
         enabled: true,
     };
 }
@@ -897,7 +899,8 @@ export default class TunerUI {
             .slider("Vector Y (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorY * 10), valueStep: 1 })
             .slider("Vector Z (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorZ * 10), valueStep: 1 })
             .toggle("Collision (bounce on blocks)", { defaultValue: config.collision })
-            .slider("Spin Speed (degrees/sec)", -360, 360, { defaultValue: config.spinSpeed, valueStep: 15 });
+            .slider("Spin Speed (degrees/sec)", -360, 360, { defaultValue: config.spinSpeed, valueStep: 15 })
+            .slider("Spin Randomization (+/-)", 0, 180, { defaultValue: config.spinSpeedRange ?? 0, valueStep: 15 });
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -905,7 +908,7 @@ export default class TunerUI {
             return;
         }
 
-        const [speed, gravity, acceleration, drag, dirIdx, vectorX, vectorY, vectorZ, collision, spinSpeed] = response.formValues as [
+        const [speed, gravity, acceleration, drag, dirIdx, vectorX, vectorY, vectorZ, collision, spinSpeed, spinSpeedRange] = response.formValues as [
             number,
             number,
             number,
@@ -915,6 +918,7 @@ export default class TunerUI {
             number,
             number,
             boolean,
+            number,
             number,
         ];
 
@@ -928,6 +932,7 @@ export default class TunerUI {
         config.vectorZ = vectorZ / 10;
         config.collision = collision;
         config.spinSpeed = spinSpeed;
+        config.spinSpeedRange = spinSpeedRange;
 
         setEmitterConfig(block, config);
         player.sendMessage("§bPhysics settings saved!");
