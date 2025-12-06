@@ -3,7 +3,7 @@ import { ColorPresets, DefaultEmitterConfig, EmitterConfig, getConfigKey } from 
 import TunerUI from "Atmosphere/ParticleComposer";
 
 const tunerWandId = "ns_ptl:tuner_wand";
-const aetherLensId = "ns_ptl:aether_lens";
+const universalEmitterId = "ns_ptl:universal_emitter";
 let molangVars: MolangVariableMap | null = null;
 
 // Track recently placed blocks that should be visible temporarily (tick when visibility expires)
@@ -28,7 +28,6 @@ function getConfig(x: number, y: number, z: number, dimId: string): EmitterConfi
 }
 
 system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRegistry }) => {
-    itemComponentRegistry.registerCustomComponent("ns_ptl:aether_lens", {});
     itemComponentRegistry.registerCustomComponent("ns_ptl:tuner_wand", {});
 
     blockComponentRegistry.registerCustomComponent("ns_ptl:emitter_block", {
@@ -67,9 +66,9 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
 
                     const equip = player.getComponent("minecraft:equippable");
                     if (!equip) continue;
-                    const helmet = equip.getEquipment(EquipmentSlot.Head);
                     const mainhand = equip.getEquipment(EquipmentSlot.Mainhand);
-                    if (helmet?.typeId === aetherLensId || mainhand?.typeId === tunerWandId) {
+                    // Emitters visible when holding Tuner Wand or Universal Emitter block
+                    if (mainhand?.typeId === tunerWandId || mainhand?.typeId === universalEmitterId) {
                         shouldBeVisible = true;
                         break;
                     }
@@ -107,6 +106,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             molangVars.setFloat("color_end_b", endColor[3]);
 
             molangVars.setFloat("alpha", config.alpha);
+            molangVars.setFloat("fade_out", config.fadeOut ? 1 : 0);
             molangVars.setFloat("blend_mode", config.blendMode === "add" ? 1 : 0);
             molangVars.setFloat("size_start", config.sizeStart);
             molangVars.setFloat("size_end", config.sizeEnd);
@@ -114,6 +114,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             // === Tab B: Physics & Motion ===
             molangVars.setFloat("speed", config.speed);
             molangVars.setFloat("gravity", config.gravity);
+            molangVars.setFloat("acceleration", config.acceleration ?? 0);
             molangVars.setFloat("drag", config.drag);
             molangVars.setFloat("direction_mode", config.directionMode === "radial" ? 1 : 0);
             molangVars.setFloat("vector_x", config.vectorX);
@@ -127,14 +128,22 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             molangVars.setFloat("emission_radius", config.emissionRadius);
             // shape: 0 = sphere, 1 = box, 2 = disc
             molangVars.setFloat("shape", config.shape === "sphere" ? 0 : config.shape === "box" ? 1 : 2);
+            // Rotation spawn settings
+            molangVars.setFloat("random_rotation", config.randomRotation ? 1 : 0);
+            molangVars.setFloat("initial_rotation", config.initialRotation ?? 0);
+            molangVars.setFloat("rotation_range", config.rotationRange ?? 180);
 
-            // === Tab D: Advanced ===
+            // Spin speed (from Physics tab)
             molangVars.setFloat("spin_speed", config.spinSpeed);
-            molangVars.setFloat("face_camera", config.faceCamera ? 1 : 0);
-            molangVars.setFloat("pulse", config.pulse ? 1 : 0);
 
-            // Select particle based on blend mode
-            const particleId = config.blendMode === "add" ? "ns_ptl:master_particle_glow" : "ns_ptl:master_particle";
+            // Select particle based on shape, blend mode, and collision
+            // Shape: sphere (default), box, disc
+            // Blend: blend (default), alpha, add (glow)
+            // Collision: none (default), collide
+            const shapeSuffix = config.shape === "sphere" ? "" : `_${config.shape}`;
+            const blendSuffix = config.blendMode === "alpha" ? "_alpha" : config.blendMode === "add" ? "_glow" : "";
+            const collisionSuffix = config.collision ? "_collide" : "";
+            const particleId = `ns_ptl:master_particle${shapeSuffix}${blendSuffix}${collisionSuffix}`;
 
             // Apply spawn offset
             const spawnX = x + 0.5 + (config.offsetX ?? 0);

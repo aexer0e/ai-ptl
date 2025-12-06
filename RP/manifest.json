@@ -1,45 +1,15 @@
 {
     "format_version": 2,
     "metadata": {
-        "authors": [
-            "Ninja Squirrel Gaming"
-        ],
-        "generated_with": {
-            "bridge": [
-                "2.7.33"
-            ],
-            "dash": [
-                "0.11.7"
-            ],
-            "blockbench_block_wizard": [
-                "1.2.1"
-            ]
-        }
+        "authors": [ "Ninja Squirrel Gaming" ],
+        "generated_with": { "bridge": [ "2.7.33" ], "dash": [ "0.11.7" ], "blockbench_block_wizard": [ "1.2.1" ]}
     },
     "header": {
         "name": "pack.name",
         "description": "pack.description",
-        "min_engine_version": [
-            1,
-            21,
-            80
-        ],
+        "min_engine_version": [ 1, 21, 80 ],
         "uuid": "e0083c1d-ada9-4f22-b9f1-7bf32e7b1341",
-        "version": [
-            0,
-            0,
-            1
-        ]
+        "version": [ 0, 0, 2 ]
     },
-    "modules": [
-        {
-            "type": "resources",
-            "uuid": "05d52376-e046-4bfa-8f11-491110069e35",
-            "version": [
-                0,
-                0,
-                1
-            ]
-        }
-    ]
+    "modules": [{ "type": "resources", "uuid": "05d52376-e046-4bfa-8f11-491110069e35", "version": [ 0, 0, 2 ]}]
 }

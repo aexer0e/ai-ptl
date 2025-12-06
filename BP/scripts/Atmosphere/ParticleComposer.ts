@@ -1,12 +1,14 @@
 import { Block, Player, system, world } from "@minecraft/server";
 import { ActionFormData, FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
 import {
+    BlendMode,
     ColorPresets,
     DefaultEmitterConfig,
     EmissionShape,
     EmitterConfig,
     getConfigKey,
     ParticlePresets,
+    TextureDefaultColors,
     TexturePresets,
 } from "./EmitterConfig";
 
@@ -102,6 +104,235 @@ function deleteSavedCreation(index: number): boolean {
 }
 
 // ============================================================================
+// Shareable Preset Codes (Compact Hex Format)
+// ============================================================================
+
+// Format: P2-XXYYZZ... where each XX is a hex byte (00-FF)
+// Much more compact than base64 JSON and uses only simple characters
+
+// Legacy base64 support for old codes
+const base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
+function decodeBase64(b64: string): string {
+    const cleaned = b64.replace(/[\s=]/g, "");
+    if (cleaned.length === 0) return "";
+    const bytes: number[] = [];
+    for (let i = 0; i < cleaned.length; i += 4) {
+        const a = base64Chars.indexOf(cleaned[i] || "A");
+        const b = base64Chars.indexOf(cleaned[i + 1] || "A");
+        const c = base64Chars.indexOf(cleaned[i + 2] || "A");
+        const d = base64Chars.indexOf(cleaned[i + 3] || "A");
+        if (a < 0 || b < 0 || c < 0 || d < 0) continue;
+        const n = (a << 18) | (b << 12) | (c << 6) | d;
+        bytes.push((n >> 16) & 255);
+        if (i + 2 < cleaned.length) bytes.push((n >> 8) & 255);
+        if (i + 3 < cleaned.length) bytes.push(n & 255);
+    }
+    let result = "";
+    for (const byte of bytes) {
+        if (byte === 0) break;
+        result += String.fromCharCode(byte);
+    }
+    return result;
+}
+
+/** Clamp and scale a float to fit in 0-255 range */
+function encodeFloat(value: number, min: number, max: number): number {
+    const normalized = (value - min) / (max - min);
+    return Math.round(Math.max(0, Math.min(255, normalized * 255)));
+}
+
+/** Decode a 0-255 value back to original float range */
+function decodeFloat(encoded: number, min: number, max: number): number {
+    return min + (encoded / 255) * (max - min);
+}
+
+/** Convert a number to 2-char hex */
+function toHex2(n: number): string {
+    return Math.max(0, Math.min(255, Math.round(n)))
+        .toString(16)
+        .padStart(2, "0");
+}
+
+/** Parse 2 hex chars to number, returns 0 on error */
+function fromHex2(hex: string): number {
+    const val = parseInt(hex, 16);
+    return isNaN(val) ? 0 : val;
+}
+
+/** Export config to shareable compact hex code */
+function exportToCode(config: EmitterConfig): string {
+    // Pack all values into hex bytes
+    // Each value is mapped to 0-255 range
+    const bytes = [
+        config.textureId & 0xff, // 0: texture 0-15
+        config.colorStartIndex & 0xff, // 1: color start 0-31
+        config.colorEndIndex & 0xff, // 2: color end 0-31
+        encodeFloat(config.alpha, 0, 1), // 3: alpha 0-1
+        config.blendMode === "alpha" ? 1 : config.blendMode === "add" ? 2 : 0, // 4: blend mode
+        encodeFloat(config.sizeStart, 0, 5), // 5: size start
+        encodeFloat(config.sizeEnd, 0, 5), // 6: size end
+        encodeFloat(config.speed, 0, 5), // 7: speed
+        encodeFloat(config.gravity, -5, 5), // 8: gravity (centered)
+        encodeFloat(config.acceleration, -5, 5), // 9: acceleration
+        encodeFloat(config.drag, 0, 10), // 10: drag
+        config.directionMode === "radial" ? 1 : 0, // 11: direction mode
+        encodeFloat(config.vectorX, -1, 1), // 12: vector X
+        encodeFloat(config.vectorY, -1, 1), // 13: vector Y
+        encodeFloat(config.vectorZ, -1, 1), // 14: vector Z
+        (config.collision ? 1 : 0) |
+            (1 << 1) | // faceCamera always true (removed from config)
+            ((config.randomRotation ? 1 : 0) << 2) |
+            ((config.fadeOut ? 1 : 0) << 3), // 15: flags
+        encodeFloat(config.spinSpeed, -360, 360), // 16: spin speed
+        Math.min(255, config.spawnRate), // 17: spawn rate
+        encodeFloat(config.lifetime, 0, 30), // 18: lifetime
+        encodeFloat(config.emissionRadius, 0, 5), // 19: emission radius
+        config.shape === "sphere" ? 0 : config.shape === "box" ? 1 : 2, // 20: shape
+        encodeFloat(config.offsetX, -5, 5), // 21: offset X
+        encodeFloat(config.offsetY, -5, 5), // 22: offset Y
+        encodeFloat(config.offsetZ, -5, 5), // 23: offset Z
+        encodeFloat(config.initialRotation, 0, 360), // 24: initial rotation
+        encodeFloat(config.rotationRange, 0, 360), // 25: rotation range
+    ];
+
+    return "P2-" + bytes.map(toHex2).join("");
+}
+
+/** Import config from shareable hex code */
+function importFromCode(code: string): EmitterConfig | null {
+    try {
+        // Clean and normalize input - remove ALL whitespace and common artifacts
+        let cleaned = code.replace(/\s+/g, "").replace(/^["'`[(]+|["'`\])]+$/g, "");
+
+        // Handle case-insensitive prefix, find it anywhere in string
+        const upperCleaned = cleaned.toUpperCase();
+
+        // Try new format first (P2-)
+        let prefixIndex = upperCleaned.indexOf("P2-");
+        if (prefixIndex !== -1) {
+            cleaned = cleaned.slice(prefixIndex + 3); // Skip "P2-"
+            return importFromHexCode(cleaned);
+        }
+
+        // Fall back to legacy format (DIYP1:)
+        prefixIndex = upperCleaned.indexOf("DIYP1:");
+        if (prefixIndex !== -1) {
+            cleaned = cleaned.slice(prefixIndex + 6); // Skip "DIYP1:"
+            return importFromLegacyCode(cleaned);
+        }
+
+        return null;
+    } catch {
+        return null;
+    }
+}
+
+/** Import from new hex format */
+function importFromHexCode(hex: string): EmitterConfig | null {
+    // Remove any non-hex characters
+    const cleanHex = hex.replace(/[^0-9a-fA-F]/g, "");
+
+    // Need at least 26 bytes (52 hex chars)
+    if (cleanHex.length < 52) return null;
+
+    // Parse bytes
+    const bytes: number[] = [];
+    for (let i = 0; i < cleanHex.length && bytes.length < 26; i += 2) {
+        bytes.push(fromHex2(cleanHex.slice(i, i + 2)));
+    }
+
+    if (bytes.length < 26) return null;
+
+    const shapeMap: EmissionShape[] = ["sphere", "box", "disc"];
+    const blendMap: BlendMode[] = ["blend", "alpha", "add"];
+    const flags = bytes[15];
+
+    return {
+        ...DefaultEmitterConfig,
+        textureId: bytes[0],
+        colorStartIndex: bytes[1],
+        colorEndIndex: bytes[2],
+        alpha: decodeFloat(bytes[3], 0, 1),
+        blendMode: blendMap[bytes[4]] ?? "blend",
+        sizeStart: decodeFloat(bytes[5], 0, 5),
+        sizeEnd: decodeFloat(bytes[6], 0, 5),
+        speed: decodeFloat(bytes[7], 0, 5),
+        gravity: decodeFloat(bytes[8], -5, 5),
+        acceleration: decodeFloat(bytes[9], -5, 5),
+        drag: decodeFloat(bytes[10], 0, 10),
+        directionMode: bytes[11] === 1 ? "radial" : "vector",
+        vectorX: decodeFloat(bytes[12], -1, 1),
+        vectorY: decodeFloat(bytes[13], -1, 1),
+        vectorZ: decodeFloat(bytes[14], -1, 1),
+        collision: (flags & 1) !== 0,
+        randomRotation: (flags & 4) !== 0,
+        fadeOut: (flags & 8) !== 0,
+        spinSpeed: decodeFloat(bytes[16], -360, 360),
+        spawnRate: bytes[17],
+        lifetime: decodeFloat(bytes[18], 0, 30),
+        emissionRadius: decodeFloat(bytes[19], 0, 5),
+        shape: shapeMap[bytes[20]] ?? "sphere",
+        offsetX: decodeFloat(bytes[21], -5, 5),
+        offsetY: decodeFloat(bytes[22], -5, 5),
+        offsetZ: decodeFloat(bytes[23], -5, 5),
+        initialRotation: decodeFloat(bytes[24], 0, 360),
+        rotationRange: decodeFloat(bytes[25], 0, 360),
+        enabled: true,
+    };
+}
+
+/** Import from legacy base64 JSON format (DIYP1:) */
+function importFromLegacyCode(b64: string): EmitterConfig | null {
+    const json = decodeBase64(b64);
+    if (!json || json.length === 0) return null;
+
+    let minimal;
+    try {
+        minimal = JSON.parse(json);
+    } catch {
+        const jsonStart = json.indexOf("{");
+        const jsonEnd = json.lastIndexOf("}");
+        if (jsonStart === -1 || jsonEnd === -1 || jsonEnd <= jsonStart) return null;
+        minimal = JSON.parse(json.slice(jsonStart, jsonEnd + 1));
+    }
+
+    const shapeMap: EmissionShape[] = ["sphere", "box", "disc"];
+    const blendMap: BlendMode[] = ["blend", "alpha", "add"];
+    return {
+        ...DefaultEmitterConfig,
+        textureId: minimal.t ?? 0,
+        colorStartIndex: minimal.cs ?? 0,
+        colorEndIndex: minimal.ce ?? 0,
+        alpha: minimal.a ?? 1,
+        blendMode: blendMap[minimal.bm] ?? "blend",
+        sizeStart: minimal.ss ?? 1,
+        sizeEnd: minimal.se ?? 0.5,
+        speed: minimal.sp ?? 0.5,
+        gravity: minimal.g ?? 0,
+        acceleration: minimal.ac ?? 0,
+        drag: minimal.d ?? 0,
+        directionMode: minimal.dm === 1 ? "radial" : "vector",
+        vectorX: minimal.vx ?? 0,
+        vectorY: minimal.vy ?? 1,
+        vectorZ: minimal.vz ?? 0,
+        collision: minimal.c === 1,
+        spinSpeed: minimal.sps ?? 0,
+        spawnRate: minimal.sr ?? 5,
+        lifetime: minimal.l ?? 3,
+        emissionRadius: minimal.er ?? 0.5,
+        shape: shapeMap[minimal.sh] ?? "sphere",
+        offsetX: minimal.ox ?? 0,
+        offsetY: minimal.oy ?? 0,
+        offsetZ: minimal.oz ?? 0,
+        randomRotation: minimal.rr !== 0,
+        initialRotation: minimal.ir ?? 0,
+        rotationRange: minimal.rrg ?? 180,
+        enabled: true,
+    };
+}
+
+// ============================================================================
 // Particle Composer UI
 // ============================================================================
 
@@ -119,9 +350,8 @@ export default class TunerUI {
             .button("§6Presets\n§rPre-made effects")
             .button(`§5Saved Creations\n§r${savedCount}/${maxSavedCreations} saved`)
             .button("§6Appearance\n§rStyle, Color, Size")
-            .button("§3Physics & Motion\n§rSpeed, Gravity, Direction")
-            .button("§2Spawning Rules\n§rRate, Lifetime, Shape")
-            .button("§5Advanced\n§rSpin, Pulse, Billboard")
+            .button("§3Physics & Motion\n§rSpeed, Gravity, Rotation")
+            .button("§2Spawning Rules\n§rRate, Lifetime, Shape, Rotation")
             .button(config.enabled ? "§cDisable Emitter" : "§2Enable Emitter")
             .button("§6Copy Settings")
             .button("§6Paste Settings")
@@ -147,20 +377,17 @@ export default class TunerUI {
                 await this.openSpawningTab(player, block, config);
                 break;
             case 5:
-                await this.openAdvancedTab(player, block, config);
-                break;
-            case 6:
                 config.enabled = !config.enabled;
                 setEmitterConfig(block, config);
                 player.sendMessage(config.enabled ? "§aEmitter enabled!" : "§cEmitter disabled.");
                 system.run(() => this.openComposer(player, block));
                 break;
-            case 7:
+            case 6:
                 copyEmitterConfig(player.id, config);
                 player.sendMessage("§6Settings copied to clipboard!");
                 system.run(() => this.openComposer(player, block));
                 break;
-            case 8: {
+            case 7: {
                 const clipboard = getClipboard(player.id);
                 if (clipboard) {
                     setEmitterConfig(block, { ...clipboard });
@@ -171,7 +398,7 @@ export default class TunerUI {
                 system.run(() => this.openComposer(player, block));
                 break;
             }
-            case 9:
+            case 8:
                 setEmitterConfig(block, { ...DefaultEmitterConfig });
                 player.sendMessage("§6Reset to default settings.");
                 system.run(() => this.openComposer(player, block));
@@ -292,6 +519,8 @@ export default class TunerUI {
             .body(`§8Your saved particle effects.\n§8${creations.length}/${maxSavedCreations} slots used.`);
 
         form.button("§2Save Current\n§8Save this emitter's settings");
+        form.button("§6Export Code\n§8Share settings online");
+        form.button("§6Import Code\n§8Paste shared code");
 
         for (const creation of creations) {
             form.button(`§5${creation.name}\n§8Tap to load`);
@@ -311,15 +540,61 @@ export default class TunerUI {
             return;
         }
 
-        // Back button is the last one
-        if (response.selection === creations.length + 1) {
+        // Export Code button
+        if (response.selection === 1) {
+            await this.openExportCodeForm(player, block, config);
+            return;
+        }
+
+        // Import Code button
+        if (response.selection === 2) {
+            await this.openImportCodeForm(player, block);
+            return;
+        }
+
+        // Back button is the last one (after 3 fixed buttons + creations)
+        if (response.selection === creations.length + 3) {
             system.run(() => this.openComposer(player, block));
             return;
         }
 
-        // Load a saved creation
-        const creationIndex = response.selection! - 1;
+        // Load a saved creation (offset by 3 for the fixed buttons)
+        const creationIndex = response.selection! - 3;
         await this.openCreationOptionsMenu(player, block, creations[creationIndex], creationIndex);
+    }
+
+    private static async openExportCodeForm(player: Player, block: Block, config: EmitterConfig) {
+        const code = exportToCode(config);
+
+        const form = new ModalFormData().title("§l§6Export Code").textField("Copy this code to share:", code, { defaultValue: code });
+
+        await form.show(player);
+        // Whether they submit or cancel, just go back to the menu
+        system.run(() => this.openSavedCreationsMenu(player, block, config));
+    }
+
+    private static async openImportCodeForm(player: Player, block: Block) {
+        const form = new ModalFormData().title("§l§6Import Code").textField("Paste share code:", "DIYP1:...");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            const config = getEmitterConfig(block);
+            system.run(() => this.openSavedCreationsMenu(player, block, config));
+            return;
+        }
+
+        const code = (response.formValues?.[0] as string)?.trim() || "";
+        const imported = importFromCode(code);
+
+        if (imported) {
+            setEmitterConfig(block, imported);
+            player.sendMessage("§aSettings imported successfully!");
+            system.run(() => this.openComposer(player, block));
+        } else {
+            player.sendMessage("§cInvalid code. Make sure to copy the entire code including 'DIYP1:'");
+            const config = getEmitterConfig(block);
+            system.run(() => this.openSavedCreationsMenu(player, block, config));
+        }
     }
 
     private static async openSaveCreationForm(player: Player, block: Block, config: EmitterConfig) {
@@ -473,8 +748,24 @@ export default class TunerUI {
 
         if (response.selection !== undefined && response.selection < TexturePresets.length) {
             config.textureId = response.selection;
+
+            // Auto-set default color for this texture (both start and end)
+            const defaultColorIdx = TextureDefaultColors[response.selection] ?? 0;
+            config.colorStartIndex = defaultColorIdx;
+            config.colorEndIndex = defaultColorIdx;
+
+            // Update legacy RGB fields for compatibility
+            const colorPreset = ColorPresets[defaultColorIdx];
+            if (colorPreset) {
+                config.colorR = colorPreset[1];
+                config.colorG = colorPreset[2];
+                config.colorB = colorPreset[3];
+                config.tintMode = defaultColorIdx !== 0;
+            }
+
             setEmitterConfig(block, config);
-            player.sendMessage(`§6Texture set to: ${TexturePresets[response.selection]}`);
+            const colorName = ColorPresets[defaultColorIdx]?.[0] || "White";
+            player.sendMessage(`§6Texture set to: ${TexturePresets[response.selection]} §7(color: ${colorName})`);
             system.run(() => this.openTextureSelector(player, block, config));
         } else {
             system.run(() => this.openAppearanceTab(player, block, config));
@@ -534,12 +825,16 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openBlendSettings(player: Player, block: Block, config: EmitterConfig) {
+        const blendModes = ["Blend (Soft)", "Alpha (Sharp)", "Additive (Glow)"];
+        const blendIndex = config.blendMode === "alpha" ? 1 : config.blendMode === "add" ? 2 : 0;
+
         const form = new ModalFormData()
             .title("§l§5Blend & Opacity")
             .slider("Opacity %", 10, 100, { defaultValue: Math.round(config.alpha * 100), valueStep: 5 })
-            .dropdown("Blending Mode", ["Normal (Alpha)", "Additive (Glow)"], {
-                defaultValueIndex: config.blendMode === "add" ? 1 : 0,
-            });
+            .dropdown("Blending Mode", blendModes, {
+                defaultValueIndex: blendIndex,
+            })
+            .toggle("Fade Out Over Lifetime", { defaultValue: config.fadeOut ?? true });
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -547,10 +842,11 @@ export default class TunerUI {
             return;
         }
 
-        const [alpha, blendIdx] = response.formValues as [number, number];
+        const [alpha, blendIdx, fadeOut] = response.formValues as [number, number, boolean];
 
         config.alpha = alpha / 100;
-        config.blendMode = blendIdx === 0 ? "blend" : "add";
+        config.blendMode = blendIdx === 0 ? "blend" : blendIdx === 1 ? "alpha" : "add";
+        config.fadeOut = fadeOut;
 
         setEmitterConfig(block, config);
         player.sendMessage("§5Blend settings saved!");
@@ -590,16 +886,18 @@ export default class TunerUI {
     private static async openPhysicsTab(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
             .title("§l§bPhysics & Motion")
-            .slider("Speed (x10)", 0, 20, { defaultValue: Math.round(config.speed * 10), valueStep: 1 })
-            .slider("Gravity (x10, -20=float, +20=fall)", -20, 20, { defaultValue: Math.round(config.gravity * 10), valueStep: 1 })
-            .slider("Drag (x10)", 0, 100, { defaultValue: Math.round(config.drag * 10), valueStep: 5 })
+            .slider("Speed (0-2)", 0, 20, { defaultValue: Math.round(config.speed * 10), valueStep: 1 })
+            .slider("Gravity (-2 float, +2 fall)", -20, 20, { defaultValue: Math.round(config.gravity * 10), valueStep: 1 })
+            .slider("Acceleration (-2 to +2)", -20, 20, { defaultValue: Math.round(config.acceleration * 10), valueStep: 1 })
+            .slider("Drag (0-10)", 0, 100, { defaultValue: Math.round(config.drag * 10), valueStep: 5 })
             .dropdown("Direction Mode", ["Vector (Specific direction)", "Radial (Explosion)"], {
                 defaultValueIndex: config.directionMode === "radial" ? 1 : 0,
             })
-            .slider("Vector X (x10)", -10, 10, { defaultValue: Math.round(config.vectorX * 10), valueStep: 1 })
-            .slider("Vector Y (x10)", -10, 10, { defaultValue: Math.round(config.vectorY * 10), valueStep: 1 })
-            .slider("Vector Z (x10)", -10, 10, { defaultValue: Math.round(config.vectorZ * 10), valueStep: 1 })
-            .toggle("Collision (bounce/die on blocks)", { defaultValue: config.collision });
+            .slider("Vector X (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorX * 10), valueStep: 1 })
+            .slider("Vector Y (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorY * 10), valueStep: 1 })
+            .slider("Vector Z (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorZ * 10), valueStep: 1 })
+            .toggle("Collision (bounce on blocks)", { defaultValue: config.collision })
+            .slider("Spin Speed (degrees/sec)", -360, 360, { defaultValue: config.spinSpeed, valueStep: 15 });
 
         const response = await form.show(player);
         if (response.canceled) {
@@ -607,7 +905,8 @@ export default class TunerUI {
             return;
         }
 
-        const [speed, gravity, drag, dirIdx, vectorX, vectorY, vectorZ, collision] = response.formValues as [
+        const [speed, gravity, acceleration, drag, dirIdx, vectorX, vectorY, vectorZ, collision, spinSpeed] = response.formValues as [
+            number,
             number,
             number,
             number,
@@ -616,16 +915,19 @@ export default class TunerUI {
             number,
             number,
             boolean,
+            number,
         ];
 
         config.speed = speed / 10;
         config.gravity = gravity / 10;
+        config.acceleration = acceleration / 10;
         config.drag = drag / 10;
         config.directionMode = dirIdx === 0 ? "vector" : "radial";
         config.vectorX = vectorX / 10;
         config.vectorY = vectorY / 10;
         config.vectorZ = vectorZ / 10;
         config.collision = collision;
+        config.spinSpeed = spinSpeed;
 
         setEmitterConfig(block, config);
         player.sendMessage("§bPhysics settings saved!");
@@ -641,17 +943,20 @@ export default class TunerUI {
             config.offsetX === 0 && config.offsetY === 0 && config.offsetZ === 0
                 ? "Centered"
                 : `(${config.offsetX.toFixed(1)}, ${config.offsetY.toFixed(1)}, ${config.offsetZ.toFixed(1)})`;
+        const rotationText = config.randomRotation ? `Random ±${config.rotationRange}°` : `Fixed at ${config.initialRotation}°`;
 
         const form = new ActionFormData()
             .title("§l§2Spawning Rules")
             .body(
                 `§lRate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s\n` +
                     `§lShape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})\n` +
-                    `§lOffset:§r ${offsetText}`
+                    `§lOffset:§r ${offsetText}\n` +
+                    `§lRotation:§r ${rotationText}`
             )
             .button("§2Rate & Lifetime\n§rParticles per second")
             .button("§2Shape & Radius\n§rEmission area")
             .button("§2Position Offset\n§rXYZ spawn offset")
+            .button("§2Initial Rotation\n§rSpawn angle settings")
             .button("Back to Main Menu");
 
         const response = await form.show(player);
@@ -671,6 +976,9 @@ export default class TunerUI {
                 await this.openSpawningOffsetSettings(player, block, config);
                 break;
             case 3:
+                await this.openSpawningRotationSettings(player, block, config);
+                break;
+            case 4:
                 system.run(() => this.openComposer(player, block));
                 break;
         }
@@ -683,7 +991,7 @@ export default class TunerUI {
                 defaultValue: config.spawnRate,
                 valueStep: 1,
             })
-            .slider("Particle Lifetime (x2 seconds)", 1, 20, {
+            .slider("Particle Lifetime (0.5-30 seconds)", 1, 60, {
                 defaultValue: Math.round(config.lifetime * 2),
                 valueStep: 1,
             });
@@ -710,7 +1018,7 @@ export default class TunerUI {
 
         const form = new ModalFormData()
             .title("§l§2Shape & Radius")
-            .slider("Emission Radius (x4)", 0, 20, {
+            .slider("Emission Radius (0-20 blocks)", 0, 80, {
                 defaultValue: Math.round(config.emissionRadius * 4),
                 valueStep: 1,
             })
@@ -737,16 +1045,16 @@ export default class TunerUI {
     private static async openSpawningOffsetSettings(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
             .title("§l§2Position Offset")
-            .slider("Offset X (x10)", -20, 20, {
-                defaultValue: Math.round(config.offsetX * 10),
+            .slider("Offset X (blocks)", -10, 10, {
+                defaultValue: Math.round(config.offsetX),
                 valueStep: 1,
             })
-            .slider("Offset Y (x10)", -20, 20, {
-                defaultValue: Math.round(config.offsetY * 10),
+            .slider("Offset Y (blocks)", -10, 10, {
+                defaultValue: Math.round(config.offsetY),
                 valueStep: 1,
             })
-            .slider("Offset Z (x10)", -20, 20, {
-                defaultValue: Math.round(config.offsetZ * 10),
+            .slider("Offset Z (blocks)", -10, 10, {
+                defaultValue: Math.round(config.offsetZ),
                 valueStep: 1,
             });
 
@@ -758,43 +1066,42 @@ export default class TunerUI {
 
         const [offsetX, offsetY, offsetZ] = response.formValues as [number, number, number];
 
-        config.offsetX = offsetX / 10;
-        config.offsetY = offsetY / 10;
-        config.offsetZ = offsetZ / 10;
+        config.offsetX = offsetX;
+        config.offsetY = offsetY;
+        config.offsetZ = offsetZ;
 
         setEmitterConfig(block, config);
         player.sendMessage("§2Offset settings saved!");
         system.run(() => this.openSpawningTab(player, block, config));
     }
 
-    // ========================================================================
-    // Tab D: Advanced
-    // ========================================================================
-
-    private static async openAdvancedTab(player: Player, block: Block, config: EmitterConfig) {
+    private static async openSpawningRotationSettings(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
-            .title("§l§5Advanced")
-            .slider("Spin Speed (rotation)", -360, 360, {
-                defaultValue: config.spinSpeed,
+            .title("§l§2Initial Rotation")
+            .toggle("Random Rotation on Spawn", { defaultValue: config.randomRotation })
+            .slider("Initial Rotation (degrees)", 0, 360, {
+                defaultValue: config.initialRotation,
                 valueStep: 15,
             })
-            .toggle("Face Camera (Billboard)", { defaultValue: config.faceCamera })
-            .toggle("Pulse (Breathing effect)", { defaultValue: config.pulse });
+            .slider("Random Range (±degrees)", 0, 180, {
+                defaultValue: config.rotationRange,
+                valueStep: 15,
+            });
 
         const response = await form.show(player);
         if (response.canceled) {
-            system.run(() => this.openComposer(player, block));
+            system.run(() => this.openSpawningTab(player, block, config));
             return;
         }
 
-        const [spinSpeed, faceCamera, pulse] = response.formValues as [number, boolean, boolean];
+        const [randomRotation, initialRotation, rotationRange] = response.formValues as [boolean, number, number];
 
-        config.spinSpeed = spinSpeed;
-        config.faceCamera = faceCamera;
-        config.pulse = pulse;
+        config.randomRotation = randomRotation;
+        config.initialRotation = initialRotation;
+        config.rotationRange = rotationRange;
 
         setEmitterConfig(block, config);
-        player.sendMessage("§5Advanced settings saved!");
-        system.run(() => this.openComposer(player, block));
+        player.sendMessage("§2Rotation settings saved!");
+        system.run(() => this.openSpawningTab(player, block, config));
     }
 }

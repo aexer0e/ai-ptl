@@ -1,4 +1,4 @@
-// Atmosphere+ GDDv2 - Emitter Configuration Types
+// DIY Particles - Emitter Configuration Types
 // "Infinite atmosphere, one block."
 
 /**
@@ -22,10 +22,11 @@ export type EmissionShape = "sphere" | "box" | "disc";
 
 /**
  * Blending mode for particle rendering
- * - "blend": Normal alpha blending
+ * - "blend": Normal blending (semi-transparent)
+ * - "alpha": Alpha test blending (solid edges)
  * - "add": Additive blending (glowing effect)
  */
-export type BlendMode = "blend" | "add";
+export type BlendMode = "blend" | "alpha" | "add";
 
 /**
  * Complete emitter configuration following GDDv2 Particle Composer
@@ -40,6 +41,8 @@ export interface EmitterConfig {
     colorEndIndex: number;
     /** Alpha/opacity 0.0-1.0 */
     alpha: number;
+    /** Whether particle fades out over lifetime */
+    fadeOut: boolean;
     /** Blending mode */
     blendMode: BlendMode;
     /** Size when particle spawns (0.1-5.0) */
@@ -59,6 +62,8 @@ export interface EmitterConfig {
     speed: number;
     /** Gravity effect (-2.0 to 2.0, positive=fall, negative=float) */
     gravity: number;
+    /** Acceleration over lifetime (-2.0 to 2.0) */
+    acceleration: number;
     /** Air resistance (0.0-10.0) */
     drag: number;
     /** Direction mode */
@@ -69,6 +74,8 @@ export interface EmitterConfig {
     vectorZ: number;
     /** Whether particles collide with blocks */
     collision: boolean;
+    /** Rotation speed of particle texture (degrees/sec) */
+    spinSpeed: number;
 
     // === Tab C: Spawning Rules ===
     /** Particles per second (1-50) */
@@ -85,14 +92,12 @@ export interface EmitterConfig {
     offsetY: number;
     /** Spawn offset Z (-2.0 to 2.0) */
     offsetZ: number;
-
-    // === Tab D: Advanced ===
-    /** Rotation speed of particle texture */
-    spinSpeed: number;
-    /** Whether particle always faces camera */
-    faceCamera: boolean;
-    /** Pulsing opacity effect */
-    pulse: boolean;
+    /** Whether to randomize initial rotation on spawn */
+    randomRotation: boolean;
+    /** Initial rotation angle in degrees (0-360) when not random */
+    initialRotation: number;
+    /** Range of random rotation (+/- degrees from initialRotation) */
+    rotationRange: number;
 
     // === System ===
     /** Whether the emitter is currently active */
@@ -123,6 +128,30 @@ export const TexturePresets: string[] = [
 ];
 
 /**
+ * Default color index for each texture when selected.
+ * Maps texture ID to ColorPresets index.
+ * This allows textures to auto-set appropriate colors when chosen.
+ */
+export const TextureDefaultColors: number[] = [
+    0, // Soft Circle → White (neutral)
+    3, // Star → Yellow
+    1, // Heart → Red
+    0, // Skull → White
+    5, // Leaf → Green
+    11, // Smoke Puff → Black (gray)
+    3, // Spark → Yellow
+    6, // Bubble → Cyan
+    8, // Rune → Purple
+    2, // Flame → Orange
+    6, // Snowflake → Cyan
+    7, // Raindrop → Blue
+    10, // Dust → Brown
+    8, // Magic Orb → Purple
+    1, // Eye → Red
+    3, // Glint → Yellow
+];
+
+/**
  * Preset colors for tinting particles
  * Each entry is [name, R, G, B] with RGB values 0.0-1.0
  */
@@ -150,6 +179,7 @@ export const DefaultEmitterConfig: EmitterConfig = {
     colorStartIndex: 0, // None (White)
     colorEndIndex: 0, // None (White) - same as start = no gradient
     alpha: 0.8,
+    fadeOut: true,
     blendMode: "blend",
     sizeStart: 0.5,
     sizeEnd: 0.2,
@@ -164,12 +194,14 @@ export const DefaultEmitterConfig: EmitterConfig = {
     // Physics
     speed: 0.5,
     gravity: -0.3,
+    acceleration: 0.0,
     drag: 1.0,
     directionMode: "vector",
     vectorX: 0.0,
     vectorY: 1.0,
     vectorZ: 0.0,
     collision: false,
+    spinSpeed: 0,
 
     // Spawning
     spawnRate: 10,
@@ -179,11 +211,9 @@ export const DefaultEmitterConfig: EmitterConfig = {
     offsetX: 0.0,
     offsetY: 0.0,
     offsetZ: 0.0,
-
-    // Advanced
-    spinSpeed: 0,
-    faceCamera: true,
-    pulse: false,
+    randomRotation: true,
+    initialRotation: 0,
+    rotationRange: 180,
 
     // System
     enabled: true,
@@ -239,8 +269,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 0.3,
             shape: "disc",
             spinSpeed: 30,
-            faceCamera: true,
-            pulse: true,
         },
     },
     {
@@ -264,8 +292,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 1.0,
             shape: "sphere",
             spinSpeed: 90,
-            faceCamera: true,
-            pulse: false,
         },
     },
     {
@@ -292,8 +318,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 0.4,
             shape: "disc",
             spinSpeed: 45,
-            faceCamera: true,
-            pulse: true,
         },
     },
     {
@@ -320,8 +344,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 0.2,
             shape: "disc",
             spinSpeed: 0,
-            faceCamera: true,
-            pulse: false,
             collision: true,
         },
     },
@@ -346,8 +368,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 2.0,
             shape: "sphere",
             spinSpeed: 0,
-            faceCamera: true,
-            pulse: true,
         },
     },
     {
@@ -374,8 +394,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 1.5,
             shape: "box",
             spinSpeed: 60,
-            faceCamera: true,
-            pulse: false,
         },
     },
     {
@@ -399,8 +417,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 0.8,
             shape: "disc",
             spinSpeed: 180,
-            faceCamera: true,
-            pulse: false,
             offsetY: 0.5,
         },
     },
@@ -428,8 +444,6 @@ export const ParticlePresets: ParticlePreset[] = [
             emissionRadius: 0.5,
             shape: "sphere",
             spinSpeed: 15,
-            faceCamera: true,
-            pulse: false,
         },
     },
 ];

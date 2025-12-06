@@ -1,12 +1,11 @@
-pack.name=Atmosphere+ RP	### The product Name
+pack.name=DIY Particles RP	### The product Name
 pack.description=Infinite atmosphere, one block - The Particle Composer	### Product Description
 
 ## Blocks
-tile.ns_ptl:universal_emitter.name=Atmosphere Emitter
+tile.ns_ptl:universal_emitter.name=Particle Emitter
 
 ## Items
 item.ns_ptl:tuner_wand.name=Tuner Wand
-item.ns_ptl:aether_lens.name=Aether Lens
 
 ## Item Groups
-itemGroup.name.atmosphere=Atmosphere+
+itemGroup.name.atmosphere=DIY Particles

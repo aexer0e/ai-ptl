@@ -1,4 +1,4 @@
-// Atmosphere+ Module Index (GDDv2)
+// DIY Particles Module Index
 // "Infinite atmosphere, one block."
 //
 // The Particle Composer system allows players to design, tune, and save

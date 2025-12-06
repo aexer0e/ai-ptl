@@ -1,6 +1,6 @@
 # GAME DESIGN DOCUMENT
 
-**Project**: Atmosphere+ (The Particle Architect)
+**Project**: DIY Particles (The Particle Architect)
 
 **Version**: 1.0
 
@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-**Atmosphere+** is a utility-based decoration Add-On designed to fill a major gap in the Minecraft creative toolkit: the lack of dynamic, localized atmospheric effects. By introducing "Particle Emitters"—invisible blocks that spawn visual effects—players can move beyond static blocks and "paint" their builds with movement, such as leaking pipes, haunted auras, or crashing waves.
+**DIY Particles** is a utility-based decoration Add-On designed to fill a major gap in the Minecraft creative toolkit: the lack of dynamic, localized atmospheric effects. By introducing "Particle Emitters"—invisible blocks that spawn visual effects—players can move beyond static blocks and "paint" their builds with movement, such as leaking pipes, haunted auras, or crashing waves.
 
 **Core Value Proposition:** "Don’t just build the structure; build the atmosphere."
 

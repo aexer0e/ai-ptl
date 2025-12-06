@@ -1,6 +1,6 @@
 # GAME DESIGN DOCUMENT
 
-**Project:** Atmosphere+ (The Particle Architect)  
+**Project:** DIY Particles (The Particle Architect)  
 **Version:** 3.0 (Texture Update)  
 **Target Platform:** Minecraft Bedrock Edition
 
@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-Atmosphere+ is a creative utility Add-On that transforms particles from static visual effects into a programmable building material. Instead of offering a fixed catalog of effects, it provides players with a "Particle Composer"—an in-game interface to design, tune, and save their own unique environmental effects using a single, highly mutable emitter block.
+DIY Particles is a creative utility Add-On that transforms particles from static visual effects into a programmable building material. Instead of offering a fixed catalog of effects, it provides players with a "Particle Composer"—an in-game interface to design, tune, and save their own unique environmental effects using a single, highly mutable emitter block.
 
 **Core Value Proposition:** *"Infinite atmosphere, one block."*
 

@@ -10,6 +10,6 @@ export default {
     CbCopyBlockModeSelected: 0 as number,
     CbLeftClickCopiesBlock: false as boolean,
     CbRightClickCopiesBlock: false as boolean,
-    // Atmosphere+ Emitter locations - persisted across reloads
+    // DIY Particles Emitter locations - persisted across reloads
     EmitterLocations: [] as EmitterLocationKey[],
 } as const;

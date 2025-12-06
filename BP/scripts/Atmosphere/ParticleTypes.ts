@@ -1,4 +1,4 @@
-// Particle type definitions for Atmosphere+
+// Particle type definitions for DIY Particles
 
 export interface ParticleType {
     id: string;

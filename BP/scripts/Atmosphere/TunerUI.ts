@@ -54,7 +54,7 @@ export default class TunerUI {
         const config = getEmitterConfig(block);
 
         const form = new ActionFormData()
-            .title("§l§dAtmosphere+ Tuner")
+            .title("§l§dDIY Particles Tuner")
             .body(this.getStatusText(config))
             .button("§2Select Effect Type")
             .button("§6Adjust Settings")
