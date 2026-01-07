@@ -2,15 +2,36 @@ import { Block, Player, system, world } from "@minecraft/server";
 import { ActionFormData, FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
 import {
     BlendMode,
+    clampSpawnRateSlider,
     ColorPresets,
     DefaultEmitterConfig,
     EmissionShape,
     EmitterConfig,
     getConfigKey,
     ParticlePresets,
+    spawnRatePerSecondToSlider,
+    spawnRateSliderMax,
+    spawnRateSliderMin,
+    spawnRateSliderToPerSecond,
     TextureDefaultColors,
     TexturePresets,
 } from "./EmitterConfig";
+
+function normalizeEmitterConfig(config: EmitterConfig): EmitterConfig {
+    return {
+        ...config,
+        spawnRate: clampSpawnRateSlider(config.spawnRate),
+    };
+}
+
+function getSpawnRateInfo(config: EmitterConfig): { slider: number; perSecond: number } {
+    const slider = clampSpawnRateSlider(config.spawnRate);
+    return { slider, perSecond: spawnRateSliderToPerSecond(slider) };
+}
+
+function formatSpawnRate(perSecond: number): string {
+    return perSecond < 1 ? perSecond.toFixed(2) : perSecond.toFixed(1);
+}
 
 // ============================================================================
 // Storage Functions
@@ -23,18 +44,18 @@ export function getEmitterConfig(block: Block): EmitterConfig {
         const data = world.getDynamicProperty(key) as string | undefined;
         if (data) {
             // Merge with defaults to ensure new fields have values for old configs
-            return { ...DefaultEmitterConfig, ...JSON.parse(data) };
+            return normalizeEmitterConfig({ ...DefaultEmitterConfig, ...JSON.parse(data) });
         }
     } catch {
         /* invalid */
     }
-    return { ...DefaultEmitterConfig };
+    return normalizeEmitterConfig({ ...DefaultEmitterConfig });
 }
 
 /** Write config to world dynamic property */
 export function setEmitterConfig(block: Block, config: EmitterConfig) {
     const key = getConfigKey(block.location.x, block.location.y, block.location.z, block.dimension.id);
-    world.setDynamicProperty(key, JSON.stringify(config));
+    world.setDynamicProperty(key, JSON.stringify(normalizeEmitterConfig(config)));
 }
 
 // ============================================================================
@@ -185,7 +206,7 @@ function exportToCode(config: EmitterConfig): string {
             ((config.randomRotation ? 1 : 0) << 2) |
             ((config.fadeOut ? 1 : 0) << 3), // 15: flags
         encodeFloat(config.spinSpeed, -360, 360), // 16: spin speed
-        Math.min(255, config.spawnRate), // 17: spawn rate
+        Math.min(255, clampSpawnRateSlider(config.spawnRate)), // 17: spawn rate (slider value)
         encodeFloat(config.lifetime, 0, 30), // 18: lifetime
         encodeFloat(config.emissionRadius, 0, 5), // 19: emission radius
         config.shape === "sphere" ? 0 : config.shape === "box" ? 1 : 2, // 20: shape
@@ -270,7 +291,7 @@ function importFromHexCode(hex: string): EmitterConfig | null {
         randomRotation: (flags & 4) !== 0,
         fadeOut: (flags & 8) !== 0,
         spinSpeed: decodeFloat(bytes[16], -360, 360),
-        spawnRate: bytes[17],
+        spawnRate: clampSpawnRateSlider(bytes[17]),
         lifetime: decodeFloat(bytes[18], 0, 30),
         emissionRadius: decodeFloat(bytes[19], 0, 5),
         shape: shapeMap[bytes[20]] ?? "sphere",
@@ -320,7 +341,7 @@ function importFromLegacyCode(b64: string): EmitterConfig | null {
         vectorZ: minimal.vz ?? 0,
         collision: minimal.c === 1,
         spinSpeed: minimal.sps ?? 0,
-        spawnRate: minimal.sr ?? 5,
+        spawnRate: spawnRatePerSecondToSlider(minimal.sr ?? 5),
         lifetime: minimal.l ?? 3,
         emissionRadius: minimal.er ?? 0.5,
         shape: shapeMap[minimal.sh] ?? "sphere",
@@ -455,6 +476,7 @@ export default class TunerUI {
             config.directionMode === "radial"
                 ? "Radial"
                 : `(${config.vectorX.toFixed(1)}, ${config.vectorY.toFixed(1)}, ${config.vectorZ.toFixed(1)})`;
+        const { slider, perSecond } = getSpawnRateInfo(config);
 
         return [
             `§l§6Texture:§r ${texture}`,
@@ -463,7 +485,7 @@ export default class TunerUI {
             `§l§6Size:§r ${config.sizeStart.toFixed(1)} → ${config.sizeEnd.toFixed(1)}`,
             `§l§3Speed:§r ${config.speed.toFixed(1)} | Gravity: ${config.gravity.toFixed(1)}`,
             `§l§3Direction:§r ${dir}`,
-            `§l§2Rate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s`,
+            `§l§2Rate:§r ${formatSpawnRate(perSecond)}/s (slider ${slider}) | Life: ${config.lifetime.toFixed(1)}s`,
             `§l§2Shape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})`,
             `§l§5Status:§r ${config.enabled ? "§2Active" : "§cDisabled"}`,
         ].join("\n");
@@ -949,11 +971,12 @@ export default class TunerUI {
                 ? "Centered"
                 : `(${config.offsetX.toFixed(1)}, ${config.offsetY.toFixed(1)}, ${config.offsetZ.toFixed(1)})`;
         const rotationText = config.randomRotation ? `Random ±${config.rotationRange}°` : `Fixed at ${config.initialRotation}°`;
+        const { slider, perSecond } = getSpawnRateInfo(config);
 
         const form = new ActionFormData()
             .title("§l§2Spawning Rules")
             .body(
-                `§lRate:§r ${config.spawnRate}/s | Life: ${config.lifetime.toFixed(1)}s\n` +
+            `§lRate:§r ${formatSpawnRate(perSecond)}/s (slider ${slider}) | Life: ${config.lifetime.toFixed(1)}s\n` +
                     `§lShape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})\n` +
                     `§lOffset:§r ${offsetText}\n` +
                     `§lRotation:§r ${rotationText}`
@@ -990,10 +1013,11 @@ export default class TunerUI {
     }
 
     private static async openSpawningRateSettings(player: Player, block: Block, config: EmitterConfig) {
+        const { slider } = getSpawnRateInfo(config);
         const form = new ModalFormData()
             .title("§l§2Rate & Lifetime")
-            .slider("Spawn Rate (particles/second)", 1, 50, {
-                defaultValue: config.spawnRate,
+            .slider("Spawn Rate (1=0.1/s, 100=10/s)", spawnRateSliderMin, spawnRateSliderMax, {
+                defaultValue: slider,
                 valueStep: 1,
             })
             .slider("Particle Lifetime (0.5-30 seconds)", 1, 60, {
@@ -1009,7 +1033,7 @@ export default class TunerUI {
 
         const [spawnRate, lifetime] = response.formValues as [number, number];
 
-        config.spawnRate = spawnRate;
+        config.spawnRate = clampSpawnRateSlider(spawnRate);
         config.lifetime = lifetime / 2;
 
         setEmitterConfig(block, config);

@@ -28,4 +28,4 @@ The **Particles Guide/** folder contains a detailed guide on creating custom par
 
 ## Scripts Architecture
 
-See **[scripts-instructions.md](scripts-instructions.md)** for detailed documentation on the TypeScript codebase architecture, including global utilities, event systems, entity components, and conventions.
+See **[scripts-instructions.md](.github/scripts-instructions.md)** for detailed documentation on the TypeScript codebase architecture, including global utilities, event systems, entity components, and conventions.

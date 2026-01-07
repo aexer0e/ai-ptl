@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.40",
+    "format_version": "1.21.60",
     "minecraft:block": {
         "description": {
             "identifier": "ns_ptl:universal_emitter",
@@ -45,7 +45,12 @@
             "minecraft:light_dampening": 0,
             "minecraft:destructible_by_mining": { "seconds_to_destroy": 0.5 },
             "minecraft:tick": { "interval_range": [ 10, 10 ], "looping": true },
-            "minecraft:custom_components": [ "ns_ptl:emitter_block" ]
+            "minecraft:custom_components": [ "ns_ptl:emitter_block" ],
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    { "liquid_type": "water", "can_contain_liquid": true, "on_liquid_touches": "no_reaction" }
+                ]
+            }
         }
     }
 }

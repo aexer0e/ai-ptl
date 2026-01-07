@@ -1,0 +1,105 @@
+# Scripts Architecture Guide
+
+## Architecture
+
+### Global Utility Pattern
+
+Most utilities are exposed as **global variables** (not imports). Classes export as `_ClassName` then assign to `globalThis`:
+
+```typescript
+class _V3 { ... }
+declare global { var V3: Omit<typeof _V3, "prototype">; }
+globalThis.V3 = _V3;
+```
+
+Access utilities directly: `new V3`, `EntityUtil.isValid()`, `BroadcastUtil.debug()` - no imports needed. See `BP/scripts/GlobalVars.ts` for initialization order.
+
+### Initialization Flow (BP/scripts/Main.ts)
+
+1. `GlobalVars.ts` imports all utilities to register globals
+2. `Main.init()` runs on script load then starts `onTick()` interval
+3. `worldLoad` event initializes systems in order
+
+### Event System (EventSubscriber)
+
+Centralized event wrapper to manage subscriptions with IDs. Use instead of raw Minecraft events:
+
+```typescript
+EventSubscriber.subscribe("WorldAfterEvents", "itemUse", (e) => { ... });
+```
+
+### Entity Prototypes (BP/scripts/Prototype/)
+
+Extensions to Minecraft's `Entity` class:
+
+- `entity.valid` - safe `isValid` check
+- `entity.try()` - returns entity or null
+- `entity.getMobComponent("ComponentName")` - get custom mob component instance
+
+### Custom Component System
+
+- **MobComponentManager**: Registers TypeScript classes to entities based on `EntityTypes` property
+  - Components in `BP/scripts/MobComponents/MobComponents/` extend base `MobComponent`
+  - Auto-attached when entities spawn within 64 blocks of a player
+  - Access via `entity.getMobComponent("ComponentName")`
+
+### Data Storage
+
+- **EntityStore**: Persistent (dynamic properties) and temporary (in-memory) entity data
+
+  ```typescript
+  EntityStore.get(entity, "propertyName") // reads/caches dynamic properties
+  EntityStore.set(entity, "propertyName", value)
+  EntityStore.temp.get(entity, "tempProperty") // non-persistent storage
+  ```
+
+- Define schemas in `BP/scripts/Store/Entity/Properties.ts`
+
+### V3 Wrapper
+
+Custom Vector3 class with utilities. Use `new V3(x, y, z)` or `V3.grid(x, y, z)` (multiplies by 16).
+
+## Workflow & Commands
+
+### Automated Testing (GameTest)
+
+We use a Docker-based test runner (`test-runner.js`) for rapid iteration. When fixing a bug, run the smoketest to verify. All warnings and errors are treated as failures.
+
+**Usage:**
+
+1. **Verify:** Run `node test-runner.js` in terminal.
+2. **Troubleshooting:**
+   - **Logs:** The runner handles log streaming. Do not check `docker logs` manually.
+
+### Development Commands
+
+```powershell
+npm run lint # TypeScript check + ESLint + Prettier
+```
+
+## Project Structure
+
+- **BP/scripts/**: TypeScript source (compiled to BP by bridge.)
+  - `Main.ts` - entry point
+  - `GlobalVars.ts` - imports all global utilities
+  - `Utilities/` - global utility classes (EntityUtil, BroadcastUtil, EventSubscriber, etc.)
+  - `MobComponents/` - custom entity behavior components
+  - `Components/` - block/item custom components
+  - `Store/` - entity/world storage systems
+  - `Wrappers/` - V2, V3 vector classes
+  - `Prototype/` - Entity/System extensions
+  - `Types/` - TypeScript type definitions
+  - `Atmosphere/` - atmosphere/environment systems
+  - `GameTests/` - automated game tests
+
+- **config.json** - bridge. project config, compiler plugins, experimental toggles
+- **example_addons/** - Reference projects (mc-order, mc-sky, mc-zenith). Use for learning and reference.
+
+## Conventions
+
+1. **No imports for globals**: Utilities like `EntityUtil`, `BroadcastUtil` are accessed globally
+2. **Manager pattern**: Systems have `static init()` called from `Main.ts` in specific order
+3. **Component registration**: MobComponents specify `static EntityTypes: string[]` to auto-attach
+4. **Namespace prefix**: `ns_ptl` for this project (items, events, etc. use `ns_ptl:` prefix)
+5. **TypeScript target**: ES2023 (QuickJS runtime in Minecraft)
+6. **baseUrl**: `./BP/scripts` - import paths relative to scripts folder

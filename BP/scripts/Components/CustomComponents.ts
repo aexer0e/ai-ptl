@@ -1,5 +1,12 @@
 import { EquipmentSlot, MolangVariableMap, Player, system, world } from "@minecraft/server";
-import { ColorPresets, DefaultEmitterConfig, EmitterConfig, getConfigKey } from "Atmosphere/EmitterConfig";
+import {
+    ColorPresets,
+    DefaultEmitterConfig,
+    EmitterConfig,
+    clampSpawnRateSlider,
+    getConfigKey,
+    spawnRateSliderToPerSecond,
+} from "Atmosphere/EmitterConfig";
 import TunerUI from "Atmosphere/ParticleComposer";
 
 const tunerWandId = "ns_ptl:tuner_wand";
@@ -19,7 +26,9 @@ function getConfig(x: number, y: number, z: number, dimId: string): EmitterConfi
         const data = world.getDynamicProperty(getConfigKey(x, y, z, dimId)) as string | undefined;
         if (data) {
             // Merge with defaults to ensure new fields have values for old configs
-            return { ...DefaultEmitterConfig, ...JSON.parse(data) };
+            const merged = { ...DefaultEmitterConfig, ...JSON.parse(data) } as EmitterConfig;
+            merged.spawnRate = clampSpawnRateSlider(merged.spawnRate);
+            return merged;
         }
     } catch {
         /* invalid */
@@ -123,7 +132,7 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             molangVars.setFloat("collision", config.collision ? 1 : 0);
 
             // === Tab C: Spawning Rules ===
-            molangVars.setFloat("spawn_rate", config.spawnRate);
+            molangVars.setFloat("spawn_rate", spawnRateSliderToPerSecond(clampSpawnRateSlider(config.spawnRate)));
             molangVars.setFloat("lifetime", config.lifetime);
             molangVars.setFloat("emission_radius", config.emissionRadius);
             // shape: 0 = sphere, 1 = box, 2 = disc

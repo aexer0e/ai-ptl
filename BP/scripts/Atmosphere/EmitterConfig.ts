@@ -80,7 +80,10 @@ export interface EmitterConfig {
     spinSpeedRange: number;
 
     // === Tab C: Spawning Rules ===
-    /** Particles per second (1-50) */
+    /**
+     * Spawn rate slider (1-100).
+     * 1 = 0.1 particles/sec (1 every 10s), 100 = 10 particles/sec.
+     */
     spawnRate: number;
     /** How long each particle lives in seconds (0.5-10) */
     lifetime: number;
@@ -127,6 +130,23 @@ export const TexturePresets: string[] = [
     "Magic Orb", // 13
     "Eye", // 14
     "Glint", // 15
+    // Animated particles (atlas: animated_atlas.png)
+    "Animated 1", // 16
+    "Animated 2", // 17
+    "Animated 3", // 18
+    "Animated 4", // 19
+    "Animated 5", // 20
+    "Animated 6", // 21
+    "Animated 7", // 22
+    "Animated 8", // 23
+    "Animated 9", // 24
+    "Animated 10", // 25
+    // Randomized particles (atlas: randomized_atlas.png)
+    "Random 1", // 26
+    "Random 2", // 27
+    "Random 3", // 28
+    "Random 4", // 29
+    "Random 5", // 30
 ];
 
 /**
@@ -151,6 +171,23 @@ export const TextureDefaultColors: number[] = [
     8, // Magic Orb → Purple
     1, // Eye → Red
     3, // Glint → Yellow
+    // Animated particles - default to white for artist customization
+    0, // Animated 1 → White
+    0, // Animated 2 → White
+    0, // Animated 3 → White
+    0, // Animated 4 → White
+    0, // Animated 5 → White
+    0, // Animated 6 → White
+    0, // Animated 7 → White
+    0, // Animated 8 → White
+    0, // Animated 9 → White
+    0, // Animated 10 → White
+    // Randomized particles - default to white for artist customization
+    0, // Random 1 → White
+    0, // Random 2 → White
+    0, // Random 3 → White
+    0, // Random 4 → White
+    0, // Random 5 → White
 ];
 
 /**
@@ -175,6 +212,28 @@ export const ColorPresets: [string, number, number, number][] = [
 /**
  * Default configuration for new emitters
  */
+export const spawnRateSliderMin = 1;
+export const spawnRateSliderMax = 100;
+export const spawnRatePpsMin = 0.1;
+export const spawnRatePpsMax = 10;
+
+/** Clamp spawn rate slider to valid range (whole numbers only). */
+export function clampSpawnRateSlider(value: number): number {
+    return Math.min(spawnRateSliderMax, Math.max(spawnRateSliderMin, Math.round(value)));
+}
+
+/** Map slider value (1-100) to particles per second (0.1-10). */
+export function spawnRateSliderToPerSecond(sliderValue: number): number {
+    const clamped = clampSpawnRateSlider(sliderValue);
+    return Math.round(clamped) * 0.1;
+}
+
+/** Map particles per second back to slider value (rounded to whole steps). */
+export function spawnRatePerSecondToSlider(rate: number): number {
+    const clamped = Math.min(spawnRatePpsMax, Math.max(spawnRatePpsMin, rate));
+    return clampSpawnRateSlider(clamped * 10);
+}
+
 export const DefaultEmitterConfig: EmitterConfig = {
     // Appearance
     textureId: 1, // Default to Star instead of Soft Circle
