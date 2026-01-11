@@ -6,11 +6,15 @@
         "**/RP/**/*.json": "jsonc"
     },
     "[jsonc]": { "editor.formatOnSave": true, "editor.defaultFormatter": "GamemodeOne.json-compact-prettier" },
-    "[typescript]": { "editor.formatOnSave": true, "editor.defaultFormatter": "esbenp.prettier-vscode" },
+    "[typescript]": { "editor.formatOnSave": true, "editor.defaultFormatter": "prettier.prettier-vscode" },
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
     "BC-MC.Diagnostics.Enable": false,
     "eslint.useFlatConfig": true,
+    "terminal.integrated.fontFamily": "CaskaydiaCove NF, Consolas",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
     "JSON Compact Prettier.alwaysOpenKeys": [
         "minecraft:entity",
         "component_groups",

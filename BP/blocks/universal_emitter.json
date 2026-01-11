@@ -3,7 +3,7 @@
     "minecraft:block": {
         "description": {
             "identifier": "ns_ptl:universal_emitter",
-            "menu_category": { "category": "items", "group": "itemGroup.name.atmosphere" },
+            "menu_category": { "category": "items" },
             "states": {
                 "ns_ptl:visible": [ true, false ]
             }

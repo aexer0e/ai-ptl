@@ -12,7 +12,8 @@
         "docs": "npx typedoc",
         "build-dist": "dash_compiler build -m development -o -c .bridge/compiler/writeForPackaging.json",
         "new-uuids": "node ./scripts/randomize-uuids.cjs",
-        "build-addon": "node ./scripts/build-mcaddon.cjs"
+        "build-addon": "node ./scripts/build-mcaddon.cjs",
+        "generate-atlases": "node ./scripts/generate-particle-atlases.cjs"
     },
     "dependencies": {
         "@bridge-editor/compiler-plugin-types": "^1.0.0",

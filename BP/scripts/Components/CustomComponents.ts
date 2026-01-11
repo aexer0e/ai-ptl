@@ -17,6 +17,12 @@ let molangVars: MolangVariableMap | null = null;
 const recentlyPlaced = new Map<string, number>();
 const placementVisibleTicks = 60; // ~3 seconds at 20 tps
 
+// Track spawn accumulator per emitter for proper low spawn rate handling
+// Key: location key, Value: accumulated spawn potential (spawns when >= 1.0)
+const spawnAccumulator = new Map<string, number>();
+// Block onTick runs every 10 game ticks = 2 times per second
+const blockTicksPerSecond = 2;
+
 function locationKey(x: number, y: number, z: number, dimId: string) {
     return `${dimId}:${Math.floor(x)},${Math.floor(y)},${Math.floor(z)}`;
 }
@@ -94,6 +100,22 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             // Spawn particles if enabled
             if (!config.enabled) return;
 
+            // Script-side spawn rate throttling for reliable low spawn rates
+            // Accumulate spawn potential each tick, spawn when it reaches 1.0
+            const spawnRatePerSecond = spawnRateSliderToPerSecond(clampSpawnRateSlider(config.spawnRate));
+            const spawnPotentialPerTick = spawnRatePerSecond / blockTicksPerSecond;
+            const currentAccum = spawnAccumulator.get(key) ?? 0;
+            const newAccum = currentAccum + spawnPotentialPerTick;
+
+            if (newAccum < 1.0) {
+                // Not time to spawn yet, accumulate and return
+                spawnAccumulator.set(key, newAccum);
+                return;
+            }
+
+            // Time to spawn! Reset accumulator (keep fractional overflow for accuracy)
+            spawnAccumulator.set(key, newAccum - 1.0);
+
             // Create MolangVariableMap with all GDDv2 parameters
             if (!molangVars) molangVars = new MolangVariableMap();
 
@@ -125,14 +147,16 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             molangVars.setFloat("gravity", config.gravity);
             molangVars.setFloat("acceleration", config.acceleration ?? 0);
             molangVars.setFloat("drag", config.drag);
-            molangVars.setFloat("direction_mode", config.directionMode === "radial" ? 1 : 0);
+            molangVars.setFloat("direction_mode", config.directionMode === "radial" ? 1 : config.directionMode === "random" ? 2 : 0);
             molangVars.setFloat("vector_x", config.vectorX);
             molangVars.setFloat("vector_y", config.vectorY);
             molangVars.setFloat("vector_z", config.vectorZ);
             molangVars.setFloat("collision", config.collision ? 1 : 0);
+            molangVars.setFloat("random_movement", config.directionMode === "random" ? 1 : 0);
 
             // === Tab C: Spawning Rules ===
-            molangVars.setFloat("spawn_rate", spawnRateSliderToPerSecond(clampSpawnRateSlider(config.spawnRate)));
+            // Note: spawn_rate is now handled at script level for reliable low spawn rates
+            // The particle uses emitter_rate_instant with num_particles: 1
             molangVars.setFloat("lifetime", config.lifetime);
             molangVars.setFloat("emission_radius", config.emissionRadius);
             // shape: 0 = sphere, 1 = box, 2 = disc
@@ -146,14 +170,27 @@ system.beforeEvents.startup.subscribe(({ itemComponentRegistry, blockComponentRe
             molangVars.setFloat("spin_speed", config.spinSpeed);
             molangVars.setFloat("spin_speed_range", config.spinSpeedRange ?? 0);
 
-            // Select particle based on shape, blend mode, and collision
+            // === Texture Mode Settings ===
+            // For animated mode: pass animation row (which animation 0-9) and fps
+            molangVars.setFloat("animation_row", config.animationTextureId ?? 0);
+            molangVars.setFloat("animation_fps", config.animationFps ?? 12);
+            // For randomized mode: pass which row preset (0-4)
+            molangVars.setFloat("random_row", config.randomizedTextureId ?? 0);
+
+            // Select particle based on shape, blend mode, collision, texture mode, facing, and direction mode
             // Shape: sphere (default), box, disc
             // Blend: blend (default), alpha, add (glow)
             // Collision: none (default), collide
+            // Texture mode: static (default), animated, randomized
+            // Facing: camera (default), lookup
+            // Direction mode: dynamic (default for vector), radial (uses "outwards"), random (uses emitter_initialization)
             const shapeSuffix = config.shape === "sphere" ? "" : `_${config.shape}`;
             const blendSuffix = config.blendMode === "alpha" ? "_alpha" : config.blendMode === "add" ? "_glow" : "";
             const collisionSuffix = config.collision ? "_collide" : "";
-            const particleId = `ns_ptl:master_particle${shapeSuffix}${blendSuffix}${collisionSuffix}`;
+            const textureModeSuffix = config.textureMode === "static" || !config.textureMode ? "" : `_${config.textureMode}`;
+            const lookUpSuffix = config.lookUp ? "_lookup" : "";
+            const dirModeSuffix = config.directionMode === "radial" ? "_radial" : config.directionMode === "random" ? "_random" : "";
+            const particleId = `ns_ptl:master_particle${shapeSuffix}${blendSuffix}${collisionSuffix}${textureModeSuffix}${lookUpSuffix}${dirModeSuffix}`;
 
             // Apply spawn offset
             const spawnX = x + 0.5 + (config.offsetX ?? 0);

@@ -13,7 +13,7 @@ export type RenderStyle = "basic" | "preset";
  * - "vector": Particles move in a specific direction
  * - "radial": Particles explode outward from center
  */
-export type DirectionMode = "vector" | "radial";
+export type DirectionMode = "vector" | "radial" | "random";
 
 /**
  * Emission shape for particle spawning
@@ -29,12 +29,30 @@ export type EmissionShape = "sphere" | "box" | "disc";
 export type BlendMode = "blend" | "alpha" | "add";
 
 /**
+ * Texture mode for particle rendering
+ * - "static": Single sprite from static atlas (16 textures)
+ * - "animated": Flipbook animation from animated atlas (10 animations × 8 frames)
+ * - "randomized": Random sprite from a row in randomized atlas (5 rows × 5 variants per row)
+ */
+export type TextureMode = "static" | "animated" | "randomized";
+
+/**
  * Complete emitter configuration following GDDv2 Particle Composer
  */
 export interface EmitterConfig {
     // === Tab A: Appearance ===
-    /** Texture index 0-15 (0 = soft circle, 1-15 = presets) */
+    /** Texture mode: static, animated, or randomized */
+    textureMode: TextureMode;
+    /** Texture index 0-15 for static mode (0 = soft circle, 1-15 = presets) */
     textureId: number;
+    /** Animation index 0-9 for animated mode */
+    animationTextureId: number;
+    /** Animation frames per second (1-30) for animated mode */
+    animationFps: number;
+    /** Whether animation loops */
+    animationLoop: boolean;
+    /** Randomized row index 0-4 for randomized mode (selects which preset row) */
+    randomizedTextureId: number;
     /** Start color preset index (0 = None/White) */
     colorStartIndex: number;
     /** End color preset index (0 = None/White, same as start = solid color) */
@@ -78,6 +96,8 @@ export interface EmitterConfig {
     spinSpeed: number;
     /** Randomization range for spin speed (+/- degrees/sec) */
     spinSpeedRange: number;
+    /** Whether particles face upward (emitter_transform_xz) instead of camera (lookat_xyz) */
+    lookUp: boolean;
 
     // === Tab C: Spawning Rules ===
     /**
@@ -110,47 +130,59 @@ export interface EmitterConfig {
 }
 
 /**
- * Preset texture names for the atlas
+ * Preset texture names for the static atlas
  * Index 0 is reserved for the soft circle (basic mode)
  */
 export const TexturePresets: string[] = [
     "Soft Circle", // 0 - Basic mode
-    "Star", // 1
-    "Heart", // 2
-    "Skull", // 3
-    "Leaf", // 4
-    "Smoke Puff", // 5
-    "Spark", // 6
-    "Bubble", // 7
-    "Rune", // 8
-    "Flame", // 9
-    "Snowflake", // 10
-    "Raindrop", // 11
-    "Dust", // 12
-    "Magic Orb", // 13
-    "Eye", // 14
-    "Glint", // 15
-    // Animated particles (atlas: animated_atlas.png)
-    "Animated 1", // 16
-    "Animated 2", // 17
-    "Animated 3", // 18
-    "Animated 4", // 19
-    "Animated 5", // 20
-    "Animated 6", // 21
-    "Animated 7", // 22
-    "Animated 8", // 23
-    "Animated 9", // 24
-    "Animated 10", // 25
-    // Randomized particles (atlas: randomized_atlas.png)
-    "Random 1", // 26
-    "Random 2", // 27
-    "Random 3", // 28
-    "Random 4", // 29
-    "Random 5", // 30
+    "Ant Confetti", // 1
+    "Barrier", // 2
+    "Cobweb", // 3
+    "Cookie", // 4
+    "Diamond", // 5
+    "Eye of Ender", // 6
+    "Feather", // 7
+    "Gold", // 8
+    "Kelp", // 9
+    "Paper", // 10
+    "Poison", // 11
+    "Steak", // 12
+    "Stick", // 13
+    "Tumbleweed", // 14
+    "Wind Charged", // 15
 ];
 
 /**
- * Default color index for each texture when selected.
+ * Animated texture names for the animated atlas
+ * Each animation has 8 frames played as flipbook
+ */
+export const AnimatedTexturePresets: string[] = [
+    "Fire Burst", // 0
+    "Water Splash", // 1
+    "Electric Spark", // 2
+    "Poison Cloud", // 3
+    "Magic Pulse", // 4
+    "Ice Crystal", // 5
+    "Blood Splatter", // 6
+    "Shadow Wisp", // 7
+    "Holy Glow", // 8
+    "Nature Bloom", // 9
+];
+
+/**
+ * Randomized texture row names for the randomized atlas
+ * Each row has 5 variants, particles randomly pick one from the selected row
+ */
+export const RandomizedTexturePresets: string[] = [
+    "Shapes Mix", // Row 0: circles, stars, diamonds, rings, bursts
+    "Warm Colors", // Row 1: red, orange, yellow variants
+    "Cool Colors", // Row 2: green, cyan, blue variants
+    "Magic Effects", // Row 3: purple, pink, white variants
+    "Neutral Tones", // Row 4: gray, brown, black variants
+];
+
+/**
+ * Default color index for each static texture when selected.
  * Maps texture ID to ColorPresets index.
  * This allows textures to auto-set appropriate colors when chosen.
  */
@@ -171,23 +203,22 @@ export const TextureDefaultColors: number[] = [
     8, // Magic Orb → Purple
     1, // Eye → Red
     3, // Glint → Yellow
-    // Animated particles - default to white for artist customization
-    0, // Animated 1 → White
-    0, // Animated 2 → White
-    0, // Animated 3 → White
-    0, // Animated 4 → White
-    0, // Animated 5 → White
-    0, // Animated 6 → White
-    0, // Animated 7 → White
-    0, // Animated 8 → White
-    0, // Animated 9 → White
-    0, // Animated 10 → White
-    // Randomized particles - default to white for artist customization
-    0, // Random 1 → White
-    0, // Random 2 → White
-    0, // Random 3 → White
-    0, // Random 4 → White
-    0, // Random 5 → White
+];
+
+/**
+ * Default color index for each animated texture when selected.
+ */
+export const AnimatedTextureDefaultColors: number[] = [
+    2, // Fire Burst → Orange
+    7, // Water Splash → Blue
+    3, // Electric Spark → Yellow
+    5, // Poison Cloud → Green
+    8, // Magic Pulse → Purple
+    6, // Ice Crystal → Cyan
+    1, // Blood Splatter → Red
+    11, // Shadow Wisp → Black
+    3, // Holy Glow → Yellow
+    5, // Nature Bloom → Green
 ];
 
 /**
@@ -236,7 +267,12 @@ export function spawnRatePerSecondToSlider(rate: number): number {
 
 export const DefaultEmitterConfig: EmitterConfig = {
     // Appearance
+    textureMode: "static",
     textureId: 1, // Default to Star instead of Soft Circle
+    animationTextureId: 0, // Fire Burst
+    animationFps: 12, // Default animation speed
+    animationLoop: true, // Loop by default
+    randomizedTextureId: 0, // Shapes Mix row
     colorStartIndex: 0, // None (White)
     colorEndIndex: 0, // None (White) - same as start = no gradient
     alpha: 0.8,
@@ -264,6 +300,7 @@ export const DefaultEmitterConfig: EmitterConfig = {
     collision: false,
     spinSpeed: 0,
     spinSpeedRange: 0,
+    lookUp: false,
 
     // Spawning
     spawnRate: 10,

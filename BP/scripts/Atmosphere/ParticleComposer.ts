@@ -1,6 +1,8 @@
 import { Block, Player, system, world } from "@minecraft/server";
 import { ActionFormData, FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
 import {
+    AnimatedTextureDefaultColors,
+    AnimatedTexturePresets,
     BlendMode,
     clampSpawnRateSlider,
     ColorPresets,
@@ -9,11 +11,13 @@ import {
     EmitterConfig,
     getConfigKey,
     ParticlePresets,
+    RandomizedTexturePresets,
     spawnRatePerSecondToSlider,
     spawnRateSliderMax,
     spawnRateSliderMin,
     spawnRateSliderToPerSecond,
     TextureDefaultColors,
+    TextureMode,
     TexturePresets,
 } from "./EmitterConfig";
 
@@ -197,7 +201,7 @@ function exportToCode(config: EmitterConfig): string {
         encodeFloat(config.gravity, -5, 5), // 8: gravity (centered)
         encodeFloat(config.acceleration, -5, 5), // 9: acceleration
         encodeFloat(config.drag, 0, 10), // 10: drag
-        config.directionMode === "radial" ? 1 : 0, // 11: direction mode
+        config.directionMode === "radial" ? 1 : config.directionMode === "random" ? 2 : 0, // 11: direction mode
         encodeFloat(config.vectorX, -1, 1), // 12: vector X
         encodeFloat(config.vectorY, -1, 1), // 13: vector Y
         encodeFloat(config.vectorZ, -1, 1), // 14: vector Z
@@ -283,7 +287,7 @@ function importFromHexCode(hex: string): EmitterConfig | null {
         gravity: decodeFloat(bytes[8], -5, 5),
         acceleration: decodeFloat(bytes[9], -5, 5),
         drag: decodeFloat(bytes[10], 0, 10),
-        directionMode: bytes[11] === 1 ? "radial" : "vector",
+        directionMode: bytes[11] === 1 ? "radial" : bytes[11] === 2 ? "random" : "vector",
         vectorX: decodeFloat(bytes[12], -1, 1),
         vectorY: decodeFloat(bytes[13], -1, 1),
         vectorZ: decodeFloat(bytes[14], -1, 1),
@@ -335,7 +339,7 @@ function importFromLegacyCode(b64: string): EmitterConfig | null {
         gravity: minimal.g ?? 0,
         acceleration: minimal.ac ?? 0,
         drag: minimal.d ?? 0,
-        directionMode: minimal.dm === 1 ? "radial" : "vector",
+        directionMode: minimal.dm === 1 ? "radial" : minimal.dm === 2 ? "random" : "vector",
         vectorX: minimal.vx ?? 0,
         vectorY: minimal.vy ?? 1,
         vectorZ: minimal.vz ?? 0,
@@ -467,7 +471,20 @@ export default class TunerUI {
     // ========================================================================
 
     private static getStatusSummary(config: EmitterConfig): string {
-        const texture = TexturePresets[config.textureId] || "Unknown";
+        // Get texture name based on mode
+        let textureDisplay: string;
+        const mode = config.textureMode || "static";
+        switch (mode) {
+            case "animated":
+                textureDisplay = `${AnimatedTexturePresets[config.animationTextureId] || "Unknown"} (${config.animationFps}fps)`;
+                break;
+            case "randomized":
+                textureDisplay = RandomizedTexturePresets[config.randomizedTextureId] || "Random Mix";
+                break;
+            default:
+                textureDisplay = TexturePresets[config.textureId] || "Unknown";
+        }
+
         const startColor = ColorPresets[config.colorStartIndex]?.[0] || "White";
         const endColor = ColorPresets[config.colorEndIndex]?.[0] || "White";
         const colorText = config.colorStartIndex === config.colorEndIndex ? startColor : `${startColor} → ${endColor}`;
@@ -479,7 +496,7 @@ export default class TunerUI {
         const { slider, perSecond } = getSpawnRateInfo(config);
 
         return [
-            `§l§6Texture:§r ${texture}`,
+            `§l§6Mode:§r ${mode.charAt(0).toUpperCase() + mode.slice(1)} | §l§6Texture:§r ${textureDisplay}`,
             `§l§6Color:§r ${colorText} | α=${(config.alpha * 100).toFixed(0)}%`,
             `§l§6Blend:§r ${blend}`,
             `§l§6Size:§r ${config.sizeStart.toFixed(1)} → ${config.sizeEnd.toFixed(1)}`,
@@ -704,19 +721,44 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openAppearanceTab(player: Player, block: Block, config: EmitterConfig) {
-        const currentTexture = TexturePresets[config.textureId] || "Unknown";
+        // Get texture display based on mode
+        const mode = config.textureMode || "static";
+        let textureDisplay: string;
+        let textureIcon: string;
+        switch (mode) {
+            case "animated":
+                textureDisplay = AnimatedTexturePresets[config.animationTextureId] || "Unknown";
+                textureIcon = `textures/particle/icons/texture_${16 + config.animationTextureId}.png`;
+                break;
+            case "randomized":
+                textureDisplay = RandomizedTexturePresets[config.randomizedTextureId] || "Random Mix";
+                // Icon for first sprite in selected row (rows are 5 apart: 26, 31, 36, 41, 46)
+                textureIcon = `textures/particle/icons/texture_${26 + (config.randomizedTextureId ?? 0) * 5}.png`;
+                break;
+            default:
+                textureDisplay = TexturePresets[config.textureId] || "Unknown";
+                textureIcon = `textures/particle/icons/texture_${config.textureId}.png`;
+        }
+
         const startColor = ColorPresets[config.colorStartIndex]?.[0] || "White";
         const endColor = ColorPresets[config.colorEndIndex]?.[0] || "White";
         const colorText = config.colorStartIndex === config.colorEndIndex ? startColor : `${startColor} → ${endColor}`;
 
+        const modeLabels: Record<TextureMode, string> = {
+            static: "Static",
+            animated: "Animated",
+            randomized: "Random",
+        };
+
         const form = new ActionFormData()
             .title("§l§6Appearance")
             .body(
-                `§lTexture:§r ${currentTexture}\n` +
+                `§lMode:§r ${modeLabels[mode]} | §lTexture:§r ${textureDisplay}\n` +
                     `§lColor:§r ${colorText}\n` +
                     `§lSize:§r ${config.sizeStart.toFixed(1)} → ${config.sizeEnd.toFixed(1)}`
             )
-            .button("§6Select Texture\n§rChoose particle shape", `textures/particle/icons/texture_${config.textureId}.png`)
+            .button(`§6Texture Mode\n§r${modeLabels[mode]}`)
+            .button(`§6Select Texture\n§r${textureDisplay}`, textureIcon)
             .button("§dColor / Gradient\n§rTint start and end colors")
             .button("§eSize Settings\n§rStart/End size")
             .button("§5Blend & Opacity\n§rGlow effects, transparency")
@@ -730,21 +772,55 @@ export default class TunerUI {
 
         switch (response.selection) {
             case 0:
-                await this.openTextureSelector(player, block, config);
+                await this.openTextureModeSelector(player, block, config);
                 break;
             case 1:
-                await this.openColorGradientSettings(player, block, config);
+                await this.openTextureSelector(player, block, config);
                 break;
             case 2:
-                await this.openSizeSettings(player, block, config);
+                await this.openColorGradientSettings(player, block, config);
                 break;
             case 3:
-                await this.openBlendSettings(player, block, config);
+                await this.openSizeSettings(player, block, config);
                 break;
             case 4:
+                await this.openBlendSettings(player, block, config);
+                break;
+            case 5:
                 system.run(() => this.openComposer(player, block));
                 break;
         }
+    }
+
+    // ========================================================================
+    // Texture Mode Selector
+    // ========================================================================
+
+    private static async openTextureModeSelector(player: Player, block: Block, config: EmitterConfig) {
+        const currentMode = config.textureMode || "static";
+
+        const form = new ActionFormData()
+            .title("§l§6Texture Mode")
+            .body(`Current: ${currentMode.charAt(0).toUpperCase() + currentMode.slice(1)}`)
+            .button(`Static${currentMode === "static" ? " §2✓" : ""}\n§8Single sprite from atlas`)
+            .button(`Animated${currentMode === "animated" ? " §2✓" : ""}\n§8Flipbook animation`)
+            .button(`Random${currentMode === "randomized" ? " §2✓" : ""}\n§8Random sprite per particle`)
+            .button("Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        const modes: TextureMode[] = ["static", "animated", "randomized"];
+        if (response.selection !== undefined && response.selection < 3) {
+            config.textureMode = modes[response.selection];
+            setEmitterConfig(block, config);
+            player.sendMessage(`§6Texture mode set to: ${modes[response.selection]}`);
+        }
+
+        system.run(() => this.openAppearanceTab(player, block, config));
     }
 
     // ========================================================================
@@ -752,6 +828,22 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openTextureSelector(player: Player, block: Block, config: EmitterConfig) {
+        const mode = config.textureMode || "static";
+
+        switch (mode) {
+            case "animated":
+                await this.openAnimatedTextureSelector(player, block, config);
+                break;
+            case "randomized":
+                await this.openRandomizedTextureSelector(player, block, config);
+                break;
+            default:
+                await this.openStaticTextureSelector(player, block, config);
+                break;
+        }
+    }
+
+    private static async openStaticTextureSelector(player: Player, block: Block, config: EmitterConfig) {
         const currentTexture = TexturePresets[config.textureId] || "Unknown";
 
         const form = new ActionFormData().title("§l§6Select Texture").body(`Current: ${currentTexture}`);
@@ -790,7 +882,109 @@ export default class TunerUI {
             setEmitterConfig(block, config);
             const colorName = ColorPresets[defaultColorIdx]?.[0] || "White";
             player.sendMessage(`§6Texture set to: ${TexturePresets[response.selection]} §7(color: ${colorName})`);
-            system.run(() => this.openTextureSelector(player, block, config));
+            system.run(() => this.openStaticTextureSelector(player, block, config));
+        } else {
+            system.run(() => this.openAppearanceTab(player, block, config));
+        }
+    }
+
+    private static async openAnimatedTextureSelector(player: Player, block: Block, config: EmitterConfig) {
+        const currentTexture = AnimatedTexturePresets[config.animationTextureId] || "Unknown";
+
+        const form = new ActionFormData().title("§l§6Animated Texture").body(`Current: ${currentTexture}\nFPS: ${config.animationFps}`);
+
+        // Add all animated textures (0-9)
+        for (let i = 0; i < AnimatedTexturePresets.length; i++) {
+            const selected = i === config.animationTextureId ? " §2✓" : "";
+            form.button(`${AnimatedTexturePresets[i]}${selected}`, `textures/particle/icons/texture_${16 + i}.png`);
+        }
+
+        form.button("§eAnimation Settings\n§rFPS, Loop");
+        form.button("Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        if (response.selection !== undefined && response.selection < AnimatedTexturePresets.length) {
+            config.animationTextureId = response.selection;
+
+            // Auto-set default color for this animated texture
+            const defaultColorIdx = AnimatedTextureDefaultColors[response.selection] ?? 0;
+            config.colorStartIndex = defaultColorIdx;
+            config.colorEndIndex = defaultColorIdx;
+
+            // Update legacy RGB fields for compatibility
+            const colorPreset = ColorPresets[defaultColorIdx];
+            if (colorPreset) {
+                config.colorR = colorPreset[1];
+                config.colorG = colorPreset[2];
+                config.colorB = colorPreset[3];
+                config.tintMode = defaultColorIdx !== 0;
+            }
+
+            setEmitterConfig(block, config);
+            const colorName = ColorPresets[defaultColorIdx]?.[0] || "White";
+            player.sendMessage(`§6Animation set to: ${AnimatedTexturePresets[response.selection]} §7(color: ${colorName})`);
+            system.run(() => this.openAnimatedTextureSelector(player, block, config));
+        } else if (response.selection === AnimatedTexturePresets.length) {
+            // Animation settings
+            await this.openAnimationSettings(player, block, config);
+        } else {
+            system.run(() => this.openAppearanceTab(player, block, config));
+        }
+    }
+
+    private static async openAnimationSettings(player: Player, block: Block, config: EmitterConfig) {
+        const form = new ModalFormData()
+            .title("§l§eAnimation Settings")
+            .slider("Frames Per Second", 1, 30, { defaultValue: config.animationFps ?? 12, valueStep: 1 })
+            .toggle("Loop Animation", { defaultValue: config.animationLoop ?? true });
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAnimatedTextureSelector(player, block, config));
+            return;
+        }
+
+        const [fps, loop] = response.formValues as [number, boolean];
+        config.animationFps = fps;
+        config.animationLoop = loop;
+        setEmitterConfig(block, config);
+
+        player.sendMessage(`§eAnimation: ${fps} FPS, ${loop ? "Looping" : "Once"}`);
+        system.run(() => this.openAnimatedTextureSelector(player, block, config));
+    }
+
+    private static async openRandomizedTextureSelector(player: Player, block: Block, config: EmitterConfig) {
+        const currentPreset = RandomizedTexturePresets[config.randomizedTextureId] || "Unknown";
+
+        const form = new ActionFormData()
+            .title("§l§6Random Preset")
+            .body(`Current: ${currentPreset}\n§8Each particle picks a random variant from this row`);
+
+        // Add all randomized presets (0-4 rows)
+        for (let i = 0; i < RandomizedTexturePresets.length; i++) {
+            const selected = i === config.randomizedTextureId ? " §2✓" : "";
+            // Icons are at texture_26 to texture_30 (first sprite of each row)
+            form.button(`${RandomizedTexturePresets[i]}${selected}`, `textures/particle/icons/texture_${26 + i * 5}.png`);
+        }
+
+        form.button("Back");
+
+        const response = await form.show(player);
+        if (response.canceled) {
+            system.run(() => this.openAppearanceTab(player, block, config));
+            return;
+        }
+
+        if (response.selection !== undefined && response.selection < RandomizedTexturePresets.length) {
+            config.randomizedTextureId = response.selection;
+            setEmitterConfig(block, config);
+            player.sendMessage(`§6Random preset set to: ${RandomizedTexturePresets[response.selection]}`);
+            system.run(() => this.openRandomizedTextureSelector(player, block, config));
         } else {
             system.run(() => this.openAppearanceTab(player, block, config));
         }
@@ -884,7 +1078,7 @@ export default class TunerUI {
     private static async openSizeSettings(player: Player, block: Block, config: EmitterConfig) {
         const form = new ModalFormData()
             .title("§l§6Size Settings")
-            .slider("Size: Start", 1, 50, { defaultValue: Math.round(config.sizeStart * 10), valueStep: 1 })
+            .slider("Size: Start", 0, 50, { defaultValue: Math.round(config.sizeStart * 10), valueStep: 1 })
             .slider("Size: End", 0, 50, { defaultValue: Math.round(config.sizeEnd * 10), valueStep: 1 });
 
         const response = await form.show(player);
@@ -908,19 +1102,21 @@ export default class TunerUI {
     // ========================================================================
 
     private static async openPhysicsTab(player: Player, block: Block, config: EmitterConfig) {
+        const directionModeIndex = config.directionMode === "radial" ? 1 : config.directionMode === "random" ? 2 : 0;
         const form = new ModalFormData()
             .title("§l§bPhysics & Motion")
             .slider("Speed (0-2)", 0, 20, { defaultValue: Math.round(config.speed * 10), valueStep: 1 })
             .slider("Gravity (-2 float, +2 fall)", -20, 20, { defaultValue: Math.round(config.gravity * 10), valueStep: 1 })
             .slider("Acceleration (-2 to +2)", -20, 20, { defaultValue: Math.round(config.acceleration * 10), valueStep: 1 })
             .slider("Drag (0-10)", 0, 100, { defaultValue: Math.round(config.drag * 10), valueStep: 5 })
-            .dropdown("Direction Mode", ["Vector (Specific direction)", "Radial (Explosion)"], {
-                defaultValueIndex: config.directionMode === "radial" ? 1 : 0,
+            .dropdown("Direction Mode", ["Vector (Specific direction)", "Radial (Explosion)", "Random (Wander)"], {
+                defaultValueIndex: directionModeIndex,
             })
             .slider("Vector X (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorX * 10), valueStep: 1 })
             .slider("Vector Y (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorY * 10), valueStep: 1 })
             .slider("Vector Z (-1 to +1)", -10, 10, { defaultValue: Math.round(config.vectorZ * 10), valueStep: 1 })
             .toggle("Collision (bounce on blocks)", { defaultValue: config.collision })
+            .toggle("Look Up (face upward)", { defaultValue: config.lookUp ?? false })
             .slider("Spin Speed (degrees/sec)", -360, 360, { defaultValue: config.spinSpeed, valueStep: 15 })
             .slider("Spin Randomization (+/-)", 0, 180, { defaultValue: config.spinSpeedRange ?? 0, valueStep: 15 });
 
@@ -930,29 +1126,19 @@ export default class TunerUI {
             return;
         }
 
-        const [speed, gravity, acceleration, drag, dirIdx, vectorX, vectorY, vectorZ, collision, spinSpeed, spinSpeedRange] = response.formValues as [
-            number,
-            number,
-            number,
-            number,
-            number,
-            number,
-            number,
-            number,
-            boolean,
-            number,
-            number,
-        ];
+        const [speed, gravity, acceleration, drag, dirIdx, vectorX, vectorY, vectorZ, collision, lookUp, spinSpeed, spinSpeedRange] =
+            response.formValues as [number, number, number, number, number, number, number, number, boolean, boolean, number, number];
 
         config.speed = speed / 10;
         config.gravity = gravity / 10;
         config.acceleration = acceleration / 10;
         config.drag = drag / 10;
-        config.directionMode = dirIdx === 0 ? "vector" : "radial";
+        config.directionMode = dirIdx === 0 ? "vector" : dirIdx === 1 ? "radial" : "random";
         config.vectorX = vectorX / 10;
         config.vectorY = vectorY / 10;
         config.vectorZ = vectorZ / 10;
         config.collision = collision;
+        config.lookUp = lookUp;
         config.spinSpeed = spinSpeed;
         config.spinSpeedRange = spinSpeedRange;
 
@@ -976,7 +1162,7 @@ export default class TunerUI {
         const form = new ActionFormData()
             .title("§l§2Spawning Rules")
             .body(
-            `§lRate:§r ${formatSpawnRate(perSecond)}/s (slider ${slider}) | Life: ${config.lifetime.toFixed(1)}s\n` +
+                `§lRate:§r ${formatSpawnRate(perSecond)}/s (slider ${slider}) | Life: ${config.lifetime.toFixed(1)}s\n` +
                     `§lShape:§r ${config.shape} (r=${config.emissionRadius.toFixed(1)})\n` +
                     `§lOffset:§r ${offsetText}\n` +
                     `§lRotation:§r ${rotationText}`
@@ -1072,18 +1258,20 @@ export default class TunerUI {
     }
 
     private static async openSpawningOffsetSettings(player: Player, block: Block, config: EmitterConfig) {
+        // Slider uses quarter-block steps (4 pixels = 0.25 blocks) for precise positioning
+        // Range: -2 to +2 blocks in 0.25 increments = slider values -8 to 8
         const form = new ModalFormData()
             .title("§l§2Position Offset")
-            .slider("Offset X (blocks)", -10, 10, {
-                defaultValue: Math.round(config.offsetX),
+            .slider("Offset X (-2 to +2 blocks)", -8, 8, {
+                defaultValue: Math.round(config.offsetX * 4),
                 valueStep: 1,
             })
-            .slider("Offset Y (blocks)", -10, 10, {
-                defaultValue: Math.round(config.offsetY),
+            .slider("Offset Y (-2 to +2 blocks)", -8, 8, {
+                defaultValue: Math.round(config.offsetY * 4),
                 valueStep: 1,
             })
-            .slider("Offset Z (blocks)", -10, 10, {
-                defaultValue: Math.round(config.offsetZ),
+            .slider("Offset Z (-2 to +2 blocks)", -8, 8, {
+                defaultValue: Math.round(config.offsetZ * 4),
                 valueStep: 1,
             });
 
@@ -1095,9 +1283,10 @@ export default class TunerUI {
 
         const [offsetX, offsetY, offsetZ] = response.formValues as [number, number, number];
 
-        config.offsetX = offsetX;
-        config.offsetY = offsetY;
-        config.offsetZ = offsetZ;
+        // Convert slider values to blocks (divide by 4 for quarter-block precision)
+        config.offsetX = offsetX / 4;
+        config.offsetY = offsetY / 4;
+        config.offsetZ = offsetZ / 4;
 
         setEmitterConfig(block, config);
         player.sendMessage("§2Offset settings saved!");
